@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutrición y Bienestar - World TV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./producto.css">
+</head>
+<body>
+
+  <!-- CONTENEDOR FIJO SUPERIOR (TOP BAR + HEADER) -->
+  <div class="header-sticky-wrapper" id="headerWrapper">
+    <div class="top-bar">
+      ENVÍO GRATIS A TODA COLOMBIA EN COMPRAS MAYORES A $100.000 | PAGA AL RECIBIR
+    </div>
+    <header class="site-header">
+      <div class="header-main">
+        <a href="./index.html" class="logo-link">
+          <img src="./storage/images/logo.png" alt="World TV" class="site-logo">
+        </a>
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar suplementos, melena, colágeno...">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <button class="cart-btn" aria-label="Carrito" onclick="toggleCart()">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </button>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="./index.html">Todos</a></li>
+          <li><a href="./nutricion.html" style="color: var(--brand-red); font-weight:700;">Nutrición</a></li>
+          <li><a href="#">Salud Visual</a></li>
+          <li><a href="#">Belleza y Cuidado</a></li>
+          <li><a href="#">Outlet Moldeadoras</a></li>
+          <li><a href="#">Nosotros</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <!-- BANNER HERO DE NUTRICIÓN (RECUPERADO Y MEJORADO) -->
+  <section class="category-hero">
+    <div class="category-hero-content">
+      <span class="pill-badge">🌿 LÍNEA DE NUTRICIÓN FUNCIONAL</span>
+      <h1 class="hero-title">Bebidas funcionales y suplementos para tu bienestar diario</h1>
+      <p class="hero-desc">
+        Nutrición natural con ingredientes de origen vegetal formulados científicamente para acompañar tu energía, articulaciones y equilibrio físico y emocional.
+      </p>
+    </div>
+  </section>
+
+  <!-- BARRA DE FILTROS -->
+  <section class="catalog-filters-bar">
+    <div class="filters-container">
+      <div class="filter-group">
+        <span>Filtrar por:</span>
+        <select class="filter-select">
+          <option>Disponibilidad (En Stock)</option>
+          <option>Precio: Menor a Mayor</option>
+          <option>Precio: Mayor a Menor</option>
+        </select>
+      </div>
+      <div class="catalog-counter">
+        <strong>7</strong> fórmulas disponibles
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID DE PRODUCTOS -->
+  <section class="bestsellers-section" style="margin-top: 40px;">
+    <div class="products-grid">
+      
+      <article class="product-card" onclick="window.location.href='./producto.html'" style="cursor: pointer;">
+        <span class="card-badge" style="background:#0F1C3F;">✨ Más Vendido</span>
+        <div class="product-img-box">
+          <img src="./storage/images/cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp" alt="Colasteel">
+        </div>
+        <div class="product-rating">★★★★★ <span>(500)</span></div>
+        <h3 class="product-title">Colasteel Cloruro de Magnesio 500 ml</h3>
+        <p class="product-subtitle">Con Colágeno, Biotina y Complejo B</p>
+        <div class="product-bottom">
+          <div class="product-price">$101.031 COP</div>
+          <button class="add-btn" onclick="event.stopPropagation(); window.location.href='./producto.html'">Ver 🛍️</button>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <span class="card-badge">🔥 Top Enfoque</span>
+        <div class="product-img-box">
+          <img src="./storage/images/melena_x_1_IA.webp" alt="Melena de León">
+        </div>
+        <div class="product-rating">★★★★★ <span>(142)</span></div>
+        <h3 class="product-title">Melena de León en Polvo SI100</h3>
+        <p class="product-subtitle">Sabor Capuchino • Enfoque y Memoria</p>
+        <div class="product-bottom">
+          <div class="product-price">$94.900 COP</div>
+          <button class="add-btn" onclick="toggleCart()">Añadir 🛍️</button>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-img-box">
+          <img src="./storage/images/suerox2.webp" alt="Resveratrol">
+        </div>
+        <div class="product-rating">★★★★★ <span>(89)</span></div>
+        <h3 class="product-title">Resveratrol 500 ml - Fórmula Única</h3>
+        <p class="product-subtitle">Antioxidante y Antiedad Celular</p>
+        <div class="product-bottom">
+          <div class="product-price">$101.500 COP</div>
+          <button class="add-btn" onclick="toggleCart()">Añadir 🛍️</button>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <span class="card-badge">Nuevo</span>
+        <div class="product-img-box">
+          <img src="./storage/images/inositol_x_1_IA.webp" alt="Inositol">
+        </div>
+        <div class="product-rating">★★★★★ <span>(115)</span></div>
+        <h3 class="product-title">Inositol en Polvo Orebitol</h3>
+        <p class="product-subtitle">Con Biotina, Ácido Fólico y Vitamina B12</p>
+        <div class="product-bottom">
+          <div class="product-price">$94.900 COP</div>
+          <button class="add-btn" onclick="toggleCart()">Añadir 🛍️</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <a href="#" class="footer-logo-link">
+          <img src="./storage/images/logo.png" alt="World TV" class="footer-logo">
+        </a>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          worldtvcolombia@gmail.com
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          (57) 3500010
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          Medellín, Antioquia, Colombia
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Información</h4>
+        <ul>
+          <li><a href="#">Términos y condiciones de envío</a></li>
+          <li><a href="#">Devoluciones y retracto</a></li>
+          <li><a href="#">Calidad de nuestros productos</a></li>
+          <li><a href="#">Política de Tratamiento de Datos</a></li>
+          <li><a href="#">Contáctenos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Suscríbete a nuestro correo</h4>
+        <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Descubre antes que nadie nuestras nuevas colecciones y promociones exclusivas.</p>
+        <input type="email" placeholder="Correo electrónico">
+        <a href="#" class="btn-primary" style="display:block; text-align:center; padding:10px;">SUSCRIBIRME</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026, WorldTv Colombia • Tecnología de Shopify</div>
+      <div>💳 Pagos Seguros | PSE | Tarjetas | Pago Contraentrega</div>
+    </div>
+  </footer>
+
+  <script src="./producto.js"></script>
+</body>
+</html>
