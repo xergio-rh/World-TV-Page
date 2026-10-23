@@ -55,7 +55,7 @@
  <main class="product-main-container">
    <div class="product-grid-layout">
     
-     <!-- COLUMNA IZQUIERDA: GALERÍA DE IMÁGENES -->
+     <!-- COLUMNA IZQUIERDA: GALERÍA DE IMÁGENES (Sticky) -->
      <div class="product-gallery-card">
        <div class="main-image-box">
          <img id="mainProductImg" src="./storage/images/cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp" alt="Colasteel Cloruro de Magnesio">
@@ -76,7 +76,7 @@
        </div>
      </div>
 
-     <!-- COLUMNA DERECHA: INFORMACIÓN Y COMPRA -->
+     <!-- COLUMNA DERECHA: INFORMACIÓN, COMPRA Y DESCRIPCIÓN EXTENDIDA -->
      <div class="product-info-card">
        <span class="brand-tag">WORLDTV COLOMBIA</span>
        <h1 class="product-title-main">Colasteel Cloruro de Magnesio</h1>
@@ -129,7 +129,7 @@
          Este Cloruro es una bebida funcional líquida complejo B y extracto de té, diseñada para apoyar el bienestar de tus articulaciones, huesos, piel y sistema digestivo. Su presentación líquida facilita la absorción y es ideal para quienes desean cuidar su cuerpo con una rutina práctica y constante.
        </p>
 
-       <!-- BOTONES DE COMPRA -->
+       <!-- BOTONES DE ACCIÓN -->
        <div class="action-buttons">
          <a href="#" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">COMPRA AHORA</a>
          <a href="#" class="btn-add-cart" onclick="toggleCart(); return false;">Agregar al carrito</a>
@@ -186,7 +186,8 @@
          </ul>
        </div>
 
-     </div>
+     </div> <!-- 👈 AQUÍ SE CIERRA CORRECTAMENTE LA COLUMNA DERECHA -->
+
    </div>
  </main>
 
@@ -357,7 +358,7 @@
        <h4>Suscríbete a nuestro correo</h4>
        <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Descubre antes que nadie nuestras nuevas colecciones y promociones exclusivas.</p>
        <input type="email" placeholder="Correo electrónico">
-       <a href="#" class="btn-primary" style="display:block; text-align:center; padding:10px;">SUSCRIBIRME</a>
+       <a href="#" class="btn-primary">SUSCRIBIRME</a>
      </div>
    </div>
    <div class="footer-bottom">

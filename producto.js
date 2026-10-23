@@ -52,31 +52,31 @@ function selectCheckoutPackage(element, priceValue) {
   if (totalElem) totalElem.innerText = priceValue;
 }
 
-// Mostrar u ocultar la barra flotante inferior al hacer scroll
-window.addEventListener('scroll', function() {
-  const stickyBar = document.getElementById('stickyBuyBar');
-  if (!stickyBar) return;
-  
-  if (window.scrollY > 450) {
-    stickyBar.classList.add('visible');
-  } else {
-    stickyBar.classList.remove('visible');
-  }
-});
-
-// Lógica del header inteligente con la barra roja (Scroll up / Scroll down)
+// --- CONTROL DE SCROLL: HEADER INTELIGENTE Y BARRA FLOTANTE ---
 let lastScrollTop = 0;
 const headerWrapper = document.getElementById('headerWrapper');
+const stickyBuyBar = document.getElementById('stickyBuyBar');
 
 window.addEventListener('scroll', function() {
-  if (!headerWrapper) return;
   let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  
-  if (scrollTop > lastScrollTop && scrollTop > 150) {
-    headerWrapper.classList.add('header-hidden');
-  } else {
-    headerWrapper.classList.remove('header-hidden');
+
+  // 1. Lógica del Header Inteligente (Se oculta al bajar, aparece al subir)
+  if (headerWrapper) {
+    if (scrollTop > lastScrollTop && scrollTop > 150) {
+      headerWrapper.classList.add('header-hidden');
+    } else {
+      headerWrapper.classList.remove('header-hidden');
+    }
   }
-  
+
+  // 2. Lógica de la barra inferior de compra (Aparece tras hacer scroll y desaparece al llegar al footer o arriba)
+  if (stickyBuyBar) {
+    if (scrollTop > 450 && scrollTop < 2400) {
+      stickyBuyBar.classList.add('visible');
+    } else {
+      stickyBuyBar.classList.remove('visible');
+    }
+  }
+
   lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 }, { passive: true });
