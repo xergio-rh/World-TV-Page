@@ -42,9 +42,9 @@
        <ul class="nav-links">
          <li><a href="./index.html">Todos</a></li>
          <li><a href="./nutricion.html">Nutrición</a></li>
-         <li><a href="#">Salud Visual</a></li>
-         <li><a href="#">Belleza y Cuidado</a></li>
-         <li><a href="#">Outlet Moldeadoras</a></li>
+         <li><a href="./vision.html">Salud Visual</a></li>
+         <li><a href="./belleza.html">Belleza y Bienestar</a></li>
+         <li><a href="./outlet.html">Outlet Prendas Moldeadoras</a></li>
          <li><a href="#">Nosotros</a></li>
        </ul>
      </nav>
@@ -132,7 +132,7 @@
        <!-- BOTONES DE COMPRA -->
        <div class="action-buttons">
          <a href="#" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">COMPRA AHORA</a>
-         <a href="#" class="btn-add-cart">Agregar al carrito</a>
+         <a href="#" class="btn-add-cart" onclick="toggleCart(); return false;">Agregar al carrito</a>
        </div>
 
        <!-- TRUST BADGES MINI (CUADRÍCULA 2X2) -->
@@ -167,30 +167,28 @@
          </div>
        </div>
 
+       <!-- DESCRIPCIÓN EXTENDIDA UBICADA EN LA COLUMNA DERECHA -->
+       <div class="product-extended-details">
+         <p class="lead-text">Bebida funcional de Cloruro de Magnesio enriquecida con Colágeno, Biotina, Complejo B y Extracto de Té.</p>
+         <ul class="benefits-bullet-list">
+           <li>Delicioso sabor a Uva, perfecto para disfrutar frío en cualquier momento del día.</li>
+           <li>Presentación líquida de rápida absorción, ideal para asimilar sus nutrientes de forma más eficiente.</li>
+           <li>Sin complicaciones: tómalo directo o diluido en tu bebida favorita como parte de tu rutina diaria.</li>
+           <li>Contenido rinde para 33 porciones aproximadamente (envase de 500 ml).</li>
+         </ul>
+         <h3>¿Qué lo hace diferente?</h3>
+         <ul class="benefits-bullet-list">
+           <li><strong>Fórmula Multibeneficio Completa:</strong> Combina Cloruro de Magnesio + Colágeno + Biotina en un solo producto, evitando que tengas que comprar suplementos por separado.</li>
+           <li><strong>Soporte para Articulaciones y Huesos:</strong> Formulado para apoyar la movilidad, flexibilidad y el cuidado articular en tu día a día.</li>
+           <li><strong>Nutrición para Piel, Cabello y Uñas:</strong> La sinergia del colágeno con la biotina fortalece los tejidos desde el interior.</li>
+           <li><strong>Bienestar Digestivo y Vitalidad:</strong> El Complejo B junto al extracto de té favorecen la digestión y aportan una sensación renovada de energía.</li>
+           <li><strong>Registro INVIMA y Calidad Garantizada:</strong> Producido bajo estrictos estándares GMP para brindarte total confianza y seguridad.</li>
+         </ul>
+       </div>
+
      </div>
    </div>
  </main>
-
- <!-- DESCRIPCIÓN EXTENDIDA Y BENEFICIOS -->
- <section class="extended-desc-section">
-   <div class="content-box-limiter">
-     <p class="lead-text">Bebida funcional de Cloruro de Magnesio enriquecida con Colágeno, Biotina, Complejo B y Extracto de Té.</p>
-     <ul class="benefits-bullet-list">
-       <li>Delicioso sabor a Uva, perfecto para disfrutar frío en cualquier momento del día.</li>
-       <li>Presentación líquida de rápida absorción, ideal para asimilar sus nutrientes de forma más eficiente.</li>
-       <li>Sin complicaciones: tómalo directo o diluido en tu bebida favorita como parte de tu rutina diaria.</li>
-       <li>Contenido rinde para 33 porciones aproximadamente (envase de 500 ml).</li>
-     </ul>
-     <h3>¿Qué lo hace diferente?</h3>
-     <ul class="benefits-bullet-list">
-       <li><strong>Fórmula Multibeneficio Completa:</strong> Combina Cloruro de Magnesio + Colágeno + Biotina en un solo producto, evitando que tengas que comprar suplementos por separado.</li>
-       <li><strong>Soporte para Articulaciones y Huesos:</strong> Formulado para apoyar la movilidad, flexibilidad y el cuidado articular en tu día a día.</li>
-       <li><strong>Nutrición para Piel, Cabello y Uñas:</strong> La sinergia del colágeno con la biotina fortalece los tejidos desde el interior.</li>
-       <li><strong>Bienestar Digestivo y Vitalidad:</strong> El Complejo B junto al extracto de té favorecen la digestión y aportan una sensación renovada de energía.</li>
-       <li><strong>Registro INVIMA y Calidad Garantizada:</strong> Producido bajo estrictos estándares GMP para brindarte total confianza y seguridad.</li>
-     </ul>
-   </div>
- </section>
 
  <!-- BANNER DIVISOR -->
  <div class="divider-banner">
@@ -243,7 +241,7 @@
  <section class="usage-section">
    <div class="usage-card-wrapper">
      <div class="usage-img">
-       <img src="./storage/images/cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp" alt="Modo de Uso">
+       <img src="./storage/images/descubrecolasteel.png" alt="Modo de Uso">
      </div>
      <div class="usage-text">
        <h2>MODO DE USO Y RENDIMIENTO</h2>
@@ -367,9 +365,6 @@
      <div>💳 Pagos Seguros | PSE | Tarjetas | Pago Contraentrega</div>
    </div>
  </footer>
-
- <!-- SCRIPT DE PRODUCTO -->
- <script src="./producto.js"></script>
 
  <!-- BARRA FLOTANTE INFERIOR DE CONVERSIÓN (STICKY BUY BAR) -->
  <div class="sticky-buy-bar" id="stickyBuyBar">
@@ -583,17 +578,20 @@
              <img src="./storage/images/suerox2.webp" alt="3">
              <del>$303.093</del>
              <strong>$221.250</strong>
-           </div>
          </div>
+       </div>
        </div>
        <button class="btn-checkout-submit" onclick="alert('¡Pedido confirmado con éxito!')">
          COMPRA AHORA
        </button>
-       <div class="checkout-payment-icons">
+       <div class="payment-methods-icons">
          <span>💳</span> <span>Nequi</span> <span>PSE</span> <span>Addi</span> <span>Daviplata</span>
        </div>
      </div>
    </div>
  </div>
+
+ <!-- SCRIPT DE PRODUCTO (AHORA VA AL FINAL DE TODO) -->
+ <script src="./producto.js"></script>
 </body>
 </html>
