@@ -18,16 +18,40 @@
     </div>
     <header class="site-header">
       <div class="header-main">
+        <!-- Izquierda: Menú Hamburguesa (Solo visible en móvil) -->
+        <button class="mobile-menu-btn" aria-label="Menú" onclick="toggleMobileMenu()">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Logo (Alineado a la izquierda en PC, centrado en móvil gracias al CSS) -->
         <a href="./index.html" class="logo-link">
           <img src="./storage/images/logo.png" alt="World TV" class="site-logo">
         </a>
+
+        <!-- Barra de búsqueda clásica (Visible en PC) -->
         <div class="search-bar">
-          <input type="text" placeholder="Buscar fajas, cinturillas, chalecos térmicos...">
+          <input type="text" placeholder="Buscar productos...">
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
         </div>
+
+        <!-- Acciones derechas para móvil (Lupa y Carrito) -->
+        <div class="header-right-actions">
+          <button class="search-toggle-btn" aria-label="Buscar" onclick="toggleSearchBox()">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Botón de carrito general (Visible en PC y móvil) -->
         <button class="cart-btn" aria-label="Carrito" onclick="toggleCart()">
           <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
@@ -36,14 +60,25 @@
           </svg>
         </button>
       </div>
+
+      <!-- Barra de búsqueda desplegable para móvil -->
+      <div class="expandable-search-bar" id="expandableSearch">
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar fajas, cinturillas, chalecos térmicos...">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+      </div>
+
       <nav>
-        <ul class="nav-links">
-          <li><a href="./index.html">Inicio</a></li>
-          <li><a href="./nutricion.html">Nutrición</a></li>
-          <li><a href="./vision.html">Salud Visual</a></li>
-          <li><a href="./belleza.html">Belleza y Bienestar</a></li>
-          <li><a href="./outlet.html" style="color: var(--brand-red); font-weight:700;">Outlet Prendas Moldeadoras/a></li>
-          <li><a href="#">NOSOTROS</a></li>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="./index.html" onclick="toggleMobileMenu()">Inicio</a></li>
+          <li><a href="./nutricion.html" onclick="toggleMobileMenu()">Nutrición</a></li>
+          <li><a href="./vision.html" onclick="toggleMobileMenu()">Salud Visual</a></li>
+          <li><a href="./belleza.html" onclick="toggleMobileMenu()">Belleza y Bienestar</a></li>
+          <li><a href="./outlet.html" onclick="toggleMobileMenu()" style="color: var(--brand-red); font-weight:700;">Outlet Prendas Moldeadoras</a></li>
         </ul>
       </nav>
     </header>
@@ -230,7 +265,154 @@
     </div>
   </footer>
 
+  <!-- SIDEBAR DEL CARRITO FLOTANTE -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>TU CARRITO</h3>
+      <button class="cart-close-btn" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-body">
+      <div class="cart-item-card">
+        <img src="./storage/images/banneroutlet.jpeg" alt="Cinturilla">
+        <div class="cart-item-details">
+          <div class="cart-item-title-row">
+            <h4>Cinturilla Reductora Dama Power Belt</h4>
+            <button class="item-remove">✕</button>
+          </div>
+          <div class="cart-item-price-row">
+            <span class="cart-item-old">$297.800</span>
+            <span class="cart-item-current">$163.900</span>
+          </div>
+          <div class="cart-item-qty-row">
+            <div class="qty-selector">
+              <button>-</button>
+              <span>1</span>
+              <button>+</button>
+            </div>
+            <span class="cart-item-total">$163.900</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <strong>$163.900</strong>
+      </div>
+      <div class="cart-summary-row">
+        <span>Envío</span>
+        <strong>Incluido</strong>
+      </div>
+      <div class="cart-summary-row total-row">
+        <span>Total</span>
+        <strong>$163.900</strong>
+      </div>
+      <a href="#" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">Pagar</a>
+      <div class="cart-trust-badges">
+        <span>🔒 4.8 <span>★★★★★</span> 500 de confianza</span>
+        <span>🛡️ GMP producto</span>
+      </div>
+      <div class="payment-methods-icons">
+        <span>💳</span> <span>Nequi</span> <span>Daviplata</span> <span>PSE</span> <span>Addi</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE CHECKOUT / REALIZA TU PEDIDO -->
+  <div class="checkout-modal-overlay" id="checkoutModalOverlay" onclick="toggleCheckoutModal()"></div>
+  <div class="checkout-modal-container" id="checkoutModal">
+    <div class="checkout-modal-header">
+      <h2>¡REALIZA TU PEDIDO!</h2>
+      <button class="checkout-close-btn" onclick="toggleCheckoutModal()">✕</button>
+    </div>
+    <div class="checkout-modal-body">
+      <div class="checkout-form-col">
+        <h3>INGRESA TUS DATOS COMPLETOS</h3>
+        <form class="checkout-form" onsubmit="event.preventDefault(); alert('¡Pedido realizado con éxito!');">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre:</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <input type="text" placeholder="Nombre" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Apellido:</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <input type="text" placeholder="Apellido" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Teléfono:</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <input type="tel" placeholder="Teléfono" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Departamento:</label>
+              <select required>
+                <option value="" disabled selected>Departamento</option>
+                <option value="Antioquia">Antioquia</option>
+                <option value="Bogota">Bogotá D.C.</option>
+                <option value="Cundinamarca">Cundinamarca</option>
+                <option value="Valle">Valle del Cauca</option>
+                <option value="Santander">Santander</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Ciudad:</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <input type="text" placeholder="Ciudad" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Dirección:</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <input type="text" placeholder="Calle, Carrera, Diagonal o Transversal" required>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="shipping-banner-bar">
+          🚚 ENVÍOS DE 24-48 HORAS 🚚
+        </div>
+      </div>
+      <div class="checkout-summary-col">
+        <div class="checkout-receipt-box">
+          <div class="receipt-row">
+            <span>Subtotal</span>
+            <strong id="chkSubtotal">$163.900</strong>
+          </div>
+          <div class="receipt-row">
+            <span>Envío</span>
+            <strong>Incluido</strong>
+          </div>
+          <div class="receipt-row total">
+            <span>Total</span>
+            <strong id="chkTotal">$163.900</strong>
+          </div>
+        </div>
+        <button class="btn-checkout-submit" onclick="alert('¡Pedido confirmado con éxito!')">
+          COMPRA AHORA
+        </button>
+        <div class="payment-methods-icons">
+          <span>💳</span> <span>Nequi</span> <span>PSE</span> <span>Addi</span> <span>Daviplata</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- SCRIPT -->
-  <script src="./scripts.js"></script>
+  <script src="./outlet.js"></script>
 </body>
 </html>

@@ -138,6 +138,15 @@ body {
   color: #444;
 }
 
+.header-right-actions {
+  display: none; /* Oculto en PC, solo usado en móvil */
+}
+
+.expandable-search-bar {
+  max-height: 0;
+  overflow: hidden;
+}
+
 .cart-btn {
   background: none;
   border: none;
@@ -304,6 +313,12 @@ body {
   border-radius: var(--radius-md);
   background: #FFF;
   box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trust-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 .trust-icon {
@@ -784,7 +799,7 @@ body {
   }
 }
 
-/* --- SECCIÓN COLECCIÓN RELAX VISION (FALTABA EN STYLES.CSS) --- */
+/* --- SECCIÓN COLECCIÓN RELAX VISION --- */
 .vision-section {
   background-color: #EBF0F5;
   padding: 72px 24px;
@@ -948,12 +963,6 @@ body {
 .vision-img-caption span {
   font-size: 11px;
   opacity: 0.9;
-}
-
-@media (max-width: 992px) {
-  .vision-container {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* --- ESTILOS DEL CARRITO LATERAL (DRAWER) Y MODAL --- */
@@ -1537,5 +1546,317 @@ body {
 @media (max-width: 850px) {
   .checkout-modal-body {
     grid-template-columns: 1fr;
+  }
+}
+
+/* --- DISEÑO RESPONSIVO PARA TELÉFONOS Y TABLETS --- */
+
+@media (max-width: 992px) {
+  .hero-container, 
+  .outlet-banner, 
+  .kits-grid, 
+  .footer-container,
+  .vision-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-content {
+    grid-column: 1;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-ctas, .hero-checks {
+    justify-content: center;
+  }
+
+  .trust-section, 
+  .products-grid, 
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .outlet-people {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ajustar padding superior del body acorde al nuevo header compacto de una fila */
+  body {
+    padding-top: 105px;
+  }
+
+  .top-bar {
+    font-size: 10px;
+    padding: 6px 10px;
+    letter-spacing: 0.2px;
+  }
+
+  .site-header {
+    padding: 8px 14px 0;
+  }
+
+  /* Header Principal: [Hamburguesa Izq] [Logo Centro] [Lupa y Carrito Der] */
+  .header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 8px;
+    border-bottom: none;
+  }
+
+  /* Botón Hamburguesa limpio sin texto */
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    color: var(--brand-dark);
+  }
+
+  /* Logo perfectamente centrado */
+  .logo-link {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .site-logo {
+    width: 110px;
+  }
+
+  /* Acciones derechas (Lupa y Carrito) */
+  .header-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .search-toggle-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--brand-dark);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+  }
+
+  .cart-btn {
+    padding: 4px;
+    background: transparent;
+    border: none;
+  }
+
+  /* Barra de búsqueda expandible oculta por defecto en móvil */
+  .expandable-search-bar {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 4px;
+  }
+
+  .expandable-search-bar.active {
+    max-height: 60px;
+    padding: 6px 4px 12px 4px;
+    border-top: 1px solid var(--border-soft);
+    margin-top: 4px;
+  }
+
+  .expandable-search-bar .search-bar {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .expandable-search-bar input {
+    padding: 9px 36px 9px 16px;
+    font-size: 13px;
+    border-radius: 24px;
+  }
+
+  /* Ocultar la barra de búsqueda estática de PC en dispositivos móviles */
+  .site-header .header-main .search-bar {
+    display: none;
+  }
+
+  /* Menú desplegable hamburguesa */
+  .site-header nav {
+    position: relative;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    width: 100vw;
+    position: absolute;
+    top: 100%;
+    left: -14px;
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--border-soft);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    padding: 6px 0;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 11px 20px;
+    border-bottom: 1px solid #F7F7F7;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .nav-links a:hover {
+    background-color: #F9FAFB;
+    color: var(--brand-red);
+  }
+
+  /* --- SECCIONES GENERALES EN MÓVIL --- */
+  .hero-section {
+    min-height: 400px;
+    padding: 24px 0;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    line-height: 1.15;
+  }
+
+  .hero-desc {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+
+  .trust-section {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 16px auto;
+    padding: 0 14px;
+  }
+
+  .trust-card {
+    padding: 12px 14px;
+    border-radius: 10px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 0 14px;
+  }
+
+  .section-header {
+    margin-bottom: 24px;
+    padding: 0 14px;
+  }
+
+  .section-header h2 {
+    font-size: 22px;
+  }
+
+  .section-header p {
+    font-size: 13px;
+  }
+
+  .kits-grid {
+    padding: 0 14px;
+    gap: 14px;
+  }
+
+  .kit-card {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .kit-image-box {
+    height: 150px;
+  }
+
+  .vision-section {
+    padding: 48px 14px;
+  }
+
+  .vision-title {
+    font-size: 26px;
+  }
+
+  .models-box {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .vision-image-card {
+    height: 280px;
+  }
+
+  .outlet-section {
+    padding: 0 14px;
+    margin-bottom: 36px;
+  }
+
+  .outlet-content {
+    padding: 24px 18px;
+    text-align: center;
+  }
+
+  .outlet-title {
+    font-size: 28px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    padding: 0 14px;
+    gap: 14px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 28px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    font-size: 11px;
+  }
+
+  .cart-drawer {
+    width: 100%;
+    right: -100%;
+  }
+
+  .checkout-modal-body {
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-menu-btn {
+    display: none;
   }
 }

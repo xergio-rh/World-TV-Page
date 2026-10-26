@@ -80,3 +80,23 @@ window.addEventListener('scroll', function() {
 
   lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 }, { passive: true });
+
+// Abrir y cerrar el menú de navegación móvil en la página de producto
+function toggleMobileMenu() {
+  const navLinks = document.getElementById('navLinks');
+  if (navLinks) {
+    navLinks.classList.toggle('active');
+  }
+}
+
+// Abrir y cerrar la barra de búsqueda expandible en móvil
+function toggleSearchBox() {
+  const searchBox = document.getElementById('expandableSearch');
+  if (searchBox) {
+    searchBox.classList.toggle('active');
+    if (searchBox.classList.contains('active')) {
+      const input = searchBox.querySelector('input');
+      if (input) input.focus();
+    }
+  }
+}

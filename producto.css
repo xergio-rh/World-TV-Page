@@ -108,6 +108,15 @@ body {
   color: #444;
 }
 
+.header-right-actions {
+  display: none;
+}
+
+.expandable-search-bar {
+  max-height: 0;
+  overflow: hidden;
+}
+
 .cart-btn {
   background: none;
   border: none;
@@ -465,6 +474,16 @@ body {
   margin: 24px 0 12px;
 }
 
+.benefits-bullet-list {
+  list-style: disc;
+  padding-left: 20px;
+  font-size: 13.5px;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .divider-banner {
   background-color: #0F1C3F;
   color: #FFF;
@@ -706,7 +725,7 @@ body {
   color: #FFF;
 }
 
-/* FOOTER Y COMPONENTES GLOBALES */
+/* FOOTER */
 .site-footer {
   background-color: #F4F2EC;
   color: var(--brand-dark);
@@ -1511,5 +1530,310 @@ body {
 @media (max-width: 850px) {
   .checkout-modal-body {
     grid-template-columns: 1fr;
+  }
+}
+
+/* --- DISEÑO RESPONSIVO PARA TELÉFONOS Y TABLETS EN PÁGINA DE PRODUCTO --- */
+
+@media (max-width: 992px) {
+  .product-grid-layout,
+  .usage-card-wrapper,
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+
+  .ingredients-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .badges-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 105px;
+  }
+
+  .top-bar {
+    font-size: 10px;
+    padding: 6px 10px;
+    letter-spacing: 0.2px;
+  }
+
+  .site-header {
+    padding: 8px 14px 0;
+  }
+
+  .header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 8px;
+    border-bottom: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    color: var(--brand-dark);
+  }
+
+  .logo-link {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .site-logo {
+    width: 110px;
+  }
+
+  .header-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .search-toggle-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--brand-dark);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+  }
+
+  .cart-btn {
+    padding: 4px;
+    background: transparent;
+    border: none;
+  }
+
+  .expandable-search-bar {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 4px;
+  }
+
+  .expandable-search-bar.active {
+    max-height: 60px;
+    padding: 6px 4px 12px 4px;
+    border-top: 1px solid var(--border-soft);
+    margin-top: 4px;
+  }
+
+  .expandable-search-bar .search-bar {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .expandable-search-bar input {
+    padding: 9px 36px 9px 16px;
+    font-size: 13px;
+    border-radius: 24px;
+  }
+
+  .site-header .header-main .search-bar {
+    display: none;
+  }
+
+  /* Menú desplegable hamburguesa */
+  .site-header nav {
+    position: relative;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    width: 100vw;
+    position: absolute;
+    top: 100%;
+    left: -14px;
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--border-soft);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    padding: 6px 0;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 11px 20px;
+    border-bottom: 1px solid #F7F7F7;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .nav-links a:hover {
+    background-color: #F9FAFB;
+    color: var(--brand-red);
+  }
+
+  /* --- DETALLE DEL PRODUCTO EN MÓVIL --- */
+  .product-main-container {
+    margin: 20px auto;
+    padding: 0 14px;
+  }
+
+  .product-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .product-gallery-card {
+    position: static;
+    padding: 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .main-image-box {
+    height: 280px;
+  }
+
+  .product-title-main {
+    font-size: 26px;
+  }
+
+  .product-subtitle-main {
+    font-size: 18px;
+  }
+
+  .current-price {
+    font-size: 26px;
+  }
+
+  .packages-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .pack-option {
+    padding: 10px 4px 8px;
+  }
+
+  .pack-option img {
+    height: 40px;
+  }
+
+  .product-mini-trust {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .divider-banner {
+    font-size: 15px;
+    padding: 18px 14px;
+    margin-bottom: 40px;
+  }
+
+  .ingredients-section,
+  .usage-section,
+  .badges-section,
+  .recommended-section {
+    padding: 0 14px;
+    margin-bottom: 48px;
+  }
+
+  .section-title-center {
+    font-size: 24px;
+    margin-bottom: 28px;
+  }
+
+  .ingredients-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .ingredient-circle {
+    width: 120px;
+    height: 120px;
+    padding: 12px;
+  }
+
+  .usage-card-wrapper {
+    padding: 20px;
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+
+  .usage-img {
+    height: 220px;
+  }
+
+  .badges-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 28px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    font-size: 11px;
+  }
+
+  /* Barra flotante inferior de compra adaptada para móviles */
+  .sticky-bar-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sticky-product-info {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .sticky-actions-row {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .btn-sticky-buy {
+    flex: 1;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-menu-btn {
+    display: none;
   }
 }
