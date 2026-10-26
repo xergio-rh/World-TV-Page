@@ -282,22 +282,35 @@ body {
   height: 46px;
 }
 
+/* Hacer que la imagen de las gafas ocupe todo el cuadro sin bordes grises ni espacios */
 .product-img-box {
-  background-color: #F7F7F7;
-  border-radius: 8px;
-  height: 200px;
+  background-color: #FFFFFF; /* Fondo blanco */
+  border-radius: 8px 8px 0 0; /* Bordes redondeados superiores */
+  height: 240px; /* Altura uniforme para todas las fotos */
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 14px;
   overflow: hidden;
-  padding: 10px;
+  padding: 0; /* Sin espacio interno para que la foto se expanda */
 }
 
 .product-img-box img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen para que llene absolutamente todo el espacio disponible */
+  transition: transform 0.3s ease;
+}
+
+/* Efecto zoom elegante al pasar el mouse por encima */
+.beauty-card:hover .product-img-box img {
+  transform: scale(1.05);
+}
+
+/* Ocultar cualquier insignia de emoji o badge antiguo si llega a aparecer */
+.discount-badge {
+  display: none !important;
 }
 
 .product-rating {

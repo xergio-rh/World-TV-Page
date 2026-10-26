@@ -291,24 +291,36 @@ body {
   height: 46px;
 }
 
+/* Hacer que la imagen ocupe todo el cuadro sin bordes grises ni espacios */
 .product-img-box {
-  background-color: #F7F7F7;
-  border-radius: 8px;
-  height: 200px;
+  background-color: #FFFFFF; /* Fondo blanco por si la imagen tiene transparencias */
+  border-radius: 8px 8px 0 0; /* Bordes redondeados solo arriba */
+  height: 240px; /* Altura ideal para que luzca estilizado */
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 14px;
   overflow: hidden;
-  padding: 10px;
+  padding: 0; /* Eliminamos el padding para que no deje espacio libre */
 }
 
 .product-img-box img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Hace que la imagen cubra todo el cuadro de manera perfecta */
+  transition: transform 0.3s ease;
 }
 
+/* Efecto zoom elegante al pasar el mouse por la tarjeta */
+.beauty-card:hover .product-img-box img {
+  transform: scale(1.05);
+}
+
+/* OCULTAR / ELIMINAR LOS EMOJIS Y CÍRCULOS FLOTANTES */
+.discount-badge {
+  display: none !important; /* Oculta totalmente las insignias con emojis */
+}
 .product-rating {
   font-size: 12px;
   color: #F59E0B;
