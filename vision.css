@@ -144,11 +144,12 @@ body {
 }
 
 /* --- BANNER HERO SALUD VISUAL --- */
+/* --- BANNER HERO SALUD VISUAL --- */
 .vision-hero-banner {
   position: relative;
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./storage/images/realx_vision_premuim_uso_hombre.webp');
   background-size: cover;
-  background-position: center;
+  background-position: center 25%; /* Cambiamos 'center' por 'center 25%' para bajar la imagen y mostrar las gafas */
   min-height: 380px;
   display: flex;
   align-items: center;

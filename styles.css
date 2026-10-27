@@ -190,7 +190,9 @@ body {
   min-height: 520px;
   display: flex;
   align-items: center;
+  transition: background-image 0.8s ease-in-out; /* Transición suave entre imágenes */
 }
+
 
 .hero-container {
   max-width: 1280px;

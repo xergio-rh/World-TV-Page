@@ -87,3 +87,27 @@ function toggleSearchBox() {
     }
   }
 }
+
+
+// --- ROTACIÓN AUTOMÁTICA DEL HERO BANNER CADA 2 SEGUNDOS ---
+document.addEventListener('DOMContentLoaded', function() {
+  const heroSection = document.querySelector('.hero-section');
+  if (heroSection) {
+    const slidesAttr = heroSection.getAttribute('data-slides');
+    if (slidesAttr) {
+      try {
+        const slides = JSON.parse(slidesAttr);
+        let currentIndex = 0;
+
+        setInterval(() => {
+          currentIndex = (currentIndex + 1) % slides.length;
+          const imageUrl = slides[currentIndex];
+          // Mantenemos el degradado original de fondo y cambiamos la imagen dinámicamente
+          heroSection.style.backgroundImage = `linear-gradient(90deg, rgba(232,228,220,0.1) 40%, rgba(235,232,224,0.92) 60%), url('${imageUrl}')`;
+        }, 2000); // 2000 ms = 2 segundos
+      } catch (e) {
+        console.error("Error al cargar los slides del hero:", e);
+      }
+    }
+  }
+});

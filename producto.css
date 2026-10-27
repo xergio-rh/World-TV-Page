@@ -180,10 +180,12 @@ body {
 }
 
 .main-image-box img {
-  max-height: 90%;
-  max-width: 90%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Llena el cuadro elegantemente */
+  object-position: center; /* Centra el recorte para que no se deforme el contenido importante */
 }
+
 
 .thumbs-row {
   display: grid;
@@ -201,19 +203,22 @@ body {
   cursor: pointer;
   border: 2px solid transparent;
   overflow: hidden;
-  padding: 4px;
+  padding: 2px; /* Dejamos un pequeño respiro o en 0 según prefieras */
   transition: all 0.2s;
+}
+
+.thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .thumb-item.active, .thumb-item:hover {
   border-color: var(--brand-dark);
 }
 
-.thumb-item img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-}
+
 
 .brand-tag {
   font-size: 11px;
@@ -1712,7 +1717,15 @@ body {
   }
 
   .main-image-box {
-    height: 280px;
+    background: #FFF;
+    border-radius: var(--radius-md);
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
   }
 
   .product-title-main {
@@ -1770,11 +1783,26 @@ body {
   }
 
   .ingredient-circle {
-    width: 120px;
-    height: 120px;
-    padding: 12px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 1px solid #D5D0C5;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    overflow: hidden;
+    padding: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
   }
-
+  
+  .ingredient-circle:hover {
+    transform: scale(1.08); /* Se agranda un poquito al pasar el mouse */
+    box-shadow: 0 8px 22px rgba(0,0,0,0.08); /* Opcional: intensifica la sombrita para darle profundidad */
+  }
+  
   .usage-card-wrapper {
     padding: 20px;
     gap: 20px;

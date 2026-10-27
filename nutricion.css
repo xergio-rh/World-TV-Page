@@ -147,7 +147,7 @@ body {
 /* BANNER HERO DE NUTRICIÓN */
 .beauty-hero-banner {
   position: relative;
-  background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('./storage/images/Gemini_Generated_Image_tfwqcztfwqcztfwq.jpeg');
+  background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('./storage/images/banner_nutricion.jpeg');
   background-size: cover;
   background-position: center;
   min-height: 380px;
