@@ -182,10 +182,9 @@
   .main-image-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Llena el cuadro elegantemente */
-    object-position: center; /* Centra el recorte para que no se deforme el contenido importante */
+    object-fit: contain; /* Cambiado de 'cover' a 'contain' para que la foto no se vea gigante ni cortada */
+    object-position: center;
   }
-  
   
   .thumbs-row {
     display: grid;
@@ -534,15 +533,17 @@
     justify-content: center;
     margin: 0 auto 16px;
     overflow: hidden;
-    padding: 16px;
+    padding: 0; /* Quitamos el padding para que la imagen toque los bordes */
     box-shadow: 0 4px 14px rgba(0,0,0,0.03);
   }
   
   .ingredient-circle img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cambiado a 'cover' para que llene todo el círculo por completo */
+    object-position: center;
   }
+
   
   .ingredient-card h4 {
     font-size: 12px;
@@ -582,13 +583,14 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 20px;
+    padding: 0; /* Asegúrate de que no tenga padding interno */
   }
   
   .usage-img img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cambia de 'contain' a 'cover' para que ocupe todo el espacio sin dejar bordes blancos */
+    object-position: center;
   }
   
   .usage-text h2 {
