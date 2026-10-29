@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code | default: 'es' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; etiquetado "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Página {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  <!-- Tipografías Oficiales World TV -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Hojas de estilo completas para navegación fluida sin 404 -->
+  {{ 'nutricion.css' | asset_url | stylesheet_tag }}
+  {{ 'vision.css' | asset_url | stylesheet_tag }}
+  {{ 'belleza.css' | asset_url | stylesheet_tag }}
+  {{ 'outlet.css' | asset_url | stylesheet_tag }}
+  {{ 'producto.css' | asset_url | stylesheet_tag }}
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
+  {{ 'animations.css' | asset_url | stylesheet_tag }}
+
+  <style>
+    :root {
+      --brand-red: {{ settings.brand_red | default: '#D90429' }};
+      --brand-burgundy: {{ settings.brand_burgundy | default: '#9E2A2B' }};
+      --brand-dark: {{ settings.brand_dark | default: '#1A1A1A' }};
+      --bg-cream: {{ settings.bg_cream | default: '#F7F5F0' }};
+    }
+    /* Asegurar proporción exacta de tarjetas en vistas de categorías */
+    .beauty-card .product-img-box {
+      height: 240px !important;
+      padding: 0 !important;
+      background-color: #FFFFFF !important;
+    }
+    .beauty-card .product-img-box img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+    .wtv-spa-view {
+      display: none;
+      animation: wtvPageFadeIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .wtv-spa-view.active {
+      display: block;
+    }
+  </style>
+
+  {{ content_for_header }}
+</head>
+<body class="template-{{ template.name | handle }}">
+
+  {% section 'header' %}
+
+  <main id="MainContent" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  <!-- CONTENEDOR DE VISTAS INSTANTÁNEAS (EVITA 404 AUN SIN CREAR COLECCIONES EN SHOPIFY) -->
+  <div id="wtvDynamicViews">
+    <div id="wtv-view-nutricion" class="wtv-spa-view">{% render 'view-nutricion' %}</div>
+    <div id="wtv-view-vision" class="wtv-spa-view">{% render 'view-vision' %}</div>
+    <div id="wtv-view-belleza" class="wtv-spa-view">{% render 'view-belleza' %}</div>
+    <div id="wtv-view-outlet" class="wtv-spa-view">{% render 'view-outlet' %}</div>
+    <div id="wtv-view-colasteel" class="wtv-spa-view">{% render 'view-producto-colasteel' %}</div>
+    <div id="wtv-view-melena" class="wtv-spa-view">{% render 'view-producto-melena' %}</div>
+  </div>
+
+  {% section 'footer' %}
+
+  {% render 'cart-and-checkout' %}
+
+  <script>
+    window.navigateToWorldTV = function(viewKey, fallbackUrl) {
+      var mainContent = document.getElementById('MainContent');
+      var viewsContainer = document.getElementById('wtvDynamicViews');
+      var allViews = document.querySelectorAll('.wtv-spa-view');
+      var navLinks = document.querySelectorAll('#navLinks a[data-wtv-nav]');
+
+      // Cerrar menú móvil si está abierto
+      var navList = document.getElementById('navLinks');
+      if (navList && navList.classList.contains('show-mobile')) {
+        navList.classList.remove('show-mobile');
+      }
+
+      // Actualizar estado activo del menú
+      navLinks.forEach(function(link) {
+        if (link.getAttribute('data-wtv-nav') === viewKey) {
+          link.style.color = 'var(--brand-red)';
+          link.style.fontWeight = '700';
+        } else {
+          link.style.color = '';
+          link.style.fontWeight = '';
+        }
+      });
+
+      if (viewKey === 'home') {
+        allViews.forEach(function(v) { v.classList.remove('active'); });
+        if (mainContent) {
+          mainContent.style.display = 'block';
+          mainContent.querySelectorAll('.reveal-item').forEach(function(el) {
+            el.classList.add('revealed');
+          });
+        }
+        // Si estamos atrapados en una ruta /404 o fuera de inicio, volver a la raíz
+        if (window.location.pathname !== '/' && window.location.pathname !== '{{ routes.root_url }}') {
+          window.location.href = '{{ routes.root_url }}';
+          return;
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      var targetEl = document.getElementById('wtv-view-' + viewKey);
+      if (targetEl && mainContent) {
+        mainContent.style.display = 'none';
+        allViews.forEach(function(v) { v.classList.remove('active'); });
+        targetEl.classList.add('active');
+        // Revelar elementos animados dentro de la vista activa
+        targetEl.querySelectorAll('.reveal-item').forEach(function(el) {
+          el.classList.add('revealed');
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (fallbackUrl) {
+        window.location.href = fallbackUrl;
+      }
+    };
+
+    // Si la URL tiene un hash (#nutricion, #vision, #belleza, #outlet, #melena, #colasteel), activarlo al cargar
+    document.addEventListener('DOMContentLoaded', function() {
+      var hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (['nutricion', 'vision', 'belleza', 'outlet', 'melena', 'colasteel'].indexOf(hash) !== -1) {
+        window.navigateToWorldTV(hash);
+      }
+    });
+  </script>
+
+  <script src="{{ 'scripts.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'producto.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
+</body>
+</html>

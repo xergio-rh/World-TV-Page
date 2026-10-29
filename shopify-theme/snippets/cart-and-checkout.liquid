@@ -1,0 +1,238 @@
+<!-- SIDEBAR DEL CARRITO FLOTANTE + MODAL DE CHECKOUT CONTRAENTREGA -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>TU CARRITO</h3>
+    <button class="cart-close-btn" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-body">
+    {% if cart.item_count > 0 %}
+      {% for item in cart.items %}
+        <div class="cart-item-card">
+          {% if item.image %}
+            <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}">
+          {% else %}
+            <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="{{ item.title | escape }}">
+          {% endif %}
+          <div class="cart-item-details">
+            <div class="cart-item-title-row">
+              <h4>{{ item.product.title }}</h4>
+              <a href="{{ item.url_to_remove }}" class="item-remove" style="text-decoration:none;">✕</a>
+            </div>
+            <div class="cart-item-price-row">
+              {% if item.original_price > item.final_price %}
+                <span class="cart-item-old">{{ item.original_price | money }}</span>
+              {% endif %}
+              <span class="cart-item-current">{{ item.final_price | money }}</span>
+            </div>
+            <div class="cart-item-qty-row">
+              <div class="qty-selector">
+                <button type="button">-</button>
+                <span>{{ item.quantity }}</span>
+                <button type="button">+</button>
+              </div>
+              <span class="cart-item-total">{{ item.final_line_price | money }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <!-- Producto de muestra cuando el carrito está en vista previa -->
+      <div class="cart-item-card">
+        <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="Colasteel">
+        <div class="cart-item-details">
+          <div class="cart-item-title-row">
+            <h4>Colasteel Cloruro de Magnesio 500 ml</h4>
+            <button class="item-remove">✕</button>
+          </div>
+          <div class="cart-item-price-row">
+            <span class="cart-item-old">$127.500</span>
+            <span class="cart-item-current">$101.031</span>
+          </div>
+          <div class="cart-item-qty-row">
+            <div class="qty-selector">
+              <button type="button">-</button>
+              <span>1</span>
+              <button type="button">+</button>
+            </div>
+            <span class="cart-item-total">$101.031</span>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="cart-upsell-section">
+      <h5>Complementa tu rutina:</h5>
+      <div class="cart-upsell-slider">
+        <div class="upsell-card">
+          <img src="{{ 'suerox2.webp' | asset_url }}" alt="Resveratrol">
+          <p class="upsell-name">Resveratrol 500 ml - Fórmula Única</p>
+          <span class="upsell-price">A partir de $101.500,00 COP</span>
+          <button class="upsell-add" type="button">Añadir</button>
+        </div>
+        <div class="upsell-card">
+          <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León">
+          <p class="upsell-name">Melena de León en Polvo - Sabor a capuchino</p>
+          <span class="upsell-price">A partir de $94.900,00 COP</span>
+          <button class="upsell-add" type="button">Añadir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-summary-row">
+      <span>Subtotal</span>
+      <strong>{% if cart.item_count > 0 %}{{ cart.total_price | money }}{% else %}$101.031{% endif %}</strong>
+    </div>
+    <div class="cart-summary-row">
+      <span>Envío</span>
+      <strong>Incluido</strong>
+    </div>
+    <div class="cart-summary-row total-row">
+      <span>Total</span>
+      <strong>{% if cart.item_count > 0 %}{{ cart.total_price | money }}{% else %}$101.031{% endif %}</strong>
+    </div>
+    <a href="/checkout" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">Pagar</a>
+    <div class="cart-trust-badges">
+      <span><svg class="inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> 4.8 <span>★★★★★</span> 500 de confianza</span>
+      <span><svg class="inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> GMP producto</span>
+    </div>
+    <div class="payment-methods-icons">
+      <span><svg class="inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg></span> <span>Nequi</span> <span>Daviplata</span> <span>PSE</span> <span>Addi</span>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE CHECKOUT / REALIZA TU PEDIDO -->
+<div class="checkout-modal-overlay" id="checkoutModalOverlay" onclick="toggleCheckoutModal()"></div>
+<div class="checkout-modal-container" id="checkoutModal">
+  <div class="checkout-modal-header">
+    <h2>¡REALIZA TU PEDIDO!</h2>
+    <button class="checkout-close-btn" onclick="toggleCheckoutModal()">✕</button>
+  </div>
+  <div class="checkout-modal-body">
+    <div class="checkout-form-col">
+      <h3>INGRESA TUS DATOS COMPLETOS</h3>
+      <form class="checkout-form" action="/checkout" method="post" onsubmit="event.preventDefault(); window.location.href='/checkout';">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre:</label>
+            <div class="input-with-icon">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <input type="text" name="checkout[shipping_address][first_name]" placeholder="Nombre" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Apellido:</label>
+            <div class="input-with-icon">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <input type="text" name="checkout[shipping_address][last_name]" placeholder="Apellido" required>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Teléfono:</label>
+            <div class="input-with-icon">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <input type="tel" name="checkout[shipping_address][phone]" placeholder="Teléfono" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Departamento:</label>
+            <select name="checkout[shipping_address][province]" required>
+              <option value="" disabled selected>Departamento</option>
+              <option value="Antioquia">Antioquia</option>
+              <option value="Bogota">Bogotá D.C.</option>
+              <option value="Cundinamarca">Cundinamarca</option>
+              <option value="Valle">Valle del Cauca</option>
+              <option value="Santander">Santander</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ciudad:</label>
+            <div class="input-with-icon">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <input type="text" name="checkout[shipping_address][city]" placeholder="Ciudad" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Dirección:</label>
+            <div class="input-with-icon">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <input type="text" name="checkout[shipping_address][address1]" placeholder="Calle, Carrera, Diagonal o Transversal" required>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Correo electrónico:</label>
+            <div class="input-with-icon">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <input type="email" name="checkout[email]" placeholder="Correo electrónico" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Especificación:</label>
+            <div class="input-with-icon">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+              <input type="text" name="checkout[shipping_address][address2]" placeholder="(Casa/Apartamento/Edificio)">
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="shipping-banner-bar">
+        <svg class="inline-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg> ENVÍOS DE 24-48 HORAS <svg class="inline-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+      </div>
+    </div>
+    <div class="checkout-summary-col">
+      <div class="checkout-receipt-box">
+        <div class="receipt-row">
+          <span>Subtotal</span>
+          <strong id="chkSubtotal">{% if cart.item_count > 0 %}{{ cart.total_price | money }}{% else %}$179.800{% endif %}</strong>
+        </div>
+        <div class="receipt-row">
+          <span>Envío</span>
+          <strong>Incluido</strong>
+        </div>
+        <div class="receipt-row total">
+          <span>Total</span>
+          <strong id="chkTotal">{% if cart.item_count > 0 %}{{ cart.total_price | money }}{% else %}$179.800{% endif %}</strong>
+        </div>
+      </div>
+      <div class="checkout-packages-selector">
+        <span class="packages-label-mini">Paquetes</span>
+        <div class="checkout-pkgs-grid">
+          <div class="chk-pkg-card" onclick="selectCheckoutPackage(this, '$101.031')">
+            <span class="chk-title">Lleva 1</span>
+            <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="1">
+            <del>$127.500</del>
+            <strong>$101.031</strong>
+          </div>
+          <div class="chk-pkg-card active" onclick="selectCheckoutPackage(this, '$179.800')">
+            <span class="badge-best-chk">MAS VENDIDO</span>
+            <span class="chk-title">Lleva 2</span>
+            <img src="{{ 'suerox2.webp' | asset_url }}" alt="2">
+            <del>$202.062</del>
+            <strong>$179.800</strong>
+          </div>
+          <div class="chk-pkg-card" onclick="selectCheckoutPackage(this, '$221.250')">
+            <span class="chk-title">Lleva 3</span>
+            <img src="{{ 'suerox2.webp' | asset_url }}" alt="3">
+            <del>$303.093</del>
+            <strong>$221.250</strong>
+          </div>
+        </div>
+      </div>
+      <button class="btn-checkout-submit" type="button" onclick="window.location.href='/checkout'">
+        COMPRA AHORA
+      </button>
+      <div class="payment-methods-icons">
+        <span><svg class="inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg></span> <span>Nequi</span> <span>PSE</span> <span>Addi</span> <span>Daviplata</span>
+      </div>
+    </div>
+  </div>
+</div>
+

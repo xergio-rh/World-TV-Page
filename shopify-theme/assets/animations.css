@@ -1,0 +1,1034 @@
+/* ==========================================================================
+   WORLD TV - SISTEMA GLOBAL DE ANIMACIONES Y MICRO-INTERACCIONES
+   ========================================================================== */
+
+/* --- 1. KEYFRAMES GLOBALES --- */
+@keyframes fadeUpIn {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatContinuous {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulseBadge {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 2px 8px rgba(230, 0, 18, 0.35);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.08);
+    box-shadow: 0 4px 16px rgba(230, 0, 18, 0.6);
+  }
+}
+
+@keyframes pulsePill {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes buttonShine {
+  0% {
+    left: -100%;
+  }
+  20% {
+    left: 120%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+@keyframes topBarGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes cartWiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-14deg) scale(1.15); }
+  40% { transform: rotate(12deg) scale(1.15); }
+  60% { transform: rotate(-8deg) scale(1.1); }
+  80% { transform: rotate(6deg) scale(1.05); }
+}
+
+@keyframes iconPop {
+  0% { transform: scale(1) rotate(0deg); }
+  40% { transform: scale(1.22) rotate(-8deg); }
+  80% { transform: scale(0.95) rotate(4deg); }
+  100% { transform: scale(1.1) rotate(0deg); }
+}
+
+@keyframes heroBannerZoom {
+  0% {
+    background-size: 100%;
+  }
+  50% {
+    background-size: 106%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+
+@keyframes pricePop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.14); color: #E60012; }
+  100% { transform: scale(1); }
+}
+
+@keyframes imgSwitchAnim {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.94);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes shippingPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 10px rgba(230, 0, 18, 0.25);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(230, 0, 18, 0.45);
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(217, 4, 41, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(217, 4, 41, 0);
+  }
+}
+
+/* --- 2. SCROLL REVEAL (CLASES INYECTADAS POR JS) --- */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-item.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* --- 3. TOP BAR Y HEADER ANIMADOS --- */
+.top-bar {
+  background: linear-gradient(270deg, #E60012, #B8000E, #FF1E2E, #E60012);
+  background-size: 300% 300%;
+  animation: topBarGradient 7s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-link,
+.footer-logo-link {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.logo-link:hover,
+.footer-logo-link:hover {
+  transform: scale(1.08) rotate(-1.5deg);
+  filter: drop-shadow(0 4px 10px rgba(217, 4, 41, 0.18));
+}
+
+/* Links de navegación con línea animada e impulso */
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--brand-red), #FF6B6B);
+  border-radius: 4px;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a:hover {
+  transform: translateY(-2px);
+  color: var(--brand-red) !important;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Barra de búsqueda interactiva */
+.search-bar {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.search-bar:hover {
+  transform: translateY(-1px);
+}
+
+.search-bar input {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.search-bar input:hover {
+  border-color: #222;
+  background-color: #FAFAFA;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.search-bar input:focus {
+  background-color: #FFFFFF !important;
+  border-color: var(--brand-red) !important;
+  box-shadow: 0 0 0 4px rgba(217, 4, 41, 0.12), 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+  transform: scale(1.015);
+}
+
+.search-bar svg {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+}
+
+.search-bar:hover svg,
+.search-bar input:focus + svg {
+  transform: translateY(-50%) scale(1.2) rotate(12deg);
+  color: var(--brand-red);
+}
+
+/* Iconos del Header (Carrito, Lupa móvil, Menú Hamburguesa) */
+.cart-btn,
+.search-toggle-btn,
+.mobile-menu-btn {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease, background-color 0.25s ease;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.cart-btn:hover,
+.search-toggle-btn:hover,
+.mobile-menu-btn:hover {
+  color: var(--brand-red);
+  background-color: rgba(217, 4, 41, 0.07);
+  transform: translateY(-2px) scale(1.1);
+}
+
+.cart-btn:hover svg {
+  animation: cartWiggle 0.65s ease;
+}
+
+.cart-btn:active,
+.search-toggle-btn:active,
+.mobile-menu-btn:active {
+  transform: scale(0.9);
+}
+
+/* --- 4. TODOS LOS BOTONES ANIMADOS (HOVER, SHINE, RIPPLE, PRESS) --- */
+.btn-primary,
+.btn-secondary,
+.btn-dark,
+.add-btn,
+.btn-beauty-add,
+.outlet-btn,
+.cart-checkout-btn,
+.btn-add-cart,
+.btn-checkout-submit,
+.btn-sticky-buy,
+.upsell-add {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  will-change: transform, box-shadow;
+  z-index: 1;
+}
+
+/* Brillo diagonal que cruza los botones */
+.btn-primary::before,
+.btn-dark::before,
+.outlet-btn::before,
+.cart-checkout-btn::before,
+.btn-checkout-submit::before,
+.btn-sticky-buy::before,
+.btn-beauty-add::before,
+.add-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.btn-primary:hover::before,
+.btn-dark:hover::before,
+.outlet-btn:hover::before,
+.cart-checkout-btn:hover::before,
+.btn-checkout-submit:hover::before,
+.btn-sticky-buy:hover::before,
+.btn-beauty-add:hover::before,
+.add-btn:hover::before {
+  left: 130%;
+}
+
+/* Hovers específicos por tipo de botón */
+.btn-primary:hover {
+  transform: translateY(-4px) scale(1.03) !important;
+  box-shadow: 0 12px 26px rgba(158, 42, 43, 0.38) !important;
+  background-color: #7D1F20 !important;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-4px) scale(1.03) !important;
+  background-color: var(--brand-dark) !important;
+  color: #FFFFFF !important;
+  border-color: var(--brand-dark) !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14) !important;
+}
+
+.btn-dark:hover {
+  transform: translateY(-4px) scale(1.04) !important;
+  background: var(--brand-red) !important;
+  box-shadow: 0 12px 28px rgba(217, 4, 41, 0.32) !important;
+}
+
+.add-btn:hover {
+  transform: translateY(-3px) scale(1.06) !important;
+  background: var(--brand-red) !important;
+  border-color: var(--brand-red) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 18px rgba(217, 4, 41, 0.28) !important;
+}
+
+.btn-beauty-add:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  background: var(--brand-red) !important;
+  border-color: var(--brand-red) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 10px 22px rgba(217, 4, 41, 0.28) !important;
+  letter-spacing: 1px;
+}
+
+.outlet-btn:hover {
+  transform: translateY(-4px) scale(1.05) !important;
+  background-color: #FFD166 !important;
+  box-shadow: 0 12px 28px rgba(255, 183, 3, 0.45) !important;
+}
+
+.cart-checkout-btn:hover,
+.btn-checkout-submit:hover,
+.btn-sticky-buy:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 12px 28px rgba(230, 0, 18, 0.42) !important;
+}
+
+.btn-add-cart:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  background-color: var(--brand-dark) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16) !important;
+}
+
+.upsell-add:hover {
+  transform: translateY(-2px) scale(1.05) !important;
+  background: var(--brand-red) !important;
+  border-color: var(--brand-red) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 14px rgba(217, 4, 41, 0.25) !important;
+}
+
+/* Efecto táctil al presionar cualquier botón */
+.btn-primary:active,
+.btn-secondary:active,
+.btn-dark:active,
+.add-btn:active,
+.btn-beauty-add:active,
+.outlet-btn:active,
+.cart-checkout-btn:active,
+.btn-add-cart:active,
+.btn-checkout-submit:active,
+.btn-sticky-buy:active,
+.upsell-add:active,
+button:active {
+  transform: translateY(1px) scale(0.96) !important;
+}
+
+/* Ripple span inyectado por JS al hacer clic */
+.click-ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: rippleEffect 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Botones de cantidad (+ / -) y cerrar (✕) */
+.qty-selector button,
+.qty-selector-sticky button {
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.qty-selector button:hover,
+.qty-selector-sticky button:hover {
+  background-color: var(--brand-red) !important;
+  color: #FFFFFF !important;
+  transform: scale(1.15);
+}
+
+.cart-close-btn,
+.checkout-close-btn,
+.item-remove {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease, background-color 0.25s ease;
+  border-radius: 50%;
+}
+
+.cart-close-btn:hover,
+.checkout-close-btn:hover,
+.item-remove:hover {
+  transform: rotate(90deg) scale(1.2);
+  color: var(--brand-red) !important;
+}
+
+/* --- 5. HERO BANNERS Y ETIQUETAS FLOTANTES --- */
+.hero-content,
+.vision-hero-content,
+.beauty-hero-content,
+.outlet-hero-content {
+  animation: fadeUpIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.pill-badge,
+.vision-tag,
+.vision-tag-top,
+.beauty-tag-top,
+.outlet-tag-top,
+.outlet-badge {
+  animation: floatContinuous 3.2s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.pill-badge:hover,
+.vision-tag:hover,
+.vision-tag-top:hover,
+.beauty-tag-top:hover,
+.outlet-tag-top:hover,
+.outlet-badge:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.hero-checks span {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+  display: inline-block;
+}
+
+.hero-checks span:hover {
+  transform: translateY(-3px) scale(1.05);
+  color: var(--brand-burgundy);
+}
+
+/* --- 6. TARJETAS DE PRODUCTO, TRUST, KITS, RESEÑAS, INGREDIENTES --- */
+.product-card,
+.beauty-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease !important;
+}
+
+.product-card:hover,
+.beauty-card:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.11) !important;
+  border-color: rgba(217, 4, 41, 0.35) !important;
+}
+
+.product-img-box img {
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease !important;
+}
+
+.product-card:hover .product-img-box img,
+.beauty-card:hover .product-img-box img {
+  transform: scale(1.09) translateY(-3px) !important;
+  filter: contrast(1.03);
+}
+
+.product-title {
+  transition: color 0.25s ease;
+}
+
+.product-card:hover .product-title,
+.beauty-card:hover .product-title {
+  color: var(--brand-red);
+}
+
+.product-rating {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: left center;
+}
+
+.product-card:hover .product-rating,
+.beauty-card:hover .product-rating {
+  transform: scale(1.06);
+}
+
+.product-price,
+.price-box .new-p {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+  display: inline-block;
+}
+
+.product-card:hover .product-price,
+.beauty-card:hover .price-box .new-p {
+  transform: scale(1.06);
+}
+
+/* Trust Cards & Mini Trust Items */
+.trust-card {
+  transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.38s ease,
+              border-color 0.3s ease !important;
+}
+
+.trust-card:hover {
+  transform: translateY(-7px) scale(1.03) !important;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.09) !important;
+  border-color: var(--brand-red) !important;
+}
+
+.trust-icon {
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.35s ease,
+              color 0.35s ease;
+}
+
+.trust-card:hover .trust-icon {
+  transform: scale(1.18) rotate(10deg);
+  background-color: var(--brand-red);
+  color: #FFFFFF;
+}
+
+.mini-trust-item {
+  padding: 8px;
+  border-radius: 8px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+}
+
+.mini-trust-item:hover {
+  transform: translateX(5px) translateY(-2px);
+  background-color: #F9F6F0;
+}
+
+.mini-trust-item svg {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+}
+
+.mini-trust-item:hover svg {
+  transform: scale(1.25) rotate(-8deg);
+  color: var(--brand-red);
+}
+
+/* Kits & Combos */
+.kit-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease,
+              border-color 0.3s ease;
+}
+
+.kit-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: var(--brand-burgundy);
+}
+
+.kit-image-box img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kit-card:hover .kit-image-box img {
+  transform: scale(1.08) rotate(-1deg);
+}
+
+/* Colección Relax Vision Interactiva */
+.model-item {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease,
+              background-color 0.3s ease !important;
+}
+
+.model-item:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.model-item.active {
+  animation: borderGlow 2s infinite;
+}
+
+.vision-image-card {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+}
+
+.vision-image-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+}
+
+.vision-image-card img {
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vision-image-card:hover img {
+  transform: scale(1.06);
+}
+
+/* Banner Outlet */
+.outlet-banner {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+}
+
+.outlet-banner:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.25);
+}
+
+.outlet-people {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.outlet-banner:hover .outlet-people {
+  transform: scale(1.05);
+}
+
+/* Testimonios / Reviews */
+.review-card {
+  transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.38s ease,
+              border-color 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+  border-color: #E09F3E;
+}
+
+.review-stars {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), letter-spacing 0.3s ease;
+}
+
+.review-card:hover .review-stars {
+  transform: scale(1.12);
+  letter-spacing: 3px;
+}
+
+/* --- 7. PÁGINA DE PRODUCTO (GALERÍA, PAQUETES, INGREDIENTES, SELLOS) --- */
+.main-image-box {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.main-image-box:hover {
+  transform: scale(1.015);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+}
+
+.main-image-box img {
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.main-image-box:hover img {
+  transform: scale(1.07);
+}
+
+.thumb-item {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.25s ease,
+              box-shadow 0.3s ease !important;
+}
+
+.thumb-item:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+.thumb-item img {
+  transition: transform 0.4s ease;
+}
+
+.thumb-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Paquetes (Lleva 1, 2, 3) */
+.pack-option,
+.chk-pkg-card {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease,
+              border-color 0.25s ease !important;
+}
+
+.pack-option:hover,
+.chk-pkg-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(217, 4, 41, 0.14);
+  border-color: var(--brand-red);
+}
+
+.pack-option img,
+.chk-pkg-card img {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pack-option:hover img,
+.chk-pkg-card:hover img {
+  transform: scale(1.15) rotate(-3deg);
+}
+
+.badge-best,
+.badge-best-chk {
+  animation: pulseBadge 2s infinite ease-in-out;
+}
+
+.save-pill {
+  animation: pulsePill 2.4s infinite ease-in-out;
+  display: inline-block;
+}
+
+/* Ingredientes Clave */
+.ingredient-card {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ingredient-card:hover {
+  transform: translateY(-8px);
+}
+
+.ingredient-circle {
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.45s ease,
+              border-color 0.35s ease;
+}
+
+.ingredient-card:hover .ingredient-circle {
+  transform: scale(1.08);
+  border-color: var(--brand-red);
+  box-shadow: 0 14px 30px rgba(217, 4, 41, 0.15);
+}
+
+.ingredient-circle img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ingredient-card:hover .ingredient-circle img {
+  transform: scale(1.14) rotate(3deg);
+}
+
+.ingredient-card h4 {
+  transition: color 0.25s ease;
+}
+
+.ingredient-card:hover h4 {
+  color: var(--brand-red);
+}
+
+/* Modo de uso y Sellos de Calidad */
+.usage-card-wrapper {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.usage-card-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.07);
+}
+
+.usage-img img {
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.usage-card-wrapper:hover .usage-img img {
+  transform: scale(1.06);
+}
+
+.benefits-bullet-list li {
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.benefits-bullet-list li:hover {
+  transform: translateX(6px);
+  color: var(--brand-dark);
+}
+
+.badge-item {
+  transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.38s ease,
+              border-color 0.3s ease;
+}
+
+.badge-item:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+  border-color: var(--brand-red);
+}
+
+.badge-icon-box {
+  display: inline-block;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+}
+
+.badge-item:hover .badge-icon-box {
+  animation: iconPop 0.6s ease forwards;
+  color: var(--brand-red);
+}
+
+/* --- 8. FILTROS, CARRITO, CHECKOUT Y FOOTER --- */
+.filters-container {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.filters-container:hover {
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.filter-select {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.filter-select:hover,
+.filter-select:focus {
+  border-color: var(--brand-red);
+  box-shadow: 0 0 0 3px rgba(217, 4, 41, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Items del carrito y upsells */
+.cart-item-card,
+.upsell-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.cart-item-card:hover {
+  transform: translateX(4px);
+}
+
+.upsell-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.07);
+}
+
+.upsell-card img {
+  transition: transform 0.35s ease;
+}
+
+.upsell-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Inputs del formulario Checkout */
+.input-with-icon input,
+.form-group select,
+.footer-newsletter input {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease, background-color 0.25s ease;
+}
+
+.input-with-icon input:hover,
+.form-group select:hover,
+.footer-newsletter input:hover {
+  border-color: #999;
+}
+
+.input-with-icon input:focus,
+.form-group select:focus,
+.footer-newsletter input:focus {
+  border-color: var(--brand-red) !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 0 0 3.5px rgba(217, 4, 41, 0.12) !important;
+  transform: translateY(-1px);
+}
+
+.input-with-icon svg {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+}
+
+.input-with-icon:focus-within svg {
+  transform: scale(1.25);
+  color: var(--brand-red);
+}
+
+.shipping-banner-bar {
+  animation: shippingPulse 2.2s infinite ease-in-out;
+}
+
+.payment-methods-icons span,
+.checkout-payment-icons span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+  cursor: default;
+}
+
+.payment-methods-icons span:hover,
+.checkout-payment-icons span:hover {
+  transform: translateY(-3px) scale(1.12);
+  color: var(--brand-red);
+}
+
+/* Footer enlaces y contacto */
+.footer-col ul li a {
+  display: inline-block;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease !important;
+}
+
+.footer-col ul li a:hover {
+  transform: translateX(7px);
+  color: var(--brand-red) !important;
+}
+
+.footer-contact-item {
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+}
+
+.footer-contact-item:hover {
+  transform: translateX(6px);
+  color: var(--brand-dark);
+}
+
+.footer-contact-item svg {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+}
+
+.footer-contact-item:hover svg {
+  transform: scale(1.25) rotate(-8deg);
+  color: var(--brand-red);
+}
+
+/* Clases utilitarias para animaciones disparadas desde JS */
+.anim-img-switch {
+  animation: imgSwitchAnim 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-price-pop {
+  animation: pricePop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --- 9. ICONOGRAFÍA VECTORIAL PROFESIONAL (SIN EMOJIS) --- */
+.inline-icon,
+.verified-icon {
+  display: inline-block;
+  vertical-align: -2px;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.verified-icon {
+  color: #16A34A;
+  margin-left: 3px;
+}
+
+.review-card:hover .verified-icon {
+  transform: scale(1.2) rotate(-6deg);
+}
+
+.top-bar,
+.vision-tag,
+.vision-tag-top,
+.beauty-tag-top,
+.outlet-tag-top,
+.outlet-badge,
+.shipping-banner-bar,
+.footer-payments,
+.cart-trust-badges > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.top-bar,
+.shipping-banner-bar {
+  display: flex;
+}
+
+

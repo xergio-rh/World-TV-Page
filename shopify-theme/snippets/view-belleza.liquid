@@ -1,0 +1,63 @@
+<!-- BANNER HERO DE BELLEZA Y BIENESTAR -->
+<section class="beauty-hero-banner" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('{{ 'Gemini_Generated_Image_tfwqcztfwqcztfwq.jpeg' | asset_url }}');">
+  <div class="beauty-hero-content">
+    <span class="beauty-tag-top"><svg class="inline-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg> SKINCARE & AUTOCUIDADO</span>
+    <h1>BELLEZA Y BIENESTAR PARA TU <span>PIEL Y CUERPO</span></h1>
+    <p>Productos pensados para cuidar tu piel, tu cuerpo y tu bienestar diario. Fórmulas seleccionadas para acompañarte en tu rutina.</p>
+  </div>
+</section>
+
+<!-- BARRA DE FILTROS -->
+<section class="catalog-filters-bar">
+  <div class="filters-container">
+    <div class="filter-group">
+      <span>Filtrar por:</span>
+      <select class="filter-select">
+        <option>Más relevantes</option>
+        <option>Precio: Menor a Mayor</option>
+        <option>Precio: Mayor a Menor</option>
+      </select>
+    </div>
+    <div class="catalog-counter">
+      <strong>2</strong> productos encontrados
+    </div>
+  </div>
+</section>
+
+<!-- GRID DE LOS 2 PRODUCTOS DE BELLEZA -->
+<section class="bestsellers-section" style="margin-top: 20px;">
+  <div class="products-grid beauty-products-grid">
+    <!-- 1. Sérum Facial Vitamina C -->
+    <article class="product-card beauty-card">
+      <div class="product-img-box">
+        <img src="{{ 'serum_back.jpeg' | asset_url }}" alt="Sérum Facial Vitamina C">
+      </div>
+      <div class="product-rating">★★★★★ <span>(128)</span></div>
+      <h3 class="product-title">Sérum facial con fórmula única - con vitamina C</h3>
+      <p class="product-subtitle">Antioxidantes, Protección UV, Aclara y Unifica Tono</p>
+      <div class="product-bottom beauty-bottom">
+        <div class="price-box">
+          <span class="new-p" style="color:var(--brand-dark);">A partir de $99.500,00 COP</span>
+        </div>
+        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+      </div>
+    </article>
+
+    <!-- 2. Cannabix Crema -->
+    <article class="product-card beauty-card">
+      <div class="product-img-box">
+        <img src="{{ 'canabis_back.jpeg' | asset_url }}" alt="Cannabix Crema">
+      </div>
+      <div class="product-rating">★★★★★ <span>(94)</span></div>
+      <h3 class="product-title">Cannabix – Fórmula Única con árnica, vainilla, colágeno y cloruro de magnesio.</h3>
+      <p class="product-subtitle">Crema con extractos naturales y Cannabidiol (CBD)</p>
+      <div class="product-bottom beauty-bottom">
+        <div class="price-box">
+          <span class="new-p" style="color:var(--brand-dark);">A partir de $64.900,00 COP</span>
+        </div>
+        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+      </div>
+    </article>
+  </div>
+</section>
+

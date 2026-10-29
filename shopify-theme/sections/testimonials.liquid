@@ -1,0 +1,50 @@
+<!-- 9. TESTIMONIOS -->
+<section class="reviews-section">
+  <div class="section-header">
+    <h2>{{ section.settings.title | default: 'LO QUE DICEN NUESTROS CLIENTES' }}</h2>
+    <p>{{ section.settings.subtitle | default: 'Miles de colombianos transformando su día a día con World TV.' }}</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"La Melena de León me cambió las mañanas en la oficina. Cero brain fog y un enfoque brutal."</p>
+      <div class="review-author">Andrés R. <span>Bucaramanga • Compra Verificada <svg class="verified-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span></div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Las gafas Relax Vision me quitaron el dolor de cabeza frente al computador. El diseño se ve súper elegante."</p>
+      <div class="review-author">Camila M. <span>Bogotá • Compra Verificada <svg class="verified-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span></div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"El cloruro de magnesio sabe delicioso y se nota la calidad. Lo mejor es que pude pagar contraentrega."</p>
+      <div class="review-author">Esteban P. <span>Medellín • Compra Verificada <svg class="verified-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonios",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "LO QUE DICEN NUESTROS CLIENTES"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Miles de colombianos transformando su día a día con World TV."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonios"
+    }
+  ]
+}
+{% endschema %}
+

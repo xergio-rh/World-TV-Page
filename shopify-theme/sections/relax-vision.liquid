@@ -1,0 +1,112 @@
+<!-- COLECCIÓN RELAX VISION -->
+<section class="vision-section">
+  <div class="vision-container">
+    <div>
+      <span class="vision-tag">
+        <svg class="inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="15" r="4"></circle><circle cx="18" cy="15" r="4"></circle><path d="M14 15a2 2 0 0 0-4 0"></path><path d="M2.5 13 5 7c.7-1.3 1.4-2 3-2"></path><path d="M21.5 13 19 7c-.7-1.3-1.5-2-3-2"></path></svg>
+        {{ section.settings.tag | default: 'COLECCIÓN RELAX VISION' }}
+      </span>
+      <h2 class="vision-title">{{ section.settings.heading | default: 'Protección Total para tu Visión y Descanso' }}</h2>
+      <p class="vision-desc">
+        {{ section.settings.description | default: 'Lentes especializados con filtro azul, protección UV 400 y tecnología antirreflejo diseñados para aliviar la fatiga ocular frente a pantallas.' }}
+      </p>
+      <div class="models-label">MODELOS DISPONIBLES EN LA COLECCIÓN:</div>
+
+      <div class="models-box">
+        <div class="model-item active"
+             data-img="{{ 'realx_vision_premuim_uso.webp' | asset_url }}"
+             data-title="Relax Vision Premium"
+             data-desc="Filtro Luz Azul + Protección UV400 Avanzada">
+          <div class="model-img-thumb">
+            <img src="{{ 'realx_vision_premuim.webp' | asset_url }}" alt="Premium">
+          </div>
+          <span>Premium</span>
+        </div>
+
+        <div class="model-item"
+             data-img="{{ 'clasicas_en_uso.webp' | asset_url }}"
+             data-title="Relax Vision Clásicas"
+             data-desc="Filtro Antirreflejo + Luz Azul">
+          <div class="model-img-thumb">
+            <img src="{{ 'calsicas.webp' | asset_url }}" alt="Clásicas">
+          </div>
+          <span>Clásicas</span>
+        </div>
+
+        <div class="model-item"
+             data-img="{{ 'cromax_uso_pareja.webp' | asset_url }}"
+             data-title="Relax Vision Chromax"
+             data-desc="Protección UV400 y Contraste Mejorado">
+          <div class="model-img-thumb">
+            <img src="{{ 'cromax.webp' | asset_url }}" alt="Chromax">
+          </div>
+          <span>Chromax</span>
+        </div>
+
+        <div class="model-item"
+             data-img="{{ 'SKY_uso.webp' | asset_url }}"
+             data-title="Relax Vision Sky"
+             data-desc="Filtro Azul y Diseño Liviano">
+          <div class="model-img-thumb">
+            <img src="{{ 'SKY.webp' | asset_url }}" alt="Sky">
+          </div>
+          <span>Sky</span>
+        </div>
+      </div>
+
+      <a href="{{ section.settings.btn_url | default: '#vision' }}" class="btn-dark" onclick="navigateToWorldTV('vision', '/collections/salud-visual'); return false;">
+        {{ section.settings.btn_label | default: 'EXPLORAR COLECCIÓN DE GAFAS' }}
+      </a>
+    </div>
+
+    <div class="vision-image-card">
+      <img id="mainVisionImg" src="{{ 'realx_vision_premuim_uso_hombre.webp' | asset_url }}" alt="Modelo Gafas Relax Vision">
+      <div class="vision-img-caption">
+        <strong id="mainVisionTitle">Relax Vision Premium</strong>
+        <span id="mainVisionDesc">Filtro Luz Azul + Protección UV400 Avanzada</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Colección Relax Vision",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Etiqueta",
+      "default": "COLECCIÓN RELAX VISION"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Protección Total para tu Visión y Descanso"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Descripción",
+      "default": "Lentes especializados con filtro azul, protección UV 400 y tecnología antirreflejo diseñados para aliviar la fatiga ocular frente a pantallas."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Texto del botón",
+      "default": "EXPLORAR COLECCIÓN DE GAFAS"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Enlace del botón"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Colección Relax Vision"
+    }
+  ]
+}
+{% endschema %}

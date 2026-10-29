@@ -1,0 +1,78 @@
+{% assign col_handle = collection.handle | downcase %}
+{% if collection.products.size > 0 %}
+  <!-- BANNER HERO DE CATEGORÍA DINÁMICA -->
+  <section class="beauty-hero-banner" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('{{ 'banner_nutricion.jpeg' | asset_url }}');">
+    <div class="beauty-hero-content">
+      <span class="beauty-tag-top"><svg class="inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> COLECCIÓN OFICIAL 2026</span>
+      <h1>{{ collection.title | upcase }}</h1>
+      {% if collection.description != blank %}
+        <p>{{ collection.description }}</p>
+      {% else %}
+        <p>Fórmulas y soluciones avanzadas diseñadas para potenciar tu bienestar desde el primer día.</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- BARRA DE FILTROS -->
+  <section class="catalog-filters-bar">
+    <div class="filters-container">
+      <div class="filter-group">
+        <span>Filtrar por:</span>
+        <select class="filter-select" onchange="if(this.value) window.location.search = '?sort_by=' + this.value;">
+          <option value="manual">Más relevantes</option>
+          <option value="price-ascending">Precio: Menor a Mayor</option>
+          <option value="price-descending">Precio: Mayor a Menor</option>
+        </select>
+      </div>
+      <div class="catalog-counter">
+        <strong>{{ collection.products_count }}</strong> productos encontrados
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID DE PRODUCTOS DE LA COLECCIÓN -->
+  <section class="bestsellers-section" style="margin-top: 20px;">
+    <div class="products-grid">
+      {% for product in collection.products %}
+        <article class="product-card beauty-card" onclick="window.location.href='{{ product.url }}'" style="cursor: pointer;">
+          <div class="product-img-box">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}">
+            {% else %}
+              <img src="{{ 'colasteel_back.jpeg' | asset_url }}" alt="{{ product.title | escape }}">
+            {% endif %}
+          </div>
+          <div class="product-rating">★★★★★ <span>(120+)</span></div>
+          <h3 class="product-title">{{ product.title }}</h3>
+          <p class="product-subtitle">{{ product.type | default: 'Fórmula Exclusiva World TV' }}</p>
+          <div class="product-bottom beauty-bottom">
+            <div class="price-box">
+              {% if product.compare_at_price > product.price %}
+                <del class="old-p">{{ product.compare_at_price | money }}</del>
+              {% endif %}
+              <span class="new-p" style="color:var(--brand-dark);">A partir de {{ product.price | money }}</span>
+            </div>
+            <button class="btn-beauty-add" onclick="event.stopPropagation(); window.location.href='{{ product.url }}'">VER PRODUCTO</button>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% else %}
+  {% if col_handle contains 'vision' or col_handle contains 'gafas' %}
+    {% render 'view-vision' %}
+  {% elsif col_handle contains 'belleza' %}
+    {% render 'view-belleza' %}
+  {% elsif col_handle contains 'outlet' %}
+    {% render 'view-outlet' %}
+  {% else %}
+    {% render 'view-nutricion' %}
+  {% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Colección Principal",
+  "settings": []
+}
+{% endschema %}

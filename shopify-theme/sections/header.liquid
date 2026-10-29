@@ -1,0 +1,101 @@
+<!-- CONTENEDOR FIJO SUPERIOR (TOP BAR + HEADER) -->
+<div class="header-sticky-wrapper" id="headerWrapper">
+  <div class="top-bar">
+    {{ section.settings.announcement_text | default: 'ENVÍO GRATIS A TODA COLOMBIA EN COMPRAS MAYORES A $100.000 | PAGA AL RECIBIR' }}
+  </div>
+
+  <header class="site-header">
+    <div class="header-main">
+      <!-- Izquierda: Menú Hamburguesa (Solo visible en móvil) -->
+      <button class="mobile-menu-btn" aria-label="Menú" onclick="toggleMobileMenu()">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <a href="{{ routes.root_url }}" class="logo-link" onclick="navigateToWorldTV('home', '{{ routes.root_url }}'); return false;">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | image_url: width: 280 }}" alt="{{ shop.name | escape }}" class="site-logo">
+        {% else %}
+          <img src="{{ 'logo.png' | asset_url }}" alt="World TV" class="site-logo">
+        {% endif %}
+      </a>
+
+      <!-- Barra de búsqueda clásica (Visible en PC) -->
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-bar" onsubmit="event.preventDefault(); navigateToWorldTV('nutricion');">
+        <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Buscar productos...">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </form>
+
+      <!-- Acciones derechas para móvil (Lupa y Carrito) -->
+      <div class="header-right-actions">
+        <button class="search-toggle-btn" aria-label="Buscar" onclick="toggleSearchBox()">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Botón de carrito general -->
+      <button class="cart-btn" aria-label="Carrito" onclick="toggleCart()">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Barra de búsqueda desplegable en móviles -->
+    <div class="expandable-search-bar" id="expandableSearch">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-bar" onsubmit="event.preventDefault(); navigateToWorldTV('nutricion');">
+        <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Buscar Melena de León, Gafas, Magnesio...">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </form>
+    </div>
+
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" data-wtv-nav="home" onclick="navigateToWorldTV('home', '{{ routes.root_url }}'); return false;">Todos</a></li>
+        <li><a href="#nutricion" data-wtv-nav="nutricion" onclick="navigateToWorldTV('nutricion', '/collections/nutricion'); return false;">Nutrición</a></li>
+        <li><a href="#vision" data-wtv-nav="vision" onclick="navigateToWorldTV('vision', '/collections/salud-visual'); return false;">Salud Visual</a></li>
+        <li><a href="#belleza" data-wtv-nav="belleza" onclick="navigateToWorldTV('belleza', '/collections/belleza-y-bienestar'); return false;">Belleza y Bienestar</a></li>
+        <li><a href="#outlet" data-wtv-nav="outlet" onclick="navigateToWorldTV('outlet', '/collections/outlet'); return false;">Outlet Prendas Moldeadoras</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "Header y Barra Superior",
+  "settings": [
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Texto de la barra de anuncio",
+      "default": "ENVÍO GRATIS A TODA COLOMBIA EN COMPRAS MAYORES A $100.000 | PAGA AL RECIBIR"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo de la tienda"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menú de navegación"
+    }
+  ]
+}
+{% endschema %}

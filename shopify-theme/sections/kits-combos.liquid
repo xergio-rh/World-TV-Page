@@ -1,0 +1,93 @@
+<!-- 7. KITS Y COMBOS AHORRO -->
+<section class="kits-section-wrapper">
+  <div class="section-header">
+    <h2>{{ section.settings.title | default: 'ARMA TU TRATAMIENTO Y AHORRA' }}</h2>
+    <p>{{ section.settings.subtitle | default: 'Combina nuestras mejores fórmulas y asegura tu bienestar al mejor precio.' }}</p>
+  </div>
+  <div class="kits-grid">
+    <div class="kit-card">
+      <div class="kit-image-box">
+        <img src="{{ 'colasteel_melena.jpeg' | asset_url }}" alt="Kit Vitalidad Diaria">
+      </div>
+      <div class="kit-info">
+        <span class="pill-badge"><svg class="inline-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg> Ahorra $35.000</span>
+        <h3>{{ section.settings.kit_1_title | default: 'Kit Vitalidad Diaria' }}</h3>
+        <p>{{ section.settings.kit_1_desc | default: '1x Melena de León SI100 + 1x Colasteel Cloruro de Magnesio para un soporte físico y mental completo.' }}</p>
+        <div class="kit-price"><del>$179.800</del> $144.800</div>
+        <a href="{{ section.settings.kit_1_link | default: '#' }}" class="btn-primary" onclick="toggleCart(); return false;">COMPRAR KIT COMPLETO</a>
+      </div>
+    </div>
+    <div class="kit-card">
+      <div class="kit-image-box">
+        <img src="{{ 'inositol_clasicas.jpeg' | asset_url }}" alt="Kit Descanso y Claridad">
+      </div>
+      <div class="kit-info">
+        <span class="pill-badge"><svg class="inline-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> Pack Enfoque Total</span>
+        <h3>{{ section.settings.kit_2_title | default: 'Kit Descanso & Claridad' }}</h3>
+        <p>{{ section.settings.kit_2_desc | default: '1x Inositol en Polvo + 1x Gafas Relax Vision Clásicas para cuidar tu mente y tus ojos.' }}</p>
+        <div class="kit-price"><del>$264.800</del> $219.800</div>
+        <a href="{{ section.settings.kit_2_link | default: '#' }}" class="btn-primary" onclick="toggleCart(); return false;">COMPRAR PACK VISIÓN</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Kits y Combos Ahorro",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "ARMA TU TRATAMIENTO Y AHORRA"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Combina nuestras mejores fórmulas y asegura tu bienestar al mejor precio."
+    },
+    {
+      "type": "text",
+      "id": "kit_1_title",
+      "label": "Título Kit 1",
+      "default": "Kit Vitalidad Diaria"
+    },
+    {
+      "type": "textarea",
+      "id": "kit_1_desc",
+      "label": "Descripción Kit 1",
+      "default": "1x Melena de León SI100 + 1x Colasteel Cloruro de Magnesio para un soporte físico y mental completo."
+    },
+    {
+      "type": "url",
+      "id": "kit_1_link",
+      "label": "Enlace Kit 1"
+    },
+    {
+      "type": "text",
+      "id": "kit_2_title",
+      "label": "Título Kit 2",
+      "default": "Kit Descanso & Claridad"
+    },
+    {
+      "type": "textarea",
+      "id": "kit_2_desc",
+      "label": "Descripción Kit 2",
+      "default": "1x Inositol en Polvo + 1x Gafas Relax Vision Clásicas para cuidar tu mente y tus ojos."
+    },
+    {
+      "type": "url",
+      "id": "kit_2_link",
+      "label": "Enlace Kit 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kits y Combos Ahorro"
+    }
+  ]
+}
+{% endschema %}
+

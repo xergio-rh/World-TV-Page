@@ -1,0 +1,123 @@
+<!-- LO MÁS VENDIDO -->
+<section class="bestsellers-section">
+  <div class="section-header">
+    <h2>{{ section.settings.heading | default: 'LO MÁS VENDIDO' }}</h2>
+    <p>{{ section.settings.subheading | default: 'Nuestras fórmulas favoritas para transformar tu salud diaria.' }}</p>
+  </div>
+
+  <div class="products-grid">
+    {% assign target_collection = collections[section.settings.collection] %}
+    {% if target_collection != blank and target_collection.products_count > 0 %}
+      {% for product in target_collection.products limit: section.settings.products_to_show %}
+        <article class="product-card" onclick="window.location.href='{{ product.url }}'" style="cursor: pointer;">
+          <div class="product-img-box">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title | escape }}">
+            {% else %}
+              <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="{{ product.title | escape }}">
+            {% endif %}
+          </div>
+          <div class="product-rating">★★★★★ <span>(120+)</span></div>
+          <h3 class="product-title">{{ product.title }}</h3>
+          <p class="product-subtitle">{{ product.type | default: 'Fórmula Oficial World TV' }}</p>
+          <div class="product-bottom">
+            <div class="product-price">{{ product.price | money }}</div>
+            <button class="add-btn" type="button" onclick="event.stopPropagation(); toggleCart()">Añadir +</button>
+          </div>
+        </article>
+      {% endfor %}
+    {% else %}
+      <!-- Productos destacados por defecto de World TV -->
+      <article class="product-card" onclick="navigateToWorldTV('melena', '/products/melena-de-leon')" style="cursor: pointer;">
+        <div class="product-img-box">
+          <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León">
+        </div>
+        <div class="product-rating">★★★★★ <span>(142)</span></div>
+        <h3 class="product-title">Melena de León en Polvo SI100</h3>
+        <p class="product-subtitle">Fórmula Única - Sabor Capuchino</p>
+        <div class="product-bottom">
+          <div class="product-price">$94.900</div>
+          <button class="add-btn" type="button" onclick="event.stopPropagation(); toggleCart()">Añadir +</button>
+        </div>
+      </article>
+
+      <article class="product-card" onclick="navigateToWorldTV('colasteel', '/products/colasteel-cloruro-de-magnesio')" style="cursor: pointer;">
+        <div class="product-img-box">
+          <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="Cloruro de Magnesio">
+        </div>
+        <div class="product-rating">★★★★★ <span>(98)</span></div>
+        <h3 class="product-title">Colasteel Cloruro de Magnesio</h3>
+        <p class="product-subtitle">Con Colágeno, Biotina y Complejo B</p>
+        <div class="product-bottom">
+          <div class="product-price">$84.900</div>
+          <button class="add-btn" type="button" onclick="event.stopPropagation(); toggleCart()">Añadir +</button>
+        </div>
+      </article>
+
+      <article class="product-card" onclick="navigateToWorldTV('belleza', '/collections/belleza-y-bienestar')" style="cursor: pointer;">
+        <div class="product-img-box">
+          <img src="{{ 'suerox2.webp' | asset_url }}" alt="Vitamina C">
+        </div>
+        <div class="product-rating">★★★★☆ <span>(64)</span></div>
+        <h3 class="product-title">Serum Facial Vitamina C</h3>
+        <p class="product-subtitle">Fórmula Única con Ácido Hialurónico</p>
+        <div class="product-bottom">
+          <div class="product-price">$99.500</div>
+          <button class="add-btn" type="button" onclick="event.stopPropagation(); toggleCart()">Añadir +</button>
+        </div>
+      </article>
+
+      <article class="product-card" onclick="navigateToWorldTV('nutricion', '/collections/nutricion')" style="cursor: pointer;">
+        <div class="product-img-box">
+          <img src="{{ 'inositol_x_1_IA.webp' | asset_url }}" alt="Inositol">
+        </div>
+        <div class="product-rating">★★★★★ <span>(115)</span></div>
+        <h3 class="product-title">Inositol en Polvo Orebitol</h3>
+        <p class="product-subtitle">Con Biotina, Ácido Fólico y Vitamina B12</p>
+        <div class="product-bottom">
+          <div class="product-price">$94.900</div>
+          <button class="add-btn" type="button" onclick="event.stopPropagation(); toggleCart()">Añadir +</button>
+        </div>
+      </article>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lo Más Vendido",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "LO MÁS VENDIDO"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subtítulo",
+      "default": "Nuestras fórmulas favoritas para transformar tu salud diaria."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Colección de productos"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Cantidad de productos a mostrar"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lo Más Vendido"
+    }
+  ]
+}
+{% endschema %}

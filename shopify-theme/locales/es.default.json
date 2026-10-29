@@ -1,0 +1,23 @@
+{
+  "general": {
+    "search": {
+      "placeholder": "Buscar productos..."
+    },
+    "cart": {
+      "title": "TU CARRITO",
+      "subtotal": "Subtotal",
+      "shipping": "Envío",
+      "included": "Incluido",
+      "total": "Total",
+      "checkout": "Pagar"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Agregar al carrito",
+      "buy_now": "COMPRA AHORA",
+      "sold_out": "Agotado"
+    }
+  }
+}
+

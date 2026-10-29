@@ -1,0 +1,291 @@
+<!-- MAIN PRODUCT SECTION: MELENA DE LEÓN -->
+<main class="product-main-container">
+  <div class="product-grid-layout">
+   
+    <!-- COLUMNA IZQUIERDA: GALERÍA DE IMÁGENES -->
+    <div class="product-gallery-card">
+      <div class="main-image-box">
+        <img id="mainProductImgMelena" src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León en Polvo">
+      </div>
+      <div class="thumbs-row">
+        <div class="thumb-item active" onclick="var m=document.getElementById('mainProductImgMelena'); if(m) m.src='{{ 'melena_x_1_IA.webp' | asset_url }}';">
+          <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Vista 1">
+        </div>
+        <div class="thumb-item" onclick="var m=document.getElementById('mainProductImgMelena'); if(m) m.src='{{ 'melenaX2.png' | asset_url }}';">
+          <img src="{{ 'melenaX2.png' | asset_url }}" alt="Vista 2">
+        </div>
+        <div class="thumb-item" onclick="var m=document.getElementById('mainProductImgMelena'); if(m) m.src='{{ 'melenaX3.png' | asset_url }}';">
+          <img src="{{ 'melenaX3.png' | asset_url }}" alt="Vista 3">
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA: INFORMACIÓN, COMPRA Y DESCRIPCIÓN EXTENDIDA -->
+    <div class="product-info-card">
+      <span class="brand-tag">WORLDTV COLOMBIA</span>
+      <h1 class="product-title-main">Melena de León en Polvo Fórmula Única</h1>
+      <h2 class="product-subtitle-main">- Sabor a capuchino</h2>
+      <div class="rating-row">
+        <div class="stars">★★★★★</div>
+        <span class="rating-num">4.8</span>
+        <span class="reviews-count">1200 reviews</span>
+      </div>
+      <div class="pricing-box">
+        <del class="old-price">$127.500</del>
+        <span class="current-price">$94.900 <small>COP</small></span>
+        <span class="save-pill">Ahorra 10%</span>
+        <span class="iva-pill">IVA incluido</span>
+      </div>
+
+      <!-- SELECTOR DE PAQUETES -->
+      <div class="packages-section">
+        <span class="pack-label">Paquetes</span>
+        <div class="packages-grid">
+          <div class="pack-option" onclick="selectPackage(this, '127.500','94.900')">
+            <span class="pack-title">Una unidad</span>
+            <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="1 Frasco">
+            <div class="pack-prices">
+              <del>$127.500</del>
+              <strong>$94.900</strong>
+            </div>
+          </div>
+          <div class="pack-option active" onclick="selectPackage(this, '202.062','179.800')">
+            <span class="badge-best">MAS VENDIDO</span>
+            <span class="pack-title">Paquete x 2</span>
+            <img src="{{ 'melenaX2.png' | asset_url }}" alt="2 Frascos">
+            <div class="pack-prices">
+              <del>$202.062</del>
+              <strong>$179.800</strong>
+            </div>
+          </div>
+          <div class="pack-option" onclick="selectPackage(this, '303.093','221.250')">
+            <span class="pack-title">Paquete x 3</span>
+            <img src="{{ 'melenaX3.png' | asset_url }}" alt="3 Frascos">
+            <div class="pack-prices">
+              <del>$303.093</del>
+              <strong>$221.250</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="short-desc">
+        Potente mezcla de Melena de León, Ganoderma y Shitake con complejo B y vitamina C. 0% azúcar añadida. 30 porciones.
+      </p>
+
+      <!-- BOTONES DE ACCIÓN -->
+      <div class="action-buttons">
+        <a href="#" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">Comprar ahora</a>
+        <a href="#" class="btn-add-cart" onclick="toggleCart(); return false;">Agregar al carrito</a>
+      </div>
+
+      <!-- TRUST BADGES MINI -->
+      <div class="product-mini-trust">
+        <div class="mini-trust-item">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg>
+          <div>
+            <strong>ENVÍOS A COLOMBIA</strong>
+            <span>Despachos rápidos y asegurados</span>
+          </div>
+        </div>
+        <div class="mini-trust-item">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+          <div>
+            <strong>PAGO CONTRAENTREGA</strong>
+            <span>Pagas al recibir en tu puerta</span>
+          </div>
+        </div>
+        <div class="mini-trust-item">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <strong>REGISTRO INVIMA</strong>
+            <span>Garantía y registro sanitario</span>
+          </div>
+        </div>
+        <div class="mini-trust-item">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+          <div>
+            <strong>100% NATURALES</strong>
+            <span>Ingredientes para tu bienestar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESCRIPCIÓN EXTENDIDA -->
+      <div class="product-extended-details">
+        <p class="lead-text">Descubre la fuerza de la naturaleza en tu rutina diaria.</p>
+        <p style="font-size: 13.5px; color: #444; margin-bottom: 16px; line-height: 1.6;">
+          Melena de León World TV es una mezcla en polvo con sabor capuchino, formulada a base de hongos funcionales como Melena de León, Ganoderma y Shitake, combinados con complejo B y vitamina C. Ideal para quienes buscan apoyar su bienestar integral con ingredientes de origen natural.
+        </p>
+        <ul class="benefits-bullet-list">
+          <li><strong>Fórmula con 3 hongos funcionales en cada porción:</strong></li>
+          <li> Melena de León (1.500 mg)</li>
+          <li> Ganoderma Lucidum (700 mg)</li>
+          <li> Hongo Shitake (3.000 mg)</li>
+          <li><strong>Fortificado con vitaminas esenciales:</strong></li>
+          <li> Complejo B (B1, B2, B3, B6, B12)</li>
+          <li> Vitamina C</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<!-- BANNER DIVISOR -->
+<div class="divider-banner" style="background-color: #ffe387; color: #1A1A1A; font-weight: 700;">
+  Desliza, y descubre por qué La Melena de León te conviene.
+</div>
+
+<!-- SECCIÓN INGREDIENTES CLAVE -->
+<section class="ingredients-section">
+  <h2 class="section-title-center">INGREDIENTES CLAVE</h2>
+  <div class="ingredients-grid">
+    <div class="ingredient-card">
+      <div class="ingredient-circle">
+        <img src="{{ 'melena.png' | asset_url }}" alt="Melena de León">
+      </div>
+      <h4>MELENA DE LEÓN</h4>
+      <p>Estimula la producción del factor de crecimiento nervioso (NGF) para apoyar la memoria y concentración.</p>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="ingredient-circle">
+        <img src="{{ 'ganoderma.png' | asset_url }}" alt="Ganoderma Lucidum">
+      </div>
+      <h4>GANODERMA LUCIDUM</h4>
+      <p>Aporta 700 mg por porción para fortalecer el sistema inmune y brindar bienestar general.</p>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="ingredient-circle">
+        <img src="{{ 'image_30.png' | asset_url }}" alt="Hongo Shiitake">
+      </div>
+      <h4>HONGO SHIITAKE</h4>
+      <p>3.000 mg por porción que contribuyen a la nutrición integral y vitalidad diaria.</p>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="ingredient-circle">
+        <img src="{{ 'complejoB.png' | asset_url }}" alt="Vitaminas Complejo B">
+      </div>
+      <h4>VITAMINAS COMPLEJO B</h4>
+      <p>Esenciales (B1, B2, B3, B6, B12) para el metabolismo energético y el sistema nervioso.</p>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="ingredient-circle">
+        <img src="{{ 'vitC.png' | asset_url }}" alt="Vitamina C">
+      </div>
+      <h4>VITAMINA C</h4>
+      <p>Potente antioxidante que combate radicales libres y apoya las defensas naturales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MODO DE USO Y RENDIMIENTO -->
+<section class="usage-section">
+  <div class="usage-card-wrapper">
+    <div class="usage-img">
+      <img src="{{ 'Gemini_Generated_Image_5ft5hk5ft5hk5ft5.jpeg' | asset_url }}" alt="Modo de Uso Melena de León">
+    </div>
+    <div class="usage-text">
+      <h2>MODO DE USO Y RENDIMIENTO</h2>
+      <ul class="benefits-bullet-list">
+        <li><strong>Listo para Preparar:</strong> Suplemento en polvo con delicioso sabor a capuchino.</li>
+        <li><strong>Dosis Diaria Recomendada:</strong> Agrega una cucharada (15 g) en agua y mezcla bien. Tómalo una vez al día.</li>
+        <li><strong>Información Importante:</strong> 0% azúcar añadida. Registro INVIMA en trámite. Solo para mayores de 4 años.</li>
+        <li><strong>Rendimiento:</strong> Si eres constante, te rinde 30 porciones por envase.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SELLOS Y CALIDAD -->
+<section class="badges-section">
+  <div class="badges-grid">
+    <div class="badge-item">
+      <div class="badge-icon-box">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h4>MEJORA MEMORIA Y CONCENTRACIÓN</h4>
+      <p>Apoya la función cognitiva y claridad mental.</p>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon-box">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h4>AUMENTA ENERGÍA Y PREVIENE ANEMIA</h4>
+      <p>Vitalidad y equilibrio para tu rutina diaria.</p>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon-box">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <h4>DISMINUYE LA INFLAMACIÓN</h4>
+      <p>Combate radicales libres desde el interior.</p>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon-box">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </div>
+      <h4>CALIDAD DEL SUEÑO</h4>
+      <p>Apoya la regeneración neuronal y descanso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INFORMACIÓN COMPLEMENTARIA -->
+<section style="max-width: 1000px; margin: 0 auto 72px; padding: 0 24px; text-align: center;">
+  <h2 class="section-title-center" style="margin-bottom: 24px;">INFORMACION COMPLEMENTARIA</h2>
+  <p style="font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 20px;">
+    La Melena de León (Hericium erinaceus), ingrediente principal de este suplemento, es un hongo funcional reconocido por su capacidad para estimular la producción del factor de crecimiento nervioso (NGF), una proteína clave para el mantenimiento y regeneración de las neuronas. Estudios científicos respaldan su potencial para mejorar la memoria, la concentración y la salud cognitiva en general.
+  </p>
+  <p style="font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 32px;">
+    Melena de León está indicada como coadyuvante nutricional en procesos asociados al deterioro cognitivo, la ansiedad, el insomnio y la debilidad inmunológica. Una forma práctica y deliciosa de cuidar tu mente y tu bienestar cada día.
+  </p>
+</section>
+
+<!-- PRODUCTOS RECOMENDADOS -->
+<section class="recommended-section">
+  <div class="section-header">
+    <h2>Tambien te pueden ayudar</h2>
+    <p>Descubre otras fórmulas diseñadas para potenciar tu salud desde adentro.</p>
+  </div>
+  <div class="products-grid">
+    <article class="product-card" onclick="toggleCart()" style="cursor: pointer;">
+      <div class="product-img-box"><img src="{{ 'inositol_back.jpeg' | asset_url }}" alt="Inositol"></div>
+      <h3 class="product-title">Inositol en polvo / con Biotina - Acido Fólico y Vitamina B12</h3>
+      <div class="product-bottom">
+        <div class="product-price">A partir de $94.900,00 COP</div>
+        <button class="add-btn" onclick="event.stopPropagation(); toggleCart()">Añadir</button>
+      </div>
+    </article>
+    <article class="product-card" onclick="navigateToWorldTV('colasteel', '/products/colasteel-cloruro-de-magnesio')" style="cursor: pointer;">
+      <div class="product-img-box"><img src="{{ 'colasteel_back.jpeg' | asset_url }}" alt="Cloruro de Magnesio"></div>
+      <h3 class="product-title">Cloruro 500 gr Fórmula Única</h3>
+      <div class="product-bottom">
+        <div class="product-price">A partir de $84.900,00 COP</div>
+        <button class="add-btn" onclick="event.stopPropagation(); navigateToWorldTV('colasteel', '/products/colasteel-cloruro-de-magnesio')">Ver</button>
+      </div>
+    </article>
+    <article class="product-card" onclick="toggleCart()" style="cursor: pointer;">
+      <div class="product-img-box"><img src="{{ 'clasicas_en_uso.webp' | asset_url }}" alt="Relax Vision Clasicas"></div>
+      <h3 class="product-title">Relax Vision Clasicas - Gafas con filtro UV 400 y antirreflejo</h3>
+      <div class="product-bottom">
+        <div class="product-price">$169.900,00 COP</div>
+        <button class="add-btn" onclick="event.stopPropagation(); toggleCart()">Añadir</button>
+      </div>
+    </article>
+    <article class="product-card" onclick="toggleCart()" style="cursor: pointer;">
+      <div class="product-img-box"><img src="{{ 'realx_vision_premuim_uso.webp' | asset_url }}" alt="Relax Vision Premium"></div>
+      <h3 class="product-title">Relax Vision Premium - Gafas con filtro azul y UV 400</h3>
+      <div class="product-bottom">
+        <div class="product-price">$182.900,00 COP</div>
+        <button class="add-btn" onclick="event.stopPropagation(); toggleCart()">Añadir</button>
+      </div>
+    </article>
+  </div>
+</section>
+

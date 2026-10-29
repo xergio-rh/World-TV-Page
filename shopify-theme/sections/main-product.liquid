@@ -1,0 +1,336 @@
+<!-- MAIN PRODUCT SECTION -->
+<main class="product-main-container">
+  <div class="product-grid-layout">
+   
+    <!-- COLUMNA IZQUIERDA: GALERÍA DE IMÁGENES -->
+    <div class="product-gallery-card">
+      <div class="main-image-box">
+        {% if product.featured_image %}
+          <img id="mainProductImg" src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.title | escape }}">
+        {% else %}
+          <img id="mainProductImg" src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="Colasteel Cloruro de Magnesio">
+        {% endif %}
+      </div>
+      <div class="thumbs-row">
+        {% if product.images.size > 0 %}
+          {% for image in product.images %}
+            <div class="thumb-item {% if forloop.first %}active{% endif %}" onclick="changeImage(this, '{{ image | image_url: width: 900 }}')">
+              <img src="{{ image | image_url: width: 240 }}" alt="{{ product.title | escape }}">
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="thumb-item active" onclick="changeImage(this, '{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}')">
+            <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="Vista 1">
+          </div>
+          <div class="thumb-item" onclick="changeImage(this, '{{ 'colasteel2_1.png' | asset_url }}')">
+            <img src="{{ 'colasteel2_1.png' | asset_url }}" alt="Vista 2">
+          </div>
+          <div class="thumb-item" onclick="changeImage(this, '{{ 'colasteel3_1.png' | asset_url }}')">
+            <img src="{{ 'colasteel3_1.png' | asset_url }}" alt="Vista 3">
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA: INFORMACIÓN, COMPRA Y DESCRIPCIÓN EXTENDIDA -->
+    <div class="product-info-card">
+      <span class="brand-tag">{{ product.vendor | default: 'WORLDTV COLOMBIA' | upcase }}</span>
+      <h1 class="product-title-main">{{ product.title | default: 'Colasteel Cloruro de Magnesio' }}</h1>
+      <h2 class="product-subtitle-main">500 ml</h2>
+      <div class="rating-row">
+        <div class="stars">★★★★★</div>
+        <span class="rating-num">4.9</span>
+        <span class="reviews-count">500 reviews</span>
+      </div>
+      <div class="pricing-box">
+        {% if product.compare_at_price > product.price %}
+          <del class="old-price">{{ product.compare_at_price | money }}</del>
+        {% else %}
+          <del class="old-price">$127.500</del>
+        {% endif %}
+        <span class="current-price">{{ product.price | money | default: '$101.031' }} <small>COP</small></span>
+        <span class="save-pill">Ahorra $26.469</span>
+        <span class="iva-pill">IVA incluido</span>
+      </div>
+
+      <!-- SELECTOR DE PAQUETES -->
+      <div class="packages-section">
+        <span class="pack-label">Paquetes</span>
+        <div class="packages-grid">
+          <div class="pack-option" onclick="selectPackage(this, '127.500','101.031')">
+            <span class="pack-title">Lleva 1</span>
+            <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="1 Frasco">
+            <div class="pack-prices">
+              <del>$127.500</del>
+              <strong>$101.031</strong>
+            </div>
+          </div>
+          <div class="pack-option active" onclick="selectPackage(this, '202.062','179.800')">
+            <span class="badge-best">MAS VENDIDO</span>
+            <span class="pack-title">Lleva 2</span>
+            <img src="{{ 'cloruroX2.png' | asset_url }}" alt="2 Frascos">
+            <div class="pack-prices">
+              <del>$202.062</del>
+              <strong>$179.800</strong>
+            </div>
+          </div>
+          <div class="pack-option" onclick="selectPackage(this, '303.093','221.250')">
+            <span class="pack-title">Lleva 3</span>
+            <img src="{{ 'CloruroX3.png' | asset_url }}" alt="3 Frascos">
+            <div class="pack-prices">
+              <del>$303.093</del>
+              <strong>$221.250</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="short-desc">
+        {% if product.description != blank %}
+          {{ product.description }}
+        {% else %}
+          Este Cloruro es una bebida funcional líquida complejo B y extracto de té, diseñada para apoyar el bienestar de tus articulaciones, huesos, piel y sistema digestivo. Su presentación líquida facilita la absorción y es ideal para quienes desean cuidar su cuerpo con una rutina práctica y constante.
+        {% endif %}
+      </div>
+
+      <!-- BOTONES DE ACCIÓN SHOPIFY + MODAL -->
+      {% if product != blank and product.selected_or_first_available_variant != blank %}
+        {% form 'product', product %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <div class="action-buttons">
+            <a href="#" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">COMPRA AHORA</a>
+            <button type="submit" name="add" class="btn-add-cart">Agregar al carrito</button>
+          </div>
+        {% endform %}
+      {% else %}
+        <div class="action-buttons">
+          <a href="#" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">COMPRA AHORA</a>
+          <a href="#" class="btn-add-cart" onclick="toggleCart(); return false;">Agregar al carrito</a>
+        </div>
+      {% endif %}
+
+      <!-- TRUST BADGES MINI -->
+      <div class="product-mini-trust">
+        <div class="mini-trust-item">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg>
+          <div>
+            <strong>ENVÍOS A COLOMBIA</strong>
+            <span>Despachos rápidos y asegurados</span>
+          </div>
+        </div>
+        <div class="mini-trust-item">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+          <div>
+            <strong>PAGO CONTRAENTREGA</strong>
+            <span>Pagas al recibir en tu puerta</span>
+          </div>
+        </div>
+        <div class="mini-trust-item">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <strong>REGISTRO INVIMA</strong>
+            <span>Garantía y registro sanitario</span>
+          </div>
+        </div>
+        <div class="mini-trust-item">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+          <div>
+            <strong>100% NATURALES</strong>
+            <span>Ingredientes para tu bienestar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESCRIPCIÓN EXTENDIDA -->
+      <div class="product-extended-details">
+        <p class="lead-text">Bebida funcional de Cloruro de Magnesio enriquecida con Colágeno, Biotina, Complejo B y Extracto de Té.</p>
+        <ul class="benefits-bullet-list">
+          <li>Delicioso sabor a Uva, perfecto para disfrutar frío en cualquier momento del día.</li>
+          <li>Presentación líquida de rápida absorción, ideal para asimilar sus nutrientes de forma más eficiente.</li>
+          <li>Sin complicaciones: tómalo directo o diluido en tu bebida favorita como parte de tu rutina diaria.</li>
+          <li>Contenido rinde para 33 porciones aproximadamente (envase de 500 ml).</li>
+        </ul>
+        <h3>¿Qué lo hace diferente?</h3>
+        <ul class="benefits-bullet-list">
+          <li><strong>Fórmula Multibeneficio Completa:</strong> Combina Cloruro de Magnesio + Colágeno + Biotina en un solo producto.</li>
+          <li><strong>Soporte para Articulaciones y Huesos:</strong> Formulado para apoyar la movilidad y flexibilidad.</li>
+          <li><strong>Nutrición para Piel, Cabello y Uñas:</strong> Fortalece los tejidos desde el interior.</li>
+          <li><strong>Bienestar Digestivo y Vitalidad:</strong> El Complejo B junto al extracto de té favorecen la digestión.</li>
+          <li><strong>Registro INVIMA y Calidad Garantizada:</strong> Producido bajo estrictos estándares GMP.</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<!-- BANNER DIVISOR -->
+<div class="divider-banner">
+  Descubre por qué {{ product.title | default: 'Colasteel' }} te conviene.
+</div>
+
+<!-- SECCIÓN INGREDIENTES CLAVE -->
+<section class="ingredients-section">
+  <h2 class="section-title-center">INGREDIENTES CLAVE</h2>
+  <div class="ingredients-grid">
+    <div class="ingredient-card">
+      <div class="ingredient-circle">
+        <img src="{{ 'colageno.png' | asset_url }}" alt="Colágeno Hidrolizado">
+      </div>
+      <h4>COLÁGENO HIDROLIZADO</h4>
+      <p>Regenera cartílagos y articulaciones mientras mejora la elasticidad de la piel, cabello y uñas.</p>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="ingredient-circle">
+        <img src="{{ 'cloruro.png' | asset_url }}" alt="Cloruro de Magnesio">
+      </div>
+      <h4>CLORURO DE MAGNESIO</h4>
+      <p>Fortalece los huesos, reduce la rigidez articular y calma molestias físicas en rodillas y espalda.</p>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="ingredient-circle">
+        <img src="{{ 'complejoB.png' | asset_url }}" alt="Complejo B">
+      </div>
+      <h4>COMPLEJO B</h4>
+      <p>Esenciales para el metabolismo energético y el mantenimiento del sistema nervioso.</p>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="ingredient-circle">
+        <img src="{{ 'extractodete.png' | asset_url }}" alt="Extracto de Té">
+      </div>
+      <h4>EXTRACTO DE TÉ</h4>
+      <p>Aporta antioxidantes naturales para favorecer la digestión y el bienestar general.</p>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="ingredient-circle">
+        <img src="{{ 'uba.png' | asset_url }}" alt="Sabor a Uva">
+      </div>
+      <h4>SABOR A UVA</h4>
+      <p>Una experiencia deliciosa y fresca al paladar en cada toma.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MODO DE USO Y RENDIMIENTO -->
+<section class="usage-section">
+  <div class="usage-card-wrapper">
+    <div class="usage-img">
+      <img src="{{ 'descubrecolasteel.png' | asset_url }}" alt="Modo de Uso">
+    </div>
+    <div class="usage-text">
+      <h2>MODO DE USO Y RENDIMIENTO</h2>
+      <ul class="benefits-bullet-list">
+        <li><strong>Listo para Consumir:</strong> Fórmula líquida de rápida absorción que no requiere preparaciones complejas.</li>
+        <li><strong>Dosis Diaria Recomendada:</strong> Tomar 1 cucharada (15 mL) al día.</li>
+        <li><strong>Recomendación:</strong> Agitar suavemente el envase antes de servir para homogeneizar sus componentes activos.</li>
+        <li><strong>Rendimiento:</strong> Contenido neto de 500 mL con rendimiento aproximado para 33 días de tratamiento continuo.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SELLOS Y CALIDAD -->
+<section class="badges-section">
+  <div class="badges-grid">
+    <div class="badge-item">
+      <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+      <h4>INVIMA REGISTRO</h4>
+      <p>Garantía sanitaria oficial para tu tranquilidad y seguridad.</p>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></div>
+      <h4>Sin Azúcar Añadida</h4>
+      <p>Formulación pura y saludable, sin endulzantes artificiales ni azúcar extra.</p>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+      <h4>Calidad Colombiana (GMP)</h4>
+      <p>Fabricado en Colombia bajo estrictos estándares de Buenas Prácticas de Manufactura.</p>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg></div>
+      <h4>Conservación</h4>
+      <p>Instrucciones claras para mantener la frescura y eficacia del producto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS RECOMENDADOS -->
+<section class="recommended-section">
+  <div class="section-header">
+    <h2>COMPLEMENTA TU RUTINA DE BIENESTAR</h2>
+    <p>Descubre otras fórmulas diseñadas para potenciar tu salud desde adentro.</p>
+  </div>
+  <div class="products-grid">
+    <article class="product-card">
+      <div class="product-img-box"><img src="{{ 'ersveratrol2_df1e54aa-1b8c-4c39-b3df-a0e8d42ff75e.webp' | asset_url }}" alt="Resveratrol"></div>
+      <h3 class="product-title">Resveratrol 500 ml - Fórmula Única</h3>
+      <div class="product-bottom">
+        <div class="product-price">A partir de $101.500 COP</div>
+        <button class="add-btn" onclick="toggleCart()">Añadir</button>
+      </div>
+    </article>
+    <article class="product-card">
+      <div class="product-img-box"><img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León"></div>
+      <h3 class="product-title">Melena de León en Polvo Fórmula Única - Sabor a capuchino</h3>
+      <div class="product-bottom">
+        <div class="product-price">A partir de $94.900 COP</div>
+        <button class="add-btn" onclick="toggleCart()">Añadir</button>
+      </div>
+    </article>
+    <article class="product-card">
+      <div class="product-img-box"><img src="{{ 'amalaki_x_1.webp' | asset_url }}" alt="Amalaki"></div>
+      <h3 class="product-title">Amalaki - Bebida funcional con extracto de té y colágeno / 500 gr</h3>
+      <div class="product-bottom">
+        <div class="product-price">A partir de $74.900 COP</div>
+        <button class="add-btn" onclick="toggleCart()">Añadir</button>
+      </div>
+    </article>
+    <article class="product-card">
+      <div class="product-img-box"><img src="{{ 'colageno_marino_x_1_IA.webp' | asset_url }}" alt="Colágeno Marino"></div>
+      <h3 class="product-title">Colágeno Marino - Fórmula Única con ajonjolí, cúrcuma y genjibre</h3>
+      <div class="product-bottom">
+        <div class="product-price">A partir de $84.900 COP</div>
+        <button class="add-btn" onclick="toggleCart()">Añadir</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- BARRA FLOTANTE INFERIOR DE CONVERSIÓN -->
+<div class="sticky-buy-bar" id="stickyBuyBar">
+  <div class="sticky-bar-container">
+    <div class="sticky-product-info">
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | image_url: width: 120 }}" alt="{{ product.title | escape }}">
+      {% else %}
+        <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="Colasteel">
+      {% endif %}
+      <div class="sticky-product-text">
+        <span class="sticky-title">{{ product.title | default: 'Colasteel Cloruro de Magnesio 500 ml' }}</span>
+        <span class="sticky-price">{{ product.price | money | default: '$101.031' }} <del>$127.500</del></span>
+      </div>
+    </div>
+    <div class="sticky-actions-row">
+      <div class="qty-selector-sticky">
+        <button>-</button>
+        <span>1</span>
+        <button>+</button>
+      </div>
+      <a href="#" class="btn-sticky-buy" onclick="toggleCheckoutModal(); return false;">AÑADIR AL CARRITO</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Producto Principal",
+  "settings": []
+}
+{% endschema %}
+

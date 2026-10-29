@@ -1,0 +1,136 @@
+<!-- BANNER HERO OUTLET -->
+<section class="outlet-hero-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('{{ 'banneroutlet.jpeg' | asset_url }}');">
+  <div class="outlet-hero-content">
+    <span class="outlet-tag-top"><svg class="inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> LIQUIDACIÓN TOTAL</span>
+    <h1>OUTLET PRENDAS <span>MOLDEADORAS Y TÉRMICAS</span></h1>
+    <p>Moldea tu figura al mejor precio con fajas, cinturillas y chalecos térmicos diseñados para maximizar tus resultados.</p>
+  </div>
+</section>
+
+<!-- BARRA DE FILTROS -->
+<section class="catalog-filters-bar">
+  <div class="filters-container">
+    <div class="filter-group">
+      <span>Filtrar por:</span>
+      <select class="filter-select">
+        <option>Más relevantes</option>
+        <option>Precio: Menor a Mayor</option>
+        <option>Precio: Mayor a Menor</option>
+      </select>
+    </div>
+    <div class="catalog-counter">
+      <strong>7</strong> productos en liquidación
+    </div>
+  </div>
+</section>
+
+<!-- GRID DE LOS 7 PRODUCTOS DE OUTLET -->
+<section class="bestsellers-section" style="margin-top: 20px;">
+  <div class="products-grid">
+    <!-- 1. Cinturilla Reductora Dama Power Belt -->
+    <article class="product-card beauty-card">
+      <div class="product-img-box">
+        <img src="{{ 'cinmarisol.webp' | asset_url }}" alt="Cinturilla Reductora Dama Power Belt">
+      </div>
+      <h3 class="product-title">Cinturilla Reductora Dama Power Belt</h3>
+      <div class="product-bottom beauty-bottom">
+        <div class="price-box">
+          <span class="old-p">$297.800,00 COP</span>
+          <span class="new-p">$163.900,00 COP</span>
+        </div>
+        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+      </div>
+    </article>
+
+    <!-- 2. Hot Slim Dama - Pantalón Reductor -->
+    <article class="product-card beauty-card">
+      <div class="product-img-box">
+        <img src="{{ 'hotapantalonsauna2.webp' | asset_url }}" alt="Hot Slim Dama - Pantalón Reductor">
+      </div>
+      <h3 class="product-title">Hot Slim Dama - Pantalón Reductor</h3>
+      <div class="product-bottom beauty-bottom">
+        <div class="price-box">
+          <span class="old-p">$199.800,00 COP</span>
+          <span class="new-p">$114.900,00 COP</span>
+        </div>
+        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+      </div>
+    </article>
+
+    <!-- 3. Hot Slim Hombre - Camisilla Reductora -->
+    <article class="product-card beauty-card">
+      <div class="product-img-box">
+        <img src="{{ 'camisillahombre.webp' | asset_url }}" alt="Hot Slim Hombre - Camisilla Reductora">
+      </div>
+      <h3 class="product-title">Hot Slim Hombre - Camisilla Reductora</h3>
+      <div class="product-bottom beauty-bottom">
+        <div class="price-box">
+          <span class="old-p">$199.800,00 COP</span>
+          <span class="new-p">$114.900,00 COP</span>
+        </div>
+        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+      </div>
+    </article>
+
+    <!-- 4. Cinturilla Sport Styliza Mujer -->
+    <article class="product-card beauty-card">
+      <div class="product-img-box">
+        <img src="{{ 'cinturillastoliza2.webp' | asset_url }}" alt="Cinturilla Sport Styliza Mujer">
+      </div>
+      <h3 class="product-title">Cinturilla Sport Styliza Mujer</h3>
+      <div class="product-bottom beauty-bottom">
+        <div class="price-box">
+          <span class="old-p">$158.800,00 COP</span>
+          <span class="new-p">$94.400,00 COP</span>
+        </div>
+        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+      </div>
+    </article>
+
+    <!-- 5. Pantalón Sauna Styliza -->
+    <article class="product-card beauty-card">
+      <div class="product-img-box">
+        <img src="{{ 'pantalonsaunastilyza1.webp' | asset_url }}" alt="Pantalón Sauna Styliza">
+      </div>
+      <h3 class="product-title">Pantalón Sauna Styliza</h3>
+      <div class="product-bottom beauty-bottom">
+        <div class="price-box">
+          <span class="old-p">$300.000,00 COP</span>
+          <span class="new-p">$164.900,00 COP</span>
+        </div>
+        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+      </div>
+    </article>
+
+    <!-- 6. Hombre Chaleco Sauna -->
+    <article class="product-card beauty-card">
+      <div class="product-img-box">
+        <img src="{{ 'hotslimhombre1.webp' | asset_url }}" alt="Hombre Chaleco Sauna">
+      </div>
+      <h3 class="product-title">Hombre Chaleco Sauna</h3>
+      <div class="product-bottom beauty-bottom">
+        <div class="price-box">
+          <span class="old-p">$299.800,00 COP</span>
+          <span class="new-p">$164.900,00 COP</span>
+        </div>
+        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+      </div>
+    </article>
+
+    <!-- 7. Hot Slim Dama Camisilla Reductora -->
+    <article class="product-card beauty-card">
+      <div class="product-img-box">
+        <img src="{{ 'hotslimdama2.webp' | asset_url }}" alt="Hot Slim Dama Camisilla Reductora">
+      </div>
+      <h3 class="product-title">Hot Slim Dama Camisilla Reductora</h3>
+      <div class="product-bottom beauty-bottom">
+        <div class="price-box">
+          <span class="old-p">$199.800,00 COP</span>
+          <span class="new-p">$114.900,00 COP</span>
+        </div>
+        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+      </div>
+    </article>
+  </div>
+</section>
+
