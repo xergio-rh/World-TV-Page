@@ -1957,6 +1957,551 @@ button:active {
   margin-bottom: 8px;
 }
 
+/* ============================================================================
+   10. REDISEÑO RESPONSIVE INTEGRAL PARA TELÉFONO, PROPORCIÓN DE IMÁGENES
+       Y CONTRASTE DE TEXTOS SOBRE FONDOS (CERO IMÁGENES DISTORSIONADAS /
+       CERO TEXTOS PERDIDOS)
+   ============================================================================ */
+
+/* A. Protección Global contra Distorsión de Imágenes (incluso con atributos width/height HTML) */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product-img-box,
+.beauty-card .product-img-box {
+  background-color: #F8F7F4 !important;
+  border-radius: 10px !important;
+  height: 240px !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 14px !important;
+  overflow: hidden !important;
+  padding: 10px !important;
+}
+
+.product-img-box img,
+.beauty-card .product-img-box img,
+.main-image-box img,
+.thumb-item img,
+.kit-image-box img,
+.ingredient-circle img,
+.usage-img img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+.model-img-thumb img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: scale(1.15) !important;
+}
+
+.model-item:hover .model-img-thumb img {
+  transform: scale(1.24) !important;
+}
+
+.pack-option img,
+.chk-pkg-card img,
+.upsell-card img {
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+
+.site-logo,
+.footer-logo {
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+/* B. Contraste Total en Banners de Colecciones y Tarjeta de Salud Visual (Desktop y Móvil) */
+.beauty-hero-banner,
+.vision-hero-banner,
+.outlet-hero-banner {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.beauty-hero-banner::before,
+.vision-hero-banner::before,
+.outlet-hero-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 14, 26, 0.48) 0%, rgba(10, 14, 26, 0.76) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.beauty-hero-content,
+.vision-hero-content,
+.outlet-hero-content {
+  position: relative !important;
+  z-index: 2 !important;
+  background: rgba(15, 23, 42, 0.56);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 28px 32px !important;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.32);
+}
+
+.beauty-hero-content h1,
+.vision-hero-content h1,
+.outlet-hero-content h1 {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85) !important;
+}
+
+.beauty-hero-content p,
+.vision-hero-content p,
+.outlet-hero-content p {
+  color: #F8FAFC !important;
+  opacity: 1 !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.85) !important;
+  font-weight: 500;
+}
+
+/* Tarjeta de Imagen en Relax Vision con velo oscuro inferior para que el texto nunca se pierda */
+.vision-image-card {
+  position: relative !important;
+}
+
+.vision-image-card img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 20% !important;
+}
+
+.vision-image-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(10, 14, 26, 0.88) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.vision-img-caption {
+  z-index: 2 !important;
+  left: 16px !important;
+  right: 16px !important;
+  bottom: 16px !important;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85) !important;
+}
+
+.vision-img-caption strong {
+  color: #FFFFFF !important;
+  font-size: 15px !important;
+  margin-bottom: 2px;
+}
+
+.vision-img-caption span {
+  color: #E2E8F0 !important;
+  opacity: 1 !important;
+  font-size: 12px !important;
+}
+
+/* C. Modal de Checkout con scroll fluido en pantallas pequeñas o medianas */
+.checkout-modal-container {
+  max-height: 92vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.checkout-modal-body {
+  overflow-y: auto !important;
+  max-height: calc(92vh - 64px) !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* D. Reglas para Tablets y Móviles (<= 992px): Hero con Tarjeta de Alto Contraste */
+@media (max-width: 992px) {
+  .hero-section {
+    position: relative !important;
+    min-height: auto !important;
+    padding: 175px 14px 28px !important;
+    background-size: cover !important;
+    background-position: 26% top !important;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.12) 0%, rgba(15, 23, 42, 0.58) 55%, rgba(15, 23, 42, 0.75) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-container {
+    padding: 0 !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-content {
+    grid-column: 1 !important;
+    max-width: 100% !important;
+    background: rgba(255, 255, 255, 0.94) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 22px 18px !important;
+    border-radius: 16px !important;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22) !important;
+    border: 1px solid rgba(255, 255, 255, 0.92) !important;
+    text-align: center !important;
+  }
+
+  .hero-title {
+    color: #1A1A1A !important;
+    font-size: 28px !important;
+    line-height: 1.16 !important;
+    margin-bottom: 10px !important;
+    text-shadow: none !important;
+  }
+
+  .hero-title span {
+    color: var(--brand-burgundy, #9E2A2B) !important;
+  }
+
+  .hero-desc {
+    color: #262626 !important;
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-checks {
+    flex-direction: column !important;
+    gap: 6px !important;
+    align-items: center !important;
+    color: #1A1A1A !important;
+    font-size: 12px !important;
+  }
+
+  .outlet-people {
+    min-height: 240px !important;
+    background-position: center 20% !important;
+    background-size: cover !important;
+  }
+}
+
+/* E. Reglas Específicas para Teléfonos Móviles (<= 768px) */
+@media (max-width: 768px) {
+  body {
+    padding-top: 104px !important;
+    overflow-x: hidden;
+  }
+
+  .top-bar {
+    font-size: 10px !important;
+    padding: 6px 10px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Barra de búsqueda móvil desplegable SIN recortar el dropdown predictivo */
+  .expandable-search-bar.active {
+    max-height: 440px !important;
+    overflow: visible !important;
+    padding: 8px 4px 12px 4px !important;
+  }
+
+  .wtv-search-dropdown {
+    max-height: 250px !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  /* Hero principal en teléfono */
+  .hero-section {
+    padding: 155px 12px 22px !important;
+  }
+
+  .hero-content {
+    padding: 20px 16px !important;
+  }
+
+  .hero-title {
+    font-size: 25px !important;
+  }
+
+  .hero-ctas {
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-secondary {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 13px 16px !important;
+  }
+
+  /* Banners de Colección (Nutrición, Salud Visual, Belleza, Outlet) en teléfono */
+  .beauty-hero-banner,
+  .vision-hero-banner,
+  .outlet-hero-banner {
+    min-height: 260px !important;
+    padding: 22px 12px !important;
+    background-position: center 20% !important;
+  }
+
+  .beauty-hero-content,
+  .vision-hero-content,
+  .outlet-hero-content {
+    padding: 20px 16px !important;
+    border-radius: 14px !important;
+    width: 100% !important;
+  }
+
+  .beauty-hero-content h1,
+  .vision-hero-content h1,
+  .outlet-hero-content h1 {
+    font-size: 23px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .beauty-hero-content p,
+  .vision-hero-content p,
+  .outlet-hero-content p {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Tarjetas de Producto en teléfono: proporción limpia y sin recortes */
+  .products-grid,
+  .beauty-products-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 0 14px !important;
+  }
+
+  .product-card,
+  .beauty-card {
+    padding: 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .product-img-box,
+  .beauty-card .product-img-box {
+    height: 230px !important;
+    padding: 10px !important;
+    background-color: #F8F7F4 !important;
+  }
+
+  /* Franja Contraentrega de 3 pasos en teléfono */
+  .cod-promo-strip-section {
+    padding: 0 14px !important;
+    margin-bottom: 36px !important;
+  }
+
+  .cod-promo-strip-card {
+    padding: 22px 16px !important;
+    gap: 18px !important;
+  }
+
+  .cod-promo-left h3 {
+    font-size: 21px !important;
+  }
+
+  /* Colección Relax Vision en teléfono */
+  .vision-section {
+    padding: 40px 14px !important;
+  }
+
+  .vision-container {
+    gap: 24px !important;
+  }
+
+  .vision-title {
+    font-size: 26px !important;
+  }
+
+  .models-box {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    padding: 12px !important;
+  }
+
+  .model-img-thumb {
+    height: 85px !important;
+  }
+
+  .vision-container .btn-primary,
+  .vision-container .btn-dark {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .vision-image-card {
+    height: 310px !important;
+  }
+
+  /* Kits y Combos en teléfono */
+  .kits-section-wrapper {
+    padding: 40px 0 !important;
+  }
+
+  .kits-grid {
+    padding: 0 14px !important;
+    gap: 16px !important;
+  }
+
+  .kit-card {
+    grid-template-columns: 1fr !important;
+    padding: 16px !important;
+    gap: 14px !important;
+    text-align: center !important;
+  }
+
+  .kit-image-box {
+    height: 200px !important;
+    padding: 10px !important;
+  }
+
+  /* Página de Detalle de Producto en teléfono */
+  .product-main-container {
+    margin: 16px auto !important;
+    padding: 0 14px !important;
+  }
+
+  .product-gallery-card {
+    position: static !important;
+    padding: 14px !important;
+  }
+
+  .main-image-box {
+    height: 310px !important;
+    padding: 10px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .thumbs-row {
+    gap: 8px !important;
+  }
+
+  .thumb-item {
+    height: 72px !important;
+    padding: 4px !important;
+  }
+
+  .product-title-main {
+    font-size: 25px !important;
+    line-height: 1.18 !important;
+  }
+
+  .product-subtitle-main {
+    font-size: 16px !important;
+  }
+
+  .current-price {
+    font-size: 26px !important;
+  }
+
+  /* Paquetes (1, 2, 3 unidades) en teléfono */
+  .packages-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .pack-option {
+    padding: 12px 4px 10px !important;
+  }
+
+  .pack-title {
+    font-size: 11.5px !important;
+  }
+
+  .pack-option img {
+    height: 42px !important;
+  }
+
+  /* Círculos de Ingredientes Clave en teléfono */
+  .ingredients-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px 12px !important;
+  }
+
+  .ingredient-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1 !important;
+    max-width: 220px !important;
+    margin: 0 auto !important;
+  }
+
+  .ingredient-circle {
+    width: 128px !important;
+    height: 128px !important;
+    padding: 12px !important;
+    margin: 0 auto 10px !important;
+  }
+
+  .usage-card-wrapper {
+    padding: 18px !important;
+    gap: 18px !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .usage-img {
+    height: 230px !important;
+    padding: 12px !important;
+  }
+
+  /* Barra flotante inferior de compra en teléfono */
+  .sticky-buy-bar {
+    padding: 10px 12px !important;
+  }
+
+  .sticky-bar-container {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .sticky-product-info img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .sticky-actions-row {
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .btn-sticky-buy {
+    flex: 1 !important;
+    padding: 10px 8px !important;
+    font-size: 11px !important;
+    text-align: center !important;
+  }
+}
+
+
 
 
 

@@ -80,32 +80,47 @@
       max-width: 100%;
       height: auto;
     }
+    .product-img-box,
+    .beauty-card .product-img-box {
+      height: 240px !important;
+      padding: 10px !important;
+      background-color: #F8F7F4 !important;
+      border-radius: 10px !important;
+      overflow: hidden !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
     .product-img-box img,
+    .beauty-card .product-img-box img,
+    .main-image-box img,
+    .thumb-item img,
     .kit-image-box img,
     .ingredient-circle img,
     .usage-img img,
-    .pack-option img {
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 100%;
+    .model-img-thumb img {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      object-fit: contain !important;
+      object-position: center !important;
     }
-    .main-image-box img,
-    .thumb-item img,
     .vision-image-card img {
-      width: 100%;
-      height: 100%;
-    }
-    /* Asegurar proporción exacta de tarjetas en vistas de categorías */
-    .beauty-card .product-img-box {
-      height: 240px !important;
-      padding: 0 !important;
-      background-color: #FFFFFF !important;
-    }
-    .beauty-card .product-img-box img {
       width: 100% !important;
       height: 100% !important;
       object-fit: cover !important;
+      object-position: center 20% !important;
+    }
+    .pack-option img,
+    .chk-pkg-card img,
+    .upsell-card img {
+      width: auto !important;
+      max-width: 100% !important;
+      object-fit: contain !important;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
     }
     .wtv-spa-view {
       display: none;
@@ -149,8 +164,9 @@
 
       // Cerrar menú móvil si está abierto
       var navList = document.getElementById('navLinks');
-      if (navList && navList.classList.contains('show-mobile')) {
+      if (navList) {
         navList.classList.remove('show-mobile');
+        navList.classList.remove('active');
       }
 
       // Actualizar estado activo del menú
