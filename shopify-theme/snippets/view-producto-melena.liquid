@@ -5,17 +5,17 @@
     <!-- COLUMNA IZQUIERDA: GALERÍA DE IMÁGENES -->
     <div class="product-gallery-card">
       <div class="main-image-box">
-        <img id="mainProductImgMelena" src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León en Polvo">
+        <img id="mainProductImgMelena" src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León en Polvo" width="823" height="823">
       </div>
       <div class="thumbs-row">
         <div class="thumb-item active" onclick="var m=document.getElementById('mainProductImgMelena'); if(m) m.src='{{ 'melena_x_1_IA.webp' | asset_url }}';">
-          <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Vista 1">
+          <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Vista 1" width="823" height="823">
         </div>
         <div class="thumb-item" onclick="var m=document.getElementById('mainProductImgMelena'); if(m) m.src='{{ 'melenaX2.png' | asset_url }}';">
-          <img src="{{ 'melenaX2.png' | asset_url }}" alt="Vista 2">
+          <img src="{{ 'melenaX2.png' | asset_url }}" alt="Vista 2" width="500" height="500">
         </div>
         <div class="thumb-item" onclick="var m=document.getElementById('mainProductImgMelena'); if(m) m.src='{{ 'melenaX3.png' | asset_url }}';">
-          <img src="{{ 'melenaX3.png' | asset_url }}" alt="Vista 3">
+          <img src="{{ 'melenaX3.png' | asset_url }}" alt="Vista 3" width="500" height="499">
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@
         <div class="packages-grid">
           <div class="pack-option" onclick="selectPackage(this, '127.500','94.900')">
             <span class="pack-title">Una unidad</span>
-            <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="1 Frasco">
+            <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="1 Frasco" width="823" height="823">
             <div class="pack-prices">
               <del>$127.500</del>
               <strong>$94.900</strong>
@@ -52,7 +52,7 @@
           <div class="pack-option active" onclick="selectPackage(this, '202.062','179.800')">
             <span class="badge-best">MAS VENDIDO</span>
             <span class="pack-title">Paquete x 2</span>
-            <img src="{{ 'melenaX2.png' | asset_url }}" alt="2 Frascos">
+            <img src="{{ 'melenaX2.png' | asset_url }}" alt="2 Frascos" width="500" height="500">
             <div class="pack-prices">
               <del>$202.062</del>
               <strong>$179.800</strong>
@@ -60,7 +60,7 @@
           </div>
           <div class="pack-option" onclick="selectPackage(this, '303.093','221.250')">
             <span class="pack-title">Paquete x 3</span>
-            <img src="{{ 'melenaX3.png' | asset_url }}" alt="3 Frascos">
+            <img src="{{ 'melenaX3.png' | asset_url }}" alt="3 Frascos" width="500" height="499">
             <div class="pack-prices">
               <del>$303.093</del>
               <strong>$221.250</strong>
@@ -75,8 +75,11 @@
 
       <!-- BOTONES DE ACCIÓN -->
       <div class="action-buttons">
-        <a href="#" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">Comprar ahora</a>
-        <a href="#" class="btn-add-cart" onclick="toggleCart(); return false;">Agregar al carrito</a>
+        <div class="product-dual-pay-row">
+          <a href="#" class="cart-checkout-btn btn-pay-now-main" onclick="WTVCart.addSelectedProductFromPage(true, 1, 'online'); return false;">PAGAR AHORA (TARJETA / PSE)</a>
+          <a href="#" class="cart-checkout-btn btn-cod-main" onclick="WTVCart.addSelectedProductFromPage(true, 1, 'cod'); return false;">PAGO CONTRAENTREGA</a>
+        </div>
+        <a href="#" class="btn-add-cart" onclick="WTVCart.addSelectedProductFromPage(false); return false;">Agregar al carrito</a>
       </div>
 
       <!-- TRUST BADGES MINI -->
@@ -144,7 +147,7 @@
   <div class="ingredients-grid">
     <div class="ingredient-card">
       <div class="ingredient-circle">
-        <img src="{{ 'melena.png' | asset_url }}" alt="Melena de León">
+        <img src="{{ 'melena.png' | asset_url }}" alt="Melena de León" width="203" height="203">
       </div>
       <h4>MELENA DE LEÓN</h4>
       <p>Estimula la producción del factor de crecimiento nervioso (NGF) para apoyar la memoria y concentración.</p>
@@ -152,7 +155,7 @@
 
     <div class="ingredient-card">
       <div class="ingredient-circle">
-        <img src="{{ 'ganoderma.png' | asset_url }}" alt="Ganoderma Lucidum">
+        <img src="{{ 'ganoderma.png' | asset_url }}" alt="Ganoderma Lucidum" width="203" height="203">
       </div>
       <h4>GANODERMA LUCIDUM</h4>
       <p>Aporta 700 mg por porción para fortalecer el sistema inmune y brindar bienestar general.</p>
@@ -160,7 +163,7 @@
 
     <div class="ingredient-card">
       <div class="ingredient-circle">
-        <img src="{{ 'image_30.png' | asset_url }}" alt="Hongo Shiitake">
+        <img src="{{ 'image_30.png' | asset_url }}" alt="Hongo Shiitake" width="203" height="203">
       </div>
       <h4>HONGO SHIITAKE</h4>
       <p>3.000 mg por porción que contribuyen a la nutrición integral y vitalidad diaria.</p>
@@ -168,7 +171,7 @@
 
     <div class="ingredient-card">
       <div class="ingredient-circle">
-        <img src="{{ 'complejoB.png' | asset_url }}" alt="Vitaminas Complejo B">
+        <img src="{{ 'complejoB.png' | asset_url }}" alt="Vitaminas Complejo B" width="203" height="203">
       </div>
       <h4>VITAMINAS COMPLEJO B</h4>
       <p>Esenciales (B1, B2, B3, B6, B12) para el metabolismo energético y el sistema nervioso.</p>
@@ -176,7 +179,7 @@
 
     <div class="ingredient-card">
       <div class="ingredient-circle">
-        <img src="{{ 'vitC.png' | asset_url }}" alt="Vitamina C">
+        <img src="{{ 'vitC.png' | asset_url }}" alt="Vitamina C" width="203" height="203">
       </div>
       <h4>VITAMINA C</h4>
       <p>Potente antioxidante que combate radicales libres y apoya las defensas naturales.</p>
@@ -188,7 +191,7 @@
 <section class="usage-section">
   <div class="usage-card-wrapper">
     <div class="usage-img">
-      <img src="{{ 'Gemini_Generated_Image_5ft5hk5ft5hk5ft5.jpeg' | asset_url }}" alt="Modo de Uso Melena de León">
+      <img src="{{ 'Gemini_Generated_Image_5ft5hk5ft5hk5ft5.jpeg' | asset_url }}" alt="Modo de Uso Melena de León" width="2400" height="1792">
     </div>
     <div class="usage-text">
       <h2>MODO DE USO Y RENDIMIENTO</h2>
@@ -255,7 +258,7 @@
   </div>
   <div class="products-grid">
     <article class="product-card" onclick="toggleCart()" style="cursor: pointer;">
-      <div class="product-img-box"><img src="{{ 'inositol_back.jpeg' | asset_url }}" alt="Inositol"></div>
+      <div class="product-img-box"><img src="{{ 'inositol_back.jpeg' | asset_url }}" alt="Inositol" width="1856" height="2304"></div>
       <h3 class="product-title">Inositol en polvo / con Biotina - Acido Fólico y Vitamina B12</h3>
       <div class="product-bottom">
         <div class="product-price">A partir de $94.900,00 COP</div>
@@ -263,7 +266,7 @@
       </div>
     </article>
     <article class="product-card" onclick="navigateToWorldTV('colasteel', '/products/colasteel-cloruro-de-magnesio')" style="cursor: pointer;">
-      <div class="product-img-box"><img src="{{ 'colasteel_back.jpeg' | asset_url }}" alt="Cloruro de Magnesio"></div>
+      <div class="product-img-box"><img src="{{ 'colasteel_back.jpeg' | asset_url }}" alt="Cloruro de Magnesio" width="1856" height="2304"></div>
       <h3 class="product-title">Cloruro 500 gr Fórmula Única</h3>
       <div class="product-bottom">
         <div class="product-price">A partir de $84.900,00 COP</div>
@@ -271,7 +274,7 @@
       </div>
     </article>
     <article class="product-card" onclick="toggleCart()" style="cursor: pointer;">
-      <div class="product-img-box"><img src="{{ 'clasicas_en_uso.webp' | asset_url }}" alt="Relax Vision Clasicas"></div>
+      <div class="product-img-box"><img src="{{ 'clasicas_en_uso.webp' | asset_url }}" alt="Relax Vision Clasicas" width="1254" height="1254"></div>
       <h3 class="product-title">Relax Vision Clasicas - Gafas con filtro UV 400 y antirreflejo</h3>
       <div class="product-bottom">
         <div class="product-price">$169.900,00 COP</div>
@@ -279,7 +282,7 @@
       </div>
     </article>
     <article class="product-card" onclick="toggleCart()" style="cursor: pointer;">
-      <div class="product-img-box"><img src="{{ 'realx_vision_premuim_uso.webp' | asset_url }}" alt="Relax Vision Premium"></div>
+      <div class="product-img-box"><img src="{{ 'realx_vision_premuim_uso.webp' | asset_url }}" alt="Relax Vision Premium" width="1254" height="1254"></div>
       <h3 class="product-title">Relax Vision Premium - Gafas con filtro azul y UV 400</h3>
       <div class="product-bottom">
         <div class="product-price">$182.900,00 COP</div>

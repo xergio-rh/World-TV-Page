@@ -1,0 +1,23 @@
+{% assign current_path = request.path | downcase %}
+<div id="wtv404Router">
+  {% if current_path contains 'vision' or current_path contains 'gafas' %}
+    {% render 'view-vision' %}
+  {% elsif current_path contains 'belleza' %}
+    {% render 'view-belleza' %}
+  {% elsif current_path contains 'outlet' %}
+    {% render 'view-outlet' %}
+  {% elsif current_path contains 'melena' %}
+    {% render 'view-producto-melena' %}
+  {% elsif current_path contains 'product' or current_path contains 'colasteel' or current_path contains 'cloruro' %}
+    {% render 'view-producto-colasteel' %}
+  {% else %}
+    {% render 'view-nutricion' %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Enrutador Inteligente",
+  "settings": []
+}
+{% endschema %}

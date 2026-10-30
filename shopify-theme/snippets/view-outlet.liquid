@@ -28,9 +28,9 @@
 <section class="bestsellers-section" style="margin-top: 20px;">
   <div class="products-grid">
     <!-- 1. Cinturilla Reductora Dama Power Belt -->
-    <article class="product-card beauty-card">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/cinturilla-reductora-dama-power-belt'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'cinmarisol.webp' | asset_url }}" alt="Cinturilla Reductora Dama Power Belt">
+        <img src="{{ 'cinmarisol.webp' | asset_url }}" alt="Cinturilla Reductora Dama Power Belt" width="823" height="823">
       </div>
       <h3 class="product-title">Cinturilla Reductora Dama Power Belt</h3>
       <div class="product-bottom beauty-bottom">
@@ -38,14 +38,14 @@
           <span class="old-p">$297.800,00 COP</span>
           <span class="new-p">$163.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'outlet-power-belt', title: 'Cinturilla Reductora Dama Power Belt', packTitle: 'Talla Única Ajustable', price: 163900, oldPrice: 297800, image: '{{ 'cinmarisol.webp' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 2. Hot Slim Dama - Pantalón Reductor -->
-    <article class="product-card beauty-card">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/hot-slim-dama-pantalon-reductor'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'hotapantalonsauna2.webp' | asset_url }}" alt="Hot Slim Dama - Pantalón Reductor">
+        <img src="{{ 'hotapantalonsauna2.webp' | asset_url }}" alt="Hot Slim Dama - Pantalón Reductor" width="823" height="823">
       </div>
       <h3 class="product-title">Hot Slim Dama - Pantalón Reductor</h3>
       <div class="product-bottom beauty-bottom">
@@ -53,14 +53,14 @@
           <span class="old-p">$199.800,00 COP</span>
           <span class="new-p">$114.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'outlet-pantalon-dama', title: 'Hot Slim Dama - Pantalón Reductor', packTitle: 'Prenda Térmica', price: 114900, oldPrice: 199800, image: '{{ 'hotapantalonsauna2.webp' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 3. Hot Slim Hombre - Camisilla Reductora -->
-    <article class="product-card beauty-card">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/hot-slim-hombre-camisilla-reductora'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'camisillahombre.webp' | asset_url }}" alt="Hot Slim Hombre - Camisilla Reductora">
+        <img src="{{ 'camisillahombre.webp' | asset_url }}" alt="Hot Slim Hombre - Camisilla Reductora" width="823" height="823">
       </div>
       <h3 class="product-title">Hot Slim Hombre - Camisilla Reductora</h3>
       <div class="product-bottom beauty-bottom">
@@ -68,14 +68,14 @@
           <span class="old-p">$199.800,00 COP</span>
           <span class="new-p">$114.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'outlet-camisilla-hombre', title: 'Hot Slim Hombre - Camisilla Reductora', packTitle: 'Prenda Térmica', price: 114900, oldPrice: 199800, image: '{{ 'camisillahombre.webp' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 4. Cinturilla Sport Styliza Mujer -->
-    <article class="product-card beauty-card">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/cinturilla-sport-styliza-mujer'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'cinturillastoliza2.webp' | asset_url }}" alt="Cinturilla Sport Styliza Mujer">
+        <img src="{{ 'cinturillastoliza2.webp' | asset_url }}" alt="Cinturilla Sport Styliza Mujer" width="823" height="823">
       </div>
       <h3 class="product-title">Cinturilla Sport Styliza Mujer</h3>
       <div class="product-bottom beauty-bottom">
@@ -83,14 +83,14 @@
           <span class="old-p">$158.800,00 COP</span>
           <span class="new-p">$94.400,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'outlet-cinturilla-sport', title: 'Cinturilla Sport Styliza Mujer', packTitle: 'Prenda Moldeadora', price: 94400, oldPrice: 158800, image: '{{ 'cinturillastoliza2.webp' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 5. Pantalón Sauna Styliza -->
-    <article class="product-card beauty-card">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/pantalon-sauna-styliza'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'pantalonsaunastilyza1.webp' | asset_url }}" alt="Pantalón Sauna Styliza">
+        <img src="{{ 'pantalonsaunastilyza1.webp' | asset_url }}" alt="Pantalón Sauna Styliza" width="823" height="823">
       </div>
       <h3 class="product-title">Pantalón Sauna Styliza</h3>
       <div class="product-bottom beauty-bottom">
@@ -98,14 +98,14 @@
           <span class="old-p">$300.000,00 COP</span>
           <span class="new-p">$164.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'outlet-pantalon-styliza', title: 'Pantalón Sauna Styliza', packTitle: 'Prenda Térmica', price: 164900, oldPrice: 300000, image: '{{ 'pantalonsaunastilyza1.webp' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 6. Hombre Chaleco Sauna -->
-    <article class="product-card beauty-card">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/hombre-chaleco-sauna'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'hotslimhombre1.webp' | asset_url }}" alt="Hombre Chaleco Sauna">
+        <img src="{{ 'hotslimhombre1.webp' | asset_url }}" alt="Hombre Chaleco Sauna" width="823" height="823">
       </div>
       <h3 class="product-title">Hombre Chaleco Sauna</h3>
       <div class="product-bottom beauty-bottom">
@@ -113,14 +113,14 @@
           <span class="old-p">$299.800,00 COP</span>
           <span class="new-p">$164.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'outlet-chaleco-hombre', title: 'Hombre Chaleco Sauna', packTitle: 'Prenda Térmica', price: 164900, oldPrice: 299800, image: '{{ 'hotslimhombre1.webp' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 7. Hot Slim Dama Camisilla Reductora -->
-    <article class="product-card beauty-card">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/hot-slim-dama-camisilla-reductora'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'hotslimdama2.webp' | asset_url }}" alt="Hot Slim Dama Camisilla Reductora">
+        <img src="{{ 'hotslimdama2.webp' | asset_url }}" alt="Hot Slim Dama Camisilla Reductora" width="360" height="360">
       </div>
       <h3 class="product-title">Hot Slim Dama Camisilla Reductora</h3>
       <div class="product-bottom beauty-bottom">
@@ -128,7 +128,7 @@
           <span class="old-p">$199.800,00 COP</span>
           <span class="new-p">$114.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'outlet-camisilla-dama', title: 'Hot Slim Dama Camisilla Reductora', packTitle: 'Prenda Térmica', price: 114900, oldPrice: 199800, image: '{{ 'hotslimdama2.webp' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
   </div>

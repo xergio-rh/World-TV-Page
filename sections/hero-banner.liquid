@@ -1,0 +1,108 @@
+<!-- HERO BANNER PRINCIPAL -->
+<section class="hero-section"
+  style="background-image: linear-gradient(90deg, rgba(232,228,220,0.1) 40%, rgba(235,232,224,0.92) 60%), url('{{ 'Gemini_Generated_Image_tfwqcztfwqcztfwq.jpeg' | asset_url }}');"
+  data-slides='[
+    "{{ 'Gemini_Generated_Image_tfwqcztfwqcztfwq.jpeg' | asset_url }}",
+    "{{ 'banner1.jpeg' | asset_url }}",
+    "{{ 'banner2.jpeg' | asset_url }}"
+  ]'>
+  <div class="hero-container">
+    <div class="hero-content">
+      <span class="pill-badge">
+        <svg class="inline-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        {{ section.settings.badge_text | default: 'SUPLEMENTO DESTACADO • SI100' }}
+      </span>
+      <h1 class="hero-title">
+        {{ section.settings.heading_line1 | default: 'Mente sin límites con' }}
+        <span>{{ section.settings.heading_highlight | default: 'Melena de León SI100' }}</span>
+      </h1>
+      <p class="hero-desc">
+        {{ section.settings.description | default: 'Potencia tu enfoque, memoria y claridad mental con nuestra fórmula avanzada enriquecida con Ganoderma, Hongo Shiitake y Vitaminas del Complejo B.' }}
+      </p>
+      <div class="hero-ctas">
+        <a href="{{ section.settings.primary_btn_url | default: '/products/melena-de-leon-en-polvo-formula-unica-sabor-a-capuchino' }}" class="btn-primary">
+          {{ section.settings.primary_btn_label | default: 'COMPRAR MELENA DE LEÓN' }}
+        </a>
+        <a href="{{ section.settings.secondary_btn_url | default: '/collections/bebidas-funcionales-y-suplementos-naturales-para-el-bienestar-diario' }}" class="btn-secondary">
+          {{ section.settings.secondary_btn_label | default: 'Ver Todos los Productos' }}
+        </a>
+      </div>
+      <div class="hero-checks">
+        <span><strong>✓ Pago Contraentrega:</strong> Pagas solo al recibir en casa</span>
+        <span>{{ section.settings.check_1 | default: '✓ Registro INVIMA' }}</span>
+        <span>{{ section.settings.check_2 | default: '✓ Envío Rápido a Toda Colombia' }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner Principal",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Etiqueta superior",
+      "default": "SUPLEMENTO DESTACADO • SI100"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Título línea 1",
+      "default": "Mente sin límites con"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Título destacado",
+      "default": "Melena de León SI100"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Descripción",
+      "default": "Potencia tu enfoque, memoria y claridad mental con nuestra fórmula avanzada enriquecida con Ganoderma, Hongo Shiitake y Vitaminas del Complejo B."
+    },
+    {
+      "type": "text",
+      "id": "primary_btn_label",
+      "label": "Texto botón principal",
+      "default": "COMPRAR MELENA DE LEÓN"
+    },
+    {
+      "type": "url",
+      "id": "primary_btn_url",
+      "label": "Enlace botón principal"
+    },
+    {
+      "type": "text",
+      "id": "secondary_btn_label",
+      "label": "Texto botón secundario",
+      "default": "Ver Todos los Productos"
+    },
+    {
+      "type": "url",
+      "id": "secondary_btn_url",
+      "label": "Enlace botón secundario"
+    },
+    {
+      "type": "text",
+      "id": "check_1",
+      "label": "Sello de confianza 1",
+      "default": "Registro INVIMA"
+    },
+    {
+      "type": "text",
+      "id": "check_2",
+      "label": "Sello de confianza 2",
+      "default": "Envío Rápido a Toda Colombia"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner Principal"
+    }
+  ]
+}
+{% endschema %}

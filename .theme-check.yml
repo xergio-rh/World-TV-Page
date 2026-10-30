@@ -1,0 +1,9 @@
+ignore:
+  - shopify-theme/**
+  - BACKS/**
+  - outlet/**
+  - productos/**
+  - productos_pages/**
+  - storage/**
+  - ingredientes_colasteel/**
+

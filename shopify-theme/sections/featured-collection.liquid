@@ -1,82 +1,103 @@
-<!-- LO MÁS VENDIDO -->
+<!-- LO MÁS VENDIDO (CONECTADO A PRODUCTOS REALES DE SHOPIFY) -->
 <section class="bestsellers-section">
   <div class="section-header">
     <h2>{{ section.settings.heading | default: 'LO MÁS VENDIDO' }}</h2>
-    <p>{{ section.settings.subheading | default: 'Nuestras fórmulas favoritas para transformar tu salud diaria.' }}</p>
+    <p>{{ section.settings.subheading | default: 'Fórmulas seleccionadas por miles de colombianos para su bienestar diario. Paga en línea o contraentrega.' }}</p>
   </div>
 
   <div class="products-grid">
     {% assign target_collection = collections[section.settings.collection] %}
+    {% if target_collection == blank or target_collection.products_count == 0 %}
+      {% assign target_collection = collections['promociones'] %}
+    {% endif %}
+    {% if target_collection == blank or target_collection.products_count == 0 %}
+      {% assign target_collection = collections['bebidas-funcionales-y-suplementos-naturales-para-el-bienestar-diario'] %}
+    {% endif %}
+
     {% if target_collection != blank and target_collection.products_count > 0 %}
       {% for product in target_collection.products limit: section.settings.products_to_show %}
+        {% assign first_var = product.selected_or_first_available_variant %}
+        {% assign prod_price_cop = first_var.price | divided_by: 100 %}
+        {% assign prod_old_cop = first_var.compare_at_price | divided_by: 100 %}
         <article class="product-card" onclick="window.location.href='{{ product.url }}'" style="cursor: pointer;">
           <div class="product-img-box">
             {% if product.featured_image %}
-              <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title | escape }}">
+              <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title | escape }}" width="500" height="500">
             {% else %}
-              <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="{{ product.title | escape }}">
+              <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="{{ product.title | escape }}" width="1080" height="1080">
             {% endif %}
           </div>
           <div class="product-rating">★★★★★ <span>(120+)</span></div>
           <h3 class="product-title">{{ product.title }}</h3>
-          <p class="product-subtitle">{{ product.type | default: 'Fórmula Oficial World TV' }}</p>
+          <p class="product-subtitle">{{ product.type | default: 'Fórmula Exclusiva World TV' }}</p>
           <div class="product-bottom">
-            <div class="product-price">{{ product.price | money }}</div>
-            <button class="add-btn" type="button" onclick="event.stopPropagation(); toggleCart()">Añadir +</button>
+            <div class="product-price">{{ first_var.price | money }}</div>
+            <button class="add-btn" type="button"
+                    onclick="event.stopPropagation(); WTVCart.addItem({
+                      id: '{{ product.handle }}-{{ first_var.id }}',
+                      variantId: {{ first_var.id }},
+                      title: {{ product.title | json | escape }},
+                      packTitle: {{ first_var.title | json | escape }},
+                      price: {{ prod_price_cop }},
+                      oldPrice: {{ prod_old_cop | default: 0 }},
+                      image: '{% if product.featured_image %}{{ product.featured_image | image_url: width: 300 }}{% else %}{{ 'melena_x_1_IA.webp' | asset_url }}{% endif %}'
+                    }, true);">
+              Añadir +
+            </button>
           </div>
         </article>
       {% endfor %}
     {% else %}
-      <!-- Productos destacados por defecto de World TV -->
-      <article class="product-card" onclick="navigateToWorldTV('melena', '/products/melena-de-leon')" style="cursor: pointer;">
+      <!-- Fallback con enlaces y adición directa a los productos reales de World TV en Shopify -->
+      <article class="product-card" onclick="window.location.href='/products/melena-de-leon-en-polvo-formula-unica-sabor-a-capuchino'" style="cursor: pointer;">
         <div class="product-img-box">
-          <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León">
+          <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León" width="1080" height="1080">
         </div>
         <div class="product-rating">★★★★★ <span>(142)</span></div>
         <h3 class="product-title">Melena de León en Polvo SI100</h3>
         <p class="product-subtitle">Fórmula Única - Sabor Capuchino</p>
         <div class="product-bottom">
           <div class="product-price">$94.900</div>
-          <button class="add-btn" type="button" onclick="event.stopPropagation(); toggleCart()">Añadir +</button>
+          <button class="add-btn" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'melena-1', variantId: 46764428198062, title: 'Melena de León en Polvo SI100', packTitle: 'Una unidad', price: 94900, oldPrice: 127500, image: '{{ 'melena_x_1_IA.webp' | asset_url }}' }, true);">Añadir +</button>
         </div>
       </article>
 
-      <article class="product-card" onclick="navigateToWorldTV('colasteel', '/products/colasteel-cloruro-de-magnesio')" style="cursor: pointer;">
+      <article class="product-card" onclick="window.location.href='/products/cloruro-500-gr-formula-unica'" style="cursor: pointer;">
         <div class="product-img-box">
-          <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="Cloruro de Magnesio">
+          <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="Cloruro de Magnesio" width="1080" height="1080">
         </div>
         <div class="product-rating">★★★★★ <span>(98)</span></div>
         <h3 class="product-title">Colasteel Cloruro de Magnesio</h3>
         <p class="product-subtitle">Con Colágeno, Biotina y Complejo B</p>
         <div class="product-bottom">
           <div class="product-price">$84.900</div>
-          <button class="add-btn" type="button" onclick="event.stopPropagation(); toggleCart()">Añadir +</button>
+          <button class="add-btn" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'cloruro-1', variantId: 46782984323246, title: 'Colasteel Cloruro de Magnesio', packTitle: 'Una Unidad', price: 84900, oldPrice: 127500, image: '{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}' }, true);">Añadir +</button>
         </div>
       </article>
 
-      <article class="product-card" onclick="navigateToWorldTV('belleza', '/collections/belleza-y-bienestar')" style="cursor: pointer;">
+      <article class="product-card" onclick="window.location.href='/products/serum-facil-con-formula-unica-con-vitamina-c'" style="cursor: pointer;">
         <div class="product-img-box">
-          <img src="{{ 'suerox2.webp' | asset_url }}" alt="Vitamina C">
+          <img src="{{ 'suerox2.webp' | asset_url }}" alt="Vitamina C" width="1080" height="1080">
         </div>
         <div class="product-rating">★★★★☆ <span>(64)</span></div>
         <h3 class="product-title">Serum Facial Vitamina C</h3>
         <p class="product-subtitle">Fórmula Única con Ácido Hialurónico</p>
         <div class="product-bottom">
           <div class="product-price">$99.500</div>
-          <button class="add-btn" type="button" onclick="event.stopPropagation(); toggleCart()">Añadir +</button>
+          <button class="add-btn" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'serum-1', variantId: 47994789134510, title: 'Serum Facial Vitamina C', packTitle: 'Una Unidad', price: 99500, oldPrice: 120000, image: '{{ 'suerox2.webp' | asset_url }}' }, true);">Añadir +</button>
         </div>
       </article>
 
-      <article class="product-card" onclick="navigateToWorldTV('nutricion', '/collections/nutricion')" style="cursor: pointer;">
+      <article class="product-card" onclick="window.location.href='/products/inositol-en-polvo-con-biotina-acido-folico-y-vitamina-b12'" style="cursor: pointer;">
         <div class="product-img-box">
-          <img src="{{ 'inositol_x_1_IA.webp' | asset_url }}" alt="Inositol">
+          <img src="{{ 'inositol_x_1_IA.webp' | asset_url }}" alt="Inositol" width="1080" height="1080">
         </div>
         <div class="product-rating">★★★★★ <span>(115)</span></div>
         <h3 class="product-title">Inositol en Polvo Orebitol</h3>
         <p class="product-subtitle">Con Biotina, Ácido Fólico y Vitamina B12</p>
         <div class="product-bottom">
           <div class="product-price">$94.900</div>
-          <button class="add-btn" type="button" onclick="event.stopPropagation(); toggleCart()">Añadir +</button>
+          <button class="add-btn" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'inositol-1', variantId: 47972060758190, title: 'Inositol en Polvo Orebitol', packTitle: 'Una unidad', price: 94900, oldPrice: 118000, image: '{{ 'inositol_x_1_IA.webp' | asset_url }}' }, true);">Añadir +</button>
         </div>
       </article>
     {% endif %}

@@ -6,7 +6,7 @@
       <span class="outlet-badge"><svg class="inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> {{ section.settings.badge | default: 'LIQUIDACIÓN ESPECIAL' }}</span>
       <h2 class="outlet-title">{{ section.settings.title | default: 'OUTLET' }}</h2>
       <p class="outlet-subtitle">{{ section.settings.subtitle | default: 'PRENDAS MOLDEADORAS Y TÉRMICAS' }}</p>
-      <a href="{{ section.settings.button_link | default: '#outlet' }}" class="outlet-btn" onclick="navigateToWorldTV('outlet', '/collections/outlet'); return false;">{{ section.settings.button_text | default: 'VER PRENDAS EN OFERTA' }}</a>
+      <a href="{{ section.settings.button_link | default: '/collections/outlet-prendas-moldeadoras-y-termicas' }}" class="outlet-btn">{{ section.settings.button_text | default: 'VER PRENDAS EN OFERTA' }}</a>
     </div>
   </div>
 </section>

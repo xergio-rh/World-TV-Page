@@ -20,16 +20,17 @@
         {{ section.settings.description | default: 'Potencia tu enfoque, memoria y claridad mental con nuestra fórmula avanzada enriquecida con Ganoderma, Hongo Shiitake y Vitaminas del Complejo B.' }}
       </p>
       <div class="hero-ctas">
-        <a href="{{ section.settings.primary_btn_url | default: '#melena' }}" class="btn-primary" onclick="navigateToWorldTV('melena', '/products/melena-de-leon'); return false;">
+        <a href="{{ section.settings.primary_btn_url | default: '/products/melena-de-leon-en-polvo-formula-unica-sabor-a-capuchino' }}" class="btn-primary">
           {{ section.settings.primary_btn_label | default: 'COMPRAR MELENA DE LEÓN' }}
         </a>
-        <a href="{{ section.settings.secondary_btn_url | default: '#nutricion' }}" class="btn-secondary" onclick="navigateToWorldTV('nutricion', '/collections/nutricion'); return false;">
+        <a href="{{ section.settings.secondary_btn_url | default: '/collections/bebidas-funcionales-y-suplementos-naturales-para-el-bienestar-diario' }}" class="btn-secondary">
           {{ section.settings.secondary_btn_label | default: 'Ver Todos los Productos' }}
         </a>
       </div>
       <div class="hero-checks">
-        <span>{{ section.settings.check_1 | default: 'Registro INVIMA' }}</span>
-        <span>{{ section.settings.check_2 | default: 'Envío Rápido a Toda Colombia' }}</span>
+        <span><strong>✓ Pago Contraentrega:</strong> Pagas solo al recibir en casa</span>
+        <span>{{ section.settings.check_1 | default: '✓ Registro INVIMA' }}</span>
+        <span>{{ section.settings.check_2 | default: '✓ Envío Rápido a Toda Colombia' }}</span>
       </div>
     </div>
   </div>

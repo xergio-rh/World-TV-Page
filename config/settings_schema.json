@@ -1,0 +1,63 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "World TV Colombia",
+    "theme_version": "2.0.0",
+    "theme_author": "World TV",
+    "theme_documentation_url": "https://www.worldtv.com.co",
+    "theme_support_url": "https://www.worldtv.com.co"
+  },
+  {
+    "name": "Colores de Marca",
+    "settings": [
+      {
+        "type": "color",
+        "id": "brand_red",
+        "label": "Rojo Principal",
+        "default": "#D90429"
+      },
+      {
+        "type": "color",
+        "id": "brand_burgundy",
+        "label": "Vino / Burgundy",
+        "default": "#9E2A2B"
+      },
+      {
+        "type": "color",
+        "id": "brand_dark",
+        "label": "Texto / Fondo Oscuro",
+        "default": "#1A1A1A"
+      },
+      {
+        "type": "color",
+        "id": "bg_cream",
+        "label": "Fondo Crema Suave",
+        "default": "#F7F5F0"
+      }
+    ]
+  },
+  {
+    "name": "Contacto y Redes",
+    "settings": [
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Correo de contacto",
+        "default": "worldtvcolombia@gmail.com"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone",
+        "label": "Teléfono de contacto",
+        "default": "(57) 3500010"
+      },
+      {
+        "type": "text",
+        "id": "contact_location",
+        "label": "Ubicación",
+        "default": "Medellín, Antioquia, Colombia"
+      }
+    ]
+  }
+]
+

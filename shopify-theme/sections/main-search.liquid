@@ -1,0 +1,66 @@
+<section class="bestsellers-section" style="padding: 50px 24px; max-width: 1200px; margin: 0 auto;">
+  <div class="section-header">
+    <h2>RESULTADOS DE BÚSQUEDA</h2>
+    {% if search.performed %}
+      <p>Se encontraron <strong>{{ search.results_count }}</strong> resultados para "{{ search.terms | escape }}"</p>
+    {% else %}
+      <p>Ingresa el nombre del producto o beneficio que estás buscando.</p>
+    {% endif %}
+  </div>
+
+  {% if search.performed and search.results_count > 0 %}
+    <div class="products-grid">
+      {% for item in search.results %}
+        {% if item.object_type == 'product' %}
+          {% assign first_var = item.selected_or_first_available_variant %}
+          {% assign prod_price_cop = first_var.price | divided_by: 100 %}
+          {% assign prod_old_cop = first_var.compare_at_price | default: 0 | divided_by: 100 %}
+          <article class="product-card" onclick="window.location.href='{{ item.url }}'" style="cursor: pointer;">
+            <div class="product-img-box">
+              {% if item.featured_image %}
+                <img src="{{ item.featured_image | image_url: width: 500 }}" alt="{{ item.title | escape }}" width="500" height="500">
+              {% else %}
+                <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="{{ item.title | escape }}" width="1080" height="1080">
+              {% endif %}
+            </div>
+            <div class="product-rating">★★★★★ <span>(120+)</span></div>
+            <h3 class="product-title">{{ item.title }}</h3>
+            <p class="product-subtitle">{{ item.type | default: 'Fórmula Oficial World TV' }}</p>
+            <div class="product-bottom">
+              <div class="product-price">{{ first_var.price | money }}</div>
+              <button class="add-btn" type="button"
+                      onclick="event.stopPropagation(); WTVCart.addItem({
+                        id: '{{ item.handle }}-{{ first_var.id }}',
+                        variantId: {{ first_var.id }},
+                        title: {{ item.title | json | escape }},
+                        packTitle: {{ first_var.title | json | escape }},
+                        price: {{ prod_price_cop }},
+                        oldPrice: {{ prod_old_cop }},
+                        image: '{% if item.featured_image %}{{ item.featured_image | image_url: width: 300 }}{% else %}{{ 'melena_x_1_IA.webp' | asset_url }}{% endif %}'
+                      }, true);">
+                Añadir +
+              </button>
+            </div>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div style="text-align: center; padding: 40px 20px;">
+      <p style="margin-bottom: 20px; color: var(--text-muted);">No encontramos resultados exactos para tu búsqueda. Explora nuestras colecciones principales:</p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="{{ routes.collections_url }}/bebidas-funcionales-y-suplementos-naturales-para-el-bienestar-diario" class="btn-primary">Ver Nutrición</a>
+        <a href="{{ routes.collections_url }}/lentes-para-descanso-visual-y-proteccion-de-pantallas" class="btn-secondary">Ver Salud Visual</a>
+        <a href="{{ routes.collections_url }}/belleza-y-bienestar" class="btn-secondary">Ver Belleza y Bienestar</a>
+        <a href="{{ routes.collections_url }}/outlet-prendas-moldeadoras-y-termicas" class="btn-secondary">Ver Outlet</a>
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Búsqueda Principal",
+  "settings": []
+}
+{% endschema %}

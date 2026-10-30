@@ -1,0 +1,117 @@
+<!-- CONTENEDOR FIJO SUPERIOR (TOP BAR + HEADER) -->
+<div class="header-sticky-wrapper" id="headerWrapper">
+  <div class="top-bar">
+    <svg class="inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg>
+    {{ section.settings.announcement_text | default: 'ENVÍO GRATIS + PAGO CONTRAENTREGA EN TODA COLOMBIA | PIDE HOY SOLO CON TUS DATOS Y PAGA AL RECIBIR EN CASA' }}
+  </div>
+
+  <header class="site-header">
+    <div class="header-main">
+      <!-- Izquierda: Menú Hamburguesa (Solo visible en móvil) -->
+      <button class="mobile-menu-btn" aria-label="Menú" onclick="toggleMobileMenu()">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <a href="{{ routes.root_url }}" class="logo-link">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | image_url: width: 280 }}" alt="{{ shop.name | escape }}" class="site-logo" width="280" height="280">
+        {% else %}
+          <img src="{{ 'logo.png' | asset_url }}" alt="World TV" class="site-logo" width="451" height="256">
+        {% endif %}
+      </a>
+
+      <!-- Barra de búsqueda clásica (Visible en PC) -->
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-bar" onsubmit="return WTVCart.handleSearchSubmit(event, this);">
+        <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Buscar productos..." autocomplete="off" oninput="WTVCart.handleSearchInput(this)">
+        <button type="submit" aria-label="Buscar" style="background:none; border:none; padding:0; cursor:pointer; display:flex; align-items:center; color:inherit;">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Acciones derechas para móvil (Lupa y Carrito) -->
+      <div class="header-right-actions">
+        <button class="search-toggle-btn" aria-label="Buscar" onclick="toggleSearchBox()">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Botón de carrito general -->
+      <button class="cart-btn" aria-label="Carrito" onclick="toggleCart()" style="position: relative;">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="cart-count-badge" id="cartCountBadge" style="display: none;">0</span>
+      </button>
+    </div>
+
+    <!-- Barra de búsqueda desplegable en móviles -->
+    <div class="expandable-search-bar" id="expandableSearch">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-bar" onsubmit="return WTVCart.handleSearchSubmit(event, this);">
+        <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Buscar Melena de León, Gafas, Magnesio..." autocomplete="off" oninput="WTVCart.handleSearchInput(this)">
+        <button type="submit" aria-label="Buscar" style="background:none; border:none; padding:0; cursor:pointer; display:flex; align-items:center; color:inherit;">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="{{ routes.root_url }}" {% if template.name == 'index' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Todos</a>
+        </li>
+        <li>
+          <a href="{{ routes.collections_url }}/bebidas-funcionales-y-suplementos-naturales-para-el-bienestar-diario" {% if collection.handle contains 'bebidas' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Nutrición</a>
+        </li>
+        <li>
+          <a href="{{ routes.collections_url }}/lentes-para-descanso-visual-y-proteccion-de-pantallas" {% if collection.handle contains 'lentes' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Salud Visual</a>
+        </li>
+        <li>
+          <a href="{{ routes.collections_url }}/belleza-y-bienestar" {% if collection.handle contains 'belleza' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Belleza y Bienestar</a>
+        </li>
+        <li>
+          <a href="{{ routes.collections_url }}/outlet-prendas-moldeadoras-y-termicas" {% if collection.handle contains 'outlet' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Outlet Prendas Moldeadoras</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "Header y Barra Superior",
+  "settings": [
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Texto de la barra de anuncio",
+      "default": "ENVÍO GRATIS A TODA COLOMBIA EN COMPRAS MAYORES A $100.000 | PAGA AL RECIBIR"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo de la tienda"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menú de navegación"
+    }
+  ]
+}
+{% endschema %}

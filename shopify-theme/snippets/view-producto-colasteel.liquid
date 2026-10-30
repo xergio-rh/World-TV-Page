@@ -5,17 +5,17 @@
     <!-- COLUMNA IZQUIERDA: GALERÍA DE IMÁGENES -->
     <div class="product-gallery-card">
       <div class="main-image-box">
-        <img id="mainProductImg" src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="Colasteel Cloruro de Magnesio">
+        <img id="mainProductImg" src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="Colasteel Cloruro de Magnesio" width="823" height="823">
       </div>
       <div class="thumbs-row">
         <div class="thumb-item active" onclick="changeImage(this, '{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}')">
-          <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="Vista 1">
+          <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="Vista 1" width="823" height="823">
         </div>
         <div class="thumb-item" onclick="changeImage(this, '{{ 'colasteel2_1.png' | asset_url }}')">
-          <img src="{{ 'colasteel2_1.png' | asset_url }}" alt="Vista 2">
+          <img src="{{ 'colasteel2_1.png' | asset_url }}" alt="Vista 2" width="145" height="145">
         </div>
         <div class="thumb-item" onclick="changeImage(this, '{{ 'colasteel3_1.png' | asset_url }}')">
-          <img src="{{ 'colasteel3_1.png' | asset_url }}" alt="Vista 3">
+          <img src="{{ 'colasteel3_1.png' | asset_url }}" alt="Vista 3" width="145" height="145">
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@
         <div class="packages-grid">
           <div class="pack-option" onclick="selectPackage(this, '127.500','101.031')">
             <span class="pack-title">Lleva 1</span>
-            <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="1 Frasco">
+            <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="1 Frasco" width="823" height="823">
             <div class="pack-prices">
               <del>$127.500</del>
               <strong>$101.031</strong>
@@ -52,7 +52,7 @@
           <div class="pack-option active" onclick="selectPackage(this, '202.062','179.800')">
             <span class="badge-best">MAS VENDIDO</span>
             <span class="pack-title">Lleva 2</span>
-            <img src="{{ 'cloruroX2.png' | asset_url }}" alt="2 Frascos">
+            <img src="{{ 'cloruroX2.png' | asset_url }}" alt="2 Frascos" width="158" height="158">
             <div class="pack-prices">
               <del>$202.062</del>
               <strong>$179.800</strong>
@@ -60,7 +60,7 @@
           </div>
           <div class="pack-option" onclick="selectPackage(this, '303.093','221.250')">
             <span class="pack-title">Lleva 3</span>
-            <img src="{{ 'CloruroX3.png' | asset_url }}" alt="3 Frascos">
+            <img src="{{ 'CloruroX3.png' | asset_url }}" alt="3 Frascos" width="141" height="141">
             <div class="pack-prices">
               <del>$303.093</del>
               <strong>$221.250</strong>
@@ -75,8 +75,11 @@
 
       <!-- BOTONES DE ACCIÓN -->
       <div class="action-buttons">
-        <a href="#" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">COMPRA AHORA</a>
-        <a href="#" class="btn-add-cart" onclick="toggleCart(); return false;">Agregar al carrito</a>
+        <div class="product-dual-pay-row">
+          <a href="#" class="cart-checkout-btn btn-pay-now-main" onclick="WTVCart.addSelectedProductFromPage(true, 1, 'online'); return false;">PAGAR AHORA (TARJETA / PSE)</a>
+          <a href="#" class="cart-checkout-btn btn-cod-main" onclick="WTVCart.addSelectedProductFromPage(true, 1, 'cod'); return false;">PAGO CONTRAENTREGA</a>
+        </div>
+        <a href="#" class="btn-add-cart" onclick="WTVCart.addSelectedProductFromPage(false); return false;">Agregar al carrito</a>
       </div>
 
       <!-- TRUST BADGES MINI -->
@@ -146,7 +149,7 @@
   <div class="ingredients-grid">
     <div class="ingredient-card">
       <div class="ingredient-circle">
-        <img src="{{ 'colageno.png' | asset_url }}" alt="Colágeno Hidrolizado">
+        <img src="{{ 'colageno.png' | asset_url }}" alt="Colágeno Hidrolizado" width="203" height="203">
       </div>
       <h4>COLÁGENO HIDROLIZADO</h4>
       <p>Regenera cartílagos y articulaciones mientras mejora la elasticidad de la piel, cabello y uñas.</p>
@@ -154,7 +157,7 @@
 
     <div class="ingredient-card">
       <div class="ingredient-circle">
-        <img src="{{ 'cloruro.png' | asset_url }}" alt="Cloruro de Magnesio">
+        <img src="{{ 'cloruro.png' | asset_url }}" alt="Cloruro de Magnesio" width="203" height="203">
       </div>
       <h4>CLORURO DE MAGNESIO</h4>
       <p>Fortalece los huesos, reduce la rigidez articular y calma molestias físicas en rodillas y espalda.</p>
@@ -162,7 +165,7 @@
 
     <div class="ingredient-card">
       <div class="ingredient-circle">
-        <img src="{{ 'complejoB.png' | asset_url }}" alt="Complejo B">
+        <img src="{{ 'complejoB.png' | asset_url }}" alt="Complejo B" width="203" height="203">
       </div>
       <h4>COMPLEJO B</h4>
       <p>Esenciales para el metabolismo energético y el mantenimiento del sistema nervioso.</p>
@@ -170,7 +173,7 @@
 
     <div class="ingredient-card">
       <div class="ingredient-circle">
-        <img src="{{ 'extractodete.png' | asset_url }}" alt="Extracto de Té">
+        <img src="{{ 'extractodete.png' | asset_url }}" alt="Extracto de Té" width="203" height="203">
       </div>
       <h4>EXTRACTO DE TÉ</h4>
       <p>Aporta antioxidantes naturales para favorecer la digestión y el bienestar general.</p>
@@ -178,7 +181,7 @@
 
     <div class="ingredient-card">
       <div class="ingredient-circle">
-        <img src="{{ 'uba.png' | asset_url }}" alt="Sabor a Uva">
+        <img src="{{ 'uba.png' | asset_url }}" alt="Sabor a Uva" width="203" height="203">
       </div>
       <h4>SABOR A UVA</h4>
       <p>Una experiencia deliciosa y fresca al paladar en cada toma.</p>
@@ -190,7 +193,7 @@
 <section class="usage-section">
   <div class="usage-card-wrapper">
     <div class="usage-img">
-      <img src="{{ 'descubrecolasteel.png' | asset_url }}" alt="Modo de Uso">
+      <img src="{{ 'descubrecolasteel.png' | asset_url }}" alt="Modo de Uso" width="660" height="660">
     </div>
     <div class="usage-text">
       <h2>MODO DE USO Y RENDIMIENTO</h2>
@@ -238,7 +241,7 @@
   </div>
   <div class="products-grid">
     <article class="product-card" onclick="toggleCart()" style="cursor: pointer;">
-      <div class="product-img-box"><img src="{{ 'ersveratrol2_df1e54aa-1b8c-4c39-b3df-a0e8d42ff75e.webp' | asset_url }}" alt="Resveratrol"></div>
+      <div class="product-img-box"><img src="{{ 'ersveratrol2_df1e54aa-1b8c-4c39-b3df-a0e8d42ff75e.webp' | asset_url }}" alt="Resveratrol" width="823" height="823"></div>
       <h3 class="product-title">Resveratrol 500 ml - Fórmula Única</h3>
       <div class="product-bottom">
         <div class="product-price">A partir de $101.500 COP</div>
@@ -246,7 +249,7 @@
       </div>
     </article>
     <article class="product-card" onclick="navigateToWorldTV('melena', '/products/melena-de-leon')" style="cursor: pointer;">
-      <div class="product-img-box"><img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León"></div>
+      <div class="product-img-box"><img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León" width="823" height="823"></div>
       <h3 class="product-title">Melena de León en Polvo Fórmula Única - Sabor a capuchino</h3>
       <div class="product-bottom">
         <div class="product-price">A partir de $94.900 COP</div>
@@ -254,7 +257,7 @@
       </div>
     </article>
     <article class="product-card" onclick="toggleCart()" style="cursor: pointer;">
-      <div class="product-img-box"><img src="{{ 'amalaki_x_1.webp' | asset_url }}" alt="Amalaki"></div>
+      <div class="product-img-box"><img src="{{ 'amalaki_x_1.webp' | asset_url }}" alt="Amalaki" width="823" height="823"></div>
       <h3 class="product-title">Amalaki - Bebida funcional con extracto de té y colágeno / 500 gr</h3>
       <div class="product-bottom">
         <div class="product-price">A partir de $74.900 COP</div>
@@ -262,7 +265,7 @@
       </div>
     </article>
     <article class="product-card" onclick="toggleCart()" style="cursor: pointer;">
-      <div class="product-img-box"><img src="{{ 'colageno_marino_x_1_IA.webp' | asset_url }}" alt="Colágeno Marino"></div>
+      <div class="product-img-box"><img src="{{ 'colageno_marino_x_1_IA.webp' | asset_url }}" alt="Colágeno Marino" width="823" height="823"></div>
       <h3 class="product-title">Colágeno Marino - Fórmula Única con ajonjolí, cúrcuma y genjibre</h3>
       <div class="product-bottom">
         <div class="product-price">A partir de $84.900 COP</div>

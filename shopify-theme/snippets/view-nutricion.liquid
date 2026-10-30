@@ -28,9 +28,9 @@
 <section class="bestsellers-section" style="margin-top: 20px;">
   <div class="products-grid">
     <!-- 1. Cloruro 500 gr -->
-    <article class="product-card beauty-card" onclick="navigateToWorldTV('colasteel', '/products/colasteel-cloruro-de-magnesio')" style="cursor: pointer;">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/cloruro-500-gr-formula-unica'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'colasteel_back.jpeg' | asset_url }}" alt="Cloruro 500 gr">
+        <img src="{{ 'colasteel_back.jpeg' | asset_url }}" alt="Cloruro 500 gr" width="1856" height="2304">
       </div>
       <div class="product-rating">★★★★★ <span>(500)</span></div>
       <h3 class="product-title">Cloruro 500 gr Fórmula Única</h3>
@@ -39,14 +39,14 @@
         <div class="price-box">
           <span class="new-p" style="color:var(--brand-dark);">A partir de $84.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="event.stopPropagation(); navigateToWorldTV('colasteel', '/products/colasteel-cloruro-de-magnesio')">VER PRODUCTO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'cloruro-1', variantId: 46782984323246, title: 'Cloruro 500 gr Fórmula Única', packTitle: 'Una Unidad', price: 84900, oldPrice: 127500, image: '{{ 'colasteel_back.jpeg' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 2. Melena de León -->
-    <article class="product-card beauty-card" onclick="navigateToWorldTV('melena', '/products/melena-de-leon')" style="cursor: pointer;">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/melena-de-leon-en-polvo-formula-unica-sabor-a-capuchino'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'melena_back.jpeg' | asset_url }}" alt="Melena de León">
+        <img src="{{ 'melena_back.jpeg' | asset_url }}" alt="Melena de León" width="1856" height="2304">
       </div>
       <div class="product-rating">★★★★★ <span>(142)</span></div>
       <h3 class="product-title">Melena de León en Polvo Fórmula Única - Sabor a capuchino</h3>
@@ -55,14 +55,14 @@
         <div class="price-box">
           <span class="new-p" style="color:var(--brand-dark);">A partir de $94.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="event.stopPropagation(); navigateToWorldTV('melena', '/products/melena-de-leon')">VER PRODUCTO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'melena-1', variantId: 46764428198062, title: 'Melena de León en Polvo SI100', packTitle: 'Una unidad', price: 94900, oldPrice: 127500, image: '{{ 'melena_back.jpeg' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 3. Resveratrol -->
-    <article class="product-card beauty-card" onclick="navigateToWorldTV('colasteel', '/products/colasteel-cloruro-de-magnesio')" style="cursor: pointer;">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/resveratrol-500-ml-formula-unica'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'rejur_back.jpeg' | asset_url }}" alt="Resveratrol">
+        <img src="{{ 'rejur_back.jpeg' | asset_url }}" alt="Resveratrol" width="1856" height="2304">
       </div>
       <div class="product-rating">★★★★★ <span>(89)</span></div>
       <h3 class="product-title">Resveratrol 500 ml - Fórmula Única</h3>
@@ -71,14 +71,14 @@
         <div class="price-box">
           <span class="new-p" style="color:var(--brand-dark);">A partir de $101.500,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="event.stopPropagation(); toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'resveratrol-1', variantId: 46782983700654, title: 'Resveratrol 500 ml - Fórmula Única', packTitle: 'Una Unidad', price: 101500, oldPrice: 125000, image: '{{ 'rejur_back.jpeg' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 4. Inositol -->
-    <article class="product-card beauty-card" onclick="navigateToWorldTV('melena', '/products/melena-de-leon')" style="cursor: pointer;">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/inositol-en-polvo-con-biotina-acido-folico-y-vitamina-b12'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'inositol_back.jpeg' | asset_url }}" alt="Inositol">
+        <img src="{{ 'inositol_back.jpeg' | asset_url }}" alt="Inositol" width="1856" height="2304">
       </div>
       <div class="product-rating">★★★★★ <span>(115)</span></div>
       <h3 class="product-title">Inositol en polvo / con Biotina Ácido Fólico y Vitamina B12</h3>
@@ -87,14 +87,14 @@
         <div class="price-box">
           <span class="new-p" style="color:var(--brand-dark);">A partir de $94.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="event.stopPropagation(); toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'inositol-1', variantId: 47972060758190, title: 'Inositol en Polvo Orebitol', packTitle: 'Una unidad', price: 94900, oldPrice: 118000, image: '{{ 'inositol_back.jpeg' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 5. Amalaki -->
-    <article class="product-card beauty-card" onclick="navigateToWorldTV('colasteel', '/products/colasteel-cloruro-de-magnesio')" style="cursor: pointer;">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/amalaki-bebida-funcional-con-extracto-de-te-y-colageno-500-gr'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'gamaky_back.jpeg' | asset_url }}" alt="Amalaki">
+        <img src="{{ 'gamaky_back.jpeg' | asset_url }}" alt="Amalaki" width="1856" height="2304">
       </div>
       <div class="product-rating">★★★★☆ <span>(74)</span></div>
       <h3 class="product-title">Amalaki - Bebida funcional con extracto de té y colágeno / 500 gr</h3>
@@ -103,14 +103,14 @@
         <div class="price-box">
           <span class="new-p" style="color:var(--brand-dark);">A partir de $74.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="event.stopPropagation(); toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'amalaki-1', title: 'Amalaki Bebida Funcional 500 gr', packTitle: 'Una Unidad', price: 74900, oldPrice: 95000, image: '{{ 'gamaky_back.jpeg' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 6. Colágeno Marino -->
-    <article class="product-card beauty-card" onclick="navigateToWorldTV('colasteel', '/products/colasteel-cloruro-de-magnesio')" style="cursor: pointer;">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/colageno-marino-formula-unica-con-ajonjoli-curcuma-y-genjibre'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'colageno_marino_back.jpeg' | asset_url }}" alt="Colágeno Marino">
+        <img src="{{ 'colageno_marino_back.jpeg' | asset_url }}" alt="Colágeno Marino" width="1856" height="2304">
       </div>
       <div class="product-rating">★★★★★ <span>(92)</span></div>
       <h3 class="product-title">Colágeno Marino - Fórmula Única con ajonjolí, cúrcuma y genjibre</h3>
@@ -119,14 +119,14 @@
         <div class="price-box">
           <span class="new-p" style="color:var(--brand-dark);">A partir de $84.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="event.stopPropagation(); toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'colageno-marino-1', title: 'Colágeno Marino Fórmula Única', packTitle: 'Una Unidad', price: 84900, oldPrice: 110000, image: '{{ 'colageno_marino_back.jpeg' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 7. Citrato de Magnesio -->
-    <article class="product-card beauty-card" onclick="navigateToWorldTV('colasteel', '/products/colasteel-cloruro-de-magnesio')" style="cursor: pointer;">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/citrato-de-magnesio-formula-unica-con-hierbas-aromaticas'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'mg_back.jpeg' | asset_url }}" alt="Citrato de Magnesio">
+        <img src="{{ 'mg_back.jpeg' | asset_url }}" alt="Citrato de Magnesio" width="1856" height="2304">
       </div>
       <div class="product-rating">★★★★★ <span>(108)</span></div>
       <h3 class="product-title">Citrato de Magnesio - Fórmula Única con hierbas aromáticas</h3>
@@ -135,7 +135,7 @@
         <div class="price-box">
           <span class="new-p" style="color:var(--brand-dark);">A partir de $84.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="event.stopPropagation(); toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'citrato-1', title: 'Citrato de Magnesio con Hierbas Aromáticas', packTitle: 'Una Unidad', price: 84900, oldPrice: 110000, image: '{{ 'mg_back.jpeg' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
   </div>

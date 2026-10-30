@@ -1,0 +1,37 @@
+<section class="bestsellers-section" style="padding: 60px 24px; max-width: 960px; margin: 0 auto;">
+  <div class="section-header">
+    <h1>TU CARRITO DE COMPRAS</h1>
+  </div>
+  {% if cart.item_count > 0 %}
+    <form action="{{ routes.cart_url }}" method="post" novalidate>
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
+        {% for item in cart.items %}
+          <div class="cart-item" style="background: #fff; padding: 18px; border-radius: 16px; border: 1px solid var(--border-soft);">
+            <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" class="cart-item-img" width="160" height="160">
+            <div class="cart-item-info">
+              <h4>{{ item.product.title }}</h4>
+              <div class="cart-item-price">{{ item.final_line_price | money }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div style="text-align: right;">
+        <p style="font-size: 18px; font-weight: 800; margin-bottom: 16px;">Total: {{ cart.total_price | money }}</p>
+        <button type="submit" name="checkout" class="btn-primary">FINALIZAR COMPRA</button>
+      </div>
+    </form>
+  {% else %}
+    <div style="text-align: center; padding: 40px 0;">
+      <p style="margin-bottom: 20px; color: var(--text-muted);">Tu carrito está vacío actualmente.</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn-primary">EXPLORAR PRODUCTOS</a>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Carrito Principal",
+  "settings": []
+}
+{% endschema %}
+

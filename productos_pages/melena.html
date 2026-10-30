@@ -7,7 +7,7 @@
  <!-- Tipografías -->
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="./melena.css">
  <link rel="stylesheet" href="../animations.css">
 </head>
@@ -165,8 +165,21 @@
 
        <!-- BOTONES DE ACCIÓN -->
        <div class="action-buttons">
-         <a href="#" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">Comprar ahora</a>
-         <a href="#" class="btn-add-cart" onclick="toggleCart(); return false;">Agregar al carrito</a>
+         <div class="product-dual-pay-row">
+           <a href="#" class="cart-checkout-btn btn-pay-now-main" onclick="WTVCart.addSelectedProductFromPage(true, 1, 'online'); return false;">PAGAR AHORA (TARJETA / PSE)</a>
+           <a href="#" class="cart-checkout-btn btn-cod-main" onclick="WTVCart.addSelectedProductFromPage(true, 1, 'cod'); return false;">PAGO CONTRAENTREGA</a>
+         </div>
+         <a href="#" class="btn-add-cart" onclick="WTVCart.addSelectedProductFromPage(false); return false;">Agregar al carrito</a>
+       </div>
+
+       <div class="cod-product-promo-box" style="margin-bottom: 20px;">
+         <div class="cod-promo-icon">
+           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+         </div>
+         <div class="cod-promo-text">
+           <strong>TÚ ELIGES: PAGA AHORA O PAGA CONTRAENTREGA</strong>
+           <span>Paga al instante con Tarjeta, PSE o Nequi, o pide con Pago Contraentrega ingresando únicamente tus datos de envío para pagar al recibir.</span>
+         </div>
        </div>
 
        <!-- TRUST BADGES MINI -->

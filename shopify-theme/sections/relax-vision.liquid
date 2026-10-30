@@ -16,9 +16,11 @@
         <div class="model-item active"
              data-img="{{ 'realx_vision_premuim_uso.webp' | asset_url }}"
              data-title="Relax Vision Premium"
-             data-desc="Filtro Luz Azul + Protección UV400 Avanzada">
+             data-desc="Filtro Luz Azul + Protección UV400 Avanzada • $182.900 COP"
+             data-price="182900"
+             data-url="/products/relax-vision-premium-gafas-con-filtro-azul-uv-400-y-antirreflejo">
           <div class="model-img-thumb">
-            <img src="{{ 'realx_vision_premuim.webp' | asset_url }}" alt="Premium">
+            <img src="{{ 'realx_vision_premuim.webp' | asset_url }}" alt="Premium" width="1080" height="1080">
           </div>
           <span>Premium</span>
         </div>
@@ -26,9 +28,11 @@
         <div class="model-item"
              data-img="{{ 'clasicas_en_uso.webp' | asset_url }}"
              data-title="Relax Vision Clásicas"
-             data-desc="Filtro Antirreflejo + Luz Azul">
+             data-desc="Filtro Antirreflejo + Luz Azul • $169.900 COP"
+             data-price="169900"
+             data-url="/products/relax-vision-clasicas-gafas-con-filtro-uv-400-y-antirreflejo">
           <div class="model-img-thumb">
-            <img src="{{ 'calsicas.webp' | asset_url }}" alt="Clásicas">
+            <img src="{{ 'calsicas.webp' | asset_url }}" alt="Clásicas" width="1080" height="1080">
           </div>
           <span>Clásicas</span>
         </div>
@@ -36,9 +40,11 @@
         <div class="model-item"
              data-img="{{ 'cromax_uso_pareja.webp' | asset_url }}"
              data-title="Relax Vision Chromax"
-             data-desc="Protección UV400 y Contraste Mejorado">
+             data-desc="Protección UV400 y Contraste Mejorado • $194.900 COP"
+             data-price="194900"
+             data-url="/products/relax-vision-chromax-gafas-con-uv-400-y-proteccion-visual-avanzada">
           <div class="model-img-thumb">
-            <img src="{{ 'cromax.webp' | asset_url }}" alt="Chromax">
+            <img src="{{ 'cromax.webp' | asset_url }}" alt="Chromax" width="1080" height="1080">
           </div>
           <span>Chromax</span>
         </div>
@@ -46,21 +52,28 @@
         <div class="model-item"
              data-img="{{ 'SKY_uso.webp' | asset_url }}"
              data-title="Relax Vision Sky"
-             data-desc="Filtro Azul y Diseño Liviano">
+             data-desc="Filtro Azul y Diseño Liviano • $206.900 COP"
+             data-price="206900"
+             data-url="/products/relax-vision-sky-gafas-con-filtro-azul-uv-400-y-antirreflejo">
           <div class="model-img-thumb">
-            <img src="{{ 'SKY.webp' | asset_url }}" alt="Sky">
+            <img src="{{ 'SKY.webp' | asset_url }}" alt="Sky" width="1080" height="1080">
           </div>
           <span>Sky</span>
         </div>
       </div>
 
-      <a href="{{ section.settings.btn_url | default: '#vision' }}" class="btn-dark" onclick="navigateToWorldTV('vision', '/collections/salud-visual'); return false;">
-        {{ section.settings.btn_label | default: 'EXPLORAR COLECCIÓN DE GAFAS' }}
-      </a>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+        <button type="button" class="btn-primary" style="border: none; cursor: pointer;" onclick="WTVCart.addSelectedVisionModel()">
+          COMPRAR MODELO SELECCIONADO
+        </button>
+        <a href="{{ section.settings.btn_url | default: '/collections/lentes-para-descanso-visual-y-proteccion-de-pantallas' }}" class="btn-dark" style="margin-top: 0;">
+          {{ section.settings.btn_label | default: 'VER LOS 5 MODELOS' }}
+        </a>
+      </div>
     </div>
 
     <div class="vision-image-card">
-      <img id="mainVisionImg" src="{{ 'realx_vision_premuim_uso_hombre.webp' | asset_url }}" alt="Modelo Gafas Relax Vision">
+      <img id="mainVisionImg" src="{{ 'realx_vision_premuim_uso_hombre.webp' | asset_url }}" alt="Modelo Gafas Relax Vision" width="1080" height="1080">
       <div class="vision-img-caption">
         <strong id="mainVisionTitle">Relax Vision Premium</strong>
         <span id="mainVisionDesc">Filtro Luz Azul + Protección UV400 Avanzada</span>

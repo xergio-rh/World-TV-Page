@@ -28,9 +28,9 @@
 <section class="bestsellers-section" style="margin-top: 20px;">
   <div class="products-grid">
     <!-- 1. Relax Vision Premium -->
-    <article class="product-card beauty-card">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/relax-vision-premium-gafas-con-filtro-azul-uv-400-y-antirreflejo'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'realx_vision_premuim_uso.webp' | asset_url }}" alt="Relax Vision Premium">
+        <img src="{{ 'realx_vision_premuim_uso.webp' | asset_url }}" alt="Relax Vision Premium" width="1254" height="1254">
       </div>
       <div class="product-rating">★★★★★ <span>(184)</span></div>
       <h3 class="product-title">Relax Vision Premium - Gafas con filtro azul, UV 400 y antirreflejo</h3>
@@ -39,14 +39,14 @@
         <div class="price-box">
           <span class="new-p" style="color:var(--brand-dark);">$182.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'rv-premium', title: 'Relax Vision Premium', packTitle: '1 Unidad + Estuche', price: 182900, oldPrice: 220000, image: '{{ 'realx_vision_premuim_uso.webp' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 2. Relax Vision Clásicas -->
-    <article class="product-card beauty-card">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/relax-vision-clasicas-gafas-con-filtro-uv-400-y-antirreflejo'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'clasicas_en_uso.webp' | asset_url }}" alt="Relax Vision Clásicas">
+        <img src="{{ 'clasicas_en_uso.webp' | asset_url }}" alt="Relax Vision Clásicas" width="1254" height="1254">
       </div>
       <div class="product-rating">★★★★★ <span>(210)</span></div>
       <h3 class="product-title">Relax Vision Clásicas - Gafas con filtro UV 400 y antirreflejo</h3>
@@ -55,14 +55,14 @@
         <div class="price-box">
           <span class="new-p" style="color:var(--brand-dark);">$169.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'rv-clasicas', variantId: 46410573086894, title: 'Relax Vision Clásicas', packTitle: '1 Unidad + Estuche', price: 169900, oldPrice: 205000, image: '{{ 'clasicas_en_uso.webp' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 3. Relax Vision Chromax -->
-    <article class="product-card beauty-card">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/relax-vision-chromax-gafas-con-uv-400-y-proteccion-visual-avanzada'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'cromax_uso_pareja.webp' | asset_url }}" alt="Relax Vision Chromax">
+        <img src="{{ 'cromax_uso_pareja.webp' | asset_url }}" alt="Relax Vision Chromax" width="1254" height="1254">
       </div>
       <div class="product-rating">★★★★★ <span>(96)</span></div>
       <h3 class="product-title">Relax Vision Chromax - Gafas con UV 400 y protección visual avanzada</h3>
@@ -72,14 +72,14 @@
           <span class="old-p">$229.000</span>
           <span class="new-p">$194.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'rv-chromax', title: 'Relax Vision Chromax', packTitle: '1 Unidad + Estuche', price: 194900, oldPrice: 229000, image: '{{ 'cromax_uso_pareja.webp' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 4. Relax Vision Sky -->
-    <article class="product-card beauty-card">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/relax-vision-sky-gafas-con-filtro-azul-uv-400-y-antirreflejo'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'SKY_uso.webp' | asset_url }}" alt="Relax Vision Sky">
+        <img src="{{ 'SKY_uso.webp' | asset_url }}" alt="Relax Vision Sky" width="1254" height="1254">
       </div>
       <div class="product-rating">★★★★★ <span>(130)</span></div>
       <h3 class="product-title">Relax Vision Sky - Gafas con filtro azul, UV 400 y antirreflejo</h3>
@@ -88,14 +88,14 @@
         <div class="price-box">
           <span class="new-p" style="color:var(--brand-dark);">$206.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'rv-sky', title: 'Relax Vision Sky', packTitle: '1 Unidad + Estuche', price: 206900, oldPrice: 245000, image: '{{ 'SKY_uso.webp' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
 
     <!-- 5. Relax Vision Venturi -->
-    <article class="product-card beauty-card">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/relax-vision-venturi-gafas-con-filtro-azul-uv-400-y-tecnologia-antirreflejo'" style="cursor: pointer;">
       <div class="product-img-box">
-        <img src="{{ 'ventury_uso.webp' | asset_url }}" alt="Relax Vision Venturi">
+        <img src="{{ 'ventury_uso.webp' | asset_url }}" alt="Relax Vision Venturi" width="1254" height="1254">
       </div>
       <div class="product-rating">★★★★★ <span>(84)</span></div>
       <h3 class="product-title">Relax Vision Venturi - Gafas con filtro azul, UV 400 y tecnología antirreflejo</h3>
@@ -104,7 +104,7 @@
         <div class="price-box">
           <span class="new-p" style="color:var(--brand-dark);">$204.900,00 COP</span>
         </div>
-        <button class="btn-beauty-add" onclick="toggleCart()">AÑADIR AL CARRITO</button>
+        <button class="btn-beauty-add" type="button" onclick="event.stopPropagation(); WTVCart.addItem({ id: 'rv-venturi', title: 'Relax Vision Venturi', packTitle: '1 Unidad + Estuche', price: 204900, oldPrice: 240000, image: '{{ 'ventury_uso.webp' | asset_url }}' }, true);">AÑADIR +</button>
       </div>
     </article>
   </div>

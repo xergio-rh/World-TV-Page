@@ -7,7 +7,7 @@
       <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
         {% for item in cart.items %}
           <div class="cart-item" style="background: #fff; padding: 18px; border-radius: 16px; border: 1px solid var(--border-soft);">
-            <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" class="cart-item-img">
+            <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" class="cart-item-img" width="160" height="160">
             <div class="cart-item-info">
               <h4>{{ item.product.title }}</h4>
               <div class="cart-item-price">{{ item.final_line_price | money }}</div>

@@ -1,238 +1,326 @@
-<!-- SIDEBAR DEL CARRITO FLOTANTE + MODAL DE CHECKOUT CONTRAENTREGA -->
+<!-- SIDEBAR DEL CARRITO FLOTANTE + MODAL DE PEDIDO CONTRAENTREGA (SOLO DATOS DEL CLIENTE) -->
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 <div class="cart-drawer" id="cartDrawer">
   <div class="cart-header">
-    <h3>TU CARRITO</h3>
-    <button class="cart-close-btn" onclick="toggleCart()">✕</button>
+    <h3>TU CARRITO <span id="cartDrawerCount" style="font-size: 13px; color: var(--brand-red); font-family: var(--font-sans); font-weight: 800; margin-left: 4px;">(0)</span></h3>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <button type="button" id="cartClearBtn" onclick="WTVCart.clearCart()" style="display:none; background:none; border:none; font-size:11px; color:#888; text-decoration:underline; cursor:pointer;">Vaciar</button>
+      <button class="cart-close-btn" onclick="toggleCart()">✕</button>
+    </div>
   </div>
-  <div class="cart-body">
-    {% if cart.item_count > 0 %}
-      {% for item in cart.items %}
-        <div class="cart-item-card">
-          {% if item.image %}
-            <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}">
-          {% else %}
-            <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="{{ item.title | escape }}">
-          {% endif %}
-          <div class="cart-item-details">
-            <div class="cart-item-title-row">
-              <h4>{{ item.product.title }}</h4>
-              <a href="{{ item.url_to_remove }}" class="item-remove" style="text-decoration:none;">✕</a>
-            </div>
-            <div class="cart-item-price-row">
-              {% if item.original_price > item.final_price %}
-                <span class="cart-item-old">{{ item.original_price | money }}</span>
-              {% endif %}
-              <span class="cart-item-current">{{ item.final_price | money }}</span>
-            </div>
-            <div class="cart-item-qty-row">
-              <div class="qty-selector">
-                <button type="button">-</button>
-                <span>{{ item.quantity }}</span>
-                <button type="button">+</button>
-              </div>
-              <span class="cart-item-total">{{ item.final_line_price | money }}</span>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
-    {% else %}
-      <!-- Producto de muestra cuando el carrito está en vista previa -->
-      <div class="cart-item-card">
-        <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="Colasteel">
-        <div class="cart-item-details">
-          <div class="cart-item-title-row">
-            <h4>Colasteel Cloruro de Magnesio 500 ml</h4>
-            <button class="item-remove">✕</button>
-          </div>
-          <div class="cart-item-price-row">
-            <span class="cart-item-old">$127.500</span>
-            <span class="cart-item-current">$101.031</span>
-          </div>
-          <div class="cart-item-qty-row">
-            <div class="qty-selector">
-              <button type="button">-</button>
-              <span>1</span>
-              <button type="button">+</button>
-            </div>
-            <span class="cart-item-total">$101.031</span>
-          </div>
-        </div>
-      </div>
-    {% endif %}
 
+  <!-- BANNER PROMOCIONAL CONTRAENTREGA DENTRO DEL CARRITO -->
+  <div class="cart-cod-top-banner">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg>
+    <span><strong>PAGO CONTRAENTREGA ACTIVO:</strong> Pide hoy solo con tus datos y paga al recibir en casa.</span>
+  </div>
+
+  <div class="cart-body">
+    <!-- CONTENEDOR DINÁMICO DE PRODUCTOS Y KITS EN EL CARRITO -->
+    <div id="cartItemsList"></div>
+
+    <!-- UPSELLS FUNCIONALES DENTRO DEL CARRITO -->
     <div class="cart-upsell-section">
       <h5>Complementa tu rutina:</h5>
       <div class="cart-upsell-slider">
         <div class="upsell-card">
-          <img src="{{ 'suerox2.webp' | asset_url }}" alt="Resveratrol">
+          <img src="{{ 'ersveratrol2_df1e54aa-1b8c-4c39-b3df-a0e8d42ff75e.webp' | asset_url }}" alt="Resveratrol" width="400" height="400">
           <p class="upsell-name">Resveratrol 500 ml - Fórmula Única</p>
-          <span class="upsell-price">A partir de $101.500,00 COP</span>
-          <button class="upsell-add" type="button">Añadir</button>
+          <span class="upsell-price">$101.500 COP</span>
+          <button class="upsell-add" type="button"
+                  onclick="WTVCart.addItem({ id: 'resveratrol-1', variantId: 46782983700654, title: 'Resveratrol 500 ml – Fórmula Única', packTitle: 'Una Unidad', price: 101500, oldPrice: 125000, image: '{{ 'ersveratrol2_df1e54aa-1b8c-4c39-b3df-a0e8d42ff75e.webp' | asset_url }}' }, false)">
+            Añadir +
+          </button>
         </div>
         <div class="upsell-card">
-          <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León">
-          <p class="upsell-name">Melena de León en Polvo - Sabor a capuchino</p>
-          <span class="upsell-price">A partir de $94.900,00 COP</span>
-          <button class="upsell-add" type="button">Añadir</button>
+          <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León" width="400" height="400">
+          <p class="upsell-name">Melena de León en Polvo - Capuchino</p>
+          <span class="upsell-price">$94.900 COP</span>
+          <button class="upsell-add" type="button"
+                  onclick="WTVCart.addItem({ id: 'melena-1', variantId: 46764428198062, title: 'Melena de León en Polvo - Capuchino', packTitle: 'Una unidad', price: 94900, oldPrice: 127500, image: '{{ 'melena_x_1_IA.webp' | asset_url }}' }, false)">
+            Añadir +
+          </button>
         </div>
       </div>
     </div>
   </div>
+
   <div class="cart-footer">
     <div class="cart-summary-row">
       <span>Subtotal</span>
-      <strong>{% if cart.item_count > 0 %}{{ cart.total_price | money }}{% else %}$101.031{% endif %}</strong>
+      <strong id="cartSubtotalValue">$0</strong>
+    </div>
+    <div class="cart-summary-row" id="cartSavingsRow" style="display: none; color: #15803D; font-weight: 700;">
+      <span>Tu ahorro hoy</span>
+      <strong id="cartSavingsValue" style="color: #15803D;">-$0</strong>
     </div>
     <div class="cart-summary-row">
-      <span>Envío</span>
-      <strong>Incluido</strong>
+      <span>Envío a toda Colombia</span>
+      <strong id="cartShippingValue" style="color: #15803D;">Gratis / Incluido</strong>
     </div>
     <div class="cart-summary-row total-row">
-      <span>Total</span>
-      <strong>{% if cart.item_count > 0 %}{{ cart.total_price | money }}{% else %}$101.031{% endif %}</strong>
+      <span>Total del pedido</span>
+      <strong id="cartTotalValue">$0</strong>
     </div>
-    <a href="/checkout" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">Pagar</a>
+
+    <!-- DOS OPCIONES DE PAGO EN EL CARRITO: 1) PAGAR AHORA Y 2) PAGO CONTRAENTREGA -->
+    <div class="cart-dual-pay-buttons">
+      <button type="button" class="cart-checkout-btn btn-pay-now-main" style="width:100%; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;" onclick="WTVCart.proceedToCheckoutModal(event, 'online');">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+        <span>PAGAR AHORA (TARJETA / PSE / NEQUI)</span>
+      </button>
+
+      <button type="button" class="cart-checkout-btn btn-cod-main" style="width:100%; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;" onclick="WTVCart.proceedToCheckoutModal(event, 'cod');">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg>
+        <span>PAGO CONTRAENTREGA (SOLO TUS DATOS)</span>
+      </button>
+    </div>
+
     <div class="cart-trust-badges">
-      <span><svg class="inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> 4.8 <span>★★★★★</span> 500 de confianza</span>
-      <span><svg class="inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> GMP producto</span>
+      <span><svg class="inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Pago 100% Seguro</span>
+      <span><svg class="inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Garantía Oficial World TV</span>
     </div>
     <div class="payment-methods-icons">
-      <span><svg class="inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg></span> <span>Nequi</span> <span>Daviplata</span> <span>PSE</span> <span>Addi</span>
+      <span>Visa / Mastercard</span> • <span>PSE</span> • <span>Nequi</span> • <span>Contraentrega</span>
     </div>
   </div>
 </div>
 
-<!-- MODAL DE CHECKOUT / REALIZA TU PEDIDO -->
+<!-- MODAL DE CHECKOUT DUAL: PAGO CONTRAENTREGA (SOLO DATOS) O PAGAR AHORA (TARJETA / PSE / NEQUI) -->
 <div class="checkout-modal-overlay" id="checkoutModalOverlay" onclick="toggleCheckoutModal()"></div>
 <div class="checkout-modal-container" id="checkoutModal">
   <div class="checkout-modal-header">
-    <h2>¡REALIZA TU PEDIDO!</h2>
+    <h2 id="chkModalHeaderTitle"><svg class="inline-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg> FINALIZAR PEDIDO — ELIGE CÓMO PAGAR</h2>
     <button class="checkout-close-btn" onclick="toggleCheckoutModal()">✕</button>
   </div>
-  <div class="checkout-modal-body">
+
+  <!-- VISTA 1: FORMULARIO DE DATOS Y SELECTOR DE MÉTODO DE PAGO -->
+  <div class="checkout-modal-body" id="codFormBodyView">
     <div class="checkout-form-col">
-      <h3>INGRESA TUS DATOS COMPLETOS</h3>
-      <form class="checkout-form" action="/checkout" method="post" onsubmit="event.preventDefault(); window.location.href='/checkout';">
+      <!-- SELECTOR DE LAS DOS OPCIONES DE PAGO -->
+      <div class="payment-mode-selector" id="paymentModeSelector">
+        <button type="button" class="pay-mode-tab active" id="tabPayCod" onclick="WTVCart.setPaymentMode('cod')">
+          <div class="pay-mode-radio"></div>
+          <div class="pay-mode-info">
+            <strong>Pago Contraentrega</strong>
+            <span>Solo tus datos • Pagas al recibir en casa</span>
+          </div>
+        </button>
+        <button type="button" class="pay-mode-tab" id="tabPayOnline" onclick="WTVCart.setPaymentMode('online')">
+          <div class="pay-mode-radio"></div>
+          <div class="pay-mode-info">
+            <strong>Pagar Ahora al Instante</strong>
+            <span>Tarjeta Crédito/Débito, PSE, Nequi</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="cod-form-notice" id="codFormNoticeBox">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        <div>
+          <strong id="codNoticeTitle">PAGO CONTRAENTREGA: SOLO TUS DATOS DE ENVÍO</strong>
+          <span id="codNoticeDesc">No necesitas tarjeta. Te despachamos hoy mismo y pagas en efectivo o transferencia al recibir en tu puerta.</span>
+        </div>
+      </div>
+
+      <h3>1. DATOS PARA EL ENVÍO</h3>
+      <form class="checkout-form" id="wtvCheckoutForm" onsubmit="return WTVCart.submitCheckoutForm(event);">
         <div class="form-row">
           <div class="form-group">
-            <label>Nombre:</label>
+            <label>Nombre *</label>
             <div class="input-with-icon">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              <input type="text" name="checkout[shipping_address][first_name]" placeholder="Nombre" required>
+              <input type="text" id="chkFirstName" name="first_name" placeholder="Tu nombre" required>
             </div>
           </div>
           <div class="form-group">
-            <label>Apellido:</label>
+            <label>Apellido *</label>
             <div class="input-with-icon">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              <input type="text" name="checkout[shipping_address][last_name]" placeholder="Apellido" required>
+              <input type="text" id="chkLastName" name="last_name" placeholder="Tu apellido" required>
             </div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Teléfono:</label>
+            <label>Teléfono / WhatsApp *</label>
             <div class="input-with-icon">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              <input type="tel" name="checkout[shipping_address][phone]" placeholder="Teléfono" required>
+              <input type="tel" id="chkPhone" name="phone" placeholder="Ej: 300 123 4567" required>
             </div>
           </div>
           <div class="form-group">
-            <label>Departamento:</label>
-            <select name="checkout[shipping_address][province]" required>
-              <option value="" disabled selected>Departamento</option>
+            <label>Departamento *</label>
+            <select id="chkProvince" name="province" required>
+              <option value="" disabled selected>Selecciona Departamento</option>
               <option value="Antioquia">Antioquia</option>
-              <option value="Bogota">Bogotá D.C.</option>
+              <option value="Bogotá D.C.">Bogotá D.C.</option>
               <option value="Cundinamarca">Cundinamarca</option>
-              <option value="Valle">Valle del Cauca</option>
+              <option value="Valle del Cauca">Valle del Cauca</option>
+              <option value="Atlántico">Atlántico</option>
               <option value="Santander">Santander</option>
+              <option value="Bolívar">Bolívar</option>
+              <option value="Risaralda">Risaralda</option>
+              <option value="Caldas">Caldas</option>
+              <option value="Quindío">Quindío</option>
+              <option value="Tolima">Tolima</option>
+              <option value="Huila">Huila</option>
+              <option value="Meta">Meta</option>
+              <option value="Nariño">Nariño</option>
+              <option value="Cauca">Cauca</option>
+              <option value="Norte de Santander">Norte de Santander</option>
+              <option value="Magdalena">Magdalena</option>
+              <option value="Cesar">Cesar</option>
+              <option value="Córdoba">Córdoba</option>
+              <option value="Boyacá">Boyacá</option>
+              <option value="Casanare">Casanare</option>
+              <option value="Sucre">Sucre</option>
+              <option value="La Guajira">La Guajira</option>
+              <option value="Caquetá">Caquetá</option>
             </select>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Ciudad:</label>
+            <label>Ciudad / Municipio *</label>
             <div class="input-with-icon">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              <input type="text" name="checkout[shipping_address][city]" placeholder="Ciudad" required>
+              <input type="text" id="chkCity" name="city" placeholder="Ej: Medellín, Bogotá, Cali..." required>
             </div>
           </div>
           <div class="form-group">
-            <label>Dirección:</label>
+            <label>Dirección exacta *</label>
             <div class="input-with-icon">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              <input type="text" name="checkout[shipping_address][address1]" placeholder="Calle, Carrera, Diagonal o Transversal" required>
+              <input type="text" id="chkAddress1" name="address1" placeholder="Calle / Carrera, Número y Barrio" required>
             </div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Correo electrónico:</label>
+            <label>Complemento (Casa / Apto / Punto de referencia):</label>
             <div class="input-with-icon">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              <input type="email" name="checkout[email]" placeholder="Correo electrónico" required>
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+              <input type="text" id="chkAddress2" name="address2" placeholder="Ej: Apto 302, Conjunto Los Pinos">
             </div>
           </div>
           <div class="form-group">
-            <label>Especificación:</label>
+            <label>Correo electrónico (Opcional):</label>
             <div class="input-with-icon">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-              <input type="text" name="checkout[shipping_address][address2]" placeholder="(Casa/Apartamento/Edificio)">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <input type="email" id="chkEmail" name="email" placeholder="Opcional para guía de rastreo">
+            </div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN DE PAGO EN LÍNEA AL INSTANTE (SOLO VISIBLE CUANDO SE ELIGE "PAGAR AHORA") -->
+        <div id="onlinePaymentMethodsBox" class="online-payment-box" style="display: none;">
+          <h3 style="margin-top: 14px; margin-bottom: 10px;">2. ELIGE TU MÉTODO DE PAGO AL INSTANTE</h3>
+          <div class="online-methods-pills">
+            <button type="button" class="online-method-pill active" id="pillMethodCard" onclick="WTVCart.selectOnlineSubMethod('card')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+              Tarjeta Crédito / Débito
+            </button>
+            <button type="button" class="online-method-pill" id="pillMethodPse" onclick="WTVCart.selectOnlineSubMethod('pse')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+              PSE / Nequi / Daviplata
+            </button>
+          </div>
+
+          <!-- CAMPOS DE TARJETA DE CRÉDITO / DÉBITO -->
+          <div id="onlineCardFields" class="online-sub-panel">
+            <div class="form-group" style="margin-bottom: 10px;">
+              <label>Número de Tarjeta (Visa, Mastercard, Amex) *</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                <input type="text" id="chkCardNumber" placeholder="0000 0000 0000 0000" maxlength="19" autocomplete="cc-number">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Vencimiento (MM/AA) *</label>
+                <input type="text" id="chkCardExp" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp" style="padding: 9px 11px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; width: 100%;">
+              </div>
+              <div class="form-group">
+                <label>CVV / CVC *</label>
+                <input type="password" id="chkCardCvv" placeholder="123" maxlength="4" autocomplete="cc-csc" style="padding: 9px 11px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; width: 100%;">
+              </div>
+              <div class="form-group">
+                <label>Cuotas</label>
+                <select id="chkCardInstallments" style="padding: 9px 11px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; width: 100%;">
+                  <option value="1">1 cuota (Débito / Crédito)</option>
+                  <option value="2">2 cuotas</option>
+                  <option value="3">3 cuotas</option>
+                  <option value="6">6 cuotas</option>
+                  <option value="12">12 cuotas</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- CAMPOS DE PSE / NEQUI / DAVIPLATA / BANCOLOMBIA -->
+          <div id="onlinePseFields" class="online-sub-panel" style="display: none;">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Selecciona tu Entidad o Billetera *</label>
+                <select id="chkBankEntity" style="padding: 9px 11px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; width: 100%;">
+                  <option value="Nequi">Nequi (Pago inmediato)</option>
+                  <option value="Bancolombia">Bancolombia / Botón Bancolombia</option>
+                  <option value="Daviplata">Daviplata</option>
+                  <option value="Davivienda">PSE - Banco Davivienda</option>
+                  <option value="Banco de Bogotá">PSE - Banco de Bogotá</option>
+                  <option value="BBVA Colombia">PSE - BBVA Colombia</option>
+                  <option value="Nu Colombia">PSE - Nu Colombia</option>
+                  <option value="Scotiabank Colpatria">PSE - Scotiabank Colpatria</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Cédula / NIT del Titular *</label>
+                <input type="text" id="chkPseDoc" placeholder="Número de documento" style="padding: 9px 11px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; width: 100%;">
+              </div>
             </div>
           </div>
         </div>
       </form>
-      <div class="shipping-banner-bar">
-        <svg class="inline-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg> ENVÍOS DE 24-48 HORAS <svg class="inline-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+      <div class="shipping-banner-bar" id="chkBottomShippingBar">
+        <svg class="inline-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg> DESPACHO INMEDIATO 24-48H | ENVÍO ASEGURADO A TODA COLOMBIA
       </div>
     </div>
+
     <div class="checkout-summary-col">
+      <!-- RESUMEN DINÁMICO DE LOS PRODUCTOS EN EL PEDIDO -->
+      <div id="chkItemsSummaryList" style="max-height: 165px; overflow-y: auto; margin-bottom: 12px; padding-right: 4px;"></div>
+
       <div class="checkout-receipt-box">
         <div class="receipt-row">
           <span>Subtotal</span>
-          <strong id="chkSubtotal">{% if cart.item_count > 0 %}{{ cart.total_price | money }}{% else %}$179.800{% endif %}</strong>
+          <strong id="chkSubtotal">$0</strong>
         </div>
         <div class="receipt-row">
-          <span>Envío</span>
-          <strong>Incluido</strong>
+          <span id="chkShippingLabel">Envío Nacional</span>
+          <strong style="color: #15803D;">GRATIS</strong>
         </div>
         <div class="receipt-row total">
-          <span>Total</span>
-          <strong id="chkTotal">{% if cart.item_count > 0 %}{{ cart.total_price | money }}{% else %}$179.800{% endif %}</strong>
+          <span id="chkTotalLabel">Total del Pedido</span>
+          <strong id="chkTotal">$0</strong>
         </div>
       </div>
-      <div class="checkout-packages-selector">
-        <span class="packages-label-mini">Paquetes</span>
-        <div class="checkout-pkgs-grid">
-          <div class="chk-pkg-card" onclick="selectCheckoutPackage(this, '$101.031')">
-            <span class="chk-title">Lleva 1</span>
-            <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="1">
-            <del>$127.500</del>
-            <strong>$101.031</strong>
-          </div>
-          <div class="chk-pkg-card active" onclick="selectCheckoutPackage(this, '$179.800')">
-            <span class="badge-best-chk">MAS VENDIDO</span>
-            <span class="chk-title">Lleva 2</span>
-            <img src="{{ 'suerox2.webp' | asset_url }}" alt="2">
-            <del>$202.062</del>
-            <strong>$179.800</strong>
-          </div>
-          <div class="chk-pkg-card" onclick="selectCheckoutPackage(this, '$221.250')">
-            <span class="chk-title">Lleva 3</span>
-            <img src="{{ 'suerox2.webp' | asset_url }}" alt="3">
-            <del>$303.093</del>
-            <strong>$221.250</strong>
-          </div>
-        </div>
+
+      <!-- SELECTOR DINÁMICO DE PAQUETES DENTRO DEL MODAL -->
+      <div class="checkout-packages-selector" id="chkPackagesWrapper">
+        <span class="packages-label-mini" id="chkPackagesLabel">Mejora tu paquete y ahorra más:</span>
+        <div class="checkout-pkgs-grid" id="chkPackagesGrid"></div>
       </div>
-      <button class="btn-checkout-submit" type="button" onclick="window.location.href='/checkout'">
-        COMPRA AHORA
+
+      <button class="btn-checkout-submit" id="chkMainSubmitBtn" type="button" onclick="WTVCart.submitCheckoutForm(event)">
+        CONFIRMAR PEDIDO CONTRAENTREGA
       </button>
-      <div class="payment-methods-icons">
-        <span><svg class="inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg></span> <span>Nequi</span> <span>PSE</span> <span>Addi</span> <span>Daviplata</span>
+      <div class="payment-methods-icons" id="chkFooterGuaranteeText">
+        <span><svg class="inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Pagas al recibir o en línea con total seguridad</span>
       </div>
     </div>
   </div>
-</div>
 
+  <!-- VISTA 2: CONFIRMACIÓN DE PEDIDO EXITOSO (CONTRAENTREGA O PAGO EN LÍNEA) -->
+  <div id="codSuccessView" class="cod-success-view" style="display: none;"></div>
+</div>
