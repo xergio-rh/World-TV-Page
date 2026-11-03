@@ -285,7 +285,7 @@
               '<div class="cart-item-details">' +
                 '<div class="cart-item-title-row">' +
                   '<h4>' + item.title + '</h4>' +
-                  '<button type="button" class="item-remove" title="Eliminar producto" onclick="WTVCart.removeItem(\'' + safeId + '\')">✕</button>' +
+                  '<button type="button" class="item-remove" title="Eliminar producto" onclick="WTVCart.removeItem(\'' + safeId + '\')">&times;</button>' +
                 '</div>' +
                 (item.packTitle ? '<span class="cart-item-pack-badge">' + item.packTitle + '</span>' : '') +
                 '<div class="cart-item-price-row">' +
@@ -565,7 +565,7 @@
         target.classList.add('kit-selected');
         var ribbon = document.createElement('span');
         ribbon.className = 'kit-selected-ribbon';
-        ribbon.textContent = 'KIT SELECCIONADO ✓';
+        ribbon.textContent = 'KIT SELECCIONADO';
         target.appendChild(ribbon);
       }
     },
@@ -948,7 +948,7 @@
         drop.innerHTML =
           '<div class="wtv-search-header">' +
             '<span>SIN RESULTADOS</span>' +
-            '<button type="button" class="wtv-search-close" onclick="this.closest(\'.wtv-search-dropdown\').style.display=\'none\'">✕</button>' +
+            '<button type="button" class="wtv-search-close" onclick="this.closest(\'.wtv-search-dropdown\').style.display=\'none\'">&times;</button>' +
           '</div>' +
           '<div class="wtv-search-empty">No encontramos "' + inputEl.value.replace(/</g, '&lt;') + '". Prueba con Melena, Cloruro, Inositol, Gafas o Sérum.</div>';
         drop.style.display = 'block';
@@ -958,7 +958,7 @@
       drop.innerHTML =
         '<div class="wtv-search-header">' +
           '<span>PRODUCTOS SUGERIDOS (' + matches.length + ')</span>' +
-          '<button type="button" class="wtv-search-close" onclick="this.closest(\'.wtv-search-dropdown\').style.display=\'none\'">Cerrar ✕</button>' +
+          '<button type="button" class="wtv-search-close" onclick="this.closest(\'.wtv-search-dropdown\').style.display=\'none\'">Cerrar</button>' +
         '</div>' +
         matches.map(function(m) {
           var safeTitle = m.title.replace(/'/g, "\\'");
@@ -1015,7 +1015,7 @@
         msg.style.cssText = 'margin-top:10px; padding:10px 12px; background:#ECFDF5; border:1px solid #86EFAC; border-radius:8px; color:#15803D; font-size:12px; font-weight:700;';
         container.appendChild(msg);
       }
-      msg.textContent = '✓ ¡Suscripción exitosa! Recibirás nuestras ofertas exclusivas en ' + emailVal;
+      msg.textContent = '¡Suscripción exitosa! Recibirás nuestras ofertas exclusivas en ' + emailVal;
       showToast('¡Gracias por suscribirte a World TV Colombia!');
       return false;
     },
@@ -1106,7 +1106,7 @@
       modal.innerHTML =
         '<div class="checkout-modal-header">' +
           '<h2>' + info.title + '</h2>' +
-          '<button class="checkout-close-btn" type="button" onclick="WTVCart.closeInfoModal()">✕</button>' +
+          '<button class="checkout-close-btn" type="button" onclick="WTVCart.closeInfoModal()">&times;</button>' +
         '</div>' +
         '<div class="wtv-info-modal-body">' +
           info.body +

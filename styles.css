@@ -291,7 +291,7 @@
  }  
    
  .hero-checks span::before {  
-  content: "✓ ";  
+  content: "";  
   color: var(--brand-burgundy);  
   font-weight: 800;  
  }  

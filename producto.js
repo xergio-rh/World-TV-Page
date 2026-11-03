@@ -231,7 +231,7 @@
               '<div class="cart-item-details">' +
                 '<div class="cart-item-title-row">' +
                   '<h4>' + item.title + '</h4>' +
-                  '<button type="button" class="item-remove" title="Eliminar producto" onclick="WTVCart.removeItem(\'' + safeId + '\')">✕</button>' +
+                  '<button type="button" class="item-remove" title="Eliminar producto" onclick="WTVCart.removeItem(\'' + safeId + '\')">&times;</button>' +
                 '</div>' +
                 (item.packTitle ? '<span class="cart-item-pack-badge">' + item.packTitle + '</span>' : '') +
                 '<div class="cart-item-price-row">' +
@@ -511,7 +511,7 @@
         target.classList.add('kit-selected');
         var ribbon = document.createElement('span');
         ribbon.className = 'kit-selected-ribbon';
-        ribbon.textContent = 'KIT SELECCIONADO ✓';
+        ribbon.textContent = 'KIT SELECCIONADO';
         target.appendChild(ribbon);
       }
     },

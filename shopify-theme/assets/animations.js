@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Si el botón no tiene onclick definido para navegar o abrir carrito, damos feedback visual y abrimos carrito
       if (!this.getAttribute('onclick')) {
         const originalText = this.innerText;
-        this.innerText = '✓ ¡Añadido!';
+        this.innerText = '¡Añadido!';
         setTimeout(() => {
           this.innerText = originalText;
         }, 1200);

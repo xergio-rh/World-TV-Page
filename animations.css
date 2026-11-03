@@ -488,7 +488,7 @@ button:active {
   z-index: 3;
 }
 
-/* Botones de cantidad (+ / -) y cerrar (✕) */
+/* Botones de cantidad (+ / -) y cerrar (x) */
 .qty-selector button,
 .qty-selector-sticky button {
   transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
@@ -1358,99 +1358,6 @@ button:active {
   line-height: 1.45;
 }
 
-/* Franja promocional de 3 pasos de Pago Contraentrega en el Home */
-.cod-promo-strip-section {
-  max-width: 1240px;
-  margin: 0 auto 56px;
-  padding: 0 24px;
-}
-
-.cod-promo-strip-card {
-  background: linear-gradient(135deg, #1A1A1A 0%, #2B1216 100%);
-  color: #FFFFFF;
-  border-radius: 16px;
-  padding: 32px 36px;
-  display: grid;
-  grid-template-columns: 1.1fr 1.3fr;
-  gap: 32px;
-  align-items: center;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
-}
-
-.cod-strip-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(217, 4, 41, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #FFCCD5;
-  font-size: 10.5px;
-  font-weight: 800;
-  padding: 4px 12px;
-  border-radius: 50px;
-  letter-spacing: 0.6px;
-  margin-bottom: 12px;
-}
-
-.cod-promo-left h3 {
-  font-family: var(--font-serif);
-  font-size: 26px;
-  line-height: 1.2;
-  margin-bottom: 10px;
-  color: #FFFFFF;
-}
-
-.cod-promo-left h3 span {
-  color: #FF4D6D;
-}
-
-.cod-promo-left p {
-  font-size: 13.5px;
-  color: #D5D5D5;
-  line-height: 1.55;
-}
-
-.cod-promo-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-
-.cod-step-box {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 12px;
-  padding: 16px 14px;
-  text-align: left;
-}
-
-.cod-step-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--brand-red, #D90429);
-  color: #FFF;
-  font-size: 12px;
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-
-.cod-step-box strong {
-  display: block;
-  font-size: 13px;
-  color: #FFFFFF;
-  margin-bottom: 4px;
-}
-
-.cod-step-box p {
-  font-size: 11.5px;
-  color: #CCCCCC;
-  line-height: 1.4;
-}
-
 /* Vista de Confirmación de Pedido Contraentrega Exitoso */
 .cod-success-view {
   padding: 28px 24px;
@@ -1556,11 +1463,6 @@ button:active {
 }
 
 @media (max-width: 900px) {
-  .cod-promo-strip-card {
-    grid-template-columns: 1fr;
-    padding: 24px 20px;
-  }
-  .cod-promo-steps,
   .cod-summary-grid {
     grid-template-columns: 1fr;
   }
@@ -2029,102 +1931,6 @@ img {
   object-fit: contain !important;
 }
 
-/* B. Contraste Total en Banners de Colecciones y Tarjeta de Salud Visual (Desktop y Móvil) */
-.beauty-hero-banner,
-.vision-hero-banner,
-.outlet-hero-banner {
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-.beauty-hero-banner::before,
-.vision-hero-banner::before,
-.outlet-hero-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 14, 26, 0.48) 0%, rgba(10, 14, 26, 0.76) 100%);
-  z-index: 1;
-  pointer-events: none;
-}
-
-.beauty-hero-content,
-.vision-hero-content,
-.outlet-hero-content {
-  position: relative !important;
-  z-index: 2 !important;
-  background: rgba(15, 23, 42, 0.56);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 28px 32px !important;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.32);
-}
-
-.beauty-hero-content h1,
-.vision-hero-content h1,
-.outlet-hero-content h1 {
-  color: #FFFFFF !important;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85) !important;
-}
-
-.beauty-hero-content p,
-.vision-hero-content p,
-.outlet-hero-content p {
-  color: #F8FAFC !important;
-  opacity: 1 !important;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.85) !important;
-  font-weight: 500;
-}
-
-/* Tarjeta de Imagen en Relax Vision con velo oscuro inferior para que el texto nunca se pierda */
-.vision-image-card {
-  position: relative !important;
-}
-
-.vision-image-card img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center 20% !important;
-}
-
-.vision-image-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(10, 14, 26, 0.88) 100%);
-  z-index: 1;
-  pointer-events: none;
-}
-
-.vision-img-caption {
-  z-index: 2 !important;
-  left: 16px !important;
-  right: 16px !important;
-  bottom: 16px !important;
-  background: rgba(15, 23, 42, 0.72);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85) !important;
-}
-
-.vision-img-caption strong {
-  color: #FFFFFF !important;
-  font-size: 15px !important;
-  margin-bottom: 2px;
-}
-
-.vision-img-caption span {
-  color: #E2E8F0 !important;
-  opacity: 1 !important;
-  font-size: 12px !important;
-}
-
 /* C. Modal de Checkout con scroll fluido en pantallas pequeñas o medianas */
 .checkout-modal-container {
   max-height: 92vh !important;
@@ -2138,69 +1944,39 @@ img {
   -webkit-overflow-scrolling: touch;
 }
 
-/* D. Reglas para Tablets y Móviles (<= 992px): Hero con Tarjeta de Alto Contraste */
+/* D. Tablets y móviles (<= 992px): el hero conserva el diseño original con un velo suave del color de marca */
 @media (max-width: 992px) {
   .hero-section {
     position: relative !important;
     min-height: auto !important;
-    padding: 175px 14px 28px !important;
-    background-size: cover !important;
-    background-position: 26% top !important;
+    padding: 40px 0 36px !important;
+    background-position: 30% center !important;
   }
 
   .hero-section::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.12) 0%, rgba(15, 23, 42, 0.58) 55%, rgba(15, 23, 42, 0.75) 100%);
-    z-index: 1;
+    background: rgba(235, 232, 224, 0.82);
+    z-index: 0;
     pointer-events: none;
   }
 
   .hero-container {
-    padding: 0 !important;
     position: relative;
-    z-index: 2;
-  }
-
-  .hero-content {
-    grid-column: 1 !important;
-    max-width: 100% !important;
-    background: rgba(255, 255, 255, 0.94) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 22px 18px !important;
-    border-radius: 16px !important;
-    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22) !important;
-    border: 1px solid rgba(255, 255, 255, 0.92) !important;
-    text-align: center !important;
+    z-index: 1;
+    padding: 0 20px !important;
   }
 
   .hero-title {
-    color: #1A1A1A !important;
     font-size: 28px !important;
     line-height: 1.16 !important;
-    margin-bottom: 10px !important;
-    text-shadow: none !important;
-  }
-
-  .hero-title span {
-    color: var(--brand-burgundy, #9E2A2B) !important;
-  }
-
-  .hero-desc {
-    color: #262626 !important;
-    font-size: 13.5px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 16px !important;
   }
 
   .hero-checks {
     flex-direction: column !important;
     gap: 6px !important;
     align-items: center !important;
-    color: #1A1A1A !important;
-    font-size: 12px !important;
   }
 
   .outlet-people {
@@ -2238,15 +2014,11 @@ img {
 
   /* Hero principal en teléfono */
   .hero-section {
-    padding: 155px 12px 22px !important;
-  }
-
-  .hero-content {
-    padding: 20px 16px !important;
+    padding: 32px 0 28px !important;
   }
 
   .hero-title {
-    font-size: 25px !important;
+    font-size: 26px !important;
   }
 
   .hero-ctas {
@@ -2260,38 +2032,6 @@ img {
     width: 100% !important;
     text-align: center !important;
     padding: 13px 16px !important;
-  }
-
-  /* Banners de Colección (Nutrición, Salud Visual, Belleza, Outlet) en teléfono */
-  .beauty-hero-banner,
-  .vision-hero-banner,
-  .outlet-hero-banner {
-    min-height: 260px !important;
-    padding: 22px 12px !important;
-    background-position: center 20% !important;
-  }
-
-  .beauty-hero-content,
-  .vision-hero-content,
-  .outlet-hero-content {
-    padding: 20px 16px !important;
-    border-radius: 14px !important;
-    width: 100% !important;
-  }
-
-  .beauty-hero-content h1,
-  .vision-hero-content h1,
-  .outlet-hero-content h1 {
-    font-size: 23px !important;
-    line-height: 1.2 !important;
-    margin-bottom: 10px !important;
-  }
-
-  .beauty-hero-content p,
-  .vision-hero-content p,
-  .outlet-hero-content p {
-    font-size: 13px !important;
-    line-height: 1.45 !important;
   }
 
   /* Tarjetas de Producto en teléfono: proporción limpia y sin recortes */
@@ -2313,21 +2053,6 @@ img {
     height: 230px !important;
     padding: 10px !important;
     background-color: #F8F7F4 !important;
-  }
-
-  /* Franja Contraentrega de 3 pasos en teléfono */
-  .cod-promo-strip-section {
-    padding: 0 14px !important;
-    margin-bottom: 36px !important;
-  }
-
-  .cod-promo-strip-card {
-    padding: 22px 16px !important;
-    gap: 18px !important;
-  }
-
-  .cod-promo-left h3 {
-    font-size: 21px !important;
   }
 
   /* Colección Relax Vision en teléfono */
@@ -2501,9 +2226,452 @@ img {
   }
 }
 
+/* ============================================================================
+   11. ACABADO SOBRIO: SIN ANIMACIONES LLAMATIVAS, SIN FIGURAS DECORATIVAS,
+       SIN EMOJIS NI GLIFOS. DISEÑO MOBILE FIRST.
+   ============================================================================ */
 
+/* A. Se eliminan animaciones infinitas y efectos de "brillo" */
+.top-bar {
+  background: var(--brand-red) !important;
+  animation: none !important;
+}
 
+.pill-badge,
+.vision-tag,
+.vision-tag-top,
+.beauty-tag-top,
+.outlet-tag-top,
+.outlet-badge,
+.badge-best,
+.badge-best-chk,
+.save-pill,
+.model-item.active,
+.shipping-banner-bar,
+.hero-content,
+.vision-hero-content,
+.beauty-hero-content,
+.outlet-hero-content {
+  animation: none !important;
+}
 
+.btn-primary::before,
+.btn-dark::before,
+.outlet-btn::before,
+.cart-checkout-btn::before,
+.btn-checkout-submit::before,
+.btn-sticky-buy::before,
+.btn-beauty-add::before,
+.add-btn::before,
+.ripple,
+.btn-ripple {
+  display: none !important;
+}
 
+.reveal-item {
+  transform: translateY(10px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
 
+.reveal-item.revealed {
+  transform: none;
+}
 
+/* B. Hover discreto: sin saltos, giros ni zoom exagerado */
+.product-card:hover,
+.beauty-card:hover,
+.trust-card:hover,
+.kit-card:hover,
+.review-card:hover,
+.model-item:hover,
+.vision-image-card:hover,
+.outlet-banner:hover,
+.main-image-box:hover,
+.mini-trust-item:hover,
+.ingredient-card:hover,
+.logo-link:hover,
+.footer-logo-link:hover {
+  transform: none !important;
+}
+
+.product-card:hover,
+.beauty-card:hover,
+.kit-card:hover,
+.review-card:hover,
+.trust-card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06) !important;
+}
+
+.product-card:hover .product-img-box img,
+.beauty-card:hover .product-img-box img,
+.kit-card:hover .kit-image-box img,
+.vision-image-card:hover img,
+.outlet-banner:hover .outlet-people,
+.pack-option:hover img,
+.chk-pkg-card:hover img,
+.model-item:hover .model-img-thumb img,
+.trust-card:hover .trust-icon,
+.mini-trust-item:hover svg,
+.review-card:hover .verified-icon,
+.review-card:hover .review-stars,
+.product-card:hover .product-rating,
+.product-card:hover .product-price,
+.beauty-card:hover .price-box .new-p,
+.input-with-icon:focus-within svg {
+  transform: none !important;
+  filter: none !important;
+  letter-spacing: inherit;
+}
+
+.trust-card:hover .trust-icon {
+  background-color: transparent;
+  color: inherit;
+}
+
+.btn-primary:hover,
+.btn-dark:hover,
+.btn-secondary:hover,
+.add-btn:hover,
+.btn-beauty-add:hover,
+.cart-checkout-btn:hover,
+.btn-sticky-buy:hover {
+  transform: none !important;
+}
+
+/* C. Etiquetas planas (sin píldora, sin icono, sin flotar) */
+.pill-badge,
+.vision-tag,
+.vision-tag-top,
+.beauty-tag-top,
+.outlet-tag-top,
+.outlet-badge {
+  border-radius: 3px !important;
+  letter-spacing: 1.2px !important;
+}
+
+.pill-badge svg,
+.vision-tag svg,
+.vision-tag-top svg,
+.beauty-tag-top svg,
+.outlet-tag-top svg,
+.outlet-badge svg,
+.cod-section-badge svg,
+.cod-product-promo-box .cod-promo-icon,
+.cart-cod-top-banner svg,
+.cod-form-notice svg {
+  display: none !important;
+}
+
+.cod-section-badge {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  color: var(--brand-burgundy);
+  letter-spacing: 1.2px;
+}
+
+/* D. Avisos de contraentrega en la paleta de la tienda (sin verdes genéricos) */
+.cart-cod-top-banner,
+.cod-form-notice,
+.cod-product-promo-box {
+  background: var(--bg-cream);
+  border: 1px solid #E5E0D8;
+  border-radius: 8px;
+  color: var(--brand-dark);
+}
+
+.cart-cod-top-banner {
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-radius: 0;
+}
+
+.cod-form-notice strong,
+.cod-product-promo-box .cod-promo-text strong {
+  color: var(--brand-dark);
+}
+
+.cod-form-notice span,
+.cod-product-promo-box .cod-promo-text span {
+  color: #5A5650;
+}
+
+.btn-pay-now-main {
+  background: var(--brand-dark) !important;
+  box-shadow: none !important;
+}
+
+.btn-pay-now-main:hover {
+  background: #000000 !important;
+  transform: none;
+}
+
+/* E. Estrellas de reseña como vector (reemplaza glifos de texto) */
+.review-stars,
+.stars {
+  display: block;
+  font-size: 0 !important;
+  letter-spacing: 0 !important;
+  width: 92px;
+  height: 16px;
+  margin-bottom: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='18' height='16' fill='%23C98A1B'%3E%3Cpath d='M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z'/%3E%3C/svg%3E") left center / 18.4px 16px repeat-x;
+}
+
+.hero-checks span::before {
+  content: '' !important;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-burgundy);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* F. Franja de Pago Contraentrega: sobria, editorial, misma paleta de la tienda */
+.cod-band {
+  background: var(--bg-cream);
+  border-top: 1px solid #E5E0D8;
+  border-bottom: 1px solid #E5E0D8;
+  margin: 0 0 56px;
+  padding: 44px 24px;
+}
+
+.cod-band-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.cod-band-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--brand-burgundy);
+  margin-bottom: 10px;
+}
+
+.cod-band-copy h3 {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  line-height: 1.15;
+  color: var(--brand-dark);
+  margin-bottom: 12px;
+}
+
+.cod-band-copy p:last-child {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+  max-width: 440px;
+}
+
+.cod-band-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cod-band-steps li {
+  padding: 4px 22px;
+  border-left: 1px solid #D9D3C7;
+}
+
+.cod-band-steps li:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.cod-band-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 30px;
+  line-height: 1;
+  color: var(--brand-burgundy);
+  margin-bottom: 12px;
+}
+
+.cod-band-steps strong {
+  display: block;
+  font-size: 15px;
+  color: var(--brand-dark);
+  margin-bottom: 4px;
+}
+
+.cod-band-steps p {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #666;
+}
+
+@media (max-width: 900px) {
+  .cod-band {
+    padding: 32px 18px;
+    margin-bottom: 36px;
+  }
+
+  .cod-band-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .cod-band-copy h3 {
+    font-size: 25px;
+  }
+
+  .cod-band-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .cod-band-steps li,
+  .cod-band-steps li:first-child {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    column-gap: 10px;
+    padding: 14px 0;
+    border-left: 0;
+    border-top: 1px solid #D9D3C7;
+  }
+
+  .cod-band-num {
+    grid-row: 1 / span 2;
+    font-size: 26px;
+    margin: 0;
+  }
+}
+
+/* G. Pulido móvil: zonas táctiles, formularios sin zoom, sin desbordes */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  button,
+  .btn-primary,
+  .btn-secondary,
+  .btn-dark,
+  .add-btn,
+  .btn-beauty-add,
+  .cart-checkout-btn,
+  .nav-links a {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .cart-close-btn,
+  .checkout-close-btn,
+  .item-remove,
+  .mobile-menu-btn,
+  .cart-btn,
+  .search-toggle-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .cart-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .cart-footer {
+    padding-bottom: calc(18px + env(safe-area-inset-bottom));
+  }
+
+  .checkout-modal-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    border-radius: 0 !important;
+  }
+
+  .checkout-modal-body {
+    max-height: none !important;
+    flex: 1;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .section-header h2 {
+    font-size: 24px !important;
+    line-height: 1.2;
+  }
+
+  .trust-section {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  .trust-card {
+    padding: 14px 12px !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .sticky-buy-bar {
+    padding-bottom: calc(10px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .wtv-cart-toast {
+    left: 14px;
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+  }
+
+  img {
+    -webkit-user-drag: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 23px !important;
+  }
+
+  .trust-section {
+    grid-template-columns: 1fr !important;
+  }
+
+  .packages-grid {
+    gap: 6px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.rating-row .stars {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
