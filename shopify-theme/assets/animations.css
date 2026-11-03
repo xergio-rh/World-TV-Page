@@ -2227,149 +2227,8 @@ img {
 }
 
 /* ============================================================================
-   11. ACABADO SOBRIO: SIN ANIMACIONES LLAMATIVAS, SIN FIGURAS DECORATIVAS,
-       SIN EMOJIS NI GLIFOS. DISEÑO MOBILE FIRST.
+   11. ACABADO SOBRIO: SIN EMOJIS NI GLIFOS. DISEÑO MOBILE FIRST.
    ============================================================================ */
-
-/* A. Se eliminan animaciones infinitas y efectos de "brillo" */
-.top-bar {
-  background: var(--brand-red) !important;
-  animation: none !important;
-}
-
-.pill-badge,
-.vision-tag,
-.vision-tag-top,
-.beauty-tag-top,
-.outlet-tag-top,
-.outlet-badge,
-.badge-best,
-.badge-best-chk,
-.save-pill,
-.model-item.active,
-.shipping-banner-bar,
-.hero-content,
-.vision-hero-content,
-.beauty-hero-content,
-.outlet-hero-content {
-  animation: none !important;
-}
-
-.btn-primary::before,
-.btn-dark::before,
-.outlet-btn::before,
-.cart-checkout-btn::before,
-.btn-checkout-submit::before,
-.btn-sticky-buy::before,
-.btn-beauty-add::before,
-.add-btn::before,
-.ripple,
-.btn-ripple {
-  display: none !important;
-}
-
-.reveal-item {
-  transform: translateY(10px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
-}
-
-.reveal-item.revealed {
-  transform: none;
-}
-
-/* B. Hover discreto: sin saltos, giros ni zoom exagerado */
-.product-card:hover,
-.beauty-card:hover,
-.trust-card:hover,
-.kit-card:hover,
-.review-card:hover,
-.model-item:hover,
-.vision-image-card:hover,
-.outlet-banner:hover,
-.main-image-box:hover,
-.mini-trust-item:hover,
-.ingredient-card:hover,
-.logo-link:hover,
-.footer-logo-link:hover {
-  transform: none !important;
-}
-
-.product-card:hover,
-.beauty-card:hover,
-.kit-card:hover,
-.review-card:hover,
-.trust-card:hover {
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06) !important;
-}
-
-.product-card:hover .product-img-box img,
-.beauty-card:hover .product-img-box img,
-.kit-card:hover .kit-image-box img,
-.vision-image-card:hover img,
-.outlet-banner:hover .outlet-people,
-.pack-option:hover img,
-.chk-pkg-card:hover img,
-.model-item:hover .model-img-thumb img,
-.trust-card:hover .trust-icon,
-.mini-trust-item:hover svg,
-.review-card:hover .verified-icon,
-.review-card:hover .review-stars,
-.product-card:hover .product-rating,
-.product-card:hover .product-price,
-.beauty-card:hover .price-box .new-p,
-.input-with-icon:focus-within svg {
-  transform: none !important;
-  filter: none !important;
-  letter-spacing: inherit;
-}
-
-.trust-card:hover .trust-icon {
-  background-color: transparent;
-  color: inherit;
-}
-
-.btn-primary:hover,
-.btn-dark:hover,
-.btn-secondary:hover,
-.add-btn:hover,
-.btn-beauty-add:hover,
-.cart-checkout-btn:hover,
-.btn-sticky-buy:hover {
-  transform: none !important;
-}
-
-/* C. Etiquetas planas (sin píldora, sin icono, sin flotar) */
-.pill-badge,
-.vision-tag,
-.vision-tag-top,
-.beauty-tag-top,
-.outlet-tag-top,
-.outlet-badge {
-  border-radius: 3px !important;
-  letter-spacing: 1.2px !important;
-}
-
-.pill-badge svg,
-.vision-tag svg,
-.vision-tag-top svg,
-.beauty-tag-top svg,
-.outlet-tag-top svg,
-.outlet-badge svg,
-.cod-section-badge svg,
-.cod-product-promo-box .cod-promo-icon,
-.cart-cod-top-banner svg,
-.cod-form-notice svg {
-  display: none !important;
-}
-
-.cod-section-badge {
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  padding: 0;
-  color: var(--brand-burgundy);
-  letter-spacing: 1.2px;
-}
 
 /* D. Avisos de contraentrega en la paleta de la tienda (sin verdes genéricos) */
 .cart-cod-top-banner,
@@ -2429,124 +2288,6 @@ img {
   background: var(--brand-burgundy);
   margin-right: 8px;
   vertical-align: middle;
-}
-
-/* F. Franja de Pago Contraentrega: sobria, editorial, misma paleta de la tienda */
-.cod-band {
-  background: var(--bg-cream);
-  border-top: 1px solid #E5E0D8;
-  border-bottom: 1px solid #E5E0D8;
-  margin: 0 0 56px;
-  padding: 44px 24px;
-}
-
-.cod-band-inner {
-  max-width: 1180px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 48px;
-  align-items: start;
-}
-
-.cod-band-eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.6px;
-  text-transform: uppercase;
-  color: var(--brand-burgundy);
-  margin-bottom: 10px;
-}
-
-.cod-band-copy h3 {
-  font-family: var(--font-serif);
-  font-size: 30px;
-  line-height: 1.15;
-  color: var(--brand-dark);
-  margin-bottom: 12px;
-}
-
-.cod-band-copy p:last-child {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #555;
-  max-width: 440px;
-}
-
-.cod-band-steps {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.cod-band-steps li {
-  padding: 4px 22px;
-  border-left: 1px solid #D9D3C7;
-}
-
-.cod-band-steps li:first-child {
-  padding-left: 0;
-  border-left: 0;
-}
-
-.cod-band-num {
-  display: block;
-  font-family: var(--font-serif);
-  font-size: 30px;
-  line-height: 1;
-  color: var(--brand-burgundy);
-  margin-bottom: 12px;
-}
-
-.cod-band-steps strong {
-  display: block;
-  font-size: 15px;
-  color: var(--brand-dark);
-  margin-bottom: 4px;
-}
-
-.cod-band-steps p {
-  font-size: 13.5px;
-  line-height: 1.5;
-  color: #666;
-}
-
-@media (max-width: 900px) {
-  .cod-band {
-    padding: 32px 18px;
-    margin-bottom: 36px;
-  }
-
-  .cod-band-inner {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .cod-band-copy h3 {
-    font-size: 25px;
-  }
-
-  .cod-band-steps {
-    grid-template-columns: 1fr;
-  }
-
-  .cod-band-steps li,
-  .cod-band-steps li:first-child {
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    column-gap: 10px;
-    padding: 14px 0;
-    border-left: 0;
-    border-top: 1px solid #D9D3C7;
-  }
-
-  .cod-band-num {
-    grid-row: 1 / span 2;
-    font-size: 26px;
-    margin: 0;
-  }
 }
 
 /* G. Pulido móvil: zonas táctiles, formularios sin zoom, sin desbordes */
@@ -2661,17 +2402,264 @@ html {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
+
 
 .rating-row .stars {
   margin-bottom: 0;
   flex-shrink: 0;
+}
+
+/* H. Confianza: 3 sellos */
+.trust-section {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+  .trust-section {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .trust-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* I. Botón COMPRAR AHORA: tiembla cada 2 segundos para incitar a la compra */
+@keyframes buyShake {
+  0%, 86%, 100% { transform: translateX(0) rotate(0); }
+  88% { transform: translateX(-4px) rotate(-1.4deg); }
+  90% { transform: translateX(4px) rotate(1.4deg); }
+  92% { transform: translateX(-3px) rotate(-1deg); }
+  94% { transform: translateX(3px) rotate(1deg); }
+  96% { transform: translateX(-1px) rotate(0); }
+}
+
+.btn-pay-now-main,
+.btn-pay-now-sticky {
+  animation: buyShake 2s ease-in-out infinite;
+  will-change: transform;
+}
+
+.btn-pay-now-main:hover,
+.btn-pay-now-sticky:hover,
+.btn-pay-now-main:active,
+.btn-pay-now-sticky:active {
+  animation-play-state: paused;
+}
+
+/* J. Aparición creativa al hacer scroll (animaciones, no transiciones, para no chocar con los hover) */
+:root {
+  --fx-dist: 56px;
+}
+
+@keyframes fxRise {
+  from { opacity: 0; transform: translateY(40px); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@keyframes fxLeft {
+  from { opacity: 0; transform: translateX(calc(var(--fx-dist) * -1)); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@keyframes fxRight {
+  from { opacity: 0; transform: translateX(var(--fx-dist)); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@keyframes fxZoom {
+  from { opacity: 0; transform: scale(0.86); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@keyframes fxPop {
+  0% { opacity: 0; transform: scale(0.78) translateY(22px); }
+  60% { opacity: 1; transform: scale(1.04) translateY(-3px); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes fxFlip {
+  from { opacity: 0; transform: perspective(900px) rotateX(20deg) translateY(34px); }
+  to { opacity: 1; transform: none; }
+}
+
+.reveal-item {
+  opacity: 1;
+  transform: none;
+}
+
+.js-ready .reveal-item:not(.revealed) {
+  opacity: 0;
+}
+
+.reveal-item.revealed {
+  opacity: 1;
+  animation: var(--fx, fxRise) 0.9s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: var(--reveal-delay, 0s);
+}
+
+.reveal-item.fx-rise { --fx: fxRise; }
+.reveal-item.fx-left { --fx: fxLeft; }
+.reveal-item.fx-right { --fx: fxRight; }
+.reveal-item.fx-zoom { --fx: fxZoom; }
+.reveal-item.fx-pop { --fx: fxPop; }
+.reveal-item.fx-flip { --fx: fxFlip; }
+
+/* Barra de progreso de lectura y header con sombra al desplazarse */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--brand-burgundy), var(--brand-red));
+  z-index: 3000;
+  pointer-events: none;
+}
+
+.site-header {
+  transition: box-shadow 0.35s ease;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(158, 42, 43, 0.18);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --fx-dist: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item.revealed,
+  .btn-pay-now-main,
+  .btn-pay-now-sticky {
+    animation: none;
+  }
+}
+
+
+/* ============================================================================
+   12. BOTÓN FLOTANTE DE WHATSAPP + INSIGNIA DE DESPACHO INMEDIATO
+   ============================================================================ */
+
+/* Botón flotante de WhatsApp */
+.wtv-whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background-color: #25D366;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  z-index: 998;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.wtv-whatsapp-float:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 10px 26px rgba(37, 211, 102, 0.55);
+  color: #FFFFFF;
+}
+
+.wtv-whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+}
+
+.wtv-wa-tooltip {
+  position: absolute;
+  right: 66px;
+  background: #1A1A1A;
+  color: #FFFFFF;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.wtv-whatsapp-float:hover .wtv-wa-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Insignia de stock y despacho en ficha de producto */
+.stock-dispatch-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  padding: 7px 14px;
+  border-radius: 50px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #166534;
+}
+
+.stock-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22C55E;
+  display: inline-block;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+}
+
+.stock-text strong {
+  color: #14532D;
+}
+
+/* Adaptación responsive para móvil */
+@media (max-width: 768px) {
+  .wtv-whatsapp-float {
+    bottom: calc(18px + env(safe-area-inset-bottom));
+    right: 16px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .wtv-whatsapp-float svg {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .wtv-wa-tooltip {
+    display: none;
+  }
+  
+  /* Cuando la barra sticky esté activa en móvil, elevar el botón de WhatsApp para no taparlo */
+  body.has-sticky-bar .wtv-whatsapp-float {
+    bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+
+  .stock-dispatch-badge {
+    font-size: 11.5px;
+    padding: 6px 12px;
+    width: 100%;
+    justify-content: center;
+  }
 }

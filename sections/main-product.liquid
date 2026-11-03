@@ -216,15 +216,22 @@
         <input type="hidden" id="selectedPackPrice" value="{{ init_price_cop }}">
         <input type="hidden" id="selectedPackOldPrice" value="{{ init_old_cop }}">
         <input type="hidden" id="selectedPackImg" value="{% if product.featured_image %}{{ product.featured_image | image_url: width: 300 }}{% else %}{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}{% endif %}">
+        
+        <!-- INSIGNIA ELEGANTE DE DISPONIBILIDAD Y DESPACHO RÁPIDO -->
+        <div class="stock-dispatch-badge">
+          <span class="stock-dot"></span>
+          <span class="stock-text"><strong>Disponible para despacho hoy</strong> &bull; Entrega en 24-48h a toda Colombia</span>
+        </div>
+
         <div class="action-buttons" style="margin-top: 18px;">
           <div class="product-dual-pay-row">
             <button type="button" class="cart-checkout-btn btn-pay-now-main" style="border:none; cursor:pointer; width:100%; display:flex; align-items:center; justify-content:center; gap:7px;" onclick="WTVCart.addSelectedProductFromPage(true, 1, 'online');">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
-              <span>PAGAR AHORA (TARJETA / PSE)</span>
+              <span>COMPRAR AHORA</span>
             </button>
             <button type="button" class="cart-checkout-btn btn-cod-main" style="border:none; cursor:pointer; width:100%; display:flex; align-items:center; justify-content:center; gap:7px;" onclick="WTVCart.addSelectedProductFromPage(true, 1, 'cod');">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg>
-              <span>PAGO CONTRAENTREGA (SOLO DATOS)</span>
+              <span>PAGO CONTRAENTREGA</span>
             </button>
           </div>
           <button type="button" class="btn-add-cart" style="cursor:pointer; width:100%;" onclick="WTVCart.addSelectedProductFromPage(false);">
@@ -232,16 +239,6 @@
           </button>
         </div>
 
-        <!-- CAJA DESTACADA DE PAGO EN LÍNEA + CONTRAENTREGA EN FICHA DE PRODUCTO -->
-        <div class="cod-product-promo-box">
-          <div class="cod-promo-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-          </div>
-          <div class="cod-promo-text">
-            <strong>TÚ ELIGES: PAGA AHORA O PAGA CONTRAENTREGA</strong>
-            <span>Paga al instante con Tarjeta, PSE o Nequi, o pide con Pago Contraentrega ingresando únicamente tus datos de envío para pagar al recibir.</span>
-          </div>
-        </div>
       </div>
 
       <!-- TRUST BADGES MINI -->
@@ -256,8 +253,8 @@
         <div class="mini-trust-item">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
           <div>
-            <strong>PAGO CONTRAENTREGA</strong>
-            <span>Pagas al recibir en tu puerta</span>
+            <strong>PAGOS SEGUROS</strong>
+            <span>Tarjeta, PSE y Nequi</span>
           </div>
         </div>
         <div class="mini-trust-item">
@@ -1173,8 +1170,8 @@
         </div>
         <div class="badge-item">
           <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg></div>
-          <h4>PAGO CONTRAENTREGA</h4>
-          <p>Envíos seguros a toda Colombia con opción de pagar al recibir en casa.</p>
+          <h4>ENVÍOS SEGUROS</h4>
+          <p>Despachos asegurados a toda Colombia.</p>
         </div>
     {% endcase %}
   </div>
@@ -1323,10 +1320,10 @@
         <button type="button" onclick="WTVCart.changeStickyQty(1)">+</button>
       </div>
       <button type="button" class="btn-sticky-buy btn-pay-now-sticky" style="border:none; cursor:pointer;" onclick="WTVCart.addSelectedProductFromPage(true, WTVCart.getStickyQty(), 'online');">
-        PAGAR AHORA
+        COMPRAR AHORA
       </button>
       <button type="button" class="btn-sticky-buy" style="border:none; cursor:pointer;" onclick="WTVCart.addSelectedProductFromPage(true, WTVCart.getStickyQty(), 'cod');">
-        CONTRAENTREGA
+        PAGO CONTRAENTREGA
       </button>
     </div>
   </div>

@@ -106,21 +106,11 @@
       if (lastStrong && !lastStrong.id) lastStrong.id = 'cartTotalValue';
     }
 
-    // Asegurar banner superior de Contraentrega en el Carrito
-    var cartDrawer = document.getElementById('cartDrawer');
-    var cartBodyEl = document.querySelector('#cartDrawer .cart-body');
-    if (cartDrawer && cartBodyEl && !cartDrawer.querySelector('.cart-cod-top-banner')) {
-      var codBanner = document.createElement('div');
-      codBanner.className = 'cart-cod-top-banner';
-      codBanner.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg><span><strong>PAGO CONTRAENTREGA ACTIVO:</strong> Pide hoy solo con tus datos y paga al recibir en casa.</span>';
-      cartDrawer.insertBefore(codBanner, cartBodyEl);
-    }
-
     // Asegurar que el botón de pagar en el carrito sea el Botón de Contraentrega
     var cartCheckoutBtn = document.querySelector('#cartDrawer .cart-footer .cart-checkout-btn');
     if (cartCheckoutBtn && !cartCheckoutBtn.classList.contains('btn-cod-main')) {
       cartCheckoutBtn.classList.add('btn-cod-main');
-      cartCheckoutBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px;"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg><span>PEDIR CONTRAENTREGA (SOLO TUS DATOS)</span>';
+      cartCheckoutBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px;"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg><span>PAGO CONTRAENTREGA</span>';
       cartCheckoutBtn.setAttribute('onclick', 'WTVCart.proceedToCheckoutModal(event); return false;');
     }
 
@@ -141,17 +131,6 @@
       chkSubmitBtn.textContent = 'CONFIRMAR PEDIDO CONTRAENTREGA';
       chkSubmitBtn.setAttribute('onclick', 'WTVCart.submitCheckoutForm(event)');
     }
-
-    // Promocionar insignia "Pago Contraentrega" en todas las tarjetas de producto si no la tienen
-    document.querySelectorAll('.product-card').forEach(function(card) {
-      card.style.position = 'relative';
-      if (!card.querySelector('.card-cod-badge')) {
-        var b = document.createElement('span');
-        b.className = 'card-cod-badge';
-        b.textContent = 'Pago Contraentrega';
-        card.appendChild(b);
-      }
-    });
 
     var chkSummaryCol = document.querySelector('#checkoutModal .checkout-summary-col');
     if (chkSummaryCol && !document.getElementById('chkItemsSummaryList')) {

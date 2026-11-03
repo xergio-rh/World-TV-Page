@@ -9,12 +9,6 @@
     </div>
   </div>
 
-  <!-- BANNER PROMOCIONAL CONTRAENTREGA DENTRO DEL CARRITO -->
-  <div class="cart-cod-top-banner">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg>
-    <span><strong>PAGO CONTRAENTREGA ACTIVO:</strong> Pide hoy solo con tus datos y paga al recibir en casa.</span>
-  </div>
-
   <div class="cart-body">
     <!-- CONTENEDOR DINÁMICO DE PRODUCTOS Y KITS EN EL CARRITO -->
     <div id="cartItemsList"></div>
@@ -67,12 +61,12 @@
     <div class="cart-dual-pay-buttons">
       <button type="button" class="cart-checkout-btn btn-pay-now-main" style="width:100%; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;" onclick="WTVCart.proceedToCheckoutModal(event, 'online');">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
-        <span>PAGAR AHORA (TARJETA / PSE / NEQUI)</span>
+        <span>COMPRAR AHORA</span>
       </button>
 
       <button type="button" class="cart-checkout-btn btn-cod-main" style="width:100%; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;" onclick="WTVCart.proceedToCheckoutModal(event, 'cod');">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg>
-        <span>PAGO CONTRAENTREGA (SOLO TUS DATOS)</span>
+        <span>PAGO CONTRAENTREGA</span>
       </button>
     </div>
 
@@ -81,12 +75,12 @@
       <span><svg class="inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Garantía Oficial World TV</span>
     </div>
     <div class="payment-methods-icons">
-      <span>Visa / Mastercard</span> • <span>PSE</span> • <span>Nequi</span> • <span>Contraentrega</span>
+      <span>Visa / Mastercard</span> • <span>PSE</span> • <span>Nequi</span>
     </div>
   </div>
 </div>
 
-<!-- MODAL DE CHECKOUT DUAL: PAGO CONTRAENTREGA (SOLO DATOS) O PAGAR AHORA (TARJETA / PSE / NEQUI) -->
+<!-- MODAL DE CHECKOUT DUAL: PAGO CONTRAENTREGA O COMPRAR AHORA -->
 <div class="checkout-modal-overlay" id="checkoutModalOverlay" onclick="toggleCheckoutModal()"></div>
 <div class="checkout-modal-container" id="checkoutModal">
   <div class="checkout-modal-header">
@@ -213,7 +207,7 @@
           </div>
         </div>
 
-        <!-- SECCIÓN DE PAGO EN LÍNEA AL INSTANTE (SOLO VISIBLE CUANDO SE ELIGE "PAGAR AHORA") -->
+        <!-- SECCIÓN DE PAGO EN LÍNEA AL INSTANTE (SOLO VISIBLE CUANDO SE ELIGE "COMPRAR AHORA") -->
         <div id="onlinePaymentMethodsBox" class="online-payment-box" style="display: none;">
           <h3 style="margin-top: 14px; margin-bottom: 10px;">2. ELIGE TU MÉTODO DE PAGO AL INSTANTE</h3>
           <div class="online-methods-pills">

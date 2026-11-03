@@ -106,16 +106,6 @@
       if (lastStrong && !lastStrong.id) lastStrong.id = 'cartTotalValue';
     }
 
-    // Asegurar banner superior en el Carrito
-    var cartDrawer = document.getElementById('cartDrawer');
-    var cartBodyEl = document.querySelector('#cartDrawer .cart-body');
-    if (cartDrawer && cartBodyEl && !cartDrawer.querySelector('.cart-cod-top-banner')) {
-      var codBanner = document.createElement('div');
-      codBanner.className = 'cart-cod-top-banner';
-      codBanner.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg><span><strong>PAGO EN LÍNEA O CONTRAENTREGA:</strong> Paga ahora con Tarjeta/PSE o pide solo con tus datos para pagar al recibir.</span>';
-      cartDrawer.insertBefore(codBanner, cartBodyEl);
-    }
-
     // Asegurar los DOS botones de pago en el footer del carrito (Pagar Ahora + Pago Contraentrega)
     var cartFooter = document.querySelector('#cartDrawer .cart-footer');
     var singleCartBtn = cartFooter ? cartFooter.querySelector(':scope > .cart-checkout-btn') : null;
@@ -125,11 +115,11 @@
       dualDiv.innerHTML =
         '<button type="button" class="cart-checkout-btn btn-pay-now-main" style="width:100%; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;" onclick="WTVCart.proceedToCheckoutModal(event, \'online\');">' +
           '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>' +
-          '<span>PAGAR AHORA (TARJETA / PSE / NEQUI)</span>' +
+          '<span>COMPRAR AHORA</span>' +
         '</button>' +
         '<button type="button" class="cart-checkout-btn btn-cod-main" style="width:100%; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;" onclick="WTVCart.proceedToCheckoutModal(event, \'cod\');">' +
           '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg>' +
-          '<span>PAGO CONTRAENTREGA (SOLO TUS DATOS)</span>' +
+          '<span>PAGO CONTRAENTREGA</span>' +
         '</button>';
       cartFooter.replaceChild(dualDiv, singleCartBtn);
     }
@@ -1365,6 +1355,11 @@
   });
 
   document.addEventListener('DOMContentLoaded', function() {
+    // Marcar el body cuando la barra inferior fija de compra está presente
+    if (document.querySelector('.sticky-buy-bar')) {
+      document.body.classList.add('has-sticky-bar');
+    }
+
     renderCart();
   });
 })();
@@ -1532,6 +1527,11 @@ function toggleSearchBox() {
 
 // Rotación automática del Hero Banner adaptada para móvil y escritorio
 document.addEventListener('DOMContentLoaded', function() {
+    // Marcar el body cuando la barra inferior fija de compra está presente
+    if (document.querySelector('.sticky-buy-bar')) {
+      document.body.classList.add('has-sticky-bar');
+    }
+
   var heroSection = document.querySelector('.hero-section');
   if (heroSection) {
     var slidesAttr = heroSection.getAttribute('data-slides');

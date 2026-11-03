@@ -3,6 +3,7 @@
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.documentElement.classList.add('js-ready');
   // 1. SCROLL REVEAL AUTOMÁTICO CON CASCADA (STAGGER) EN GRIDS
   const revealSelectors = [
     '.section-header',
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   gridContainers.forEach(grid => {
     Array.from(grid.children).forEach((child, index) => {
-      child.style.transitionDelay = `${(index % 5) * 0.08}s`;
+      child.style.setProperty('--reveal-delay', `${(index % 5) * 0.09}s`);
     });
   });
 
@@ -43,22 +44,33 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('revealed');
-            // Limpiamos el delay después de revelar para que el hover sea instantáneo
-            setTimeout(() => {
-              entry.target.style.transitionDelay = '0s';
-            }, 800);
             obs.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.01,
+        rootMargin: '100px 0px 100px 0px'
       }
     );
 
-    elementsToReveal.forEach(el => {
-      el.classList.add('reveal-item');
+    // Efecto de entrada distinto según el tipo de bloque
+    const pickEffect = (el, index) => {
+      if (el.matches('.section-header, .section-title-center, .footer-col, .filters-container, .divider-banner')) return 'fx-rise';
+      if (el.matches('.trust-card, .badge-item, .ingredient-card')) return 'fx-pop';
+      if (el.matches('.review-card')) return 'fx-flip';
+      if (el.matches('.outlet-banner, .usage-card-wrapper')) return 'fx-zoom';
+      if (el.matches('.product-gallery-card')) return 'fx-left';
+      if (el.matches('.product-info-card')) return 'fx-right';
+      if (el.matches('.vision-container > div, .kit-card')) {
+        const siblings = Array.from(el.parentElement.children);
+        return siblings.indexOf(el) % 2 === 0 ? 'fx-left' : 'fx-right';
+      }
+      return index % 2 === 0 ? 'fx-rise' : 'fx-zoom';
+    };
+
+    elementsToReveal.forEach((el, index) => {
+      el.classList.add('reveal-item', pickEffect(el, index));
       observer.observe(el);
     });
   } else {
@@ -201,5 +213,25 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
-});
 
+  // 7. BARRA DE PROGRESO DE LECTURA Y SOMBRA DEL HEADER AL HACER SCROLL
+  const progress = document.createElement('div');
+  progress.className = 'scroll-progress';
+  document.body.appendChild(progress);
+  const header = document.querySelector('.site-header');
+  let ticking = false;
+  const onScroll = () => {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ')';
+    if (header) header.classList.toggle('is-scrolled', window.scrollY > 10);
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+  onScroll();
+});
