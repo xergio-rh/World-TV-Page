@@ -18,20 +18,20 @@
       <h5>Complementa tu rutina:</h5>
       <div class="cart-upsell-slider">
         <div class="upsell-card">
-          <img src="{{ 'ersveratrol2_df1e54aa-1b8c-4c39-b3df-a0e8d42ff75e.webp' | asset_url }}" alt="Resveratrol" width="400" height="400">
+          <img src="{{ 'ersveratrol2_df1e54aa-1b8c-4c39-b3df-a0e8d42ff75e-removebg-preview.png' | asset_url }}" alt="Resveratrol" width="400" height="400">
           <p class="upsell-name">Resveratrol 500 ml - Fórmula Única</p>
           <span class="upsell-price">$101.500 COP</span>
           <button class="upsell-add" type="button"
-                  onclick="WTVCart.addItem({ id: 'resveratrol-1', variantId: 46782983700654, title: 'Resveratrol 500 ml – Fórmula Única', packTitle: 'Una Unidad', price: 101500, oldPrice: 125000, image: '{{ 'ersveratrol2_df1e54aa-1b8c-4c39-b3df-a0e8d42ff75e.webp' | asset_url }}' }, false)">
+                  onclick="WTVCart.addItem({ id: 'resveratrol-1', variantId: 46782983700654, title: 'Resveratrol 500 ml – Fórmula Única', packTitle: 'Una Unidad', price: 101500, oldPrice: 125000, image: '{{ 'ersveratrol2_df1e54aa-1b8c-4c39-b3df-a0e8d42ff75e-removebg-preview.png' | asset_url }}' }, false)">
             Añadir +
           </button>
         </div>
         <div class="upsell-card">
-          <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="Melena de León" width="400" height="400">
+          <img src="{{ 'melena_x_1_IA-removebg-preview.png' | asset_url }}" alt="Melena de León" width="400" height="400">
           <p class="upsell-name">Melena de León en Polvo - Capuchino</p>
           <span class="upsell-price">$94.900 COP</span>
           <button class="upsell-add" type="button"
-                  onclick="WTVCart.addItem({ id: 'melena-1', variantId: 46764428198062, title: 'Melena de León en Polvo - Capuchino', packTitle: 'Una unidad', price: 94900, oldPrice: 127500, image: '{{ 'melena_x_1_IA.webp' | asset_url }}' }, false)">
+                  onclick="WTVCart.addItem({ id: 'melena-1', variantId: 46764428198062, title: 'Melena de León en Polvo - Capuchino', packTitle: 'Una unidad', price: 94900, oldPrice: 127500, image: '{{ 'melena_x_1_IA-removebg-preview.png' | asset_url }}' }, false)">
             Añadir +
           </button>
         </div>
@@ -52,9 +52,17 @@
       <span>Envío a toda Colombia</span>
       <strong id="cartShippingValue" style="color: #15803D;">Gratis / Incluido</strong>
     </div>
+    <div class="cart-summary-row" style="color: #15803D; font-size: 12px; font-weight: 600;">
+      <span>IVA Nacional (19%)</span>
+      <strong style="color: #15803D;">Incluido en todos los precios</strong>
+    </div>
     <div class="cart-summary-row total-row">
       <span>Total del pedido</span>
       <strong id="cartTotalValue">$0</strong>
+    </div>
+    <div style="font-size: 11px; color: #166534; background: #F0FDF4; padding: 6px 10px; border-radius: 6px; margin: 4px 0 10px 0; border: 1px solid #BBF7D0; display: flex; align-items: center; gap: 6px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span><strong>Precio Fijo Garantizado:</strong> Cero cargos extra. El total que ves es exactamente lo que pagas.</span>
     </div>
 
     <!-- DOS OPCIONES DE PAGO EN EL CARRITO: 1) PAGAR AHORA Y 2) PAGO CONTRAENTREGA -->
@@ -294,9 +302,16 @@
           <span id="chkShippingLabel">Envío Nacional</span>
           <strong style="color: #15803D;">GRATIS</strong>
         </div>
+        <div class="receipt-row" style="color: #15803D; font-size: 11px;">
+          <span>IVA Nacional (19%)</span>
+          <strong style="color: #15803D;">INCLUIDO ($0 extra)</strong>
+        </div>
         <div class="receipt-row total">
           <span id="chkTotalLabel">Total del Pedido</span>
           <strong id="chkTotal">$0</strong>
+        </div>
+        <div class="receipt-row" style="font-size: 10px; color: #166534; background: #F0FDF4; padding: 4px 8px; border-radius: 4px; margin-top: 6px; justify-content: center; text-align: center;">
+          <span>✓ PRECIO FIJO GARANTIZADO • Cero sorpresas al pagar</span>
         </div>
       </div>
 

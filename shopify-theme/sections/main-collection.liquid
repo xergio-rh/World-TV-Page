@@ -57,14 +57,49 @@
   <div class="products-grid {% if collection.products_count == 2 %}beauty-products-grid{% endif %}">
     {% for product in collection.products %}
       {% assign first_var = product.selected_or_first_available_variant %}
-      {% assign prod_price_cop = first_var.price | divided_by: 100 %}
-      {% assign prod_old_cop = first_var.compare_at_price | divided_by: 100 %}
+      {% assign v_raw = first_var.price | divided_by: 100 %}
+      {% assign v_old_raw = first_var.compare_at_price | default: 0 | divided_by: 100 %}
+      {% if product.handle contains 'cloruro' or product.handle contains 'colageno' or product.handle contains 'citrato' %}
+        {% assign prod_price_cop = 101031 %}
+        {% assign prod_old_cop = 127500 %}
+      {% elsif product.handle contains 'cannabix' %}
+        {% assign prod_price_cop = 77231 %}
+        {% assign prod_old_cop = 85000 %}
+      {% elsif product.handle contains 'serum' %}
+        {% assign prod_price_cop = 118405 %}
+        {% assign prod_old_cop = 130000 %}
+      {% elsif first_var.taxable %}
+        {% assign prod_price_cop = v_raw | times: 119 | divided_by: 100 %}
+        {% assign prod_old_cop = v_old_raw | times: 119 | divided_by: 100 %}
+      {% else %}
+        {% assign prod_price_cop = v_raw %}
+        {% assign prod_old_cop = v_old_raw %}
+      {% endif %}
       <article class="product-card beauty-card" onclick="window.location.href='{{ product.url }}'" style="cursor: pointer;">
         <div class="product-img-box">
-          {% if product.featured_image %}
+
+          {% assign t_img = '' %}
+          {% if product.handle contains 'cloruro' %}
+            {% assign t_img = 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df-removebg-preview.png' | asset_url %}
+          {% elsif product.handle contains 'melena' %}
+            {% assign t_img = 'melena_x_1_IA-removebg-preview.png' | asset_url %}
+          {% elsif product.handle contains 'resveratrol' %}
+            {% assign t_img = 'ersveratrol2_df1e54aa-1b8c-4c39-b3df-a0e8d42ff75e-removebg-preview.png' | asset_url %}
+          {% elsif product.handle contains 'inositol' %}
+            {% assign t_img = 'inositol_x_1_IA-removebg-preview.png' | asset_url %}
+          {% elsif product.handle contains 'amalaki' or product.handle contains 'gamaki' %}
+            {% assign t_img = 'amalaki_x_1-removebg-preview.png' | asset_url %}
+          {% elsif product.handle contains 'colageno' %}
+            {% assign t_img = 'colageno_marino_x_1_IA-removebg-preview.png' | asset_url %}
+          {% elsif product.handle contains 'citrato' %}
+            {% assign t_img = 'citrato_x_1_IA-removebg-preview.png' | asset_url %}
+          {% endif %}
+          {% if t_img != blank %}
+            <img src="{{ t_img }}" alt="{{ product.title | escape }}" width="600" height="600">
+          {% elsif product.featured_image %}
             <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" width="600" height="600">
           {% else %}
-            <img src="{{ 'colasteel_back.jpeg' | asset_url }}" alt="{{ product.title | escape }}" width="1856" height="2304">
+            <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df-removebg-preview.png' | asset_url }}" alt="{{ product.title | escape }}" width="1856" height="2304">
           {% endif %}
         </div>
         <h3 class="product-title">{{ product.title }}</h3>
@@ -73,12 +108,13 @@
         {% endif %}
         <div class="product-bottom beauty-bottom">
           <div class="price-box">
-            {% if product.compare_at_price > product.price %}
-              <span class="old-p">{{ product.compare_at_price | money }}</span>
+            {% if prod_old_cop > prod_price_cop %}
+              <span class="old-p">{{ prod_old_cop | times: 100 | money }}</span>
             {% endif %}
             <span class="new-p" style="color:var(--brand-dark);">
-              {% if product.price_varies %}A partir de {% endif %}{{ product.price | money }}
+              {{ prod_price_cop | times: 100 | money }}
             </span>
+            <span class="tax-tag" style="font-size:10px; font-weight:700; color:#15803D; background:#DCFCE7; padding:2px 6px; border-radius:10px; display:inline-block; margin-top:2px;">IVA INCLUIDO</span>
           </div>
           <button type="button" class="btn-beauty-add"
                   onclick="event.stopPropagation(); WTVCart.addItem({
@@ -88,7 +124,7 @@
                     packTitle: {{ first_var.title | json | escape }},
                     price: {{ prod_price_cop }},
                     oldPrice: {{ prod_old_cop | default: 0 }},
-                    image: '{% if product.featured_image %}{{ product.featured_image | image_url: width: 300 }}{% else %}{{ 'colasteel_back.jpeg' | asset_url }}{% endif %}'
+                    image: '{% if t_img != blank %}{{ t_img }}{% elsif product.featured_image %}{{ product.featured_image | image_url: width: 300 }}{% else %}{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df-removebg-preview.png' | asset_url }}{% endif %}'
                   }, true);">
             AÑADIR +
           </button>

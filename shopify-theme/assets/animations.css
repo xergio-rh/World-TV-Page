@@ -1873,7 +1873,7 @@ img {
 
 .product-img-box,
 .beauty-card .product-img-box {
-  background-color: #F8F7F4 !important;
+  background-color: transparent !important;
   border-radius: 10px !important;
   height: 240px !important;
   width: 100% !important;
@@ -1898,6 +1898,10 @@ img {
   max-height: 100% !important;
   object-fit: contain !important;
   object-position: center !important;
+}
+
+.model-img-thumb {
+  background: transparent !important;
 }
 
 .model-img-thumb img {
@@ -1945,38 +1949,60 @@ img {
 }
 
 /* D. Tablets y móviles (<= 992px): el hero conserva el diseño original con un velo suave del color de marca */
+/* D. Tablets y móviles (<= 992px): sin velos opacos que tapen la imagen; texto abajo y despejado */
 @media (max-width: 992px) {
   .hero-section {
     position: relative !important;
-    min-height: auto !important;
-    padding: 40px 0 36px !important;
-    background-position: 30% center !important;
+    min-height: 480px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: flex-start !important;
+    padding: 0 !important;
+    background-position: center 25% !important;
+    background-size: cover !important;
   }
 
   .hero-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(235, 232, 224, 0.82);
-    z-index: 0;
-    pointer-events: none;
+    display: none !important;
   }
 
   .hero-container {
     position: relative;
     z-index: 1;
-    padding: 0 20px !important;
+    padding: 0 !important;
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-content {
+    grid-column: 1 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    background: linear-gradient(to top, rgba(18, 18, 18, 0.92) 0%, rgba(18, 18, 18, 0.65) 60%, rgba(18, 18, 18, 0) 100%) !important;
+    padding: 32px 20px 24px !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
   }
 
   .hero-title {
-    font-size: 28px !important;
-    line-height: 1.16 !important;
+    font-size: 26px !important;
+    line-height: 1.18 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 12px !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .hero-title span {
+    color: #FFE387 !important;
+    display: inline !important;
+  }
+
+  .hero-desc {
+    display: none !important;
   }
 
   .hero-checks {
-    flex-direction: column !important;
-    gap: 6px !important;
-    align-items: center !important;
+    display: none !important;
   }
 
   .outlet-people {
@@ -2012,26 +2038,97 @@ img {
     right: 0 !important;
   }
 
-  /* Hero principal en teléfono */
+  /* Hero principal en teléfono: imagen visible arriba, texto y CTA al fondo */
   .hero-section {
-    padding: 32px 0 28px !important;
+    min-height: 440px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: flex-start !important;
   }
 
   .hero-title {
-    font-size: 26px !important;
+    font-size: 24px !important;
+    line-height: 1.2 !important;
   }
 
   .hero-ctas {
     flex-direction: column !important;
-    gap: 10px !important;
-    margin-bottom: 16px !important;
+    gap: 8px !important;
+    margin-bottom: 0 !important;
   }
 
-  .hero-ctas .btn-primary,
   .hero-ctas .btn-secondary {
+    display: none !important;
+  }
+
+  .hero-ctas .btn-primary {
     width: 100% !important;
     text-align: center !important;
     padding: 13px 16px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+  }
+
+  /* Banners de Colección en teléfono (Nutrición, Belleza, Visión, Outlet):
+     Sin párrafos largos para no tapar el producto, alineado abajo */
+  .beauty-hero-banner,
+  .vision-hero-banner,
+  .outlet-hero-banner {
+    min-height: 250px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: flex-start !important;
+    padding: 0 !important;
+    text-align: left !important;
+    background-position: center 25% !important;
+    background-size: cover !important;
+    position: relative !important;
+  }
+
+  .beauty-hero-content,
+  .vision-hero-content,
+  .outlet-hero-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: left !important;
+    margin: 0 !important;
+    background: linear-gradient(to top, rgba(18, 18, 18, 0.92) 0%, rgba(18, 18, 18, 0.6) 70%, transparent 100%) !important;
+    padding: 24px 16px 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .beauty-hero-content p,
+  .vision-hero-content p,
+  .outlet-hero-content p {
+    display: none !important;
+  }
+
+  .beauty-hero-content h1,
+  .vision-hero-content h1,
+  .outlet-hero-content h1 {
+    font-size: 20px !important;
+    line-height: 1.22 !important;
+    margin: 6px 0 0 !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7) !important;
+  }
+
+  .beauty-hero-content h1 span,
+  .vision-hero-content h1 span,
+  .outlet-hero-content h1 span {
+    color: #FFE387 !important;
+  }
+
+  .beauty-tag-top,
+  .vision-tag-top,
+  .outlet-tag-top {
+    font-size: 9px !important;
+    padding: 3px 8px !important;
+    margin-bottom: 4px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
   }
 
   /* Tarjetas de Producto en teléfono: proporción limpia y sin recortes */
@@ -2052,7 +2149,7 @@ img {
   .beauty-card .product-img-box {
     height: 230px !important;
     padding: 10px !important;
-    background-color: #F8F7F4 !important;
+    background-color: transparent !important;
   }
 
   /* Colección Relax Vision en teléfono */
@@ -2200,29 +2297,82 @@ img {
 
   /* Barra flotante inferior de compra en teléfono */
   .sticky-buy-bar {
-    padding: 10px 12px !important;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom)) 12px !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.16) !important;
+    z-index: 9999 !important;
+    background: #FFFFFF !important;
   }
 
   .sticky-bar-container {
     flex-direction: column !important;
-    gap: 8px !important;
+    gap: 6px !important;
+  }
+
+  .sticky-product-info {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
   }
 
   .sticky-product-info img {
-    width: 40px !important;
-    height: 40px !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 6px !important;
+    object-fit: contain !important;
+    background: #F7F7F7 !important;
+    border: 1px solid #EFEFEF !important;
+    padding: 2px !important;
+  }
+
+  .sticky-product-text {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: calc(100% - 46px) !important;
+  }
+
+  .sticky-title {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 58% !important;
+    color: var(--brand-dark) !important;
+  }
+
+  .sticky-price {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    color: var(--brand-red) !important;
+    white-space: nowrap !important;
   }
 
   .sticky-actions-row {
     width: 100% !important;
-    gap: 8px !important;
+    display: flex !important;
+    gap: 6px !important;
+  }
+
+  .qty-selector-sticky {
+    display: none !important;
   }
 
   .btn-sticky-buy {
     flex: 1 !important;
-    padding: 10px 8px !important;
+    padding: 11px 8px !important;
     font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.3px !important;
+    border-radius: 6px !important;
     text-align: center !important;
+  }
+
+  .btn-sticky-buy.btn-pay-now-sticky {
+    background: #111111 !important;
+    color: #FFFFFF !important;
   }
 }
 
@@ -2661,5 +2811,35 @@ html {
     padding: 6px 12px;
     width: 100%;
     justify-content: center;
+  }
+}
+
+
+/* Fusión limpia de productos sin fondo en tarjetas */
+.product-card,
+.beauty-card {
+  background-color: #FFFFFF !important;
+}
+
+.product-img-box,
+.beauty-card .product-img-box {
+  background-color: #FFFFFF !important;
+}
+
+
+/* Optimización de nitidez y encuadre del banner de Nutrición */
+@media (min-width: 769px) {
+  .beauty-hero-banner {
+    background-position: center 38% !important;
+    background-repeat: no-repeat !important;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    min-height: 400px !important;
+  }
+}
+
+@media (min-width: 993px) {
+  .beauty-hero-banner {
+    min-height: 440px !important;
   }
 }

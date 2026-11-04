@@ -842,7 +842,7 @@
     addSelectedVisionModel: function() {
       var activeModel = document.querySelector('.models-box .model-item.active') || document.querySelector('.models-box .model-item');
       var title = activeModel ? (activeModel.getAttribute('data-title') || 'Relax Vision Premium') : 'Relax Vision Premium';
-      var price = activeModel && activeModel.getAttribute('data-price') ? Number(activeModel.getAttribute('data-price')) : 182900;
+      var price = activeModel && activeModel.getAttribute('data-price') ? Number(activeModel.getAttribute('data-price')) : 217651;
       var img = activeModel ? (activeModel.getAttribute('data-img') || '') : '';
       if (!img) {
         var mainVisionImg = document.getElementById('mainVisionImg');
@@ -859,29 +859,29 @@
       }, true);
     },
 
-    // Catálogo completo para el buscador predictivo en vivo
+    // Catálogo completo para el buscador predictivo en vivo (Precios Reales con IVA 19% Incluido)
     catalogData: [
-      { id: 'cloruro-1', title: 'Colasteel Cloruro de Magnesio 500 ml', category: 'Nutrición', price: 84900, oldPrice: 127500, url: '/products/cloruro-500-gr-formula-unica', keywords: 'cloruro magnesio colasteel articulaciones colageno' },
+      { id: 'cloruro-1', title: 'Colasteel Cloruro de Magnesio 500 ml', category: 'Nutrición', price: 101031, oldPrice: 127500, url: '/products/cloruro-500-gr-formula-unica', keywords: 'cloruro magnesio colasteel articulaciones colageno' },
       { id: 'melena-1', title: 'Melena de León en Polvo SI100 - Capuchino', category: 'Nutrición', price: 94900, oldPrice: 127500, url: '/products/melena-de-leon-en-polvo-formula-unica-sabor-a-capuchino', keywords: 'melena leon hongo memoria enfoque capuchino' },
       { id: 'resveratrol-1', title: 'Resveratrol 500 ml – Fórmula Única', category: 'Nutrición', price: 101500, oldPrice: 125000, url: '/products/resveratrol-500-ml-formula-unica', keywords: 'resveratrol antioxidante antiedad energia' },
       { id: 'inositol-1', title: 'Inositol en Polvo con Biotina y Vitamina B12', category: 'Nutrición', price: 94900, oldPrice: 118000, url: '/products/inositol-en-polvo-con-biotina-acido-folico-y-vitamina-b12', keywords: 'inositol orebitol biotina metabolismo ansiedad' },
       { id: 'amalaki-1', title: 'Amalaki Bebida Funcional 500 gr', category: 'Nutrición', price: 74900, oldPrice: 95000, url: '/products/amalaki-bebida-funcional-con-extracto-de-te-y-colageno-500-gr', keywords: 'amalaki gamaki digestivo defensas te colageno' },
-      { id: 'colageno-marino-1', title: 'Colágeno Marino con Ajonjolí, Cúrcuma y Jengibre', category: 'Nutrición', price: 84900, oldPrice: 110000, url: '/products/colageno-marino-formula-unica-con-ajonjoli-curcuma-y-genjibre', keywords: 'colageno marino curcuma jengibre articulaciones' },
-      { id: 'citrato-1', title: 'Citrato de Magnesio con Hierbas Aromáticas', category: 'Nutrición', price: 84900, oldPrice: 110000, url: '/products/citrato-de-magnesio-formula-unica-con-hierbas-aromaticas', keywords: 'citrato magnesio sueno descanso relajacion' },
-      { id: 'serum-1', title: 'Sérum Facial Fórmula Única con Vitamina C', category: 'Belleza', price: 99500, oldPrice: 120000, url: '/products/serum-facil-con-formula-unica-con-vitamina-c', keywords: 'serum suero facial vitamina c piel manchas' },
-      { id: 'cannabix-1', title: 'Cannabix Crema con Árnica, Colágeno y Magnesio', category: 'Belleza', price: 64900, oldPrice: 85000, url: '/products/cannabix-formula-unica-con-arnica-vainilla-colageno-y-cloruro-de-magnesio', keywords: 'cannabix crema cbd arnica dolor muscular masaje' },
-      { id: 'rv-premium', title: 'Gafas Relax Vision Premium - Filtro Azul y UV400', category: 'Salud Visual', price: 182900, oldPrice: 220000, url: '/products/relax-vision-premium-gafas-con-filtro-azul-uv-400-y-antirreflejo', keywords: 'gafas lentes relax vision premium pantallas filtro azul' },
-      { id: 'rv-clasicas', title: 'Gafas Relax Vision Clásicas - UV400 y Antirreflejo', category: 'Salud Visual', price: 169900, oldPrice: 205000, url: '/products/relax-vision-clasicas-gafas-con-filtro-uv-400-y-antirreflejo', keywords: 'gafas lentes relax vision clasicas' },
-      { id: 'rv-chromax', title: 'Gafas Relax Vision Chromax - Protección Avanzada', category: 'Salud Visual', price: 194900, oldPrice: 229000, url: '/products/relax-vision-chromax-gafas-con-uv-400-y-proteccion-visual-avanzada', keywords: 'gafas lentes relax vision chromax' },
+      { id: 'colageno-marino-1', title: 'Colágeno Marino con Ajonjolí, Cúrcuma y Jengibre', category: 'Nutrición', price: 101031, oldPrice: 127500, url: '/products/colageno-marino-formula-unica-con-ajonjoli-curcuma-y-genjibre', keywords: 'colageno marino curcuma jengibre articulaciones' },
+      { id: 'citrato-1', title: 'Citrato de Magnesio con Hierbas Aromáticas', category: 'Nutrición', price: 101031, oldPrice: 127500, url: '/products/citrato-de-magnesio-formula-unica-con-hierbas-aromaticas', keywords: 'citrato magnesio sueno descanso relajacion' },
+      { id: 'serum-1', title: 'Sérum Facial Fórmula Única con Vitamina C', category: 'Belleza', price: 118405, oldPrice: 130000, url: '/products/serum-facil-con-formula-unica-con-vitamina-c', keywords: 'serum suero facial vitamina c piel manchas' },
+      { id: 'cannabix-1', title: 'Cannabix Crema con Árnica, Colágeno y Magnesio', category: 'Belleza', price: 77231, oldPrice: 85000, url: '/products/cannabix-formula-unica-con-arnica-vainilla-colageno-y-cloruro-de-magnesio', keywords: 'cannabix crema cbd arnica dolor muscular masaje' },
+      { id: 'rv-premium', title: 'Gafas Relax Vision Premium - Filtro Azul y UV400', category: 'Salud Visual', price: 217651, oldPrice: 260000, url: '/products/relax-vision-premium-gafas-con-filtro-azul-uv-400-y-antirreflejo', keywords: 'gafas lentes relax vision premium pantallas filtro azul' },
+      { id: 'rv-clasicas', title: 'Gafas Relax Vision Clásicas - UV400 y Antirreflejo', category: 'Salud Visual', price: 202181, oldPrice: 240000, url: '/products/relax-vision-clasicas-gafas-con-filtro-uv-400-y-antirreflejo', keywords: 'gafas lentes relax vision clasicas' },
+      { id: 'rv-chromax', title: 'Gafas Relax Vision Chromax - Protección Avanzada', category: 'Salud Visual', price: 231931, oldPrice: 275000, url: '/products/relax-vision-chromax-gafas-con-uv-400-y-proteccion-visual-avanzada', keywords: 'gafas lentes relax vision chromax' },
       { id: 'rv-sky', title: 'Gafas Relax Vision Sky - Estilo Aviador', category: 'Salud Visual', price: 206900, oldPrice: 245000, url: '/products/relax-vision-sky-gafas-con-filtro-azul-uv-400-y-antirreflejo', keywords: 'gafas lentes relax vision sky aviador' },
       { id: 'rv-venturi', title: 'Gafas Relax Vision Venturi - Máxima Ergonomía', category: 'Salud Visual', price: 204900, oldPrice: 240000, url: '/products/relax-vision-venturi-gafas-con-filtro-azul-uv-400-y-tecnologia-antirreflejo', keywords: 'gafas lentes relax vision venturi' },
-      { id: 'outlet-power-belt', title: 'Cinturilla Reductora Dama Power Belt', category: 'Outlet', price: 163900, oldPrice: 297800, url: '/products/cinturilla-reductora-dama-power-belt', keywords: 'faja cinturilla reductora dama power belt outlet' },
-      { id: 'outlet-pantalon-dama', title: 'Hot Slim Dama - Pantalón Reductor Térmico', category: 'Outlet', price: 114900, oldPrice: 199800, url: '/products/hot-slim-dama-pantalon-reductor', keywords: 'pantalon reductor hot slim dama sauna outlet' },
-      { id: 'outlet-camisilla-hombre', title: 'Hot Slim Hombre - Camisilla Reductora', category: 'Outlet', price: 114900, oldPrice: 199800, url: '/products/hot-slim-hombre-camisilla-reductora', keywords: 'camisilla reductora hombre hot slim outlet' },
-      { id: 'outlet-cinturilla-sport', title: 'Cinturilla Sport Styliza Mujer', category: 'Outlet', price: 94400, oldPrice: 158800, url: '/products/cinturilla-sport-styliza-mujer', keywords: 'cinturilla sport styliza mujer faja outlet' },
-      { id: 'outlet-pantalon-styliza', title: 'Pantalón Sauna Styliza', category: 'Outlet', price: 164900, oldPrice: 300000, url: '/products/pantalon-sauna-styliza', keywords: 'pantalon sauna styliza termico outlet' },
-      { id: 'outlet-chaleco-hombre', title: 'Hombre Chaleco Sauna Térmico', category: 'Outlet', price: 164900, oldPrice: 299800, url: '/products/hombre-chaleco-sauna', keywords: 'chaleco sauna hombre reductor outlet' },
-      { id: 'outlet-camisilla-dama', title: 'Hot Slim Dama Camisilla Reductora', category: 'Outlet', price: 114900, oldPrice: 199800, url: '/products/hot-slim-dama-camisilla-reductora', keywords: 'camisilla reductora dama hot slim outlet' }
+      { id: 'outlet-power-belt', title: 'Cinturilla Reductora Dama Power Belt', category: 'Outlet', price: 195041, oldPrice: 297800, url: '/products/cinturilla-reductora-dama-power-belt', keywords: 'faja cinturilla reductora dama power belt outlet' },
+      { id: 'outlet-pantalon-dama', title: 'Hot Slim Dama - Pantalón Reductor Térmico', category: 'Outlet', price: 136731, oldPrice: 199800, url: '/products/hot-slim-dama-pantalon-reductor', keywords: 'pantalon reductor hot slim dama sauna outlet' },
+      { id: 'outlet-camisilla-hombre', title: 'Hot Slim Hombre - Camisilla Reductora', category: 'Outlet', price: 136731, oldPrice: 199800, url: '/products/hot-slim-hombre-camisilla-reductora', keywords: 'camisilla reductora hombre hot slim outlet' },
+      { id: 'outlet-cinturilla-sport', title: 'Cinturilla Sport Styliza Mujer', category: 'Outlet', price: 112336, oldPrice: 158800, url: '/products/cinturilla-sport-styliza-mujer', keywords: 'cinturilla sport styliza mujer faja outlet' },
+      { id: 'outlet-pantalon-styliza', title: 'Pantalón Sauna Styliza', category: 'Outlet', price: 196231, oldPrice: 300000, url: '/products/pantalon-sauna-styliza', keywords: 'pantalon sauna styliza termico outlet' },
+      { id: 'outlet-chaleco-hombre', title: 'Hombre Chaleco Sauna Térmico', category: 'Outlet', price: 196231, oldPrice: 299800, url: '/products/hombre-chaleco-sauna', keywords: 'chaleco sauna hombre reductor outlet' },
+      { id: 'outlet-camisilla-dama', title: 'Hot Slim Dama Camisilla Reductora', category: 'Outlet', price: 136731, oldPrice: 199800, url: '/products/hot-slim-dama-camisilla-reductora', keywords: 'camisilla reductora dama hot slim outlet' }
     ],
 
     handleSearchInput: function(inputEl) {
@@ -1494,10 +1494,20 @@ function selectCheckoutPackage(element, priceValue) {
     }
 
     if (stickyBuyBar) {
-      if (scrollTop > 450 && scrollTop < 2600) {
-        stickyBuyBar.classList.add('visible');
+      var buyForm = document.getElementById('shopifyProductForm') || document.querySelector('.action-buttons') || document.querySelector('.product-actions');
+      if (buyForm) {
+        var rect = buyForm.getBoundingClientRect();
+        if (rect.bottom < 80) {
+          stickyBuyBar.classList.add('visible');
+        } else {
+          stickyBuyBar.classList.remove('visible');
+        }
       } else {
-        stickyBuyBar.classList.remove('visible');
+        if (scrollTop > 380) {
+          stickyBuyBar.classList.add('visible');
+        } else {
+          stickyBuyBar.classList.remove('visible');
+        }
       }
     }
 

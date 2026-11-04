@@ -928,10 +928,20 @@ function selectCheckoutPackage(element, priceValue) {
     }
 
     if (stickyBuyBar) {
-      if (scrollTop > 450 && scrollTop < 2600) {
-        stickyBuyBar.classList.add('visible');
+      var buyForm = document.getElementById('shopifyProductForm') || document.querySelector('.action-buttons') || document.querySelector('.product-actions');
+      if (buyForm) {
+        var rect = buyForm.getBoundingClientRect();
+        if (rect.bottom < 80) {
+          stickyBuyBar.classList.add('visible');
+        } else {
+          stickyBuyBar.classList.remove('visible');
+        }
       } else {
-        stickyBuyBar.classList.remove('visible');
+        if (scrollTop > 380) {
+          stickyBuyBar.classList.add('visible');
+        } else {
+          stickyBuyBar.classList.remove('visible');
+        }
       }
     }
 
@@ -959,7 +969,7 @@ function toggleSearchBox() {
   }
 }
 
-// Rotación automática del Hero Banner cada 2 segundos
+// Rotación automática del Hero Banner cada 4 segundos
 document.addEventListener('DOMContentLoaded', function() {
   var heroSection = document.querySelector('.hero-section');
   if (heroSection) {
@@ -968,11 +978,23 @@ document.addEventListener('DOMContentLoaded', function() {
       try {
         var slides = JSON.parse(slidesAttr);
         var currentIndex = 0;
+        var applyHeroSlide = function(url) {
+          var isMobile = window.innerWidth <= 992;
+          var grad = isMobile
+            ? 'linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.62) 100%)'
+            : 'linear-gradient(90deg, rgba(232,228,220,0.08) 38%, rgba(238,235,228,0.95) 58%)';
+          heroSection.style.backgroundImage = grad + ", url('" + url + "')";
+        };
+        if (slides.length > 0) {
+          applyHeroSlide(slides[0]);
+        }
+        window.addEventListener('resize', function() {
+          if (slides.length > 0) applyHeroSlide(slides[currentIndex]);
+        });
         setInterval(function() {
           currentIndex = (currentIndex + 1) % slides.length;
-          var imageUrl = slides[currentIndex];
-          heroSection.style.backgroundImage = "linear-gradient(90deg, rgba(232,228,220,0.1) 40%, rgba(235,232,224,0.92) 60%), url('" + imageUrl + "')";
-        }, 2000);
+          applyHeroSlide(slides[currentIndex]);
+        }, 4000);
       } catch (e) {}
     }
   }
