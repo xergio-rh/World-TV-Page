@@ -1,9 +1,7 @@
 <!-- BANNER HERO OUTLET -->
-<section class="outlet-hero-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('{{ 'banneroutlet.jpeg' | asset_url }}');">
+<section class="outlet-hero-banner" style="--outlet-bg-pc: url('{{ 'banner_outlet_hero_pc.png' | asset_url }}'); --outlet-bg-mob: url('{{ 'banner_outlet_hero_mobile.png' | asset_url }}');">
   <div class="outlet-hero-content">
-    <span class="outlet-tag-top"><svg class="inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> LIQUIDACIÓN TOTAL</span>
     <h1>OUTLET PRENDAS <span>MOLDEADORAS Y TÉRMICAS</span></h1>
-    <p>Moldea tu figura al mejor precio con fajas, cinturillas y chalecos térmicos diseñados para maximizar tus resultados.</p>
   </div>
 </section>
 
@@ -108,7 +106,7 @@
     </article>
 
     <!-- 6. Hombre Chaleco Sauna -->
-    <article class="product-card beauty-card" onclick="window.location.href='/products/hombre-chaleco-sauna'" style="cursor: pointer;">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/chaleco-hot-slim-sauna-hombre'" style="cursor: pointer;">
       <div class="product-img-box">
         <img src="{{ 'hotslimhombre1.webp' | asset_url }}" alt="Hombre Chaleco Sauna" width="823" height="823">
       </div>
@@ -124,7 +122,7 @@
     </article>
 
     <!-- 7. Hot Slim Dama Camisilla Reductora -->
-    <article class="product-card beauty-card" onclick="window.location.href='/products/hot-slim-dama-camisilla-reductora'" style="cursor: pointer;">
+    <article class="product-card beauty-card" onclick="window.location.href='/products/chaleco-slim-sauna-dama'" style="cursor: pointer;">
       <div class="product-img-box">
         <img src="{{ 'hotslimdama2.webp' | asset_url }}" alt="Hot Slim Dama Camisilla Reductora" width="360" height="360">
       </div>

@@ -73,19 +73,19 @@
     <nav>
       <ul class="nav-links" id="navLinks">
         <li>
-          <a href="{{ routes.root_url }}" {% if template.name == 'index' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Todos</a>
+          <a href="{{ routes.root_url }}" data-wtv-nav="index" onclick="if(window.navigateToWorldTV && document.getElementById('MainContent')){ window.navigateToWorldTV('index'); return false; }" {% if template.name == 'index' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Todos</a>
         </li>
         <li>
-          <a href="{{ routes.collections_url }}/bebidas-funcionales-y-suplementos-naturales-para-el-bienestar-diario" {% if collection.handle contains 'bebidas' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Nutrición</a>
+          <a href="{{ routes.collections_url }}/bebidas-funcionales-y-suplementos-naturales-para-el-bienestar-diario" data-wtv-nav="nutricion" onclick="if(window.navigateToWorldTV && document.getElementById('wtv-view-nutricion')){ window.navigateToWorldTV('nutricion'); return false; }" {% if collection.handle contains 'bebidas' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Nutrición</a>
         </li>
         <li>
-          <a href="{{ routes.collections_url }}/lentes-para-descanso-visual-y-proteccion-de-pantallas" {% if collection.handle contains 'lentes' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Salud Visual</a>
+          <a href="{{ routes.collections_url }}/lentes-para-descanso-visual-y-proteccion-de-pantallas" data-wtv-nav="vision" onclick="if(window.navigateToWorldTV && document.getElementById('wtv-view-vision')){ window.navigateToWorldTV('vision'); return false; }" {% if collection.handle contains 'lentes' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Salud Visual</a>
         </li>
         <li>
-          <a href="{{ routes.collections_url }}/belleza-y-bienestar" {% if collection.handle contains 'belleza' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Belleza y Bienestar</a>
+          <a href="{{ routes.collections_url }}/belleza-y-bienestar" data-wtv-nav="belleza" onclick="if(window.navigateToWorldTV && document.getElementById('wtv-view-belleza')){ window.navigateToWorldTV('belleza'); return false; }" {% if collection.handle contains 'belleza' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Belleza y Bienestar</a>
         </li>
         <li>
-          <a href="{{ routes.collections_url }}/outlet-prendas-moldeadoras-y-termicas" {% if collection.handle contains 'outlet' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Outlet Prendas Moldeadoras</a>
+          <a href="{{ routes.collections_url }}/outlet-prendas-moldeadoras-y-termicas" data-wtv-nav="outlet" onclick="if(window.navigateToWorldTV && document.getElementById('wtv-view-outlet')){ window.navigateToWorldTV('outlet'); return false; }" {% if collection.handle contains 'outlet' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Outlet Prendas Moldeadoras</a>
         </li>
       </ul>
     </nav>

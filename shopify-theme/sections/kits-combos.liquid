@@ -17,9 +17,9 @@
         </span>
         <h3>{{ section.settings.kit_1_title | default: 'Kit Vitalidad Diaria' }}</h3>
         <p>{{ section.settings.kit_1_desc | default: '1x Melena de León SI100 + 1x Colasteel Cloruro de Magnesio para un soporte físico y mental completo.' }}</p>
-        <div class="kit-price"><del>$179.800</del> $144.800 COP <span style="font-size:10px; font-weight:700; color:#15803D; background:#DCFCE7; padding:2px 7px; border-radius:10px; display:inline-block; margin-left:6px; vertical-align:middle;">IVA INCLUIDO</span></div>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <button type="button" class="btn-primary btn-pay-now-main" style="border: none; cursor: pointer; flex: 1; padding: 12px 12px; font-size: 11px;"
+        <div class="kit-price"><del>$179.800</del> $144.800 COP</div>
+        <div class="kit-actions">
+          <button type="button" class="btn-primary btn-pay-now-main kit-buy-btn"
                   onclick="event.stopPropagation(); WTVCart.selectAndAddKit('kitCard1', {
                     id: 'kit-vitalidad-diaria',
                     variantId: 46764428198062,
@@ -32,7 +32,7 @@
                   }, true, 'online')">
             COMPRAR AHORA
           </button>
-          <button type="button" class="btn-secondary" style="cursor: pointer; padding: 12px 14px;"
+          <button type="button" class="btn-secondary kit-cart-btn" aria-label="Agregar al carrito" title="Agregar al carrito"
                   onclick="event.stopPropagation(); WTVCart.selectAndAddKit('kitCard1', {
                     id: 'kit-vitalidad-diaria',
                     variantId: 46764428198062,
@@ -43,7 +43,11 @@
                     oldPrice: 179800,
                     image: '{{ 'colasteel_melena.jpeg' | asset_url }}'
                   }, false)">
-            + Carrito
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
           </button>
         </div>
       </div>
@@ -61,9 +65,9 @@
         </span>
         <h3>{{ section.settings.kit_2_title | default: 'Kit Descanso & Claridad' }}</h3>
         <p>{{ section.settings.kit_2_desc | default: '1x Inositol en Polvo + 1x Gafas Relax Vision Clásicas para cuidar tu mente y tus ojos.' }}</p>
-        <div class="kit-price"><del>$264.800</del> $219.800 COP <span style="font-size:10px; font-weight:700; color:#15803D; background:#DCFCE7; padding:2px 7px; border-radius:10px; display:inline-block; margin-left:6px; vertical-align:middle;">IVA INCLUIDO</span></div>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <button type="button" class="btn-primary btn-pay-now-main" style="border: none; cursor: pointer; flex: 1; padding: 12px 12px; font-size: 11px;"
+        <div class="kit-price"><del>$264.800</del> $219.800 COP</div>
+        <div class="kit-actions">
+          <button type="button" class="btn-primary btn-pay-now-main kit-buy-btn"
                   onclick="event.stopPropagation(); WTVCart.selectAndAddKit('kitCard2', {
                     id: 'kit-descanso-claridad',
                     variantId: 47972060758190,
@@ -76,7 +80,7 @@
                   }, true, 'online')">
             COMPRAR AHORA
           </button>
-          <button type="button" class="btn-secondary" style="cursor: pointer; padding: 12px 14px;"
+          <button type="button" class="btn-secondary kit-cart-btn" aria-label="Agregar al carrito" title="Agregar al carrito"
                   onclick="event.stopPropagation(); WTVCart.selectAndAddKit('kitCard2', {
                     id: 'kit-descanso-claridad',
                     variantId: 47972060758190,
@@ -87,7 +91,11 @@
                     oldPrice: 264800,
                     image: '{{ 'inositol_clasicas.jpeg' | asset_url }}'
                   }, false)">
-            + Carrito
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
           </button>
         </div>
       </div>

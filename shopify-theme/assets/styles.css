@@ -179,20 +179,126 @@
   color: var(--brand-red);  
  }  
    
- /* HERO BANNER */  
+  /* HERO BANNER ROTATIVO (3 SLIDES) */  
  .hero-section {  
   position: relative;  
-  background-color: #E8E4DC;  
-  background-image: linear-gradient(90deg, rgba(232,228,220,0.1) 40%, rgba(235,232,224,0.92) 60%),  
-  url('Gemini_Generated_Image_tfwqcztfwqcztfwq.jpeg');  
-  background-size: cover;  
-  background-position: center center;  
-  min-height: 520px;  
-  display: flex;  
-  align-items: center;  
-  transition: background-image 0.8s ease-in-out; /* Transición suave entre imágenes */  
+  background-color: #F8F5EE;  
+  width: 100%;  
+  min-height: 460px;  
+  height: 36.33vw;  
+  max-height: 700px;  
+  overflow: hidden;
  }  
-   
+
+ .hero-slides-track {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+ }
+
+ .hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
+  display: flex;
+  align-items: center;
+ }
+
+ .hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+ }
+
+ .hero-slide-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform: scale(1);
+  transition: transform 6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+ }
+
+ .hero-slide.active .hero-slide-bg {
+  transform: scale(1.025);
+ }
+
+ .hero-slide .hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 48px 32px 48px clamp(24px, 4vw, 54px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+ }
+
+ .hero-slide .hero-content {
+  max-width: 420px;
+  width: 100%;
+  z-index: 2;
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, opacity 0.8s ease 0.15s;
+ }
+
+ .hero-slide.active .hero-content {
+  transform: translateY(0);
+  opacity: 1;
+ }
+
+ @media (min-width: 769px) {
+  .hero-slide-combos .hero-content {
+   max-width: 380px;
+  }
+ }
+
+ .hero-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  gap: 10px;
+ }
+
+ .hero-dot {
+  width: 32px;
+  height: 5px;
+  border-radius: 4px;
+  border: none;
+  background: rgba(26, 26, 26, 0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+ }
+
+ .hero-dot:hover {
+  background: rgba(26, 26, 26, 0.5);
+ }
+
+ .hero-dot.active {
+  width: 48px;
+  background: #1A1A1A;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+ }
+
+ .hero-arrow {
+  display: none !important;
+ }
    
  .hero-container {  
   max-width: 1280px;  
@@ -200,15 +306,15 @@
   margin: 0 auto;  
   padding: 48px 24px;  
   display: grid;  
-  grid-template-columns: 1.1fr 0.9fr;  
+  grid-template-columns: 1fr 1fr;  
   align-items: center;  
  }  
    
  .hero-content {  
-  grid-column: 2;  
-  max-width: 520px;  
+  grid-column: 1;  
+  max-width: 500px;  
+  z-index: 2;  
  }  
-   
  .pill-badge {  
   display: inline-flex;  
   align-items: center;  
@@ -226,16 +332,18 @@
    
  .hero-title {  
   font-family: var(--font-serif);  
-  font-size: 44px;  
-  line-height: 1.12;  
+  font-size: clamp(30px, 3.2vw, 40px);  
+  line-height: 1.15;  
   color: var(--brand-dark);  
   margin-bottom: 16px;  
+  text-shadow: 0 1px 12px rgba(255, 255, 255, 0.95), 0 0 2px rgba(255, 255, 255, 0.9);
  }  
    
- .hero-title span {  
-  color: #6B655E;  
-  display: block;  
- }  
+ .hero-title span {
+  color: #1A1A1A;
+  font-weight: 800;
+  display: block;
+}  
    
  .hero-desc {  
   font-size: 15px;  
@@ -248,9 +356,41 @@
   display: flex;  
   gap: 12px;  
   flex-wrap: wrap;  
-  margin-bottom: 24px;  
+  margin-top: 22px;
+  margin-bottom: 0px;  
  }  
    
+ .hero-btn-simple {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1A1A1A;
+  color: #FFFFFF !important;
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 13px 32px;
+  border-radius: 6px;
+  text-decoration: none !important;
+  border: 1px solid #1A1A1A;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  cursor: pointer;
+ }
+
+ .hero-btn-simple:hover {
+  background-color: #333333;
+  border-color: #333333;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+ }
+
+ .hero-btn-simple:active {
+  transform: translateY(0);
+ }
+
  .btn-primary {  
   background-color: var(--brand-burgundy);  
   color: #FFF;  
@@ -575,8 +715,68 @@
   font-weight: 400;  
   margin-right: 6px;  
  }  
+
+ .kit-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+ }
+
+ .kit-actions .kit-buy-btn {
+  flex: 1;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: var(--brand-dark, #1A1A1A);
+  color: #FFFFFF;
+  transition: all 0.2s ease;
+ }
+
+ .kit-actions .kit-buy-btn:hover {
+  background-color: var(--brand-burgundy, #7D1F20);
+  transform: translateY(-1px);
+ }
+
+ .kit-actions .kit-cart-btn {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid #D5D5D5;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: var(--brand-dark, #1A1A1A);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+ }
+
+ .kit-actions .kit-cart-btn:hover {
+  background: #F8F5EE;
+  border-color: var(--brand-burgundy, #7D1F20);
+  color: var(--brand-burgundy, #7D1F20);
+  transform: translateY(-1px);
+ }
+
+ .kit-actions .kit-cart-btn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+ }
    
- /* OUTLET */  
+ /* OUTLET BANNER ROTATIVO */  
  .outlet-section {  
   max-width: 1240px;  
   margin: 0 auto 64px;  
@@ -584,78 +784,146 @@
  }  
    
  .outlet-banner {  
-  border-radius: var(--radius-lg);  
+  position: relative;  
+  border-radius: var(--radius-lg, 16px);  
   overflow: hidden;  
-  background-color: #121212;  
-  color: #FFF;  
-  display: grid;  
-  grid-template-columns: 1.35fr 0.65fr;  
-  align-items: center;  
-  min-height: 320px;  
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);  
+  background-color: #0E0E12;  
+  min-height: 380px;  
+  height: clamp(380px, 35vw, 460px);  
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);  
  }  
-   
- .outlet-people {  
+
+ .outlet-slides-track {  
+  position: absolute;  
+  inset: 0;  
+  width: 100%;  
   height: 100%;  
-  min-height: 320px;  
-  background-image: url('banneroutlet.jpeg');  
+ }  
+
+ .outlet-slide {  
+  position: absolute;  
+  inset: 0;  
+  width: 100%;  
+  height: 100%;  
+  opacity: 0;  
+  visibility: hidden;  
+  pointer-events: none;  
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;  
+ }  
+
+ .outlet-slide.active {  
+  opacity: 1;  
+  visibility: visible;  
+  pointer-events: auto;  
+ }  
+
+ .outlet-slide-bg {  
+  width: 100%;  
+  height: 100%;  
   background-size: cover;  
-  background-position: 1% center;  
+  background-position: right center;  
+  background-repeat: no-repeat;  
+  transform: scale(1);  
+  transition: transform 6s cubic-bezier(0.16, 1, 0.3, 1);  
  }  
-   
- .outlet-content {  
-  padding: 40px 48px;  
+
+ .outlet-slide.active .outlet-slide-bg {  
+  transform: scale(1.03);  
+ }  
+
+ .outlet-content-overlay {  
+  position: absolute;  
+  inset: 0;  
+  z-index: 3;  
+  display: flex;  
+  align-items: center;  
+  justify-content: flex-start;  
+  padding: 0 64px;  
+  background: linear-gradient(90deg, rgba(14, 14, 18, 0.88) 0%, rgba(14, 14, 18, 0.72) 32%, rgba(14, 14, 18, 0.25) 54%, rgba(14, 14, 18, 0) 72%);  
+  pointer-events: none;  
+ }  
+
+ .outlet-content-inner {  
+  max-width: 420px;  
   text-align: left;  
-  background-color: #121212;  
+  pointer-events: auto;  
  }  
-   
- .outlet-badge {  
-  background: #FFB703;  
-  color: #111111;  
-  font-size: 10px;  
-  font-weight: 800;  
-  padding: 4px 10px;  
-  border-radius: 4px;  
-  text-transform: uppercase;  
-  display: inline-block;  
-  margin-bottom: 14px;  
- }  
-   
+
  .outlet-title {  
-  font-size: 44px;  
+  font-family: var(--font-serif, 'Georgia', serif);  
+  font-size: clamp(42px, 4.6vw, 56px);  
   font-weight: 900;  
   font-style: italic;  
   line-height: 1;  
+  letter-spacing: 2px;  
   color: #FFB703;  
-  margin-bottom: 8px;  
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);  
+  margin: 0 0 24px 0;  
  }  
-   
- .outlet-subtitle {  
-  font-size: 16px;  
-  font-weight: 700;  
-  text-transform: uppercase;  
-  line-height: 1.3;  
-  color: #FFFFFF;  
-  margin-bottom: 24px;  
- }  
-   
+
  .outlet-btn {  
-  display: inline-block;  
-  background-color: #FFB703;  
+  display: inline-flex;  
+  align-items: center;  
+  gap: 10px;  
+  background: #FFB703;  
   color: #111111;  
-  padding: 12px 24px;  
-  border-radius: 6px;  
-  font-size: 12px;  
+  padding: 14px 28px;  
+  border-radius: 50px;  
+  font-size: 13.5px;  
   font-weight: 800;  
-  text-decoration: none;  
+  letter-spacing: 0.8px;  
   text-transform: uppercase;  
-  transition: background-color 0.2s, transform 0.2s;  
+  text-decoration: none;  
+  box-shadow: 0 8px 24px rgba(255, 183, 3, 0.35);  
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);  
+  border: none;  
  }  
-   
+
  .outlet-btn:hover {  
   background-color: #FFA200;  
-  transform: translateY(-2px);  
+  color: #000000;  
+  transform: translateY(-2px) scale(1.02);  
+  box-shadow: 0 12px 30px rgba(255, 183, 3, 0.5);  
  }  
+
+ .outlet-btn svg {  
+  transition: transform 0.25s ease;  
+ }  
+
+ .outlet-btn:hover svg {  
+  transform: translateX(4px);  
+ }  
+
+ .outlet-dots {  
+  position: absolute;  
+  bottom: 22px;  
+  left: 64px;  
+  z-index: 4;  
+  display: flex;  
+  gap: 8px;  
+ }  
+
+ .outlet-dot {  
+  width: 28px;  
+  height: 4px;  
+  border-radius: 4px;  
+  border: none;  
+  background: rgba(255, 255, 255, 0.35);  
+  cursor: pointer;  
+  transition: all 0.3s ease;  
+  padding: 0;  
+ }  
+
+ .outlet-dot.active {  
+  width: 44px;  
+  background: #FFB703;  
+  box-shadow: 0 0 10px rgba(255, 183, 3, 0.6);  
+ }  
+
+ /* Flechas solo visibles en móvil */
+ .outlet-arrow {
+  display: none !important;
+ }
    
  /* TESTIMONIOS */  
  .reviews-section {  
@@ -1199,7 +1467,7 @@
  }  
    
  .cart-footer {  
-  padding: 20px 24px;  
+  padding: 14px 20px;  
   background: #F9F9F9;  
   border-top: 1px solid var(--border-soft);  
  }  
@@ -1208,7 +1476,7 @@
   display: flex;  
   justify-content: space-between;  
   font-size: 13px;  
-  margin-bottom: 8px;  
+  margin-bottom: 6px;  
   color: #555;  
  }  
    
@@ -1218,8 +1486,8 @@
   color: var(--brand-dark);  
   border-top: 1px dashed #DDD;  
   padding-top: 8px;  
-  margin-top: 8px;  
-  margin-bottom: 16px;  
+  margin-top: 6px;  
+  margin-bottom: 12px;  
  }  
    
  .cart-checkout-btn {  
@@ -1234,7 +1502,7 @@
   text-decoration: none;  
   letter-spacing: 0.5px;  
   box-shadow: 0 4px 14px rgba(230, 0, 18, 0.25);  
-  margin-bottom: 14px;  
+  margin-bottom: 0;  
   transition: background 0.2s;  
  }  
    
@@ -1242,16 +1510,9 @@
   background: #B5000E;  
  }  
    
- .cart-trust-badges {  
-  display: flex;  
-  justify-content: space-between;  
-  font-size: 10px;  
-  color: #666;  
-  margin-bottom: 10px;  
-  background: #FFF;  
-  padding: 6px 10px;  
-  border-radius: 4px;  
-  border: 1px solid #E5E5E5;  
+ .cart-trust-badges,
+ .cart-footer .payment-methods-icons {  
+  display: none !important;  
  }  
    
  .payment-methods-icons {  
@@ -1867,3 +2128,168 @@
   display: none;  
   }  
  }
+
+
+/* BANNER CLEANUP (PC & MOVIL) - SOLO TITULO Y BOTON LIMPIO */
+.hero-section .pill-badge,
+.hero-section .hero-desc,
+.hero-section .hero-checks,
+.vision-section .vision-tag,
+.vision-section .vision-desc,
+.vision-hero-banner .vision-tag-top,
+.vision-hero-banner p,
+.beauty-hero-banner .beauty-tag-top,
+.beauty-hero-banner p,
+.outlet-hero-banner .outlet-tag-top,
+.outlet-hero-banner p,
+.outlet-banner .outlet-badge,
+.outlet-banner .outlet-subtitle {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .hero-btn-simple {
+    width: 100% !important;
+    max-width: 320px !important;
+    text-align: center !important;
+    justify-content: center !important;
+    margin: 0 auto;
+  }
+}
+
+
+/* ==========================================================================
+   MODO DE USO Y RENDIMIENTO - IMAGEN SIN BORDES BLANCOS (DESKTOP & MOVIL)
+   ========================================================================== */
+.usage-img {
+  background: transparent !important;
+  border-radius: 14px !important;
+  width: 100% !important;
+  max-width: 440px !important;
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+  margin: 0 auto !important;
+}
+
+.usage-img img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  border-radius: 14px !important;
+}
+
+@media (max-width: 768px) {
+  .usage-card-wrapper {
+    padding: 20px 16px !important;
+    gap: 20px !important;
+    grid-template-columns: 1fr !important;
+  }
+  .usage-img {
+    width: 100% !important;
+    max-width: 360px !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  .outlet-section {
+    padding: 0 14px !important;
+    margin-bottom: 48px !important;
+  }
+  .outlet-banner {
+    min-height: 440px !important;
+    height: clamp(430px, 122vw, 470px) !important;
+    border-radius: 14px !important;
+  }
+  .outlet-slide-bg {
+    background-position: center center !important;
+    background-size: cover !important;
+  }
+  .outlet-content-overlay {
+    padding: 24px 20px !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    text-align: center !important;
+    background: linear-gradient(180deg, rgba(14, 14, 18, 0) 25%, rgba(14, 14, 18, 0.78) 58%, rgba(14, 14, 18, 0.96) 100%) !important;
+  }
+  .outlet-content-inner {
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+  .outlet-title {
+    font-size: 38px !important;
+    margin-bottom: 16px !important;
+  }
+  .outlet-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    font-size: 13px !important;
+    margin: 0 auto !important;
+  }
+  /* Ocultar cuadros/dots en móvil para que no tapen el botón */
+  .outlet-dots {
+    display: none !important;
+  }
+  /* Flechas laterales para pasar diapositivas en móvil */
+  .outlet-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 6;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(14, 14, 18, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  }
+  .outlet-arrow:active {
+    background: #FFB703;
+    color: #111111;
+    border-color: #FFB703;
+    transform: translateY(-50%) scale(0.92);
+  }
+  .outlet-arrow-prev {
+    left: 12px;
+  }
+  .outlet-arrow-next {
+    right: 12px;
+  }
+}
+
+/* OCULTAR COMPLETAMENTE EL SELECTOR DE PAQUETES DEL MODAL DE CHECKOUT */
+.checkout-packages-selector,
+#chkPackagesWrapper,
+.checkout-pkgs-grid,
+#chkPackagesGrid,
+#chkPackagesLabel {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}

@@ -148,29 +148,7 @@
       onlineBox.id = 'onlinePaymentMethodsBox';
       onlineBox.className = 'online-payment-box';
       onlineBox.style.display = 'none';
-      onlineBox.innerHTML =
-        '<h3 style="margin-top: 14px; margin-bottom: 10px;">2. ELIGE TU MÉTODO DE PAGO AL INSTANTE</h3>' +
-        '<div class="online-methods-pills">' +
-          '<button type="button" class="online-method-pill active" id="pillMethodCard" onclick="WTVCart.selectOnlineSubMethod(\'card\')">Tarjeta Crédito / Débito</button>' +
-          '<button type="button" class="online-method-pill" id="pillMethodPse" onclick="WTVCart.selectOnlineSubMethod(\'pse\')">PSE / Nequi / Daviplata</button>' +
-        '</div>' +
-        '<div id="onlineCardFields" class="online-sub-panel">' +
-          '<div class="form-group" style="margin-bottom: 10px;">' +
-            '<label>Número de Tarjeta (Visa, Mastercard, Amex) *</label>' +
-            '<input type="text" id="chkCardNumber" placeholder="0000 0000 0000 0000" maxlength="19" style="padding: 9px 11px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; width: 100%;">' +
-          '</div>' +
-          '<div class="form-row">' +
-            '<div class="form-group"><label>Vencimiento (MM/AA) *</label><input type="text" id="chkCardExp" placeholder="MM/AA" maxlength="5" style="padding: 9px 11px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; width: 100%;"></div>' +
-            '<div class="form-group"><label>CVV / CVC *</label><input type="password" id="chkCardCvv" placeholder="123" maxlength="4" style="padding: 9px 11px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; width: 100%;"></div>' +
-            '<div class="form-group"><label>Cuotas</label><select id="chkCardInstallments" style="padding: 9px 11px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; width: 100%;"><option value="1">1 cuota</option><option value="3">3 cuotas</option><option value="6">6 cuotas</option><option value="12">12 cuotas</option></select></div>' +
-          '</div>' +
-        '</div>' +
-        '<div id="onlinePseFields" class="online-sub-panel" style="display: none;">' +
-          '<div class="form-row">' +
-            '<div class="form-group"><label>Selecciona tu Entidad o Billetera *</label><select id="chkBankEntity" style="padding: 9px 11px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; width: 100%;"><option value="Nequi">Nequi (Pago inmediato)</option><option value="Bancolombia">Bancolombia</option><option value="Daviplata">Daviplata</option><option value="PSE - Davivienda">PSE - Davivienda</option><option value="PSE - Banco de Bogotá">PSE - Banco de Bogotá</option></select></div>' +
-            '<div class="form-group"><label>Cédula / NIT del Titular *</label><input type="text" id="chkPseDoc" placeholder="Número de documento" style="padding: 9px 11px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; width: 100%;"></div>' +
-          '</div>' +
-        '</div>';
+      onlineBox.innerHTML = "<div class=\"checkout-pay-header-row\">\n            <h3 class=\"checkout-pay-title\">Pago</h3>\n            <p class=\"checkout-pay-subtitle\">Todas las transacciones son seguras y est\u00e1n encriptadas.</p>\n          </div>\n\n                    <div class=\"pay-methods-accordion\" id=\"wtvPaymentAccordion\">\n            <!-- 1. TARJETA DE CR\u00c9DITO -->\n            <div class=\"pay-acc-item active\" id=\"payAccItem_card\" data-method=\"card\">\n              <div class=\"pay-acc-header\" onclick=\"WTVCart.selectPaymentAccordion('card')\">\n                <div class=\"pay-acc-title-wrap\">\n                  <span class=\"pay-acc-radio\"></span>\n                  <span class=\"pay-acc-label\">Tarjeta de cr\u00e9dito</span>\n                </div>\n                <div class=\"pay-acc-badges\">\n                  <svg width=\"38\" height=\"24\" viewBox=\"0 0 38 24\" fill=\"none\" class=\"pay-badge-card\"><rect width=\"38\" height=\"24\" rx=\"4\" fill=\"#002EB8\"/><path d=\"M15.2 16.5l2.4-9.8h2.6l-2.4 9.8h-2.6zm11.2-9.6c-.5-.2-1.3-.4-2.3-.4-2.5 0-4.3 1.3-4.3 3.3 0 1.4 1.3 2.2 2.3 2.7 1 .5 1.4.8 1.4 1.2 0 .7-.8 1-1.6 1-1 0-1.5-.2-2.3-.5l-.3-.2-.4 2.2c.6.3 1.7.5 2.9.5 2.7 0 4.5-1.3 4.5-3.4 0-1.2-.7-2-2.2-2.8-.9-.5-1.5-.8-1.5-1.3 0-.4.5-.9 1.5-.9.8 0 1.5.2 2 .4l.2.1.4-2.2zm7.5 0h-2c-.6 0-1 .2-1.3.8l-3.7 8.8h2.6l.5-1.4h3.2l.3 1.4h2.3l-1.9-9.6zm-3.1 6.2l1.3-3.6.8 3.6h-2.1zm-19.5-6.2l-2.4 6.7-.3-1.3c-.5-1.6-1.9-3.3-3.5-4.1l2.3 8.5h2.6l3.9-9.8h-2.6z\" fill=\"#FFFFFF\"/></svg>\n                  <svg width=\"38\" height=\"24\" viewBox=\"0 0 38 24\" fill=\"none\" class=\"pay-badge-card\"><rect width=\"38\" height=\"24\" rx=\"4\" fill=\"#222222\"/><circle cx=\"14.5\" cy=\"12\" r=\"6\" fill=\"#EB001B\"/><circle cx=\"23.5\" cy=\"12\" r=\"6\" fill=\"#F79E1B\"/><path d=\"M19 7.6a5.96 5.96 0 0 1 2.5 4.4 5.96 5.96 0 0 1-2.5 4.4 5.96 5.96 0 0 1-2.5-4.4c0-1.8.8-3.4 2.5-4.4z\" fill=\"#FF5F00\"/></svg>\n                  <svg width=\"38\" height=\"24\" viewBox=\"0 0 38 24\" fill=\"none\" class=\"pay-badge-card\"><rect width=\"38\" height=\"24\" rx=\"4\" fill=\"#0077D7\"/><path d=\"M9.5 7.5L6 16.5h2.8l.6-1.6h3.4l.6 1.6h3.1L13 7.5H9.5zm.9 6.2l1.1-3 1.1 3h-2.2zm7.1 2.8h2.6v-4.8l2 4.8h1.8l2-4.8v4.8h2.6V7.5h-3.4l-2 5-2-5h-3.6v9zm11-9h5.8v2.1h-3.4v1.4h3.1v2.1h-3.1v1.4h3.5v2h-5.9V7.5z\" fill=\"#FFFFFF\"/></svg>\n                  <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"pay-badge-card card-mini\"><rect x=\"0.5\" y=\"0.5\" width=\"23\" height=\"23\" rx=\"4\" fill=\"#FFFFFF\" stroke=\"#D1D5DB\"/><text x=\"12\" y=\"16\" font-family=\"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#0066CC\" text-anchor=\"middle\">+3</text></svg>\n                </div>\n              </div>\n              <div class=\"pay-acc-content\" id=\"payAccContent_card\">\n                <div class=\"form-group\" style=\"margin-bottom: 10px;\">\n                  <label>N\u00famero de tarjeta</label>\n                  <div class=\"input-with-icon-right\">\n                    <input type=\"text\" id=\"chkCardNumber\" placeholder=\"N\u00famero de tarjeta\" maxlength=\"19\" autocomplete=\"cc-number\">\n                    <svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#9CA3AF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path></svg>\n                  </div>\n                </div>\n                <div class=\"form-row\" style=\"margin-bottom: 10px;\">\n                  <div class=\"form-group\">\n                    <label>Fecha de vencimiento (MM / AA)</label>\n                    <input type=\"text\" id=\"chkCardExp\" placeholder=\"MM / AA\" maxlength=\"5\" autocomplete=\"cc-exp\">\n                  </div>\n                  <div class=\"form-group\">\n                    <label style=\"display:flex; align-items:center; justify-content:space-between;\">\n                      <span>C\u00f3digo de seguridad</span>\n                      <span class=\"cvv-help-icon\" title=\"3 d\u00edgitos al reverso o 4 al frente\">?</span>\n                    </label>\n                    <input type=\"password\" id=\"chkCardCvv\" placeholder=\"CVV\" maxlength=\"4\" autocomplete=\"cc-csc\">\n                  </div>\n                </div>\n                <div class=\"form-group\" style=\"margin-bottom: 10px;\">\n                  <label>Nombre del titular</label>\n                  <input type=\"text\" id=\"chkCardHolder\" placeholder=\"Nombre tal como aparece en la tarjeta\" autocomplete=\"cc-name\">\n                </div>\n                <div class=\"form-group\" style=\"margin-bottom: 10px;\">\n                  <label>Cuotas</label>\n                  <select id=\"chkCardInstallments\">\n                    <option value=\"1\">1 cuota (D\u00e9bito / Cr\u00e9dito)</option>\n                    <option value=\"2\">2 cuotas</option>\n                    <option value=\"3\">3 cuotas</option>\n                    <option value=\"6\">6 cuotas</option>\n                    <option value=\"12\">12 cuotas</option>\n                  </select>\n                </div>\n                <label class=\"pay-checkbox-label\">\n                  <input type=\"checkbox\" id=\"chkSameBilling\" checked>\n                  <span>Usar la direcci\u00f3n de env\u00edo como direcci\u00f3n de facturaci\u00f3n</span>\n                </label>\n              </div>\n            </div>\n\n            <!-- 2. PAGA A CR\u00c9DITO O D\u00c9BITO CON PSE -->\n            <div class=\"pay-acc-item\" id=\"payAccItem_pse_addi\" data-method=\"pse_addi\">\n              <div class=\"pay-acc-header\" onclick=\"WTVCart.selectPaymentAccordion('pse_addi')\">\n                <div class=\"pay-acc-title-wrap\">\n                  <span class=\"pay-acc-radio\"></span>\n                  <span class=\"pay-acc-label\">Paga a Cr\u00e9dito o D\u00e9bito con PSE</span>\n                </div>\n                <div class=\"pay-acc-badges\">\n                  <svg width=\"38\" height=\"24\" viewBox=\"0 0 38 24\" fill=\"none\" class=\"pay-badge-card\"><rect x=\"0.5\" y=\"0.5\" width=\"37\" height=\"23\" rx=\"4\" fill=\"#FFFFFF\" stroke=\"#D1D5DB\"/><text x=\"19\" y=\"16\" font-family=\"'Nunito', 'Segoe UI', -apple-system, sans-serif\" font-size=\"13\" font-weight=\"900\" fill=\"#2842F5\" text-anchor=\"middle\" letter-spacing=\"-0.3\">Addi</text></svg>\n                  <svg width=\"38\" height=\"24\" viewBox=\"0 0 38 24\" fill=\"none\" class=\"pay-badge-card\"><rect x=\"0.5\" y=\"0.5\" width=\"37\" height=\"23\" rx=\"4\" fill=\"#FFFFFF\" stroke=\"#D1D5DB\"/><g transform=\"translate(5, 5) scale(0.68)\"><circle cx=\"8\" cy=\"8\" r=\"1.5\" fill=\"#FDB913\"/><circle cx=\"12\" cy=\"8\" r=\"1.5\" fill=\"#F58220\"/><circle cx=\"10\" cy=\"11\" r=\"1.3\" fill=\"#F37023\"/><circle cx=\"10\" cy=\"5\" r=\"1.3\" fill=\"#FDB913\"/><circle cx=\"6\" cy=\"11\" r=\"1.2\" fill=\"#F58220\"/><circle cx=\"6\" cy=\"5\" r=\"1.2\" fill=\"#FDB913\"/><circle cx=\"4\" cy=\"8\" r=\"1.2\" fill=\"#FDB913\"/><circle cx=\"14\" cy=\"8\" r=\"1.5\" fill=\"#ED1C24\"/><circle cx=\"13\" cy=\"11\" r=\"1.3\" fill=\"#ED1C24\"/><circle cx=\"13\" cy=\"5\" r=\"1.3\" fill=\"#F58220\"/></g><text x=\"26\" y=\"16\" font-family=\"'Trebuchet MS', Arial, sans-serif\" font-style=\"italic\" font-size=\"12\" font-weight=\"700\" fill=\"#0082C9\">pse</text></svg>\n                </div>\n              </div>\n              <div class=\"pay-acc-content\" id=\"payAccContent_pse_addi\" style=\"display:none;\">\n                <p class=\"pay-acc-info-text\">Paga en cuotas sin inter\u00e9s con Addi o d\u00e9bito en tiempo real desde tu cuenta bancaria v\u00eda PSE.</p>\n                <div class=\"form-group\" style=\"margin-bottom: 10px;\">\n                  <label>Entidad o Banco (PSE / Nequi / Daviplata / Addi) *</label>\n                  <select id=\"chkPseBank\">\n                    <option value=\"Bancolombia\">Bancolombia (App / Bot\u00f3n)</option>\n                    <option value=\"Nequi\">Nequi (Pago inmediato)</option>\n                    <option value=\"Daviplata\">Daviplata</option>\n                    <option value=\"Addi\">Addi (Cuotas 0% inter\u00e9s)</option>\n                    <option value=\"Davivienda\">Banco Davivienda</option>\n                    <option value=\"Banco de Bogot\u00e1\">Banco de Bogot\u00e1</option>\n                    <option value=\"BBVA Colombia\">BBVA Colombia</option>\n                    <option value=\"Nu Colombia\">Nu Colombia</option>\n                    <option value=\"Scotiabank Colpatria\">Scotiabank Colpatria</option>\n                    <option value=\"Banco de Occidente\">Banco de Occidente</option>\n                    <option value=\"Lulo Bank\">Lulo Bank</option>\n                  </select>\n                </div>\n                <div class=\"form-group\">\n                  <label>N\u00famero de C\u00e9dula / Documento del Titular *</label>\n                  <input type=\"text\" id=\"chkPseDocNumber\" placeholder=\"Ej: 1020304050\">\n                </div>\n              </div>\n            </div>\n\n            <!-- 3. SISTECREDITO -->\n            <div class=\"pay-acc-item\" id=\"payAccItem_sistecredito\" data-method=\"sistecredito\">\n              <div class=\"pay-acc-header\" onclick=\"WTVCart.selectPaymentAccordion('sistecredito')\">\n                <div class=\"pay-acc-title-wrap\">\n                  <span class=\"pay-acc-radio\"></span>\n                  <span class=\"pay-acc-label\">Sistecredito</span>\n                </div>\n                <div class=\"pay-acc-badges\">\n                  <svg width=\"52\" height=\"24\" viewBox=\"0 0 52 24\" fill=\"none\" class=\"pay-badge-card card-wide\"><rect x=\"0.5\" y=\"0.5\" width=\"51\" height=\"23\" rx=\"4\" fill=\"#FFFFFF\" stroke=\"#D1D5DB\"/><text x=\"26\" y=\"15.5\" font-family=\"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\" letter-spacing=\"-0.2\"><tspan fill=\"#002B7F\">siste</tspan><tspan fill=\"#00A859\">cr\u00e9dito</tspan></text></svg>\n                </div>\n              </div>\n              <div class=\"pay-acc-content\" id=\"payAccContent_sistecredito\" style=\"display:none;\">\n                <p class=\"pay-acc-info-text\">Paga a cuotas sin tarjeta de cr\u00e9dito utilizando tu cupo disponible en Sistecr\u00e9dito. Aprobaci\u00f3n inmediata.</p>\n                <div class=\"form-row\">\n                  <div class=\"form-group\">\n                    <label>C\u00e9dula de Ciudadan\u00eda *</label>\n                    <input type=\"text\" id=\"chkSisteDoc\" placeholder=\"N\u00famero de c\u00e9dula\">\n                  </div>\n                  <div class=\"form-group\">\n                    <label>Celular registrado en Sistecr\u00e9dito *</label>\n                    <input type=\"tel\" id=\"chkSistePhone\" placeholder=\"Ej: 300 123 4567\">\n                  </div>\n                </div>\n              </div>\n            </div>\n\n            <!-- 4. PAGA CON BOLD: TARJETA, PSE, BRE-B Y BILLETERAS -->\n            <div class=\"pay-acc-item\" id=\"payAccItem_bold\" data-method=\"bold\">\n              <div class=\"pay-acc-header\" onclick=\"WTVCart.selectPaymentAccordion('bold')\">\n                <div class=\"pay-acc-title-wrap\">\n                  <span class=\"pay-acc-radio\"></span>\n                  <span class=\"pay-acc-label\">Paga con Bold: tarjeta, PSE, Bre-B y billeteras</span>\n                </div>\n                <div class=\"pay-acc-badges\">\n                  <svg width=\"38\" height=\"24\" viewBox=\"0 0 38 24\" fill=\"none\" class=\"pay-badge-card\"><rect width=\"38\" height=\"24\" rx=\"4\" fill=\"#002EB8\"/><path d=\"M15.2 16.5l2.4-9.8h2.6l-2.4 9.8h-2.6zm11.2-9.6c-.5-.2-1.3-.4-2.3-.4-2.5 0-4.3 1.3-4.3 3.3 0 1.4 1.3 2.2 2.3 2.7 1 .5 1.4.8 1.4 1.2 0 .7-.8 1-1.6 1-1 0-1.5-.2-2.3-.5l-.3-.2-.4 2.2c.6.3 1.7.5 2.9.5 2.7 0 4.5-1.3 4.5-3.4 0-1.2-.7-2-2.2-2.8-.9-.5-1.5-.8-1.5-1.3 0-.4.5-.9 1.5-.9.8 0 1.5.2 2 .4l.2.1.4-2.2zm7.5 0h-2c-.6 0-1 .2-1.3.8l-3.7 8.8h2.6l.5-1.4h3.2l.3 1.4h2.3l-1.9-9.6zm-3.1 6.2l1.3-3.6.8 3.6h-2.1zm-19.5-6.2l-2.4 6.7-.3-1.3c-.5-1.6-1.9-3.3-3.5-4.1l2.3 8.5h2.6l3.9-9.8h-2.6z\" fill=\"#FFFFFF\"/></svg>\n                  <svg width=\"38\" height=\"24\" viewBox=\"0 0 38 24\" fill=\"none\" class=\"pay-badge-card\"><rect width=\"38\" height=\"24\" rx=\"4\" fill=\"#222222\"/><circle cx=\"14.5\" cy=\"12\" r=\"6\" fill=\"#EB001B\"/><circle cx=\"23.5\" cy=\"12\" r=\"6\" fill=\"#F79E1B\"/><path d=\"M19 7.6a5.96 5.96 0 0 1 2.5 4.4 5.96 5.96 0 0 1-2.5 4.4 5.96 5.96 0 0 1-2.5-4.4c0-1.8.8-3.4 2.5-4.4z\" fill=\"#FF5F00\"/></svg>\n                  <svg width=\"38\" height=\"24\" viewBox=\"0 0 38 24\" fill=\"none\" class=\"pay-badge-card\"><rect x=\"0.5\" y=\"0.5\" width=\"37\" height=\"23\" rx=\"4\" fill=\"#FFFFFF\" stroke=\"#D1D5DB\"/><text x=\"19\" y=\"16\" font-family=\"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\" font-size=\"11\" font-weight=\"900\" fill=\"#3B0764\" text-anchor=\"middle\" letter-spacing=\"-0.3\">Bre\u00b7B</text></svg>\n                  <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"pay-badge-card card-mini\"><rect x=\"0.5\" y=\"0.5\" width=\"23\" height=\"23\" rx=\"4\" fill=\"#FFFFFF\" stroke=\"#D1D5DB\"/><text x=\"12\" y=\"16\" font-family=\"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#0066CC\" text-anchor=\"middle\">+7</text></svg>\n                </div>\n              </div>\n              <div class=\"pay-acc-content\" id=\"payAccContent_bold\" style=\"display:none;\">\n                <div class=\"bold-highlight-box\">\n                  <div class=\"bold-logo-tag\">\n                    <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"#00C389\"><circle cx=\"12\" cy=\"12\" r=\"10\"/></svg>\n                    <strong>Pasarela Oficial Bold \u2022 Pagos 100% Seguros</strong>\n                  </div>\n                  <p class=\"pay-acc-info-text\">Paga al instante con tarjeta cr\u00e9dito/d\u00e9bito, PSE, Nequi, Daviplata o el nuevo bot\u00f3n r\u00e1pido Bre-B.</p>\n                  <div class=\"bold-methods-pills\">\n                    <button type=\"button\" class=\"bold-pill active\" onclick=\"WTVCart.setBoldSubOption(this, 'Tarjeta')\">Tarjetas</button>\n                    <button type=\"button\" class=\"bold-pill\" onclick=\"WTVCart.setBoldSubOption(this, 'PSE')\">PSE</button>\n                    <button type=\"button\" class=\"bold-pill\" onclick=\"WTVCart.setBoldSubOption(this, 'Nequi')\">Nequi / Daviplata</button>\n                    <button type=\"button\" class=\"bold-pill\" onclick=\"WTVCart.setBoldSubOption(this, 'Bre-B')\">Bre-B</button>\n                  </div>\n                </div>\n              </div>\n            </div>\n\n            <!-- 5. PAGO CONTRA ENTREGA (SIN LOGOS EN LA CABECERA) -->\n            <div class=\"pay-acc-item\" id=\"payAccItem_cod\" data-method=\"cod\">\n              <div class=\"pay-acc-header\" onclick=\"WTVCart.selectPaymentAccordion('cod')\">\n                <div class=\"pay-acc-title-wrap\">\n                  <span class=\"pay-acc-radio\"></span>\n                  <span class=\"pay-acc-label\">Pago Contra entrega</span>\n                </div>\n              </div>\n              <div class=\"pay-acc-content\" id=\"payAccContent_cod\" style=\"display:none;\">\n                <p class=\"pay-acc-info-text\">No pagas nada por adelantado. Te enviamos el pedido a tu direcci\u00f3n y pagas en efectivo o transferencia cuando el transportador te entregue en casa.</p>\n              </div>\n            </div>\n\n            <!-- 6. TRANSFERENCIA BANCOLOMBIA (SIN LOGOS EN LA CABECERA) -->\n            <div class=\"pay-acc-item\" id=\"payAccItem_bancolombia\" data-method=\"bancolombia\">\n              <div class=\"pay-acc-header\" onclick=\"WTVCart.selectPaymentAccordion('bancolombia')\">\n                <div class=\"pay-acc-title-wrap\">\n                  <span class=\"pay-acc-radio\"></span>\n                  <span class=\"pay-acc-label\">TRANSFERENCIA BANCOLOMBIA</span>\n                </div>\n              </div>\n              <div class=\"pay-acc-content\" id=\"payAccContent_bancolombia\" style=\"display:none;\">\n                <div class=\"bank-transfer-details\">\n                  <p class=\"pay-acc-info-text\">Transfiere directamente desde tu App Bancolombia a nuestra cuenta oficial sin cargos adicionales:</p>\n                  <div class=\"bank-details-box\">\n                    <div><strong>Banco:</strong> Bancolombia</div>\n                    <div><strong>Tipo de Cuenta:</strong> Ahorros</div>\n                    <div><strong>Titular:</strong> World TV Colombia S.A.S.</div>\n                    <div class=\"bank-note\">Al confirmar, te asignaremos tu n\u00famero de pedido y podr\u00e1s enviar el comprobante directamente a nuestro WhatsApp oficial de despachos.</div>\n                  </div>\n                </div>\n              </div>\n            </div>\n\n            <!-- 7. QR TODOS LOS BANCOS - BILLETERAS DIGITALES (SIN LOGOS EN LA CABECERA) -->\n            <div class=\"pay-acc-item\" id=\"payAccItem_qr\" data-method=\"qr\">\n              <div class=\"pay-acc-header\" onclick=\"WTVCart.selectPaymentAccordion('qr')\">\n                <div class=\"pay-acc-title-wrap\">\n                  <span class=\"pay-acc-radio\"></span>\n                  <span class=\"pay-acc-label\">QR TODOS LOS BANCOS - BILLLETERAS DIGITALES</span>\n                </div>\n              </div>\n              <div class=\"pay-acc-content\" id=\"payAccContent_qr\" style=\"display:none;\">\n                <p class=\"pay-acc-info-text\">Escanea y paga con el c\u00f3digo QR interoperable desde tu app preferida: Bancolombia, Nequi, Daviplata, Scotiabank Colpatria, BBVA, Banco de Bogot\u00e1, Dale, Movii o cualquier billetera digital.</p>\n              </div>\n            </div>\n          </div>";
       chkForm.appendChild(onlineBox);
     }
 
@@ -346,33 +324,7 @@
       }
     }
 
-    // Si el último producto agregado tiene opciones de paquetes (Lleva 1, Lleva 2, Lleva 3),
-    // mostrarlas en el modal de checkout para que pueda cambiar de paquete en vivo
-    var chkGrid = document.getElementById('chkPackagesGrid');
-    var chkWrapper = document.getElementById('chkPackagesWrapper') || (chkGrid ? chkGrid.parentElement : null);
-    if (chkGrid && items.length > 0) {
-      var activeItem = items[items.length - 1];
-      if (activeItem.packages && activeItem.packages.length > 1) {
-        if (chkWrapper) chkWrapper.style.display = 'block';
-        var pkgHtml = '';
-        var safeItemId = String(activeItem.id).replace(/'/g, "\\'");
-        activeItem.packages.forEach(function(pkg, idx) {
-          var isSelected = (pkg.packTitle === activeItem.packTitle) || (Number(pkg.price) === Number(activeItem.price));
-          var hasOld = pkg.oldPrice && Number(pkg.oldPrice) > Number(pkg.price);
-          pkgHtml +=
-            '<div class="chk-pkg-card ' + (isSelected ? 'active' : '') + '" onclick="WTVCart.switchItemPackage(\'' + safeItemId + '\', ' + idx + ')">' +
-              (idx === 1 && activeItem.packages.length === 3 ? '<span class="badge-best-chk">MÁS VENDIDO</span>' : '') +
-              '<span class="chk-title">' + pkg.packTitle + '</span>' +
-              (pkg.image ? '<img src="' + pkg.image + '" alt="' + pkg.packTitle + '" width="80" height="80">' : '') +
-              (hasOld ? '<del>' + formatMoney(pkg.oldPrice) + '</del>' : '') +
-              '<strong>' + formatMoney(pkg.price) + '</strong>' +
-            '</div>';
-        });
-        chkGrid.innerHTML = pkgHtml;
-      } else if (chkWrapper) {
-        chkWrapper.style.display = 'none';
-      }
-    }
+    var chkWrapper = document.getElementById("chkPackagesWrapper"); if (chkWrapper) chkWrapper.remove();
   }
 
   function popBadge() {
@@ -561,6 +513,8 @@
     },
 
     currentPaymentMode: 'cod',
+    currentAccordionMethod: 'card',
+    currentBoldSubOption: 'Tarjeta',
     currentOnlineSubMethod: 'card',
 
     setPaymentMode: function(mode) {
@@ -577,37 +531,78 @@
         onlineBox.style.display = (this.currentPaymentMode === 'online') ? 'block' : 'none';
       }
 
-      var noticeTitle = document.getElementById('codNoticeTitle');
-      var noticeDesc = document.getElementById('codNoticeDesc');
-      var noticeBox = document.getElementById('codFormNoticeBox') || document.querySelector('#checkoutModal .cod-form-notice');
-      var submitBtn = document.getElementById('chkMainSubmitBtn') || document.querySelector('#checkoutModal .btn-checkout-submit');
-      var totalLabel = document.getElementById('chkTotalLabel');
-
       if (this.currentPaymentMode === 'online') {
-        if (noticeBox) noticeBox.classList.add('online-mode');
-        if (noticeTitle) noticeTitle.textContent = 'PAGO EN LÍNEA AL INSTANTE (100% SEGURO)';
-        if (noticeDesc) noticeDesc.textContent = 'Paga ahora mismo con tu Tarjeta de Crédito/Débito, PSE, Nequi o Bancolombia y recibe prioridad de despacho.';
-        if (submitBtn) submitBtn.textContent = 'PAGAR AHORA AL INSTANTE';
-        if (totalLabel) totalLabel.textContent = 'Total a pagar ahora';
+        if (this.currentAccordionMethod === 'cod') {
+          this.selectPaymentAccordion('bold');
+        } else {
+          this.selectPaymentAccordion(this.currentAccordionMethod || 'card');
+        }
       } else {
-        if (noticeBox) noticeBox.classList.remove('online-mode');
-        if (noticeTitle) noticeTitle.textContent = 'PAGO CONTRAENTREGA: SOLO TUS DATOS DE ENVÍO';
-        if (noticeDesc) noticeDesc.textContent = 'No necesitas tarjeta. Te despachamos hoy mismo y pagas en efectivo o transferencia al recibir en tu puerta.';
-        if (submitBtn) submitBtn.textContent = 'CONFIRMAR PEDIDO CONTRAENTREGA';
-        if (totalLabel) totalLabel.textContent = 'Total a pagar al recibir';
+        this.selectPaymentAccordion('cod');
       }
     },
 
+    selectPaymentAccordion: function(methodKey) {
+      this.currentAccordionMethod = methodKey || 'card';
+      var allItems = document.querySelectorAll('.pay-acc-item');
+      allItems.forEach(function(item) {
+        var m = item.getAttribute('data-method');
+        var content = document.getElementById('payAccContent_' + m);
+        if (m === methodKey) {
+          item.classList.add('active');
+          if (content) content.style.display = 'block';
+        } else {
+          item.classList.remove('active');
+          if (content) content.style.display = 'none';
+        }
+      });
+
+      var submitBtn = document.getElementById('chkMainSubmitBtn') || document.querySelector('#checkoutModal .btn-checkout-submit');
+      var totalLabel = document.getElementById('chkTotalLabel');
+      var tabCod = document.getElementById('tabPayCod');
+      var tabOnline = document.getElementById('tabPayOnline');
+
+      if (methodKey === 'cod') {
+        this.currentPaymentMode = 'cod';
+        if (tabCod) tabCod.classList.add('active');
+        if (tabOnline) tabOnline.classList.remove('active');
+        if (submitBtn) submitBtn.textContent = 'CONFIRMAR PEDIDO CONTRAENTREGA';
+        if (totalLabel) totalLabel.textContent = 'Total a pagar al recibir';
+      } else {
+        this.currentPaymentMode = 'online';
+        if (tabCod) tabCod.classList.remove('active');
+        if (tabOnline) tabOnline.classList.add('active');
+        if (totalLabel) totalLabel.textContent = 'Total a pagar ahora';
+
+        var btnTexts = {
+          card: 'PAGAR CON TARJETA DE CRÉDITO',
+          pse_addi: 'PAGAR CON PSE / ADDI',
+          sistecredito: 'PAGAR CON SISTECRÉDITO',
+          bold: 'PAGAR CON BOLD (PASARELA SEGURA)',
+          bancolombia: 'CONFIRMAR Y TRANSFERIR POR BANCOLOMBIA',
+          qr: 'PAGAR CON CÓDIGO QR'
+        };
+        if (submitBtn) {
+          submitBtn.textContent = btnTexts[methodKey] || 'PAGAR AHORA AL INSTANTE';
+        }
+      }
+    },
+
+    setBoldSubOption: function(btnEl, optionName) {
+      this.currentBoldSubOption = optionName || 'Tarjeta';
+      var container = btnEl ? btnEl.closest('.bold-methods-pills') : document.querySelector('.bold-methods-pills');
+      if (container) {
+        container.querySelectorAll('.bold-pill').forEach(function(p) { p.classList.remove('active'); });
+      }
+      if (btnEl) btnEl.classList.add('active');
+    },
+
     selectOnlineSubMethod: function(sub) {
-      this.currentOnlineSubMethod = (sub === 'pse') ? 'pse' : 'card';
-      var pillCard = document.getElementById('pillMethodCard');
-      var pillPse = document.getElementById('pillMethodPse');
-      var cardFields = document.getElementById('onlineCardFields');
-      var pseFields = document.getElementById('onlinePseFields');
-      if (pillCard) pillCard.classList.toggle('active', this.currentOnlineSubMethod === 'card');
-      if (pillPse) pillPse.classList.toggle('active', this.currentOnlineSubMethod === 'pse');
-      if (cardFields) cardFields.style.display = (this.currentOnlineSubMethod === 'card') ? 'block' : 'none';
-      if (pseFields) pseFields.style.display = (this.currentOnlineSubMethod === 'pse') ? 'block' : 'none';
+      if (sub === 'pse') {
+        this.selectPaymentAccordion('pse_addi');
+      } else {
+        this.selectPaymentAccordion('card');
+      }
     },
 
     selectAndAddKit: function(cardId, kitData, openCheckout, mode) {
@@ -725,35 +720,60 @@
       }
 
       var isOnline = (this.currentPaymentMode === 'online');
+      var methodKey = this.currentAccordionMethod || (isOnline ? 'card' : 'cod');
       var paymentSummaryLabel = 'Pago Contraentrega (Al recibir en casa)';
+      var paymentExtraNotes = '';
 
-      if (isOnline) {
-        if (this.currentOnlineSubMethod === 'card') {
-          var cardNumEl = document.getElementById('chkCardNumber');
-          var cardExpEl = document.getElementById('chkCardExp');
-          var cardCvvEl = document.getElementById('chkCardCvv');
-          var cardNum = cardNumEl ? cardNumEl.value.replace(/\s+/g, '') : '';
-          var cardExp = cardExpEl ? cardExpEl.value.trim() : '';
-          var cardCvv = cardCvvEl ? cardCvvEl.value.trim() : '';
-          if (cardNum.length < 12 || !cardExp || cardCvv.length < 3) {
-            showToast('Completa los datos de tu tarjeta para procesar el pago ahora');
-            if (cardNumEl && cardNum.length < 12) cardNumEl.focus();
-            return false;
-          }
-          var last4 = cardNum.slice(-4);
-          paymentSummaryLabel = 'Tarjeta terminada en •••• ' + last4 + ' (Pagado en línea)';
-        } else {
-          var bankEl = document.getElementById('chkBankEntity');
-          var docEl = document.getElementById('chkPseDoc');
-          var bankName = bankEl ? bankEl.value : 'PSE / Nequi';
-          var docVal = docEl ? docEl.value.trim() : '';
-          if (!docVal) {
-            showToast('Ingresa tu número de documento para procesar el pago por ' + bankName);
-            if (docEl) docEl.focus();
-            return false;
-          }
-          paymentSummaryLabel = bankName + ' — Doc: ' + docVal + ' (Pagado en línea)';
+      if (methodKey === 'card') {
+        var cardNumEl = document.getElementById('chkCardNumber');
+        var cardExpEl = document.getElementById('chkCardExp');
+        var cardCvvEl = document.getElementById('chkCardCvv');
+        var cardNum = cardNumEl ? cardNumEl.value.replace(/\s+/g, '') : '';
+        var cardExp = cardExpEl ? cardExpEl.value.trim() : '';
+        var cardCvv = cardCvvEl ? cardCvvEl.value.trim() : '';
+        if (cardNum.length < 12 || !cardExp || cardCvv.length < 3) {
+          showToast('Completa los datos de tu tarjeta (número, vencimiento y CVV)');
+          if (cardNumEl && cardNum.length < 12) cardNumEl.focus();
+          return false;
         }
+        var last4 = cardNum.slice(-4);
+        paymentSummaryLabel = 'Tarjeta de crédito terminada en •••• ' + last4 + ' (Pagado en línea)';
+        paymentExtraNotes = 'Transacción procesada y asegurada con cifrado bancario de 256 bits.';
+      } else if (methodKey === 'pse_addi') {
+        var bankEl = document.getElementById('chkPseBank') || document.getElementById('chkBankEntity');
+        var docEl = document.getElementById('chkPseDocNumber') || document.getElementById('chkPseDoc');
+        var bName = bankEl ? bankEl.value : 'PSE';
+        var docVal = docEl ? docEl.value.trim() : '';
+        if (!docVal) {
+          showToast('Ingresa tu número de documento para procesar el pago por ' + bName);
+          if (docEl) docEl.focus();
+          return false;
+        }
+        paymentSummaryLabel = 'Paga con PSE / Addi (' + bName + ' — Doc: ' + docVal + ')';
+        paymentExtraNotes = 'Débito procesado exitosamente vía PSE / Addi.';
+      } else if (methodKey === 'sistecredito') {
+        var sisteDocEl = document.getElementById('chkSisteDoc');
+        var sDoc = sisteDocEl ? sisteDocEl.value.trim() : '';
+        if (!sDoc) {
+          showToast('Ingresa tu número de cédula para consultar tu cupo Sistecrédito');
+          if (sisteDocEl) sisteDocEl.focus();
+          return false;
+        }
+        paymentSummaryLabel = 'Sistecrédito a Cuotas (Cédula: ' + sDoc + ')';
+        paymentExtraNotes = 'Cupo Sistecrédito verificado y reservado para tus cuotas.';
+      } else if (methodKey === 'bold') {
+        var boldSub = this.currentBoldSubOption || 'Tarjeta / PSE / Billeteras';
+        paymentSummaryLabel = 'Paga con Bold: tarjeta, PSE, Bre-B y billeteras (' + boldSub + ')';
+        paymentExtraNotes = 'Pago procesado a través de la pasarela oficial Bold.';
+      } else if (methodKey === 'bancolombia') {
+        paymentSummaryLabel = 'Transferencia Bancolombia (Cuenta Ahorros Oficial)';
+        paymentExtraNotes = 'Tu pedido está reservado. Envía tu comprobante de transferencia al WhatsApp oficial de despachos.';
+      } else if (methodKey === 'qr') {
+        paymentSummaryLabel = 'QR Todos los Bancos - Billeteras Digitales';
+        paymentExtraNotes = 'Pago confirmado vía Código QR Interoperable (Bancolombia / Nequi / Daviplata / Redeban).';
+      } else {
+        paymentSummaryLabel = 'Pago Contraentrega (Al recibir en casa)';
+        paymentExtraNotes = 'No tienes que pagar nada por adelantado. Pagas al transportador cuando llegue a tu puerta.';
       }
 
       // Extraer datos ingresados por el cliente
@@ -800,7 +820,7 @@
                 '<p><strong>Teléfono:</strong> ' + phone + '</p>' +
                 '<p><strong>Destino:</strong> ' + city + ', ' + province + '</p>' +
                 '<p><strong>Dirección:</strong> ' + address1 + (address2 ? ' (' + address2 + ')' : '') + '</p>' +
-                '<p><strong>Método:</strong> ' + paymentSummaryLabel + '</p>' +
+                '<p><strong>Método:</strong> ' + paymentSummaryLabel + '</p>' + (paymentExtraNotes ? ('<p style="font-size:11.5px; color:#475569; background:#F8FAFC; border:1px solid #E2E8F0; padding:6px 8px; border-radius:6px; margin-top:6px;">' + paymentExtraNotes + '</p>') : '') +
               '</div>' +
               '<div class="cod-summary-block">' +
                 '<h5>RESUMEN DEL PEDIDO</h5>' +
@@ -865,23 +885,23 @@
       { id: 'melena-1', title: 'Melena de León en Polvo SI100 - Capuchino', category: 'Nutrición', price: 94900, oldPrice: 127500, url: '/products/melena-de-leon-en-polvo-formula-unica-sabor-a-capuchino', keywords: 'melena leon hongo memoria enfoque capuchino' },
       { id: 'resveratrol-1', title: 'Resveratrol 500 ml – Fórmula Única', category: 'Nutrición', price: 101500, oldPrice: 125000, url: '/products/resveratrol-500-ml-formula-unica', keywords: 'resveratrol antioxidante antiedad energia' },
       { id: 'inositol-1', title: 'Inositol en Polvo con Biotina y Vitamina B12', category: 'Nutrición', price: 94900, oldPrice: 118000, url: '/products/inositol-en-polvo-con-biotina-acido-folico-y-vitamina-b12', keywords: 'inositol orebitol biotina metabolismo ansiedad' },
-      { id: 'amalaki-1', title: 'Amalaki Bebida Funcional 500 gr', category: 'Nutrición', price: 74900, oldPrice: 95000, url: '/products/amalaki-bebida-funcional-con-extracto-de-te-y-colageno-500-gr', keywords: 'amalaki gamaki digestivo defensas te colageno' },
+      { id: 'amalaki-1', title: 'Amalaki Bebida Funcional 500 gr', category: 'Nutrición', price: 74900, oldPrice: 95000, url: '/products/gamaki-bebida-funcional-con-extracto-de-amalaki-y-colageno-world-tv', keywords: 'amalaki gamaki digestivo defensas te colageno' },
       { id: 'colageno-marino-1', title: 'Colágeno Marino con Ajonjolí, Cúrcuma y Jengibre', category: 'Nutrición', price: 101031, oldPrice: 127500, url: '/products/colageno-marino-formula-unica-con-ajonjoli-curcuma-y-genjibre', keywords: 'colageno marino curcuma jengibre articulaciones' },
       { id: 'citrato-1', title: 'Citrato de Magnesio con Hierbas Aromáticas', category: 'Nutrición', price: 101031, oldPrice: 127500, url: '/products/citrato-de-magnesio-formula-unica-con-hierbas-aromaticas', keywords: 'citrato magnesio sueno descanso relajacion' },
       { id: 'serum-1', title: 'Sérum Facial Fórmula Única con Vitamina C', category: 'Belleza', price: 118405, oldPrice: 130000, url: '/products/serum-facil-con-formula-unica-con-vitamina-c', keywords: 'serum suero facial vitamina c piel manchas' },
-      { id: 'cannabix-1', title: 'Cannabix Crema con Árnica, Colágeno y Magnesio', category: 'Belleza', price: 77231, oldPrice: 85000, url: '/products/cannabix-formula-unica-con-arnica-vainilla-colageno-y-cloruro-de-magnesio', keywords: 'cannabix crema cbd arnica dolor muscular masaje' },
-      { id: 'rv-premium', title: 'Gafas Relax Vision Premium - Filtro Azul y UV400', category: 'Salud Visual', price: 217651, oldPrice: 260000, url: '/products/relax-vision-premium-gafas-con-filtro-azul-uv-400-y-antirreflejo', keywords: 'gafas lentes relax vision premium pantallas filtro azul' },
-      { id: 'rv-clasicas', title: 'Gafas Relax Vision Clásicas - UV400 y Antirreflejo', category: 'Salud Visual', price: 202181, oldPrice: 240000, url: '/products/relax-vision-clasicas-gafas-con-filtro-uv-400-y-antirreflejo', keywords: 'gafas lentes relax vision clasicas' },
-      { id: 'rv-chromax', title: 'Gafas Relax Vision Chromax - Protección Avanzada', category: 'Salud Visual', price: 231931, oldPrice: 275000, url: '/products/relax-vision-chromax-gafas-con-uv-400-y-proteccion-visual-avanzada', keywords: 'gafas lentes relax vision chromax' },
-      { id: 'rv-sky', title: 'Gafas Relax Vision Sky - Estilo Aviador', category: 'Salud Visual', price: 206900, oldPrice: 245000, url: '/products/relax-vision-sky-gafas-con-filtro-azul-uv-400-y-antirreflejo', keywords: 'gafas lentes relax vision sky aviador' },
-      { id: 'rv-venturi', title: 'Gafas Relax Vision Venturi - Máxima Ergonomía', category: 'Salud Visual', price: 204900, oldPrice: 240000, url: '/products/relax-vision-venturi-gafas-con-filtro-azul-uv-400-y-tecnologia-antirreflejo', keywords: 'gafas lentes relax vision venturi' },
+      { id: 'cannabix-1', title: 'Cannabix Crema con Árnica, Colágeno y Magnesio', category: 'Belleza', price: 77231, oldPrice: 85000, url: '/products/cannabis-formula-unica-con-arnica-vainilla-colageno-y-cloruro-de-magnesio', keywords: 'cannabix crema cbd arnica dolor muscular masaje' },
+      { id: 'rv-premium', title: 'Gafas Relax Vision Premium - Filtro Azul y UV400', category: 'Salud Visual', price: 217651, oldPrice: 260000, url: '/products/relax-vision-premium-gafas-con-filtro-uv-400-antirreflejo-y-proteccion-visual-world-tv-copia', keywords: 'gafas lentes relax vision premium pantallas filtro azul' },
+      { id: 'rv-clasicas', title: 'Gafas Relax Vision Clásicas - UV400 y Antirreflejo', category: 'Salud Visual', price: 202181, oldPrice: 240000, url: '/products/relax-vision-clasicas-lentes-de-proteccion-visual', keywords: 'gafas lentes relax vision clasicas' },
+      { id: 'rv-chromax', title: 'Gafas Relax Vision Chromax - Protección Avanzada', category: 'Salud Visual', price: 231931, oldPrice: 275000, url: '/products/relax-vision-premium-gafas-con-filtro-azul-uv-400-y-antirreflejo-world-tv-copia', keywords: 'gafas lentes relax vision chromax' },
+      { id: 'rv-sky', title: 'Gafas Relax Vision Sky - Estilo Aviador', category: 'Salud Visual', price: 206900, oldPrice: 245000, url: '/products/relax-vision-sky-gafas-con-filtro-azul-uv-400-y-antirreflejo-world-tv', keywords: 'gafas lentes relax vision sky aviador' },
+      { id: 'rv-venturi', title: 'Gafas Relax Vision Venturi - Máxima Ergonomía', category: 'Salud Visual', price: 204900, oldPrice: 240000, url: '/products/relax-vision-venturi-gafas-con-filtro-azul-uv-400-y-tecnologia-antirreflejo-world-tv', keywords: 'gafas lentes relax vision venturi' },
       { id: 'outlet-power-belt', title: 'Cinturilla Reductora Dama Power Belt', category: 'Outlet', price: 195041, oldPrice: 297800, url: '/products/cinturilla-reductora-dama-power-belt', keywords: 'faja cinturilla reductora dama power belt outlet' },
       { id: 'outlet-pantalon-dama', title: 'Hot Slim Dama - Pantalón Reductor Térmico', category: 'Outlet', price: 136731, oldPrice: 199800, url: '/products/hot-slim-dama-pantalon-reductor', keywords: 'pantalon reductor hot slim dama sauna outlet' },
       { id: 'outlet-camisilla-hombre', title: 'Hot Slim Hombre - Camisilla Reductora', category: 'Outlet', price: 136731, oldPrice: 199800, url: '/products/hot-slim-hombre-camisilla-reductora', keywords: 'camisilla reductora hombre hot slim outlet' },
       { id: 'outlet-cinturilla-sport', title: 'Cinturilla Sport Styliza Mujer', category: 'Outlet', price: 112336, oldPrice: 158800, url: '/products/cinturilla-sport-styliza-mujer', keywords: 'cinturilla sport styliza mujer faja outlet' },
       { id: 'outlet-pantalon-styliza', title: 'Pantalón Sauna Styliza', category: 'Outlet', price: 196231, oldPrice: 300000, url: '/products/pantalon-sauna-styliza', keywords: 'pantalon sauna styliza termico outlet' },
-      { id: 'outlet-chaleco-hombre', title: 'Hombre Chaleco Sauna Térmico', category: 'Outlet', price: 196231, oldPrice: 299800, url: '/products/hombre-chaleco-sauna', keywords: 'chaleco sauna hombre reductor outlet' },
-      { id: 'outlet-camisilla-dama', title: 'Hot Slim Dama Camisilla Reductora', category: 'Outlet', price: 136731, oldPrice: 199800, url: '/products/hot-slim-dama-camisilla-reductora', keywords: 'camisilla reductora dama hot slim outlet' }
+      { id: 'outlet-chaleco-hombre', title: 'Hombre Chaleco Sauna Térmico', category: 'Outlet', price: 196231, oldPrice: 299800, url: '/products/chaleco-hot-slim-sauna-hombre', keywords: 'chaleco sauna hombre reductor outlet' },
+      { id: 'outlet-camisilla-dama', title: 'Hot Slim Dama Camisilla Reductora', category: 'Outlet', price: 136731, oldPrice: 199800, url: '/products/chaleco-slim-sauna-dama', keywords: 'camisilla reductora dama hot slim outlet' }
     ],
 
     handleSearchInput: function(inputEl) {
@@ -1542,31 +1562,244 @@ document.addEventListener('DOMContentLoaded', function() {
       document.body.classList.add('has-sticky-bar');
     }
 
-  var heroSection = document.querySelector('.hero-section');
-  if (heroSection) {
-    var slidesAttr = heroSection.getAttribute('data-slides');
-    if (slidesAttr) {
-      try {
-        var slides = JSON.parse(slidesAttr);
-        var currentIndex = 0;
-        var applyHeroSlide = function(url) {
-          var isMobile = window.innerWidth <= 992;
-          var grad = isMobile
-            ? 'linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.62) 100%)'
-            : 'linear-gradient(90deg, rgba(232,228,220,0.08) 38%, rgba(238,235,228,0.95) 58%)';
-          heroSection.style.backgroundImage = grad + ", url('" + url + "')";
-        };
-        if (slides.length > 0) {
-          applyHeroSlide(slides[0]);
+  // --- ROTADOR DE SLIDES HERO BANNER (5 segundos con animación sincronizada) ---
+  var heroSlider = document.getElementById('heroBannerSlider');
+  if (heroSlider) {
+    var heroSlides = heroSlider.querySelectorAll('.hero-slide');
+    var heroDots = heroSlider.querySelectorAll('.hero-dot');
+    var currentHeroSlide = 0;
+    var totalHeroSlides = heroSlides.length;
+    var heroSlideTimer = null;
+
+    var updateHeroResponsiveBg = function() {
+      var isMobile = window.innerWidth <= 768;
+      heroSlides.forEach(function(slide) {
+        var bgEl = slide.querySelector('.hero-slide-bg');
+        if (bgEl) {
+          var dBg = bgEl.getAttribute('data-desktop-bg');
+          var mBg = bgEl.getAttribute('data-mobile-bg');
+          if (isMobile && mBg) {
+            bgEl.style.backgroundImage = "url('" + mBg + "')";
+          } else if (!isMobile && dBg) {
+            bgEl.style.backgroundImage = "url('" + dBg + "')";
+          }
         }
-        window.addEventListener('resize', function() {
-          if (slides.length > 0) applyHeroSlide(slides[currentIndex]);
-        });
-        setInterval(function() {
-          currentIndex = (currentIndex + 1) % slides.length;
-          applyHeroSlide(slides[currentIndex]);
-        }, 4000);
-      } catch (e) {}
+      });
+    };
+    updateHeroResponsiveBg();
+    window.addEventListener('resize', updateHeroResponsiveBg);
+
+    var goToHeroSlide = function(index) {
+      if (index === currentHeroSlide && heroSlides[currentHeroSlide].classList.contains('active')) return;
+      heroSlides[currentHeroSlide].classList.remove('active');
+      if (heroDots[currentHeroSlide]) heroDots[currentHeroSlide].classList.remove('active');
+
+      currentHeroSlide = (index + totalHeroSlides) % totalHeroSlides;
+
+      heroSlides[currentHeroSlide].classList.add('active');
+      if (heroDots[currentHeroSlide]) heroDots[currentHeroSlide].classList.add('active');
+    };
+
+    var nextHeroSlide = function() {
+      goToHeroSlide(currentHeroSlide + 1);
+    };
+
+    var prevHeroSlide = function() {
+      goToHeroSlide(currentHeroSlide - 1);
+    };
+
+    var startHeroAutoplay = function() {
+      if (heroSlideTimer) clearInterval(heroSlideTimer);
+      heroSlideTimer = setInterval(nextHeroSlide, 5000);
+    };
+
+    var stopHeroAutoplay = function() {
+      if (heroSlideTimer) clearInterval(heroSlideTimer);
+    };
+
+    heroSlider.addEventListener('mouseenter', stopHeroAutoplay);
+    heroSlider.addEventListener('mouseleave', startHeroAutoplay);
+    heroSlider.addEventListener('touchstart', stopHeroAutoplay, { passive: true });
+    heroSlider.addEventListener('touchend', startHeroAutoplay, { passive: true });
+
+    heroDots.forEach(function(dot) {
+      dot.addEventListener('click', function(e) {
+        e.preventDefault();
+        var targetIndex = parseInt(this.getAttribute('data-slide'), 10);
+        goToHeroSlide(targetIndex);
+        startHeroAutoplay();
+      });
+    });
+
+    var heroPrevArrow = heroSlider.querySelector('.hero-arrow-prev');
+    var heroNextArrow = heroSlider.querySelector('.hero-arrow-next');
+    if (heroPrevArrow) {
+      heroPrevArrow.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        prevHeroSlide();
+        startHeroAutoplay();
+      });
     }
+    if (heroNextArrow) {
+      heroNextArrow.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        nextHeroSlide();
+        startHeroAutoplay();
+      });
+    }
+
+    var touchStartX = 0;
+    heroSlider.addEventListener('touchstart', function(e) {
+      if (e.changedTouches && e.changedTouches[0]) {
+        touchStartX = e.changedTouches[0].screenX;
+      }
+    }, { passive: true });
+
+    heroSlider.addEventListener('touchend', function(e) {
+      if (e.changedTouches && e.changedTouches[0]) {
+        var touchEndX = e.changedTouches[0].screenX;
+        var diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) {
+            nextHeroSlide();
+          } else {
+            prevHeroSlide();
+          }
+          startHeroAutoplay();
+        }
+      }
+    }, { passive: true });
+
+    startHeroAutoplay();
+  } else {
+    var heroSection = document.querySelector('.hero-section');
+    if (heroSection) {
+      var desktopBg = heroSection.getAttribute('data-desktop-bg');
+      var mobileBg = heroSection.getAttribute('data-mobile-bg');
+      if (desktopBg || mobileBg) {
+        var updateLegacyHeroBg = function() {
+          var isMobile = window.innerWidth <= 768;
+          if (isMobile && mobileBg) {
+            heroSection.style.backgroundImage = "url('" + mobileBg + "')";
+          } else if (!isMobile && desktopBg) {
+            heroSection.style.backgroundImage = "url('" + desktopBg + "')";
+          }
+        };
+        updateLegacyHeroBg();
+        window.addEventListener('resize', updateLegacyHeroBg);
+      }
+    }
+  }
+
+  // --- ROTADOR DE SLIDES BANNER OUTLET (5 segundos con animación fluida) ---
+  var outletSlider = document.getElementById('outletBannerSlider');
+  if (outletSlider) {
+    var outletSlides = outletSlider.querySelectorAll('.outlet-slide');
+    var outletDots = outletSlider.querySelectorAll('.outlet-dot');
+    var currentOutletSlide = 0;
+    var totalOutletSlides = outletSlides.length;
+    var outletSlideTimer = null;
+
+    var updateOutletResponsiveBg = function() {
+      var isMobile = window.innerWidth <= 768;
+      outletSlides.forEach(function(slide) {
+        var bgEl = slide.querySelector('.outlet-slide-bg');
+        if (bgEl) {
+          var dBg = bgEl.getAttribute('data-desktop-bg');
+          var mBg = bgEl.getAttribute('data-mobile-bg');
+          if (isMobile && mBg) {
+            bgEl.style.backgroundImage = "url('" + mBg + "')";
+          } else if (!isMobile && dBg) {
+            bgEl.style.backgroundImage = "url('" + dBg + "')";
+          }
+        }
+      });
+    };
+    updateOutletResponsiveBg();
+    window.addEventListener('resize', updateOutletResponsiveBg);
+
+    var goToOutletSlide = function(index) {
+      if (index === currentOutletSlide) return;
+      outletSlides[currentOutletSlide].classList.remove('active');
+      if (outletDots[currentOutletSlide]) outletDots[currentOutletSlide].classList.remove('active');
+
+      currentOutletSlide = (index + totalOutletSlides) % totalOutletSlides;
+
+      outletSlides[currentOutletSlide].classList.add('active');
+      if (outletDots[currentOutletSlide]) outletDots[currentOutletSlide].classList.add('active');
+    };
+
+    var nextOutletSlide = function() {
+      goToOutletSlide(currentOutletSlide + 1);
+    };
+
+    var startOutletAutoplay = function() {
+      if (outletSlideTimer) clearInterval(outletSlideTimer);
+      outletSlideTimer = setInterval(nextOutletSlide, 5000);
+    };
+
+    var stopOutletAutoplay = function() {
+      if (outletSlideTimer) clearInterval(outletSlideTimer);
+    };
+
+    outletSlider.addEventListener('mouseenter', stopOutletAutoplay);
+    outletSlider.addEventListener('mouseleave', startOutletAutoplay);
+    outletSlider.addEventListener('touchstart', stopOutletAutoplay, { passive: true });
+    outletSlider.addEventListener('touchend', startOutletAutoplay, { passive: true });
+
+    outletDots.forEach(function(dot) {
+      dot.addEventListener('click', function(e) {
+        e.preventDefault();
+        var targetIndex = parseInt(this.getAttribute('data-slide'), 10);
+        goToOutletSlide(targetIndex);
+        startOutletAutoplay();
+      });
+    });
+
+    var prevArrow = outletSlider.querySelector('.outlet-arrow-prev');
+    var nextArrow = outletSlider.querySelector('.outlet-arrow-next');
+    if (prevArrow) {
+      prevArrow.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        goToOutletSlide(currentOutletSlide - 1);
+        startOutletAutoplay();
+      });
+    }
+    if (nextArrow) {
+      nextArrow.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        goToOutletSlide(currentOutletSlide + 1);
+        startOutletAutoplay();
+      });
+    }
+
+    // Soporte para gestos táctiles de deslizamiento (swipe) en móvil
+    var touchStartX = 0;
+    var touchEndX = 0;
+    outletSlider.addEventListener('touchstart', function(e) {
+      if (e.touches && e.touches.length > 0) {
+        touchStartX = e.touches[0].clientX;
+      }
+    }, { passive: true });
+    outletSlider.addEventListener('touchend', function(e) {
+      if (e.changedTouches && e.changedTouches.length > 0) {
+        touchEndX = e.changedTouches[0].clientX;
+        var diffX = touchEndX - touchStartX;
+        if (Math.abs(diffX) > 40) {
+          if (diffX < 0) {
+            nextOutletSlide();
+          } else {
+            goToOutletSlide(currentOutletSlide - 1);
+          }
+          startOutletAutoplay();
+        }
+      }
+    }, { passive: true });
+
+    startOutletAutoplay();
   }
 });

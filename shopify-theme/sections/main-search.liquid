@@ -15,15 +15,15 @@
           {% assign first_var = item.selected_or_first_available_variant %}
           {% assign v_raw = first_var.price | divided_by: 100 %}
           {% assign v_old_raw = first_var.compare_at_price | default: 0 | divided_by: 100 %}
-          {% if item.handle contains 'cloruro' or item.handle contains 'colageno' or item.handle contains 'citrato' %}
-            {% assign prod_price_cop = 101031 %}
-            {% assign prod_old_cop = 127500 %}
-          {% elsif item.handle contains 'cannabix' %}
+          {% if item.handle contains 'cannabi' or item.handle contains 'canabi' %}
             {% assign prod_price_cop = 77231 %}
             {% assign prod_old_cop = 85000 %}
           {% elsif item.handle contains 'serum' %}
             {% assign prod_price_cop = 118405 %}
             {% assign prod_old_cop = 130000 %}
+          {% elsif item.handle contains 'cloruro' or item.handle contains 'colageno' or item.handle contains 'citrato' %}
+            {% assign prod_price_cop = 101031 %}
+            {% assign prod_old_cop = 127500 %}
           {% elsif first_var.taxable %}
             {% assign prod_price_cop = v_raw | times: 119 | divided_by: 100 %}
             {% assign prod_old_cop = v_old_raw | times: 119 | divided_by: 100 %}

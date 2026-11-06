@@ -1262,14 +1262,7 @@ button:active {
 }
 
 .cod-form-notice {
-  background: #F0FDF4;
-  border: 1px solid #BBF7D0;
-  border-radius: 8px;
-  padding: 12px 14px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 16px;
+  display: none !important;
 }
 
 .cod-form-notice svg {
@@ -1890,8 +1883,7 @@ img {
 .main-image-box img,
 .thumb-item img,
 .kit-image-box img,
-.ingredient-circle img,
-.usage-img img {
+.ingredient-circle img {
   width: 100% !important;
   height: 100% !important;
   max-width: 100% !important;
@@ -1985,16 +1977,17 @@ img {
   }
 
   .hero-title {
-    font-size: 26px !important;
-    line-height: 1.18 !important;
-    color: #FFFFFF !important;
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+    color: #1A1A1A !important;
     margin-bottom: 12px !important;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    text-shadow: none !important;
   }
 
   .hero-title span {
-    color: #FFE387 !important;
-    display: inline !important;
+    color: #1A1A1A !important;
+    font-weight: 800 !important;
+    display: block !important;
   }
 
   .hero-desc {
@@ -2038,33 +2031,126 @@ img {
     right: 0 !important;
   }
 
-  /* Hero principal en teléfono: imagen visible arriba, texto y CTA al fondo */
+  /* Hero principal en teléfono: rotativo con tarjetas limpias y flechas táctiles */
   .hero-section {
-    min-height: 440px !important;
+    min-height: 560px !important;
+    height: clamp(540px, 140vw, 640px) !important;
     padding: 0 !important;
-    display: flex !important;
-    align-items: flex-end !important;
-    justify-content: flex-start !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background-image: none !important;
   }
 
+  .hero-slide {
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding: 0 0 16px 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-slide-bg {
+    background-position: center top !important;
+    background-size: cover !important;
+  }
+
+  .hero-slide .hero-container,
+  .hero-container {
+    width: 100% !important;
+    padding: 0 16px !important;
+    grid-template-columns: 1fr !important;
+    margin: 0 !important;
+  }
+
+  .hero-slide .hero-content,
+  .hero-content {
+    grid-column: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #FFFFFF !important;
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.14) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+  .hero-slide .hero-title,
   .hero-title {
-    font-size: 24px !important;
+    font-size: 20px !important;
     line-height: 1.2 !important;
+    margin-bottom: 10px !important;
+    color: #1A1A1A !important;
+    text-shadow: none !important;
+  }
+
+  .hero-slide .hero-title span,
+  .hero-title span {
+    color: #1A1A1A !important;
+    font-weight: 800 !important;
+    display: block !important;
+    font-size: 19px !important;
+  }
+
+  .hero-dots {
+    display: none !important;
+  }
+
+  .hero-arrow {
+    display: flex !important;
+    position: absolute !important;
+    top: 36% !important;
+    transform: translateY(-50%) !important;
+    z-index: 6 !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    color: #111111 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+    transition: all 0.2s ease !important;
+    padding: 0 !important;
+  }
+
+  .hero-arrow-prev {
+    left: 12px !important;
+  }
+
+  .hero-arrow-next {
+    right: 12px !important;
+  }
+
+  .hero-arrow:active {
+    transform: translateY(-50%) scale(0.92) !important;
+    background: #FFFFFF !important;
   }
 
   .hero-ctas {
     flex-direction: column !important;
     gap: 8px !important;
     margin-bottom: 0 !important;
+    justify-content: center !important;
+    margin-top: 0 !important;
   }
 
   .hero-ctas .btn-secondary {
     display: none !important;
   }
 
-  .hero-ctas .btn-primary {
+  .hero-ctas .btn-primary,
+  .hero-ctas .hero-btn-simple {
     width: 100% !important;
+    max-width: 100% !important;
     text-align: center !important;
+    justify-content: center !important;
     padding: 13px 16px !important;
     font-size: 13px !important;
     font-weight: 700 !important;
@@ -2086,6 +2172,18 @@ img {
     position: relative !important;
   }
 
+  .outlet-hero-banner {
+    min-height: 380px !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45)), var(--outlet-bg-mob, url('banner_outlet_hero_mobile.png')) !important;
+    background-position: center top !important;
+  }
+
+  .beauty-hero-banner {
+    min-height: 380px !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45)), var(--beauty-bg-mob, url('banner_belleza_mobile.png')) !important;
+    background-position: center top !important;
+  }
+
   .beauty-hero-content,
   .vision-hero-content,
   .outlet-hero-content {
@@ -2096,6 +2194,12 @@ img {
     background: linear-gradient(to top, rgba(18, 18, 18, 0.92) 0%, rgba(18, 18, 18, 0.6) 70%, transparent 100%) !important;
     padding: 24px 16px 16px !important;
     box-sizing: border-box !important;
+  }
+
+  .beauty-hero-content p,
+  .vision-hero-content p,
+  .outlet-hero-content p {
+    display: none !important;
   }
 
   .beauty-hero-content p,
@@ -2291,8 +2395,19 @@ img {
   }
 
   .usage-img {
-    height: 230px !important;
-    padding: 12px !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    background: transparent !important;
+  }
+  .usage-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 14px !important;
   }
 
   /* Barra flotante inferior de compra en teléfono */
@@ -2485,8 +2600,51 @@ html {
     max-width: 100% !important;
   }
 
+  .cart-body {
+    padding: 14px 16px !important;
+  }
+
   .cart-footer {
-    padding-bottom: calc(18px + env(safe-area-inset-bottom));
+    padding: 12px 16px calc(14px + env(safe-area-inset-bottom)) 16px !important;
+  }
+
+  .cart-item-card {
+    gap: 12px !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .cart-item-card img {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  .cart-item-title-row h4 {
+    font-size: 14px !important;
+    line-height: 1.25 !important;
+  }
+
+  .cart-summary-row {
+    margin-bottom: 5px !important;
+    font-size: 12.5px !important;
+  }
+
+  .cart-summary-row.total-row {
+    font-size: 15.5px !important;
+    padding-top: 6px !important;
+    margin-top: 5px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .cart-dual-pay-buttons {
+    gap: 8px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .cart-dual-pay-buttons .cart-checkout-btn {
+    padding: 12px 14px !important;
+    font-size: 13.5px !important;
+    margin-bottom: 0 !important;
   }
 
   .checkout-modal-container {
@@ -2842,4 +3000,392 @@ html {
   .beauty-hero-banner {
     min-height: 440px !important;
   }
+}
+
+
+/* BANNER CLEANUP - SIMPLIFICACION VISUAL */
+.hero-section .pill-badge,
+.hero-section .hero-desc,
+.hero-section .hero-checks,
+.vision-section .vision-tag,
+.vision-section .vision-desc,
+.vision-hero-banner .vision-tag-top,
+.vision-hero-banner p,
+.beauty-hero-banner .beauty-tag-top,
+.beauty-hero-banner p,
+.outlet-hero-banner .outlet-tag-top,
+.outlet-hero-banner p,
+.outlet-banner .outlet-badge,
+.outlet-banner .outlet-subtitle {
+  display: none !important;
+}
+
+/* ============================================================================
+   SECCIÓN DE PAGO (ACORDEÓN SHOPIFY/BOLD CON 7 MÉTODOS ACTIVOS)
+   ============================================================================ */
+.checkout-pay-header-row {
+  margin-top: 14px;
+  margin-bottom: 8px;
+}
+
+.checkout-pay-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 3px 0;
+  letter-spacing: -0.3px;
+}
+
+.checkout-pay-subtitle {
+  font-size: 12.5px;
+  color: #64748B;
+  margin: 0 0 10px 0;
+}
+
+.pay-methods-accordion {
+  border: 1px solid #D1D5DB;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  margin-bottom: 12px;
+}
+
+.pay-acc-item {
+  border-top: 1px solid #E5E7EB;
+  transition: background-color 0.18s ease;
+}
+
+.pay-acc-item:first-child {
+  border-top: none;
+}
+
+.pay-acc-item.active {
+  background: #F8FAFC;
+}
+
+.pay-acc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  cursor: pointer;
+  user-select: none;
+  gap: 10px;
+}
+
+.pay-acc-header:hover {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+.pay-acc-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pay-acc-radio {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 2px solid #CBD5E1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #FFFFFF;
+  transition: all 0.18s ease;
+}
+
+.pay-acc-item.active .pay-acc-radio {
+  border-color: #005BD3;
+}
+
+.pay-acc-item.active .pay-acc-radio::after {
+  content: '';
+  width: 7.5px;
+  height: 7.5px;
+  border-radius: 50%;
+  background: #005BD3;
+}
+
+.pay-acc-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1E293B;
+  line-height: 1.3;
+}
+
+.pay-acc-badges {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pay-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 3.5px;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.2px;
+}
+
+.badge-visa {
+  background: #1434CB;
+  color: #FFFFFF;
+  font-style: italic;
+  font-weight: 900;
+  padding: 0 7px;
+}
+
+.badge-mc {
+  background: #24292E;
+  padding: 0 4px;
+}
+
+.badge-amex {
+  background: #006FCF;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.badge-more {
+  background: #F1F5F9;
+  color: #64748B;
+  border: 1px solid #CBD5E1;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 0 5px;
+}
+
+.badge-addi {
+  background: #EFF6FF;
+  color: #2563EB;
+  border: 1px solid #BFDBFE;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 0 7px;
+}
+
+.badge-pse {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #0284C7;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 0 6px;
+}
+
+.badge-sistecredito {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #059669;
+  gap: 3px;
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 0 6px;
+}
+
+.badge-breb {
+  background: #581C87;
+  color: #FFFFFF;
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 0 6px;
+}
+
+.badge-cod {
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FDE68A;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 0 6px;
+}
+
+.badge-bancolombia {
+  background: #FDE047;
+  color: #111827;
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 0 6px;
+}
+
+.badge-qr {
+  background: #0F172A;
+  color: #FFFFFF;
+  font-size: 9.5px;
+  font-weight: 700;
+  gap: 4px;
+  padding: 0 6px;
+}
+
+.pay-acc-content {
+  padding: 13px 14px;
+  border-top: 1px solid #E5E7EB;
+  background: #FAFAFA;
+}
+
+.pay-acc-info-text {
+  font-size: 12px;
+  color: #475569;
+  margin: 0 0 10px 0;
+  line-height: 1.45;
+}
+
+.input-with-icon-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon-right input {
+  width: 100%;
+  padding-right: 32px !important;
+}
+
+.input-with-icon-right svg {
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+}
+
+.cvv-help-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #94A3B8;
+  color: #FFFFFF;
+  font-size: 9.5px;
+  font-weight: 700;
+  cursor: help;
+}
+
+.pay-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: #334155;
+  cursor: pointer;
+  margin-top: 8px;
+  user-select: none;
+}
+
+.pay-checkbox-label input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: #005BD3;
+  cursor: pointer;
+  margin: 0;
+}
+
+.bold-highlight-box {
+  background: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.bold-logo-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #0F172A;
+  margin-bottom: 6px;
+}
+
+.bold-methods-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.bold-pill {
+  padding: 6px 11px;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  background: #F8FAFC;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.bold-pill.active {
+  background: #00C389;
+  color: #FFFFFF;
+  border-color: #00C389;
+}
+
+.bank-details-box {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 7px;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: #1E293B;
+  line-height: 1.55;
+}
+
+.bank-note {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed #CBD5E1;
+  font-size: 11px;
+  color: #64748B;
+}
+
+/* OCULTAR COMPLETAMENTE EL SELECTOR DE PAQUETES DEL MODAL DE CHECKOUT */
+.checkout-packages-selector,
+#chkPackagesWrapper,
+.checkout-pkgs-grid,
+#chkPackagesGrid,
+#chkPackagesLabel {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* INSIGNIAS Y LOGOS OFICIALES DE PAGO (SHOPIFY / BOLD VECTOR CARDS) */
+.pay-acc-badges {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.pay-badge-card {
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.pay-badge-card.card-mini {
+  width: 24px;
+}
+
+.pay-badge-card.card-wide {
+  width: 52px;
 }

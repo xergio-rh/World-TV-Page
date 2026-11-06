@@ -1,38 +1,91 @@
-<!-- HERO BANNER PRINCIPAL -->
-<section class="hero-section"
-  style="background-image: linear-gradient(90deg, rgba(232,228,220,0.1) 40%, rgba(235,232,224,0.92) 60%), url('{{ 'Gemini_Generated_Image_tfwqcztfwqcztfwq.jpeg' | asset_url }}');"
-  data-slides='[
-    "{{ 'Gemini_Generated_Image_tfwqcztfwqcztfwq.jpeg' | asset_url }}",
-    "{{ 'banner1.jpeg' | asset_url }}",
-    "{{ 'banner2.jpeg' | asset_url }}"
-  ]'>
-  <div class="hero-container">
-    <div class="hero-content">
-      <span class="pill-badge">
-        <svg class="inline-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-        {{ section.settings.badge_text | default: 'SUPLEMENTO DESTACADO • SI100' }}
-      </span>
-      <h1 class="hero-title">
-        {{ section.settings.heading_line1 | default: 'Mente sin límites con' }}
-        <span>{{ section.settings.heading_highlight | default: 'Melena de León SI100' }}</span>
-      </h1>
-      <p class="hero-desc">
-        {{ section.settings.description | default: 'Potencia tu enfoque, memoria y claridad mental con nuestra fórmula avanzada enriquecida con Ganoderma, Hongo Shiitake y Vitaminas del Complejo B.' }}
-      </p>
-      <div class="hero-ctas">
-        <a href="{{ section.settings.primary_btn_url | default: '/products/melena-de-leon-en-polvo-formula-unica-sabor-a-capuchino' }}" class="btn-primary">
-          {{ section.settings.primary_btn_label | default: 'COMPRAR MELENA DE LEÓN' }}
-        </a>
-        <a href="{{ section.settings.secondary_btn_url | default: '/collections/bebidas-funcionales-y-suplementos-naturales-para-el-bienestar-diario' }}" class="btn-secondary">
-          {{ section.settings.secondary_btn_label | default: 'Ver Todos los Productos' }}
-        </a>
+<!-- HERO BANNER PRINCIPAL ROTATIVO (3 SLIDES) -->
+<section class="hero-section" id="heroBannerSlider" data-autoplay="true" data-interval="5000">
+  <div class="hero-slides-track">
+    <!-- SLIDE 1: MELENA DE LEÓN -->
+    <div class="hero-slide active" data-slide-index="0">
+      <div class="hero-slide-bg"
+           data-desktop-bg="{{ 'banner_hero_melena_pc.png' | asset_url }}"
+           data-mobile-bg="{{ 'banner_hero_melena_mobile.jpg' | asset_url }}"
+           style="background-image: url('{{ 'banner_hero_melena_pc.png' | asset_url }}');">
       </div>
-      <div class="hero-checks">
-        <span>{{ section.settings.check_1 | default: 'Registro INVIMA' }}</span>
-        <span>{{ section.settings.check_2 | default: 'Envío Rápido a Toda Colombia' }}</span>
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            {{ section.settings.heading_line1 | default: 'Mente sin límites con' }}
+            <span>{{ section.settings.heading_highlight | default: 'Melena de León SI100' }}</span>
+          </h1>
+          <div class="hero-ctas">
+            <a href="{{ section.settings.primary_btn_url | default: '/products/melena-de-leon-en-polvo-formula-unica-sabor-a-capuchino' }}" class="hero-btn-simple">
+              {{ section.settings.primary_btn_label | default: 'Comprar Melena de León' }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: COLASTEEL -->
+    <div class="hero-slide" data-slide-index="1">
+      <div class="hero-slide-bg"
+           data-desktop-bg="{{ 'banner_hero_colasteel_pc.png' | asset_url }}"
+           data-mobile-bg="{{ 'banner_hero_colasteel_mobile.png' | asset_url }}"
+           style="background-image: url('{{ 'banner_hero_colasteel_pc.png' | asset_url }}');">
+      </div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            {{ section.settings.slide2_heading_line1 | default: 'Vitalidad y movimiento con' }}
+            <span>{{ section.settings.slide2_heading_highlight | default: 'Colasteel Cloruro de Magnesio' }}</span>
+          </h1>
+          <div class="hero-ctas">
+            <a href="{{ section.settings.slide2_btn_url | default: '/products/cloruro-500-gr-formula-unica' }}" class="hero-btn-simple">
+              {{ section.settings.slide2_btn_label | default: 'Comprar Colasteel' }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: INOSITOL & COLÁGENO MARINO -->
+    <div class="hero-slide hero-slide-combos" data-slide-index="2">
+      <div class="hero-slide-bg"
+           data-desktop-bg="{{ 'banner_hero_combos_pc.png' | asset_url }}"
+           data-mobile-bg="{{ 'banner_hero_combos_mobile.png' | asset_url }}"
+           style="background-image: url('{{ 'banner_hero_combos_pc.png' | asset_url }}');">
+      </div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            {{ section.settings.slide3_heading_line1 | default: 'Equilibrio, descanso y belleza con' }}
+            <span>{{ section.settings.slide3_heading_highlight | default: 'Inositol & Colágeno Marino' }}</span>
+          </h1>
+          <div class="hero-ctas">
+            <a href="{{ section.settings.slide3_btn_url | default: '/collections/bebidas-funcionales-y-suplementos-naturales-para-el-bienestar-diario' }}" class="hero-btn-simple" onclick="if(window.navigateToWorldTV){window.navigateToWorldTV('nutricion'); return false;}">
+              {{ section.settings.slide3_btn_label | default: 'Ver Productos' }}
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- INDICADORES (DOTS) EN DESKTOP -->
+  <div class="hero-dots" aria-label="Navegación del banner principal">
+    <button type="button" class="hero-dot active" data-slide="0" aria-label="Ir a Melena de León"></button>
+    <button type="button" class="hero-dot" data-slide="1" aria-label="Ir a Colasteel"></button>
+    <button type="button" class="hero-dot" data-slide="2" aria-label="Ir a Inositol y Colágeno"></button>
+  </div>
+
+  <!-- FLECHAS DE NAVEGACIÓN LATERALES (SOLO MÓVIL) -->
+  <button type="button" class="hero-arrow hero-arrow-prev" aria-label="Ver banner anterior">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+  <button type="button" class="hero-arrow hero-arrow-next" aria-label="Ver banner siguiente">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
 </section>
 
 {% schema %}
@@ -41,61 +94,72 @@
   "settings": [
     {
       "type": "text",
-      "id": "badge_text",
-      "label": "Etiqueta superior",
-      "default": "SUPLEMENTO DESTACADO • SI100"
-    },
-    {
-      "type": "text",
       "id": "heading_line1",
-      "label": "Título línea 1",
+      "label": "Slide 1 - Título línea 1",
       "default": "Mente sin límites con"
     },
     {
       "type": "text",
       "id": "heading_highlight",
-      "label": "Título destacado",
+      "label": "Slide 1 - Título destacado",
       "default": "Melena de León SI100"
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "Descripción",
-      "default": "Potencia tu enfoque, memoria y claridad mental con nuestra fórmula avanzada enriquecida con Ganoderma, Hongo Shiitake y Vitaminas del Complejo B."
     },
     {
       "type": "text",
       "id": "primary_btn_label",
-      "label": "Texto botón principal",
-      "default": "COMPRAR MELENA DE LEÓN"
+      "label": "Slide 1 - Texto botón",
+      "default": "Comprar Melena de León"
     },
     {
       "type": "url",
       "id": "primary_btn_url",
-      "label": "Enlace botón principal"
+      "label": "Slide 1 - Enlace botón"
     },
     {
       "type": "text",
-      "id": "secondary_btn_label",
-      "label": "Texto botón secundario",
-      "default": "Ver Todos los Productos"
+      "id": "slide2_heading_line1",
+      "label": "Slide 2 - Título línea 1",
+      "default": "Vitalidad y movimiento con"
+    },
+    {
+      "type": "text",
+      "id": "slide2_heading_highlight",
+      "label": "Slide 2 - Título destacado",
+      "default": "Colasteel Cloruro de Magnesio"
+    },
+    {
+      "type": "text",
+      "id": "slide2_btn_label",
+      "label": "Slide 2 - Texto botón",
+      "default": "Comprar Colasteel"
     },
     {
       "type": "url",
-      "id": "secondary_btn_url",
-      "label": "Enlace botón secundario"
+      "id": "slide2_btn_url",
+      "label": "Slide 2 - Enlace botón"
     },
     {
       "type": "text",
-      "id": "check_1",
-      "label": "Sello de confianza 1",
-      "default": "Registro INVIMA"
+      "id": "slide3_heading_line1",
+      "label": "Slide 3 - Título línea 1",
+      "default": "Equilibrio, descanso y belleza con"
     },
     {
       "type": "text",
-      "id": "check_2",
-      "label": "Sello de confianza 2",
-      "default": "Envío Rápido a Toda Colombia"
+      "id": "slide3_heading_highlight",
+      "label": "Slide 3 - Título destacado",
+      "default": "Inositol & Colágeno Marino"
+    },
+    {
+      "type": "text",
+      "id": "slide3_btn_label",
+      "label": "Slide 3 - Texto botón",
+      "default": "Ver Productos"
+    },
+    {
+      "type": "url",
+      "id": "slide3_btn_url",
+      "label": "Slide 3 - Enlace botón"
     }
   ],
   "presets": [

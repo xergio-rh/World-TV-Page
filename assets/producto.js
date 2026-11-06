@@ -281,33 +281,7 @@
       }
     }
 
-    // Si el último producto agregado tiene opciones de paquetes (Lleva 1, Lleva 2, Lleva 3),
-    // mostrarlas en el modal de checkout para que pueda cambiar de paquete en vivo
-    var chkGrid = document.getElementById('chkPackagesGrid');
-    var chkWrapper = document.getElementById('chkPackagesWrapper') || (chkGrid ? chkGrid.parentElement : null);
-    if (chkGrid && items.length > 0) {
-      var activeItem = items[items.length - 1];
-      if (activeItem.packages && activeItem.packages.length > 1) {
-        if (chkWrapper) chkWrapper.style.display = 'block';
-        var pkgHtml = '';
-        var safeItemId = String(activeItem.id).replace(/'/g, "\\'");
-        activeItem.packages.forEach(function(pkg, idx) {
-          var isSelected = (pkg.packTitle === activeItem.packTitle) || (Number(pkg.price) === Number(activeItem.price));
-          var hasOld = pkg.oldPrice && Number(pkg.oldPrice) > Number(pkg.price);
-          pkgHtml +=
-            '<div class="chk-pkg-card ' + (isSelected ? 'active' : '') + '" onclick="WTVCart.switchItemPackage(\'' + safeItemId + '\', ' + idx + ')">' +
-              (idx === 1 && activeItem.packages.length === 3 ? '<span class="badge-best-chk">MÁS VENDIDO</span>' : '') +
-              '<span class="chk-title">' + pkg.packTitle + '</span>' +
-              (pkg.image ? '<img src="' + pkg.image + '" alt="' + pkg.packTitle + '" width="80" height="80">' : '') +
-              (hasOld ? '<del>' + formatMoney(pkg.oldPrice) + '</del>' : '') +
-              '<strong>' + formatMoney(pkg.price) + '</strong>' +
-            '</div>';
-        });
-        chkGrid.innerHTML = pkgHtml;
-      } else if (chkWrapper) {
-        chkWrapper.style.display = 'none';
-      }
-    }
+    var chkWrapper = document.getElementById("chkPackagesWrapper"); if (chkWrapper) chkWrapper.remove();
   }
 
   function popBadge() {

@@ -576,20 +576,30 @@ body {
 }
 
 .usage-img {
-  background: #FFF;
+  background: transparent;
   border-radius: var(--radius-md);
-  height: 320px;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 1 / 1;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 20px;
+  padding: 0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  margin: 0 auto;
 }
 
 .usage-img img {
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   max-width: 100%;
-  object-fit: contain;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: var(--radius-md);
 }
 
 .usage-text h2 {
@@ -1763,6 +1773,11 @@ body {
     gap: 10px;
   }
 
+  .product-mini-trust.is-outlet-trust {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
   .divider-banner {
     font-size: 15px;
     padding: 18px 14px;
@@ -1815,7 +1830,12 @@ body {
   }
 
   .usage-img {
-    height: 220px;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    padding: 0;
+    margin: 0 auto;
   }
 
   .badges-grid {

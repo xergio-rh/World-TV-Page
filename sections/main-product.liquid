@@ -6,7 +6,11 @@
   para mostrar exactamente la estructura completa de Colasteel y Melena de León.
 {% endcomment %}
 {% assign prod_key = 'generic' %}
-{% if prod_handle contains 'cloruro' or prod_handle contains 'colasteel' %}
+{% if prod_handle contains 'cannabi' or prod_handle contains 'canabi' %}
+  {% assign prod_key = 'cannabix' %}
+{% elsif prod_handle contains 'serum' %}
+  {% assign prod_key = 'serum' %}
+{% elsif prod_handle contains 'cloruro' or prod_handle contains 'colasteel' %}
   {% assign prod_key = 'cloruro' %}
 {% elsif prod_handle contains 'melena' %}
   {% assign prod_key = 'melena' %}
@@ -20,10 +24,16 @@
   {% assign prod_key = 'colageno_marino' %}
 {% elsif prod_handle contains 'citrato' %}
   {% assign prod_key = 'citrato' %}
-{% elsif prod_handle contains 'serum' %}
-  {% assign prod_key = 'serum' %}
-{% elsif prod_handle contains 'cannabi' %}
-  {% assign prod_key = 'cannabix' %}
+{% endif %}
+
+{% assign is_outlet = false %}
+{% for c in product.collections %}
+  {% if c.handle contains 'outlet' or c.handle contains 'fajas' or c.handle contains 'termicas' %}
+    {% assign is_outlet = true %}
+  {% endif %}
+{% endfor %}
+{% if prod_handle contains 'cinturilla' or prod_handle contains 'pantalon' or prod_handle contains 'camisilla' or prod_handle contains 'chaleco' or prod_handle contains 'hot-slim' or prod_handle contains 'power-belt' or prod_handle contains 'sauna' or prod_handle contains 'faja' or prod_handle contains 'styliza' or prod_handle contains 'moldeadora' %}
+  {% assign is_outlet = true %}
 {% endif %}
 
 <!-- MAIN PRODUCT SECTION DINÁMICA PARA TODOS LOS PRODUCTOS DE SHOPIFY -->
@@ -82,13 +92,45 @@
           <h2 class="product-subtitle-main">500 ml - Sabor Naranja con Manzanilla y Menta</h2>
         {% when 'serum' %}
           <h2 class="product-subtitle-main">Cuidado Facial con Vitamina C, Ácido Hialurónico y Vitamina E</h2>
-        {% when 'cannabix' %}
-          <h2 class="product-subtitle-main">Crema Tópica con CBD, Árnica, Vainilla, Colágeno y Magnesio</h2>
-        {% else %}
-          {% if product.type != blank %}
-            <h2 class="product-subtitle-main" style="font-size: 16px; color: var(--text-muted);">{{ product.type }}</h2>
-          {% endif %}
-      {% endcase %}
+              {% comment %} ================= 9. CANNABIX CREMA TÓPICA ================= {% endcomment %}
+      {% when 'cannabix' %}
+        <div class="ingredient-card">
+          <div class="ingredient-circle">
+            <img src="{{ 'cannabix_ing_cbd.png' | asset_url }}" alt="Cannabidiol (CBD)" width="203" height="203" loading="lazy">
+          </div>
+          <h4>CANNABIDIOL (CBD)</h4>
+          <p>Extracto fitocannabinoide natural que brinda alivio tópico localizado y sensación de relajación profunda.</p>
+        </div>
+        <div class="ingredient-card">
+          <div class="ingredient-circle">
+            <img src="{{ 'cannabix_ing_arnica.png' | asset_url }}" alt="Árnica Montana" width="203" height="203" loading="lazy">
+          </div>
+          <h4>ÁRNICA MONTANA</h4>
+          <p>Planta reconocida por calmar molestias musculares, golpes, fatiga física e inflamación localizada.</p>
+        </div>
+        <div class="ingredient-card">
+          <div class="ingredient-circle">
+            <img src="{{ 'cannabix_ing_magnesio.png' | asset_url }}" alt="Cloruro de Magnesio" width="203" height="203" loading="lazy">
+          </div>
+          <h4>CLORURO DE MAGNESIO</h4>
+          <p>Favorece la descontractura muscular y la recuperación en piernas, espalda, cuello y articulaciones.</p>
+        </div>
+        <div class="ingredient-card">
+          <div class="ingredient-circle">
+            <img src="{{ 'cannabix_ing_colageno.png' | asset_url }}" alt="Colágeno" width="203" height="203" loading="lazy">
+          </div>
+          <h4>COLÁGENO</h4>
+          <p>Nutre, hidrata y mejora la elasticidad de la piel en cada masaje sin dejar sensación reseca.</p>
+        </div>
+        <div class="ingredient-card">
+          <div class="ingredient-circle">
+            <img src="{{ 'cannabix_ing_vainilla.png' | asset_url }}" alt="Extracto de Vainilla" width="203" height="203" loading="lazy">
+          </div>
+          <h4>EXTRACTO DE VAINILLA</h4>
+          <p>Aporta un aroma suave y reconfortante junto con un efecto térmico relajante sobre la zona aplicada.</p>
+        </div>
+
+    {% endcase %}
 
       <div class="rating-row">
         <div class="stars"></div>
@@ -346,7 +388,7 @@
       </div>
 
       <!-- TRUST BADGES MINI -->
-      <div class="product-mini-trust">
+      <div class="product-mini-trust{% if is_outlet %} is-outlet-trust{% endif %}">
         <div class="mini-trust-item">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg>
           <div>
@@ -361,20 +403,22 @@
             <span>Tarjeta, PSE y Nequi</span>
           </div>
         </div>
-        <div class="mini-trust-item">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          <div>
-            <strong>REGISTRO INVIMA</strong>
-            <span>Garantía y respaldo oficial</span>
+        {% unless is_outlet %}
+          <div class="mini-trust-item">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <div>
+              <strong>REGISTRO INVIMA</strong>
+              <span>Garantía y respaldo oficial</span>
+            </div>
           </div>
-        </div>
-        <div class="mini-trust-item">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"></path><path d="M12 6v6l4 2"></path></svg>
-          <div>
-            <strong>100% NATURALES</strong>
-            <span>Ingredientes para tu bienestar</span>
+          <div class="mini-trust-item">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+            <div>
+              <strong>100% NATURALES</strong>
+              <span>Ingredientes para tu bienestar</span>
+            </div>
           </div>
-        </div>
+        {% endunless %}
       </div>
 
       <!-- ===================================================================
@@ -765,65 +809,35 @@
       {% when 'serum' %}
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <!-- [PONER AQUÍ IMAGEN INGREDIENTE 1 DE SERUM: VITAMINA C]
-                 Ejemplo: <img src="{{ 'serum_ing1.png' | asset_url }}" alt="Vitamina C" width="203" height="203"> -->
-            <div class="img-placeholder-slot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-tag">AQUÍ IMAGEN 1</span>
-              <span class="slot-name">Vitamina C</span>
-            </div>
+            <img src="{{ 'serum_ing_vitaminac.png' | asset_url }}" alt="Vitamina C Estabilizada" width="203" height="203">
           </div>
           <h4>VITAMINA C ESTABILIZADA</h4>
           <p>Ilumina el rostro, ayuda a atenuar manchas y estimula la producción natural de colágeno cutáneo.</p>
         </div>
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <!-- [PONER AQUÍ IMAGEN INGREDIENTE 2 DE SERUM: ÁCIDO HIALURÓNICO]
-                 Ejemplo: <img src="{{ 'serum_ing2.png' | asset_url }}" alt="Ácido Hialurónico" width="203" height="203"> -->
-            <div class="img-placeholder-slot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-tag">AQUÍ IMAGEN 2</span>
-              <span class="slot-name">Ácido Hialurónico</span>
-            </div>
+            <img src="{{ 'serum_ing_hialuronico.png' | asset_url }}" alt="Ácido Hialurónico" width="203" height="203">
           </div>
           <h4>ÁCIDO HIALURÓNICO</h4>
           <p>Retiene la humedad en las capas profundas de la piel para una hidratación intensa y efecto relleno.</p>
         </div>
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <!-- [PONER AQUÍ IMAGEN INGREDIENTE 3 DE SERUM: VITAMINA E]
-                 Ejemplo: <img src="{{ 'serum_ing3.png' | asset_url }}" alt="Vitamina E" width="203" height="203"> -->
-            <div class="img-placeholder-slot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-tag">AQUÍ IMAGEN 3</span>
-              <span class="slot-name">Vitamina E</span>
-            </div>
+            <img src="{{ 'serum_ing_vitaminae.png' | asset_url }}" alt="Vitamina E" width="203" height="203">
           </div>
           <h4>VITAMINA E</h4>
           <p>Potente antioxidante que nutre y protege la barrera cutánea frente a radicales libres y polución.</p>
         </div>
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <!-- [PONER AQUÍ IMAGEN INGREDIENTE 4 DE SERUM: EXTRACTO BOTÁNICO]
-                 Ejemplo: <img src="{{ 'serum_ing4.png' | asset_url }}" alt="Extracto Botánico" width="203" height="203"> -->
-            <div class="img-placeholder-slot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-tag">AQUÍ IMAGEN 4</span>
-              <span class="slot-name">Extracto Calmante</span>
-            </div>
+            <img src="{{ 'serum_ing_botanico.png' | asset_url }}" alt="Extracto Botánico" width="203" height="203">
           </div>
           <h4>EXTRACTO BOTÁNICO</h4>
           <p>Suaviza la textura del rostro, minimiza la apariencia de los poros y aporta frescura inmediata.</p>
         </div>
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <!-- [PONER AQUÍ IMAGEN INGREDIENTE 5 DE SERUM: TEXTURA DERMO-LIGERA]
-                 Ejemplo: <img src="{{ 'serum_ing5.png' | asset_url }}" alt="Base Dermo-Ligera" width="203" height="203"> -->
-            <div class="img-placeholder-slot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-tag">AQUÍ IMAGEN 5</span>
-              <span class="slot-name">Base Dermo-Ligera</span>
-            </div>
+            <img src="{{ 'serum_ing_dermoligera.png' | asset_url }}" alt="Base Dermo-Ligera" width="203" height="203">
           </div>
           <h4>BASE DERMO-LIGERA</h4>
           <p>Absorción rápida sin sensación grasa ni comedogénica, ideal para usar de día y de noche.</p>
@@ -925,21 +939,9 @@
         {% when 'citrato' %}
           <img src="{{ 'uso_citrato.png' | asset_url }}" alt="Modo de Uso Citrato de Magnesio" width="600" height="600">
         {% when 'serum' %}
-          <!-- [PONER AQUÍ IMAGEN MODO DE USO DE SERUM FACIAL VITAMINA C]
-               Ejemplo: <img src="{{ 'uso_serum.png' | asset_url }}" alt="Modo de Uso Serum Facial" width="600" height="600"> -->
-          <div class="img-placeholder-slot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span class="slot-tag">AQUÍ IMAGEN MODO DE USO</span>
-            <span class="slot-name">Modo de Uso: Serum Facial Vitamina C</span>
-          </div>
+          <img src="{{ 'uso_serum.png' | asset_url }}" alt="Modo de Uso Serum Facial Vitamina C" width="600" height="600">
         {% when 'cannabix' %}
-          <!-- [PONER AQUÍ IMAGEN MODO DE USO DE CANNABIX]
-               Ejemplo: <img src="{{ 'uso_cannabix.png' | asset_url }}" alt="Modo de Uso Cannabix" width="600" height="600"> -->
-          <div class="img-placeholder-slot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span class="slot-tag">AQUÍ IMAGEN MODO DE USO</span>
-            <span class="slot-name">Modo de Uso: Crema Cannabix</span>
-          </div>
+          <img src="{{ 'canabis_back.jpeg' | asset_url }}" alt="Modo de Uso Cannabix" width="600" height="600">
       {% endcase %}
     </div>
 
@@ -1027,26 +1029,49 @@
           <p>Favorece el equilibrio del sistema nervioso y la regeneración nocturna.</p>
         </div>
       {% else %}
-        <div class="badge-item">
-          <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
-          <h4>RESPALDO Y GARANTÍA</h4>
-          <p>Garantía sanitaria y calidad oficial World TV Colombia para tu tranquilidad.</p>
-        </div>
-        <div class="badge-item">
-          <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></div>
-          <h4>FÓRMULA LIMPIA Y NATURAL</h4>
-          <p>Ingredientes seleccionados de alta pureza pensando en tu bienestar integral.</p>
-        </div>
-        <div class="badge-item">
-          <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
-          <h4>CALIDAD COLOMBIANA (GMP)</h4>
-          <p>Elaborado bajo estrictos estándares de Buenas Prácticas de Manufactura.</p>
-        </div>
-        <div class="badge-item">
-          <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg></div>
-          <h4>ENVÍOS SEGUROS</h4>
-          <p>Despachos asegurados a toda Colombia.</p>
-        </div>
+        {% if is_outlet %}
+          <div class="badge-item">
+            <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+            <h4>CALIDAD Y RESISTENCIA</h4>
+            <p>Prendas elaboradas con materiales térmicos y textiles de alta durabilidad.</p>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            <h4>EFECTO TÉRMICO Y CONTROL</h4>
+            <p>Estimula la sudoración y moldea tu figura cómodamente durante el día.</p>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+            <h4>CONFECCIÓN NACIONAL</h4>
+            <p>Diseño anatómico con costuras reforzadas para máxima comodidad.</p>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg></div>
+            <h4>ENVÍOS SEGUROS</h4>
+            <p>Despachos rápidos y asegurados a cualquier rincón de Colombia.</p>
+          </div>
+        {% else %}
+          <div class="badge-item">
+            <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+            <h4>RESPALDO Y GARANTÍA</h4>
+            <p>Garantía sanitaria y calidad oficial World TV Colombia para tu tranquilidad.</p>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></div>
+            <h4>FÓRMULA LIMPIA Y NATURAL</h4>
+            <p>Ingredientes seleccionados de alta pureza pensando en tu bienestar integral.</p>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+            <h4>CALIDAD COLOMBIANA (GMP)</h4>
+            <p>Elaborado bajo estrictos estándares de Buenas Prácticas de Manufactura.</p>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg></div>
+            <h4>ENVÍOS SEGUROS</h4>
+            <p>Despachos asegurados a toda Colombia.</p>
+          </div>
+        {% endif %}
     {% endcase %}
   </div>
 </section>
@@ -1143,15 +1168,15 @@
         {% assign rec_var = rec_prod.selected_or_first_available_variant %}
         {% assign rec_v_raw = rec_var.price | divided_by: 100 %}
         {% assign rec_v_old_raw = rec_var.compare_at_price | default: 0 | divided_by: 100 %}
-        {% if rec_prod.handle contains 'cloruro' or rec_prod.handle contains 'colageno' or rec_prod.handle contains 'citrato' %}
-          {% assign rec_price_cop = 101031 %}
-          {% assign rec_old_cop = 127500 %}
-        {% elsif rec_prod.handle contains 'cannabix' %}
+        {% if rec_prod.handle contains 'cannabi' or rec_prod.handle contains 'canabi' %}
           {% assign rec_price_cop = 77231 %}
           {% assign rec_old_cop = 85000 %}
         {% elsif rec_prod.handle contains 'serum' %}
           {% assign rec_price_cop = 118405 %}
           {% assign rec_old_cop = 130000 %}
+        {% elsif rec_prod.handle contains 'cloruro' or rec_prod.handle contains 'colageno' or rec_prod.handle contains 'citrato' %}
+          {% assign rec_price_cop = 101031 %}
+          {% assign rec_old_cop = 127500 %}
         {% elsif rec_var.taxable %}
           {% assign rec_price_cop = rec_v_raw | times: 119 | divided_by: 100 %}
           {% assign rec_old_cop = rec_v_old_raw | times: 119 | divided_by: 100 %}

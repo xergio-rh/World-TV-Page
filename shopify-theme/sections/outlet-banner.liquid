@@ -1,26 +1,63 @@
-<!-- 8. BANNER OUTLET MOLDEADORAS -->
+<!-- 8. BANNER OUTLET MOLDEADORAS ROTATIVO -->
 <section class="outlet-section">
-  <div class="outlet-banner">
-    <div class="outlet-people"></div>
-    <div class="outlet-content">
-      <span class="outlet-badge"><svg class="inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> {{ section.settings.badge | default: 'LIQUIDACIÓN ESPECIAL' }}</span>
-      <h2 class="outlet-title">{{ section.settings.title | default: 'OUTLET' }}</h2>
-      <p class="outlet-subtitle">{{ section.settings.subtitle | default: 'PRENDAS MOLDEADORAS Y TÉRMICAS' }}</p>
-      <a href="{{ section.settings.button_link | default: '/collections/outlet-prendas-moldeadoras-y-termicas' }}" class="outlet-btn">{{ section.settings.button_text | default: 'VER PRENDAS EN OFERTA' }}</a>
+  <div class="outlet-banner" id="outletBannerSlider" data-autoplay="true" data-interval="5000">
+    <div class="outlet-slides-track">
+      <!-- SLIDE 1 -->
+      <div class="outlet-slide active" data-slide-index="0">
+        <div class="outlet-slide-bg"
+             data-desktop-bg="{{ 'banner_outlet_slide_1.png' | asset_url }}"
+             data-mobile-bg="{{ 'banner_outlet_slide_1_mobile.png' | asset_url }}"
+             style="background-image: url('{{ 'banner_outlet_slide_1.png' | asset_url }}');">
+        </div>
+      </div>
+      <!-- SLIDE 2 -->
+      <div class="outlet-slide" data-slide-index="1">
+        <div class="outlet-slide-bg"
+             data-desktop-bg="{{ 'banner_outlet_slide_2.png' | asset_url }}"
+             data-mobile-bg="{{ 'banner_outlet_slide_2_mobile.png' | asset_url }}"
+             style="background-image: url('{{ 'banner_outlet_slide_2.png' | asset_url }}');">
+        </div>
+      </div>
     </div>
+
+    <!-- CONTENIDO SUPERPUESTO (TITULO Y BOTÓN) -->
+    <div class="outlet-content-overlay">
+      <div class="outlet-content-inner">
+        <h2 class="outlet-title">{{ section.settings.title | default: 'OUTLET' }}</h2>
+        <a href="{{ section.settings.button_link | default: '/collections/outlet-prendas-moldeadoras-y-termicas' }}" class="outlet-btn">
+          <span>{{ section.settings.button_text | default: 'Ver prendas' }}</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- INDICADORES (DOTS) EN DESKTOP -->
+    <div class="outlet-dots" aria-label="Navegación de diapositivas">
+      <button type="button" class="outlet-dot active" data-slide="0" aria-label="Ir a diapositiva 1"></button>
+      <button type="button" class="outlet-dot" data-slide="1" aria-label="Ir a diapositiva 2"></button>
+    </div>
+
+    <!-- FLECHAS DE NAVEGACIÓN LATERALES (SOLO MÓVIL) -->
+    <button type="button" class="outlet-arrow outlet-arrow-prev" aria-label="Ver imagen anterior">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button type="button" class="outlet-arrow outlet-arrow-next" aria-label="Ver imagen siguiente">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Banner Outlet",
+  "name": "Banner Outlet Rotativo",
   "settings": [
-    {
-      "type": "text",
-      "id": "badge",
-      "label": "Etiqueta superior",
-      "default": "LIQUIDACIÓN ESPECIAL"
-    },
     {
       "type": "text",
       "id": "title",
@@ -29,15 +66,9 @@
     },
     {
       "type": "text",
-      "id": "subtitle",
-      "label": "Subtítulo",
-      "default": "PRENDAS MOLDEADORAS Y TÉRMICAS"
-    },
-    {
-      "type": "text",
       "id": "button_text",
       "label": "Texto del botón",
-      "default": "VER PRENDAS EN OFERTA"
+      "default": "Ver prendas"
     },
     {
       "type": "url",
@@ -47,7 +78,7 @@
   ],
   "presets": [
     {
-      "name": "Banner Outlet"
+      "name": "Banner Outlet Rotativo"
     }
   ]
 }
