@@ -97,7 +97,7 @@ body {
   outline: none;
 }
 
-.search-bar svg {
+.search-bar > svg {
   position: absolute;
   right: 14px;
   top: 50%;
@@ -146,14 +146,10 @@ body {
 /* --- BANNER HERO OUTLET CORREGIDO --- */
 .outlet-hero-banner {
   position: relative;
-  /* Usamos un degradado oscuro más profesional para que el texto resalte siempre */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('./storage/images/banneroutlet.jpeg');
-  
-  /* Cambiamos 'cover' por 'contain' o ajustamos la posición para que no corte las cabezas */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)), var(--outlet-bg-pc, url('banner_outlet_hero_pc.png'));
   background-size: cover;
-  background-position: center 25%; /* Desplaza el encuadre hacia arriba para mostrar los rostros */
-  
-  min-height: 440px; /* Damos un poco más de altura para que respire el contenido */
+  background-position: center 25%;
+  min-height: 440px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1039,7 +1035,10 @@ body {
   }
 
   .outlet-hero-banner {
-    min-height: 280px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45)), var(--outlet-bg-mob, url('banner_outlet_hero_mobile.png')) !important;
+    background-position: center top !important;
+    background-size: cover !important;
+    min-height: 380px !important;
     padding: 30px 16px;
   }
 

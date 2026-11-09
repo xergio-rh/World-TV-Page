@@ -19,17 +19,17 @@
       <!-- Logo -->
       <a href="{{ routes.root_url }}" class="logo-link">
         {% if section.settings.logo != blank %}
-          <img src="{{ section.settings.logo | image_url: width: 280 }}" alt="{{ shop.name | escape }}" class="site-logo" width="280" height="280">
+          <img src="{{ section.settings.logo | image_url: width: 280 }}" alt="{{ shop.name | escape }}" class="site-logo" width="280" height="280" loading="eager" fetchpriority="high" decoding="async">
         {% else %}
-          <img src="{{ 'logo.png' | asset_url }}" alt="World TV" class="site-logo" width="451" height="256">
+          <img src="{{ 'logo.png' | asset_url }}" alt="World TV" class="site-logo" width="451" height="256" loading="eager" fetchpriority="high" decoding="async">
         {% endif %}
       </a>
 
       <!-- Barra de búsqueda clásica (Visible en PC) -->
       <form action="{{ routes.search_url }}" method="get" role="search" class="search-bar" onsubmit="return WTVCart.handleSearchSubmit(event, this);">
         <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Buscar productos..." autocomplete="off" oninput="WTVCart.handleSearchInput(this)">
-        <button type="submit" aria-label="Buscar" style="background:none; border:none; padding:0; cursor:pointer; display:flex; align-items:center; color:inherit;">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <button type="submit" aria-label="Buscar" class="search-submit-btn" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background:none; border:none; padding:0; margin:0; cursor:pointer; display:flex; align-items:center; justify-content:center; color:#444; width:24px; height:24px; z-index:2;">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="position:static; transform:none; display:block; width:18px; height:18px; color:inherit;">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
@@ -61,8 +61,8 @@
     <div class="expandable-search-bar" id="expandableSearch">
       <form action="{{ routes.search_url }}" method="get" role="search" class="search-bar" onsubmit="return WTVCart.handleSearchSubmit(event, this);">
         <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Buscar Melena de León, Gafas, Magnesio..." autocomplete="off" oninput="WTVCart.handleSearchInput(this)">
-        <button type="submit" aria-label="Buscar" style="background:none; border:none; padding:0; cursor:pointer; display:flex; align-items:center; color:inherit;">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <button type="submit" aria-label="Buscar" class="search-submit-btn" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background:none; border:none; padding:0; margin:0; cursor:pointer; display:flex; align-items:center; justify-content:center; color:#444; width:24px; height:24px; z-index:2;">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="position:static; transform:none; display:block; width:18px; height:18px; color:inherit;">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
@@ -73,7 +73,11 @@
     <nav>
       <ul class="nav-links" id="navLinks">
         <li>
-          <a href="{{ routes.root_url }}" data-wtv-nav="index" onclick="if(window.navigateToWorldTV && document.getElementById('MainContent')){ window.navigateToWorldTV('index'); return false; }" {% if template.name == 'index' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Todos</a>
+          {% if template.name == 'index' %}
+            <a href="{{ routes.root_url }}" data-wtv-nav="home" onclick="if(window.navigateToWorldTV){ window.navigateToWorldTV('home'); return false; }" style="color: var(--brand-red); font-weight:700;">Todos</a>
+          {% else %}
+            <a href="{{ routes.root_url }}" data-wtv-nav="home">Todos</a>
+          {% endif %}
         </li>
         <li>
           <a href="{{ routes.collections_url }}/bebidas-funcionales-y-suplementos-naturales-para-el-bienestar-diario" data-wtv-nav="nutricion" onclick="if(window.navigateToWorldTV && document.getElementById('wtv-view-nutricion')){ window.navigateToWorldTV('nutricion'); return false; }" {% if collection.handle contains 'bebidas' %}style="color: var(--brand-red); font-weight:700;"{% endif %}>Nutrición</a>

@@ -34,9 +34,9 @@
           <article class="product-card" onclick="window.location.href='{{ item.url }}'" style="cursor: pointer;">
             <div class="product-img-box">
               {% if item.featured_image %}
-                <img src="{{ item.featured_image | image_url: width: 500 }}" alt="{{ item.title | escape }}" width="500" height="500">
+                <img src="{{ item.featured_image | image_url: width: 500 }}" alt="{{ item.title | escape }}" width="500" height="500" loading="lazy" decoding="async">
               {% else %}
-                <img src="{{ 'melena_x_1_IA-removebg-preview.png' | asset_url }}" alt="{{ item.title | escape }}" width="1080" height="1080">
+                <img src="{{ 'melena_x_1_IA-removebg-preview.png' | asset_url }}" alt="{{ item.title | escape }}" width="1080" height="1080" loading="lazy" decoding="async">
               {% endif %}
             </div>
             <h3 class="product-title">{{ item.title }}</h3>

@@ -47,7 +47,7 @@
     <div class="product-gallery-card">
       <div class="main-image-box">
         {% if product.featured_image %}
-          <img id="mainProductImg" src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.title | escape }}" width="900" height="900">
+          <img id="mainProductImg" src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.title | escape }}" width="900" height="900" loading="lazy" decoding="async">
         {% else %}
           <!-- [ESPACIO IMAGEN PRINCIPAL DEL PRODUCTO] -->
           <div class="img-placeholder-slot" style="height: 420px;">
@@ -61,7 +61,7 @@
         <div class="thumbs-row" style="grid-template-columns: repeat({{ product.images.size | at_most: 5 }}, 1fr);">
           {% for image in product.images limit: 5 %}
             <div class="thumb-item {% if forloop.first %}active{% endif %}" onclick="changeImage(this, '{{ image | image_url: width: 900 }}')">
-              <img src="{{ image | image_url: width: 240 }}" alt="{{ product.title | escape }} - Vista {{ forloop.index }}" width="240" height="240">
+              <img src="{{ image | image_url: width: 240 }}" alt="{{ product.title | escape }} - Vista {{ forloop.index }}" width="240" height="240" loading="lazy" decoding="async">
             </div>
           {% endfor %}
         </div>
@@ -79,7 +79,7 @@
         {% when 'cloruro' %}
           <h2 class="product-subtitle-main">500 ml - Sabor a Uva</h2>
         {% when 'melena' %}
-          <h2 class="product-subtitle-main">- Sabor a capuchino</h2>
+          <h2 class="product-subtitle-main">450 g - Fórmula Adaptógena con Ganoderma, Shiitake y Complejo B</h2>
         {% when 'resveratrol' %}
           <h2 class="product-subtitle-main">500 ml - Bebida Funcional Antioxidante</h2>
         {% when 'inositol' %}
@@ -92,45 +92,9 @@
           <h2 class="product-subtitle-main">500 ml - Sabor Naranja con Manzanilla y Menta</h2>
         {% when 'serum' %}
           <h2 class="product-subtitle-main">Cuidado Facial con Vitamina C, Ácido Hialurónico y Vitamina E</h2>
-              {% comment %} ================= 9. CANNABIX CREMA TÓPICA ================= {% endcomment %}
-      {% when 'cannabix' %}
-        <div class="ingredient-card">
-          <div class="ingredient-circle">
-            <img src="{{ 'cannabix_ing_cbd.png' | asset_url }}" alt="Cannabidiol (CBD)" width="203" height="203" loading="lazy">
-          </div>
-          <h4>CANNABIDIOL (CBD)</h4>
-          <p>Extracto fitocannabinoide natural que brinda alivio tópico localizado y sensación de relajación profunda.</p>
-        </div>
-        <div class="ingredient-card">
-          <div class="ingredient-circle">
-            <img src="{{ 'cannabix_ing_arnica.png' | asset_url }}" alt="Árnica Montana" width="203" height="203" loading="lazy">
-          </div>
-          <h4>ÁRNICA MONTANA</h4>
-          <p>Planta reconocida por calmar molestias musculares, golpes, fatiga física e inflamación localizada.</p>
-        </div>
-        <div class="ingredient-card">
-          <div class="ingredient-circle">
-            <img src="{{ 'cannabix_ing_magnesio.png' | asset_url }}" alt="Cloruro de Magnesio" width="203" height="203" loading="lazy">
-          </div>
-          <h4>CLORURO DE MAGNESIO</h4>
-          <p>Favorece la descontractura muscular y la recuperación en piernas, espalda, cuello y articulaciones.</p>
-        </div>
-        <div class="ingredient-card">
-          <div class="ingredient-circle">
-            <img src="{{ 'cannabix_ing_colageno.png' | asset_url }}" alt="Colágeno" width="203" height="203" loading="lazy">
-          </div>
-          <h4>COLÁGENO</h4>
-          <p>Nutre, hidrata y mejora la elasticidad de la piel en cada masaje sin dejar sensación reseca.</p>
-        </div>
-        <div class="ingredient-card">
-          <div class="ingredient-circle">
-            <img src="{{ 'cannabix_ing_vainilla.png' | asset_url }}" alt="Extracto de Vainilla" width="203" height="203" loading="lazy">
-          </div>
-          <h4>EXTRACTO DE VAINILLA</h4>
-          <p>Aporta un aroma suave y reconfortante junto con un efecto térmico relajante sobre la zona aplicada.</p>
-        </div>
-
-    {% endcase %}
+        {% when 'cannabix' %}
+          <h2 class="product-subtitle-main">60 g - Crema Corporal con CBD, Árnica, Colágeno y Magnesio</h2>
+      {% endcase %}
 
       <div class="rating-row">
         <div class="stars"></div>
@@ -176,12 +140,13 @@
         {% else %}
           <span class="save-pill" id="dynamicSavePill">Envío Gratis</span>
         {% endif %}
-        <span class="iva-pill" style="background:#DCFCE7; color:#15803D; font-weight:700; border:1px solid #86EFAC;">✓ PRECIO FINAL • IVA INCLUIDO</span>
+        
       </div>
 
-      <div class="fixed-price-guarantee" style="display:flex; align-items:center; gap:8px; background:#F0FDF4; border:1px solid #BBF7D0; border-radius:8px; padding:8px 12px; margin-top:8px; margin-bottom:14px; font-size:12px; color:#166534;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
-        <span><strong>Precio Fijo Garantizado:</strong> Cero cobros ocultos ni sorpresas al pagar. <strong>IVA 19% y envío nacional ya incluidos</strong>.</span>
+      <!-- INSIGNIA ELEGANTE DE DISPONIBILIDAD Y DESPACHO RÁPIDO (JUSTO DEBAJO DEL PRECIO) -->
+      <div class="stock-dispatch-badge" style="margin-top: 10px; margin-bottom: 14px;">
+        <span class="stock-dot"></span>
+        <span class="stock-text"><strong>Disponible para despacho hoy</strong> &bull; Entrega en 24-48h a toda Colombia</span>
       </div>
 
       <!-- SELECTOR DINÁMICO DE PAQUETES (UNA UNIDAD / PAQUETE X 2 / PAQUETE X 3) -->
@@ -286,17 +251,17 @@
                 <span class="pack-title">{{ variant.title }}</span>
                 {% if product.variants.size <= 3 %}
                   {% if prod_key == 'resveratrol' and forloop.index == 2 %}
-                    <img src="{{ 'resveratrol_x2_official.png' | asset_url }}" alt="{{ variant.title | escape }}" width="160" height="160">
+                    <img src="{{ 'resveratrol_x2_official.png' | asset_url }}" alt="{{ variant.title | escape }}" width="160" height="160" loading="lazy" decoding="async">
                   {% elsif prod_key == 'colageno_marino' and forloop.index == 2 %}
-                    <img src="{{ 'colageno_marino_x2.png' | asset_url }}" alt="{{ variant.title | escape }}" width="160" height="160">
+                    <img src="{{ 'colageno_marino_x2.png' | asset_url }}" alt="{{ variant.title | escape }}" width="160" height="160" loading="lazy" decoding="async">
                   {% elsif prod_key == 'citrato' and forloop.index == 2 %}
-                    <img src="{{ 'citrato_x2.png' | asset_url }}" alt="{{ variant.title | escape }}" width="160" height="160">
+                    <img src="{{ 'citrato_x2.png' | asset_url }}" alt="{{ variant.title | escape }}" width="160" height="160" loading="lazy" decoding="async">
                   {% elsif prod_key == 'citrato' and forloop.index == 3 %}
-                    <img src="{{ 'citrato_x3.png' | asset_url }}" alt="{{ variant.title | escape }}" width="160" height="160">
+                    <img src="{{ 'citrato_x3.png' | asset_url }}" alt="{{ variant.title | escape }}" width="160" height="160" loading="lazy" decoding="async">
                   {% elsif variant.featured_image %}
-                    <img src="{{ variant.featured_image | image_url: width: 160 }}" alt="{{ variant.title | escape }}" width="160" height="160">
+                    <img src="{{ variant.featured_image | image_url: width: 160 }}" alt="{{ variant.title | escape }}" width="160" height="160" loading="lazy" decoding="async">
                   {% elsif fallback_pack_img %}
-                    <img src="{{ fallback_pack_img | image_url: width: 160 }}" alt="{{ variant.title | escape }}" width="160" height="160">
+                    <img src="{{ fallback_pack_img | image_url: width: 160 }}" alt="{{ variant.title | escape }}" width="160" height="160" loading="lazy" decoding="async">
                   {% endif %}
                 {% endif %}
                 <div class="pack-prices">
@@ -363,13 +328,9 @@
         <input type="hidden" id="selectedPackOldPrice" value="{{ init_old_cop }}">
         <input type="hidden" id="selectedPackImg" value="{% if product.featured_image %}{{ product.featured_image | image_url: width: 300 }}{% else %}{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}{% endif %}">
         
-        <!-- INSIGNIA ELEGANTE DE DISPONIBILIDAD Y DESPACHO RÁPIDO -->
-        <div class="stock-dispatch-badge">
-          <span class="stock-dot"></span>
-          <span class="stock-text"><strong>Disponible para despacho hoy</strong> &bull; Entrega en 24-48h a toda Colombia</span>
-        </div>
+        
 
-        <div class="action-buttons" style="margin-top: 18px;">
+        <div class="action-buttons" style="margin-top: 12px;">
           <div class="product-dual-pay-row">
             <button type="button" class="cart-checkout-btn btn-pay-now-main" style="border:none; cursor:pointer; width:100%; display:flex; align-items:center; justify-content:center; gap:7px;" onclick="WTVCart.addSelectedProductFromPage(true, 1, 'online');">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
@@ -384,6 +345,8 @@
             Agregar al carrito
           </button>
         </div>
+
+        {% render 'product-payment-badges' %}
 
       </div>
 
@@ -612,27 +575,27 @@
       {% comment %} ================= 1. CLORURO / COLASTEEL ================= {% endcomment %}
       {% when 'cloruro' %}
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'colageno.png' | asset_url }}" alt="Colágeno Hidrolizado" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'colageno.png' | asset_url }}" alt="Colágeno Hidrolizado" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>COLÁGENO HIDROLIZADO</h4>
           <p>Regenera cartílagos y articulaciones mientras mejora la elasticidad de la piel, cabello y uñas.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'cloruro.png' | asset_url }}" alt="Cloruro de Magnesio" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'cloruro.png' | asset_url }}" alt="Cloruro de Magnesio" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>CLORURO DE MAGNESIO</h4>
           <p>Fortalece los huesos, reduce la rigidez articular y calma molestias físicas en rodillas y espalda.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'complejoB.png' | asset_url }}" alt="Complejo B" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'complejoB.png' | asset_url }}" alt="Complejo B" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>COMPLEJO B</h4>
           <p>Esenciales para el metabolismo energético y el mantenimiento del sistema nervioso.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'extractodete.png' | asset_url }}" alt="Extracto de Té" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'extractodete.png' | asset_url }}" alt="Extracto de Té" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>EXTRACTO DE TÉ</h4>
           <p>Aporta antioxidantes naturales para favorecer la digestión y el bienestar general.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'uba.png' | asset_url }}" alt="Sabor a Uva" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'uba.png' | asset_url }}" alt="Sabor a Uva" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>SABOR A UVA</h4>
           <p>Una experiencia deliciosa y fresca al paladar en cada toma.</p>
         </div>
@@ -640,27 +603,27 @@
       {% comment %} ================= 2. MELENA DE LEÓN ================= {% endcomment %}
       {% when 'melena' %}
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'melena.png' | asset_url }}" alt="Melena de León" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'melena.png' | asset_url }}" alt="Melena de León" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>MELENA DE LEÓN</h4>
           <p>Estimula la producción del factor de crecimiento nervioso (NGF) para apoyar la memoria y concentración.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'ganoderma.png' | asset_url }}" alt="Ganoderma Lucidum" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'ganoderma.png' | asset_url }}" alt="Ganoderma Lucidum" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>GANODERMA LUCIDUM</h4>
           <p>Aporta 700 mg por porción para fortalecer el sistema inmune y brindar bienestar general.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'image_30.png' | asset_url }}" alt="Hongo Shiitake" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'image_30.png' | asset_url }}" alt="Hongo Shiitake" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>HONGO SHIITAKE</h4>
           <p>3.000 mg por porción que contribuyen a la nutrición integral y vitalidad diaria.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'complejoB.png' | asset_url }}" alt="Complejo B" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'complejoB.png' | asset_url }}" alt="Complejo B" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>VITAMINAS COMPLEJO B</h4>
           <p>Esenciales (B1, B2, B3, B6, B12) para el metabolismo energético y el sistema nervioso.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'vitC.png' | asset_url }}" alt="Vitamina C" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'vitC.png' | asset_url }}" alt="Vitamina C" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>VITAMINA C</h4>
           <p>Potente antioxidante que combate radicales libres y apoya las defensas naturales.</p>
         </div>
@@ -668,27 +631,27 @@
       {% comment %} ================= 3. RESVERATROL 500 ML ================= {% endcomment %}
       {% when 'resveratrol' %}
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'resveratrol_ing_resveratrol.png' | asset_url }}" alt="Resveratrol" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'resveratrol_ing_resveratrol.png' | asset_url }}" alt="Resveratrol" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>RESVERATROL</h4>
           <p>Potente antioxidante que protege las células del daño oxidativo y apoya la salud cardiovascular.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'colageno.png' | asset_url }}" alt="Colágeno Hidrolizado" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'colageno.png' | asset_url }}" alt="Colágeno Hidrolizado" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>COLÁGENO HIDROLIZADO</h4>
           <p>Favorece la elasticidad y firmeza de la piel, fortaleciendo tejidos y articulaciones desde adentro.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'resveratrol_ing_biotina.png' | asset_url }}" alt="Biotina" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'resveratrol_ing_biotina.png' | asset_url }}" alt="Biotina" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>BIOTINA</h4>
           <p>Nutriente esencial para el fortalecimiento capilar, la luminosidad de la piel y la resistencia de las uñas.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'resveratrol_ing_fibra.png' | asset_url }}" alt="Fibra Prebiótica" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'resveratrol_ing_fibra.png' | asset_url }}" alt="Fibra Prebiótica" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>FIBRA PREBIÓTICA</h4>
           <p>Apoya el equilibrio de la flora intestinal y mejora la asimilación de los antioxidantes y vitaminas.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'resveratrol_ing_frutas.png' | asset_url }}" alt="Uvas y Ciruelas" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'resveratrol_ing_frutas.png' | asset_url }}" alt="Uvas y Ciruelas" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>UVAS Y CIRUELAS</h4>
           <p>Fuente natural de polifenoles bioactivos con un sabor delicioso y libre de azúcares añadidos.</p>
         </div>
@@ -696,27 +659,27 @@
       {% comment %} ================= 4. INOSITOL EN POLVO ================= {% endcomment %}
       {% when 'inositol' %}
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'inositol_ing_inositol.png' | asset_url }}" alt="Inositol" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'inositol_ing_inositol.png' | asset_url }}" alt="Inositol" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>INOSITOL</h4>
           <p>Apoya la sensibilidad a la insulina, el equilibrio de la glucosa en sangre y la armonía metabólica y hormonal.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'inositol_ing_folico.png' | asset_url }}" alt="Ácido Fólico (B9)" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'inositol_ing_folico.png' | asset_url }}" alt="Ácido Fólico (B9)" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>ÁCIDO FÓLICO (B9)</h4>
           <p>Fundamental para la renovación celular, el bienestar femenino y el equilibrio emocional diario.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'inositol_ing_biotina.png' | asset_url }}" alt="Biotina" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'inositol_ing_biotina.png' | asset_url }}" alt="Biotina" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>BIOTINA</h4>
           <p>Contribuye al metabolismo normal de macronutrientes mientras fortalece cabello, piel y uñas.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'inositol_ing_b12.png' | asset_url }}" alt="Vitamina B12" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'inositol_ing_b12.png' | asset_url }}" alt="Vitamina B12" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>VITAMINA B12</h4>
           <p>Disminuye el cansancio y la fatiga mientras respalda el funcionamiento óptimo del sistema nervioso.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'inositol_ing_complejob.png' | asset_url }}" alt="Complejo B" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'inositol_ing_complejob.png' | asset_url }}" alt="Complejo B" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>COMPLEJO B</h4>
           <p>Sinergia vitamínica que optimiza la transformación de los alimentos en energía limpia y estable.</p>
         </div>
@@ -724,27 +687,27 @@
       {% comment %} ================= 5. AMALAKI 500 GR/ML ================= {% endcomment %}
       {% when 'amalaki' %}
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'amalaki_ing_amalaki.png' | asset_url }}" alt="Extracto de Amalaki" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'amalaki_ing_amalaki.png' | asset_url }}" alt="Extracto de Amalaki" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>EXTRACTO DE AMALAKI</h4>
           <p>Superfruta rica en antioxidantes y vitamina C natural que protege y revitaliza las células.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'colageno.png' | asset_url }}" alt="Colágeno Hidrolizado" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'colageno.png' | asset_url }}" alt="Colágeno Hidrolizado" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>COLÁGENO HIDROLIZADO</h4>
           <p>Apoya la regeneración de tejidos, articulaciones y mantiene la firmeza y elasticidad de la piel.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'extractodete.png' | asset_url }}" alt="Extracto de Té" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'extractodete.png' | asset_url }}" alt="Extracto de Té" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>EXTRACTO DE TÉ</h4>
           <p>Favorece la digestión ligera, el equilibrio metabólico y la depuración natural del organismo.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'resveratrol_ing_biotina.png' | asset_url }}" alt="Biotina" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'resveratrol_ing_biotina.png' | asset_url }}" alt="Biotina" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>BIOTINA</h4>
           <p>Fortalece la estructura capilar, las uñas y promueve una piel radiante y saludable.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'complejoB.png' | asset_url }}" alt="Complejo B" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'complejoB.png' | asset_url }}" alt="Complejo B" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>VITAMINAS COMPLEJO B</h4>
           <p>Impulsan la vitalidad física, el metabolismo energético y el buen funcionamiento del sistema inmune.</p>
         </div>
@@ -752,27 +715,27 @@
       {% comment %} ================= 6. COLÁGENO MARINO ================= {% endcomment %}
       {% when 'colageno_marino' %}
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'colagenomarino_ing_colageno.png' | asset_url }}" alt="Colágeno Marino" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'colagenomarino_ing_colageno.png' | asset_url }}" alt="Colágeno Marino" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>COLÁGENO MARINO</h4>
           <p>Péptidos de alta biodisponibilidad para nutrir articulaciones, cartílagos, huesos y firmeza de la piel.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'colagenomarino_ing_curcuma.png' | asset_url }}" alt="Cúrcuma" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'colagenomarino_ing_curcuma.png' | asset_url }}" alt="Cúrcuma" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>CÚRCUMA</h4>
           <p>Reconocida por su acción antiinflamatoria natural que alivia molestias articulares y musculares.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'colagenomarino_ing_jengibre.png' | asset_url }}" alt="Jengibre" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'colagenomarino_ing_jengibre.png' | asset_url }}" alt="Jengibre" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>JENGIBRE</h4>
           <p>Raíz bioactiva que favorece la movilidad articular, la circulación y el confort digestivo diario.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'colagenomarino_ing_ajonjoli.png' | asset_url }}" alt="Ajonjolí" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'colagenomarino_ing_ajonjoli.png' | asset_url }}" alt="Ajonjolí" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>AJONJOLÍ</h4>
           <p>Aporta calcio natural y minerales esenciales para el fortalecimiento óseo y muscular.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'colagenomarino_ing_vitaminas.png' | asset_url }}" alt="Vitaminas Esenciales" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'colagenomarino_ing_vitaminas.png' | asset_url }}" alt="Vitaminas Esenciales" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>VITAMINAS ESENCIALES</h4>
           <p>Potencian la síntesis del colágeno y protegen los tejidos frente al desgaste oxidativo.</p>
         </div>
@@ -780,27 +743,27 @@
       {% comment %} ================= 7. CITRATO DE MAGNESIO ================= {% endcomment %}
       {% when 'citrato' %}
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'citrato_ing_magnesio.png' | asset_url }}" alt="Citrato de Magnesio" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'citrato_ing_magnesio.png' | asset_url }}" alt="Citrato de Magnesio" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>CITRATO DE MAGNESIO</h4>
           <p>Aporta 400 mg por porción de alta absorción para la relajación neuromuscular y el equilibrio electrolítico.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'citrato_ing_manzanilla.png' | asset_url }}" alt="Manzanilla" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'citrato_ing_manzanilla.png' | asset_url }}" alt="Manzanilla" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>MANZANILLA</h4>
           <p>Hierba aromática tradicional que promueve la calma mental, el descanso nocturno y el alivio digestivo.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'citrato_ing_menta.png' | asset_url }}" alt="Menta" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'citrato_ing_menta.png' | asset_url }}" alt="Menta" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>MENTA</h4>
           <p>Aporta frescura estomacal y ayuda a liberar la tensión física acumulada durante la jornada.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'citrato_ing_vitaminas.png' | asset_url }}" alt="Complejo Vitamínico" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'citrato_ing_vitaminas.png' | asset_url }}" alt="Complejo Vitamínico" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>COMPLEJO VITAMÍNICO</h4>
           <p>Respalda el funcionamiento del sistema nervioso y contribuye a disminuir el cansancio y la fatiga.</p>
         </div>
         <div class="ingredient-card">
-          <div class="ingredient-circle"><img src="{{ 'citrato_ing_naranja.png' | asset_url }}" alt="Sabor Naranja" width="203" height="203"></div>
+          <div class="ingredient-circle"><img src="{{ 'citrato_ing_naranja.png' | asset_url }}" alt="Sabor Naranja" width="203" height="203" loading="lazy" decoding="async"></div>
           <h4>SABOR A NARANJA</h4>
           <p>Gusto cítrico suave y refrescante que facilita su consumo diario sin sabor metálico.</p>
         </div>
@@ -809,35 +772,35 @@
       {% when 'serum' %}
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <img src="{{ 'serum_ing_vitaminac.png' | asset_url }}" alt="Vitamina C Estabilizada" width="203" height="203">
+            <img src="{{ 'serum_ing_vitaminac.png' | asset_url }}" alt="Vitamina C Estabilizada" width="203" height="203" loading="lazy" decoding="async">
           </div>
           <h4>VITAMINA C ESTABILIZADA</h4>
           <p>Ilumina el rostro, ayuda a atenuar manchas y estimula la producción natural de colágeno cutáneo.</p>
         </div>
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <img src="{{ 'serum_ing_hialuronico.png' | asset_url }}" alt="Ácido Hialurónico" width="203" height="203">
+            <img src="{{ 'serum_ing_hialuronico.png' | asset_url }}" alt="Ácido Hialurónico" width="203" height="203" loading="lazy" decoding="async">
           </div>
           <h4>ÁCIDO HIALURÓNICO</h4>
           <p>Retiene la humedad en las capas profundas de la piel para una hidratación intensa y efecto relleno.</p>
         </div>
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <img src="{{ 'serum_ing_vitaminae.png' | asset_url }}" alt="Vitamina E" width="203" height="203">
+            <img src="{{ 'serum_ing_vitaminae.png' | asset_url }}" alt="Vitamina E" width="203" height="203" loading="lazy" decoding="async">
           </div>
           <h4>VITAMINA E</h4>
           <p>Potente antioxidante que nutre y protege la barrera cutánea frente a radicales libres y polución.</p>
         </div>
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <img src="{{ 'serum_ing_botanico.png' | asset_url }}" alt="Extracto Botánico" width="203" height="203">
+            <img src="{{ 'serum_ing_botanico.png' | asset_url }}" alt="Extracto Botánico" width="203" height="203" loading="lazy" decoding="async">
           </div>
           <h4>EXTRACTO BOTÁNICO</h4>
           <p>Suaviza la textura del rostro, minimiza la apariencia de los poros y aporta frescura inmediata.</p>
         </div>
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <img src="{{ 'serum_ing_dermoligera.png' | asset_url }}" alt="Base Dermo-Ligera" width="203" height="203">
+            <img src="{{ 'serum_ing_dermoligera.png' | asset_url }}" alt="Base Dermo-Ligera" width="203" height="203" loading="lazy" decoding="async">
           </div>
           <h4>BASE DERMO-LIGERA</h4>
           <p>Absorción rápida sin sensación grasa ni comedogénica, ideal para usar de día y de noche.</p>
@@ -847,65 +810,35 @@
       {% when 'cannabix' %}
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <!-- [PONER AQUÍ IMAGEN INGREDIENTE 1 DE CANNABIX: CANNABIDIOL CBD]
-                 Ejemplo: <img src="{{ 'cannabix_ing1.png' | asset_url }}" alt="Cannabidiol CBD" width="203" height="203"> -->
-            <div class="img-placeholder-slot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-tag">AQUÍ IMAGEN 1</span>
-              <span class="slot-name">Cannabidiol (CBD)</span>
-            </div>
+            <img src="{{ 'cannabix_ing_cbd.png' | asset_url }}" alt="Cannabidiol (CBD)" width="203" height="203" loading="lazy" decoding="async">
           </div>
           <h4>CANNABIDIOL (CBD)</h4>
           <p>Extracto fitocannabinoide natural que brinda alivio tópico localizado y sensación de relajación profunda.</p>
         </div>
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <!-- [PONER AQUÍ IMAGEN INGREDIENTE 2 DE CANNABIX: ÁRNICA MONTANA]
-                 Ejemplo: <img src="{{ 'cannabix_ing2.png' | asset_url }}" alt="Árnica Montana" width="203" height="203"> -->
-            <div class="img-placeholder-slot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-tag">AQUÍ IMAGEN 2</span>
-              <span class="slot-name">Árnica Montana</span>
-            </div>
+            <img src="{{ 'cannabix_ing_arnica.png' | asset_url }}" alt="Árnica Montana" width="203" height="203" loading="lazy" decoding="async">
           </div>
           <h4>ÁRNICA MONTANA</h4>
           <p>Planta reconocida por calmar molestias musculares, golpes, fatiga física e inflamación localizada.</p>
         </div>
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <!-- [PONER AQUÍ IMAGEN INGREDIENTE 3 DE CANNABIX: CLORURO DE MAGNESIO]
-                 Ejemplo: <img src="{{ 'cannabix_ing3.png' | asset_url }}" alt="Cloruro de Magnesio" width="203" height="203"> -->
-            <div class="img-placeholder-slot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-tag">AQUÍ IMAGEN 3</span>
-              <span class="slot-name">Cloruro de Magnesio</span>
-            </div>
+            <img src="{{ 'cannabix_ing_magnesio.png' | asset_url }}" alt="Cloruro de Magnesio" width="203" height="203" loading="lazy" decoding="async">
           </div>
           <h4>CLORURO DE MAGNESIO</h4>
           <p>Favorece la descontractura muscular y la recuperación en piernas, espalda, cuello y articulaciones.</p>
         </div>
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <!-- [PONER AQUÍ IMAGEN INGREDIENTE 4 DE CANNABIX: COLÁGENO]
-                 Ejemplo: <img src="{{ 'cannabix_ing4.png' | asset_url }}" alt="Colágeno" width="203" height="203"> -->
-            <div class="img-placeholder-slot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-tag">AQUÍ IMAGEN 4</span>
-              <span class="slot-name">Colágeno</span>
-            </div>
+            <img src="{{ 'cannabix_ing_colageno.png' | asset_url }}" alt="Colágeno" width="203" height="203" loading="lazy" decoding="async">
           </div>
           <h4>COLÁGENO</h4>
           <p>Nutre, hidrata y mejora la elasticidad de la piel en cada masaje sin dejar sensación reseca.</p>
         </div>
         <div class="ingredient-card">
           <div class="ingredient-circle">
-            <!-- [PONER AQUÍ IMAGEN INGREDIENTE 5 DE CANNABIX: EXTRACTO DE VAINILLA]
-                 Ejemplo: <img src="{{ 'cannabix_ing5.png' | asset_url }}" alt="Extracto de Vainilla" width="203" height="203"> -->
-            <div class="img-placeholder-slot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="slot-tag">AQUÍ IMAGEN 5</span>
-              <span class="slot-name">Extracto de Vainilla</span>
-            </div>
+            <img src="{{ 'cannabix_ing_vainilla.png' | asset_url }}" alt="Extracto de Vainilla" width="203" height="203" loading="lazy" decoding="async">
           </div>
           <h4>EXTRACTO DE VAINILLA</h4>
           <p>Aporta un aroma suave y reconfortante junto con un efecto térmico relajante sobre la zona aplicada.</p>
@@ -925,23 +858,23 @@
     <div class="usage-img">
       {% case prod_key %}
         {% when 'cloruro' %}
-          <img src="{{ 'descubrecolasteel.png' | asset_url }}" alt="Modo de Uso Colasteel" width="600" height="600">
+          <img src="{{ 'descubrecolasteel.png' | asset_url }}" alt="Modo de Uso Colasteel" width="600" height="600" loading="lazy" decoding="async">
         {% when 'melena' %}
-          <img src="{{ 'Gemini_Generated_Image_5ft5hk5ft5hk5ft5.jpeg' | asset_url }}" alt="Modo de Uso Melena de León" width="600" height="600">
+          <img src="{{ 'Gemini_Generated_Image_5ft5hk5ft5hk5ft5.jpeg' | asset_url }}" alt="Modo de Uso Melena de León" width="600" height="600" loading="lazy" decoding="async">
         {% when 'resveratrol' %}
-          <img src="{{ 'uso_resveratrol.jpg' | asset_url }}" alt="Modo de Uso Resveratrol" width="600" height="600">
+          <img src="{{ 'uso_resveratrol.jpg' | asset_url }}" alt="Modo de Uso Resveratrol" width="600" height="600" loading="lazy" decoding="async">
         {% when 'inositol' %}
-          <img src="{{ 'uso_inositol.png' | asset_url }}" alt="Modo de Uso Inositol" width="600" height="600">
+          <img src="{{ 'uso_inositol.png' | asset_url }}" alt="Modo de Uso Inositol" width="600" height="600" loading="lazy" decoding="async">
         {% when 'amalaki' %}
-          <img src="{{ 'uso_amalaki.jpg' | asset_url }}" alt="Modo de Uso Amalaki" width="600" height="600">
+          <img src="{{ 'uso_amalaki.jpg' | asset_url }}" alt="Modo de Uso Amalaki" width="600" height="600" loading="lazy" decoding="async">
         {% when 'colageno_marino' %}
-          <img src="{{ 'uso_colagenomarino.png' | asset_url }}" alt="Modo de Uso Colágeno Marino" width="600" height="600">
+          <img src="{{ 'uso_colagenomarino.png' | asset_url }}" alt="Modo de Uso Colágeno Marino" width="600" height="600" loading="lazy" decoding="async">
         {% when 'citrato' %}
-          <img src="{{ 'uso_citrato.png' | asset_url }}" alt="Modo de Uso Citrato de Magnesio" width="600" height="600">
+          <img src="{{ 'uso_citrato.png' | asset_url }}" alt="Modo de Uso Citrato de Magnesio" width="600" height="600" loading="lazy" decoding="async">
         {% when 'serum' %}
-          <img src="{{ 'uso_serum.png' | asset_url }}" alt="Modo de Uso Serum Facial Vitamina C" width="600" height="600">
+          <img src="{{ 'uso_serum.png' | asset_url }}" alt="Modo de Uso Serum Facial Vitamina C" width="600" height="600" loading="lazy" decoding="async">
         {% when 'cannabix' %}
-          <img src="{{ 'canabis_back.jpeg' | asset_url }}" alt="Modo de Uso Cannabix" width="600" height="600">
+          <img src="{{ 'canabis_back.jpeg' | asset_url }}" alt="Modo de Uso Cannabix" width="600" height="600" loading="lazy" decoding="async">
       {% endcase %}
     </div>
 
@@ -1187,9 +1120,9 @@
         <article class="product-card" onclick="window.location.href='{{ rec_prod.url }}'" style="cursor: pointer;">
           <div class="product-img-box">
             {% if rec_prod.featured_image %}
-              <img src="{{ rec_prod.featured_image | image_url: width: 400 }}" alt="{{ rec_prod.title | escape }}" width="400" height="400">
+              <img src="{{ rec_prod.featured_image | image_url: width: 400 }}" alt="{{ rec_prod.title | escape }}" width="400" height="400" loading="lazy" decoding="async">
             {% else %}
-              <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="{{ rec_prod.title | escape }}" width="1080" height="1080">
+              <img src="{{ 'melena_x_1_IA.webp' | asset_url }}" alt="{{ rec_prod.title | escape }}" width="1080" height="1080" loading="lazy" decoding="async">
             {% endif %}
           </div>
           <h3 class="product-title">{{ rec_prod.title }}</h3>
@@ -1219,9 +1152,9 @@
   <div class="sticky-bar-container">
     <div class="sticky-product-info">
       {% if product.featured_image %}
-        <img id="stickyProductImg" src="{{ product.featured_image | image_url: width: 120 }}" alt="{{ product.title | escape }}" width="120" height="120">
+        <img id="stickyProductImg" src="{{ product.featured_image | image_url: width: 120 }}" alt="{{ product.title | escape }}" width="120" height="120" loading="lazy" decoding="async">
       {% else %}
-        <img id="stickyProductImg" src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="{{ product.title | escape }}" width="1080" height="1080">
+        <img id="stickyProductImg" src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp' | asset_url }}" alt="{{ product.title | escape }}" width="1080" height="1080" loading="lazy" decoding="async">
       {% endif %}
       <div class="sticky-product-text">
         <span class="sticky-title">{{ product.title }} <small id="stickyPackBadge" style="color:var(--brand-red); font-weight:800;">({{ current_variant.title }})</small></span>

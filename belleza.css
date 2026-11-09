@@ -97,7 +97,7 @@ body {
   outline: none;
 }
 
-.search-bar svg {
+.search-bar > svg {
   position: absolute;
   right: 14px;
   top: 50%;

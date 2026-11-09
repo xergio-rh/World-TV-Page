@@ -110,17 +110,20 @@
   flex: 1;  
   max-width: 460px;  
   position: relative;  
+  display: flex;
+  align-items: center;
  }  
    
  .search-bar input {  
   width: 100%;  
-  padding: 10px 40px 10px 18px;  
+  padding: 10px 44px 10px 18px;  
   border-radius: 50px;  
   border: 1.5px solid #444;  
   background-color: #F4F4F4;  
   font-size: 14px;  
   outline: none;  
   transition: all 0.2s;  
+  box-sizing: border-box;
  }  
    
  .search-bar input:focus {  
@@ -128,7 +131,39 @@
   border-color: var(--brand-red);  
  }  
    
- .search-bar svg {  
+ .search-bar > button.search-submit-btn,
+ .search-bar > button[type="submit"],
+ button.search-submit-btn {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #444;
+  z-index: 2;
+ }
+
+ .search-bar > button.search-submit-btn svg,
+ .search-bar > button[type="submit"] svg,
+ button.search-submit-btn svg {
+  position: static;
+  transform: none;
+  width: 18px;
+  height: 18px;
+  display: block;
+  color: inherit;
+ }
+
+ .search-bar > svg {  
   position: absolute;  
   right: 14px;  
   top: 50%;  
@@ -136,6 +171,7 @@
   width: 18px;  
   height: 18px;  
   color: #444;  
+  pointer-events: none;
  }  
    
  .header-right-actions {  
@@ -1939,13 +1975,47 @@
   .expandable-search-bar .search-bar {  
   max-width: 100%;  
   margin: 0;  
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
   }  
    
   .expandable-search-bar input {  
-  padding: 9px 36px 9px 16px;  
+  width: 100%;
+  padding: 10px 44px 10px 16px;  
   font-size: 13px;  
   border-radius: 24px;  
+  box-sizing: border-box;
   }  
+
+  .expandable-search-bar .search-bar > button.search-submit-btn,
+  .expandable-search-bar .search-bar > button[type="submit"] {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  z-index: 2;
+  }
+
+  .expandable-search-bar .search-bar > button.search-submit-btn svg,
+  .expandable-search-bar .search-bar > button[type="submit"] svg {
+  position: static !important;
+  transform: none !important;
+  width: 18px !important;
+  height: 18px !important;
+  display: block;
+  }
    
   /* Ocultar la barra de búsqueda estática de PC en dispositivos móviles */  
   .site-header .header-main .search-bar {  
@@ -2292,4 +2362,50 @@
   height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
+}
+
+/* ==========================================================================
+   ALTO RENDIMIENTO Y FLUIDEZ EXTREMA (1000+ USUARIOS SIMULTÁNEOS)
+   ========================================================================== */
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Aceleración por GPU en elementos interactivos */
+.product-card,
+.beauty-card,
+.kit-card,
+.review-card,
+.btn-primary,
+.add-btn,
+.btn-beauty-add,
+.btn-add-cart,
+.pay-logo-badge,
+.hero-btn-simple,
+.wtv-whatsapp-float {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* content-visibility para diferir el renderizado de secciones fuera de pantalla */
+.testimonials-section,
+.kits-section,
+.outlet-banner-section,
+.footer-main {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
+}
+
+/* Vistas SPA inactivas completamente aisladas de cálculo de layout */
+.wtv-spa-view:not(.active) {
+  content-visibility: hidden;
+  contain: strict;
+}
+
+img {
+  image-rendering: -webkit-optimize-contrast;
 }

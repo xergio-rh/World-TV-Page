@@ -30,7 +30,7 @@
 
         <!-- Logo (Alineado a la izquierda en PC, centrado en móvil gracias al CSS) -->
         <a href="./index.html" class="logo-link">
-          <img src="./storage/images/logo.png" alt="World TV" class="site-logo">
+          <img src="./storage/images/logo.png" alt="World TV" class="site-logo" loading="eager" fetchpriority="high" decoding="async">
         </a>
 
         <!-- Barra de búsqueda clásica (Visible en PC) -->
@@ -75,7 +75,7 @@
 
       <nav>
         <ul class="nav-links" id="navLinks">
-          <li><a href="./index.html" onclick="toggleMobileMenu()">Inicio</a></li>
+          <li><a href="./index.html" onclick="toggleMobileMenu()">Todos</a></li>
           <li><a href="./nutricion.html" onclick="toggleMobileMenu()" style="color: var(--brand-red); font-weight:700;">Nutrición</a></li>
           <li><a href="./vision.html" onclick="toggleMobileMenu()">Salud Visual</a></li>
           <li><a href="./belleza.html" onclick="toggleMobileMenu()">Belleza y Bienestar</a></li>
@@ -86,8 +86,8 @@
   </div>
 
   <!-- BANNER HERO DE CATEGORÍA -->
-  <section class="beauty-hero-banner">
-    <div class="beauty-hero-content">
+  <section class="nutricion-hero-banner" style="--nutricion-bg-pc: url('./assets/banner_nutricion.jpeg'); --nutricion-bg-mob: url('./assets/banner_nutricion_mobile.jpg');">
+    <div class="nutricion-hero-content">
       <h1>REVOLUCIONA TU SALUD CON NUESTRA <span>LÍNEA DE NUTRICIÓN</span></h1>
     </div>
   </section>
@@ -116,7 +116,7 @@
       <!-- 1. Cloruro 500 gr -->
       <article class="product-card beauty-card" onclick="window.location.href='./producto.html'" style="cursor: pointer;">
         <div class="product-img-box">
-          <img src="./BACKS/colasteel_back.jpeg" alt="Cloruro 500 gr">
+          <img src="./BACKS/colasteel_back.jpeg" alt="Cloruro 500 gr" loading="lazy" decoding="async">
         </div>
         <div class="product-rating">★★★★★ <span>(500)</span></div>
         <h3 class="product-title">Cloruro 500 gr Fórmula Única</h3>
@@ -132,7 +132,7 @@
       <!-- 2. Melena de León -->
       <article class="product-card beauty-card">
         <div class="product-img-box">
-          <img src="./BACKS/melena_back.jpeg" alt="Melena de León">
+          <img src="./BACKS/melena_back.jpeg" alt="Melena de León" loading="lazy" decoding="async">
         </div>
         <div class="product-rating">★★★★★ <span>(142)</span></div>
         <h3 class="product-title">Melena de León en Polvo Fórmula Única - Sabor a capuchino</h3>
@@ -148,7 +148,7 @@
       <!-- 3. Resveratrol -->
       <article class="product-card beauty-card">
         <div class="product-img-box">
-          <img src="./BACKS/rejur_back.jpeg" alt="Resveratrol">
+          <img src="./BACKS/rejur_back.jpeg" alt="Resveratrol" loading="lazy" decoding="async">
         </div>
         <div class="product-rating">★★★★★ <span>(89)</span></div>
         <h3 class="product-title">Resveratrol 500 ml - Fórmula Única</h3>
@@ -164,7 +164,7 @@
       <!-- 4. Inositol -->
       <article class="product-card beauty-card">
         <div class="product-img-box">
-          <img src="./BACKS/inositol_back.jpeg" alt="Inositol">
+          <img src="./BACKS/inositol_back.jpeg" alt="Inositol" loading="lazy" decoding="async">
         </div>
         <div class="product-rating">★★★★★ <span>(115)</span></div>
         <h3 class="product-title">Inositol en polvo / con Biotina Ácido Fólico y Vitamina B12</h3>
@@ -180,7 +180,7 @@
       <!-- 5. Amalaki -->
       <article class="product-card beauty-card">
         <div class="product-img-box">
-          <img src="./BACKS/gamaky_back.jpeg" alt="Amalaki">
+          <img src="./BACKS/gamaky_back.jpeg" alt="Amalaki" loading="lazy" decoding="async">
         </div>
         <div class="product-rating">★★★★☆ <span>(74)</span></div>
         <h3 class="product-title">Amalaki - Bebida funcional con extracto de té y colágeno / 500 gr</h3>
@@ -196,7 +196,7 @@
       <!-- 6. Colágeno Marino -->
       <article class="product-card beauty-card">
         <div class="product-img-box">
-          <img src="./BACKS/colageno_marino_back.jpeg" alt="Colágeno Marino">
+          <img src="./BACKS/colageno_marino_back.jpeg" alt="Colágeno Marino" loading="lazy" decoding="async">
         </div>
         <div class="product-rating">★★★★★ <span>(92)</span></div>
         <h3 class="product-title">Colágeno Marino - Fórmula Única con ajonjolí, cúrcuma y genjibre</h3>
@@ -212,7 +212,7 @@
       <!-- 7. Citrato de Magnesio -->
       <article class="product-card beauty-card">
         <div class="product-img-box">
-          <img src="./BACKS/mg_back.jpeg" alt="Citrato de Magnesio">
+          <img src="./BACKS/mg_back.jpeg" alt="Citrato de Magnesio" loading="lazy" decoding="async">
         </div>
         <div class="product-rating">★★★★★ <span>(108)</span></div>
         <h3 class="product-title">Citrato de Magnesio - Fórmula Única con hierbas aromáticas</h3>
@@ -233,7 +233,7 @@
     <div class="footer-container">
       <div class="footer-col">
         <a href="#" class="footer-logo-link">
-          <img src="./storage/images/logo.png" alt="World TV" class="footer-logo">
+          <img src="./storage/images/logo.png" alt="World TV" class="footer-logo" loading="lazy" decoding="async">
         </a>
         <div class="footer-contact-item">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -273,7 +273,7 @@
     </div>
     <div class="cart-body">
       <div class="cart-item-card">
-        <img src="./storage/images/cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp" alt="Colasteel">
+        <img src="./storage/images/cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp" alt="Colasteel" loading="lazy" decoding="async">
         <div class="cart-item-details">
           <div class="cart-item-title-row">
             <h4>Cloruro 500 gr Fórmula Única</h4>

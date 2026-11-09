@@ -30,6 +30,89 @@
       .replace(/^-+|-+$/g, '');
   }
 
+  // Catálogo completo de variantes oficiales de Shopify (World TV Colombia)
+  var PRODUCT_VARIANTS_MAP = {
+    // Cloruro de Magnesio / Colasteel
+    'cloruro-500-gr-formula-unica': ['46782984323246', '46782984356014', '46782984388782'],
+    'cloruro': ['46782984323246', '46782984356014', '46782984388782'],
+    'colasteel': ['46782984323246', '46782984356014', '46782984388782'],
+
+    // Melena de León
+    'melena-de-leon-en-polvo-formula-unica-sabor-a-capuchino': ['46764428198062', '46764428230830', '46764428263598'],
+    'melena': ['46764428198062', '46764428230830', '46764428263598'],
+
+    // Resveratrol
+    'resveratrol-500-ml-formula-unica': ['46782983700654', '46782983733422', '46782983766190'],
+    'resveratrol': ['46782983700654', '46782983733422', '46782983766190'],
+
+    // Colágeno Marino
+    'colageno-marino-formula-unica-con-ajonjoli-curcuma-y-genjibre': ['47991856267438', '47991856300206', '47991856332974'],
+    'colageno-marino': ['47991856267438', '47991856300206', '47991856332974'],
+    'colageno_marino': ['47991856267438', '47991856300206', '47991856332974'],
+
+    // Citrato de Magnesio
+    'citrato-de-magnesio-formula-unica-con-hierbas-aromaticas': ['47991926554798', '47991926522030', '47991926489262'],
+    'citrato': ['47991926554798', '47991926522030', '47991926489262'],
+
+    // Cannabix
+    'cannabis-formula-unica-con-arnica-vainilla-colageno-y-cloruro-de-magnesio': ['47994652721326', '47994652688558', '47994652655790'],
+    'cannabix': ['47994652721326', '47994652688558', '47994652655790'],
+
+    // Serum Facial
+    'serum-facil-con-formula-unica-con-vitamina-c': ['47994789134510', '47994789101742', '47994789068974'],
+    'serum': ['47994789134510', '47994789101742', '47994789068974'],
+
+    // Inositol
+    'inositol-en-polvo-con-biotina-acido-folico-y-vitamina-b12': ['47972060758190', '47972060790958', '47972060823726'],
+    'inositol': ['47972060758190', '47972060790958', '47972060823726'],
+
+    // Amalaki
+    'gamaki-bebida-funcional-con-extracto-de-amalaki-y-colageno-world-tv': ['46348453642414', '46348451905710', '46348451938478'],
+    'amalaki': ['46348453642414', '46348451905710', '46348451938478'],
+
+    // Gafas Relax Vision
+    'relax-vision-sky-gafas-con-filtro-azul-uv-400-y-antirreflejo-world-tv': ['46426922549422'],
+    'relax-vision-venturi-gafas-con-filtro-azul-uv-400-y-tecnologia-antirreflejo-world-tv': ['46426902921390'],
+    'relax-vision-premium-gafas-con-filtro-azul-uv-400-y-antirreflejo-world-tv-copia': ['46426867040430'],
+    'relax-vision-premium-gafas-con-filtro-uv-400-antirreflejo-y-proteccion-visual-world-tv-copia': ['46426835779758'],
+    'relax-vision-clasicas-lentes-de-proteccion-visual': ['46410573086894'],
+    'gafas': ['46426922549422'],
+
+    // Prendas / Fajas
+    'hot-slim-hombre-camisilla-reductora': ['48001774485678'],
+    'hot-slim-dama-pantalon-reductor': ['48001779269806', '48001787920558', '48001787953326'],
+    'cinturilla-reductora-dama-power-belt': ['48001795555502', '48001795588270', '48001795621038', '48001795653806', '48001795686574', '48001795719342', '48001795752110', '48001795784878'],
+    'chaleco-hot-slim-sauna-hombre': ['47995732295854'],
+    'chaleco-slim-sauna-dama': ['48001742962862', '48001742995630', '48001743028398']
+  };
+
+  function resolveShopifyVariantId(productKey, packTitle) {
+    if (!productKey) return '';
+    var key = slugify(productKey);
+    var list = PRODUCT_VARIANTS_MAP[key];
+    if (!list) {
+      var allKeys = Object.keys(PRODUCT_VARIANTS_MAP);
+      for (var i = 0; i < allKeys.length; i++) {
+        var k = allKeys[i];
+        if (key.indexOf(k) !== -1 || k.indexOf(key) !== -1) {
+          list = PRODUCT_VARIANTS_MAP[k];
+          break;
+        }
+      }
+    }
+    if (!list || list.length === 0) return '';
+    if (list.length === 1) return list[0];
+
+    var pStr = (packTitle || '').toLowerCase();
+    if (pStr.indexOf('3') !== -1 || pStr.indexOf('tres') !== -1) {
+      return list[Math.min(2, list.length - 1)];
+    }
+    if (pStr.indexOf('2') !== -1 || pStr.indexOf('dos') !== -1) {
+      return list[Math.min(1, list.length - 1)];
+    }
+    return list[0];
+  }
+
   function getItems() {
     try {
       var raw = localStorage.getItem(STORAGE_KEY);
@@ -669,6 +752,12 @@
       var prodHandleEl = document.getElementById('selectedProductHandle');
       var prodKey = (prodHandleEl && prodHandleEl.value) || slugify(title);
 
+      if (!variantId) {
+        variantId = resolveShopifyVariantId(prodKey, packTitle);
+      }
+
+      var chosenQty = customQty || 1;
+
       this.addItem({
         id: prodKey + '__' + slugify(packTitle),
         productKey: prodKey,
@@ -678,28 +767,59 @@
         price: price,
         oldPrice: oldPrice,
         image: img,
-        qty: customQty || 1,
+        qty: chosenQty,
         packages: allPackages
       }, !goToCheckoutModal);
 
+      // Redirección inmediata a la Pasarela Oficial de Checkout de Shopify
       if (goToCheckoutModal) {
         closeCartDrawer();
-        openCheckoutModal();
-        this.setPaymentMode(mode || 'cod');
+        var targetVariant = variantId || resolveShopifyVariantId(prodKey, packTitle);
+        if (targetVariant) {
+          var permalink = '/cart/' + encodeURIComponent(targetVariant) + ':' + chosenQty;
+          if (mode === 'cod') {
+            permalink += '?note=' + encodeURIComponent('Pedido Contraentrega');
+          }
+          window.location.href = permalink;
+          return;
+        } else {
+          window.location.href = '/checkout';
+          return;
+        }
       }
     },
 
     proceedToCheckoutModal: function(e, mode) {
       if (e) e.preventDefault();
       var items = getItems();
-      if (items.length === 0) {
+      if (!items || items.length === 0) {
         showToast('Agrega al menos un producto al carrito primero');
         return false;
       }
       closeCartDrawer();
-      openCheckoutModal();
-      this.setPaymentMode(mode || 'cod');
-      return false;
+
+      // Construcción del Cart Permalink multi-producto nativo de Shopify
+      var parts = [];
+      for (var i = 0; i < items.length; i++) {
+        var it = items[i];
+        var vId = it.variantId || resolveShopifyVariantId(it.productKey, it.packTitle);
+        var q = it.qty || 1;
+        if (vId) {
+          parts.push(encodeURIComponent(vId) + ':' + q);
+        }
+      }
+
+      if (parts.length > 0) {
+        var permalink = '/cart/' + parts.join(',');
+        if (mode === 'cod') {
+          permalink += '?note=' + encodeURIComponent('Pedido Contraentrega');
+        }
+        window.location.href = permalink;
+        return false;
+      } else {
+        window.location.href = '/checkout';
+        return false;
+      }
     },
 
     submitCheckoutForm: function(e) {
@@ -981,7 +1101,9 @@
               '</div>' +
               '<div class="wtv-search-actions">' +
                 '<button type="button" class="wtv-s-view" onclick="window.location.href=\'' + m.url + '\'">Ver</button>' +
-                '<button type="button" class="wtv-s-add" onclick="event.stopPropagation(); WTVCart.addItem({ id: \'' + m.id + '\', title: \'' + safeTitle + '\', packTitle: \'Una Unidad\', price: ' + m.price + ', oldPrice: ' + m.oldPrice + ' }, true);">+ Carrito</button>' +
+                '<button type="button" class="wtv-s-add" aria-label="Añadir al carrito" title="Añadir al carrito" onclick="event.stopPropagation(); WTVCart.addItem({ id: \'' + m.id + '\', title: \'' + safeTitle + '\', packTitle: \'Una Unidad\', price: ' + m.price + ', oldPrice: ' + m.oldPrice + ' }, true);">' +
+                  '<svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>' +
+                '</button>' +
               '</div>' +
             '</div>'
           );
@@ -1399,7 +1521,12 @@ function changeImage(element, imageUrl) {
 // Seleccionar paquetes (Lleva 1 / Una Unidad, Lleva 2 / Paquete x 2, Lleva 3 / Paquete x 3)
 function selectPackage(element, oldPrice, currentPrice) {
   document.querySelectorAll('.pack-option').forEach(function(el) { el.classList.remove('active'); });
-  if (element) element.classList.add('active');
+  if (element) {
+    element.classList.add('active');
+    var vId = element.getAttribute('data-variant-id');
+    var hiddenVar = document.getElementById('selectedVariantId');
+    if (vId && hiddenVar) hiddenVar.value = vId;
+  }
 
   var oldPriceElem = document.querySelector('.old-price');
   var currentPriceElem = document.querySelector('.current-price');

@@ -301,11 +301,60 @@ h1, h2, h3, .hero-title, .vision-title, .outlet-title, .product-title-main, .sec
   transform: scale(1.015);
 }
 
-.search-bar svg {
+.search-bar > button.search-submit-btn,
+.search-bar > button[type="submit"],
+button.search-submit-btn {
+  position: absolute !important;
+  right: 14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  color: #444 !important;
+  z-index: 5 !important;
+}
+
+.search-bar > button.search-submit-btn svg,
+.search-bar > button[type="submit"] svg,
+button.search-submit-btn svg {
+  position: static !important;
+  transform: none !important;
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+  color: inherit !important;
+  transition: transform 0.25s ease, color 0.25s ease !important;
+}
+
+.search-bar:hover > button.search-submit-btn svg,
+.search-bar:hover > button[type="submit"] svg,
+.search-bar input:focus ~ button.search-submit-btn svg,
+.search-bar input:focus ~ button[type="submit"] svg {
+  transform: scale(1.15) !important;
+  color: var(--brand-red) !important;
+}
+
+.search-bar > svg {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #444;
+  pointer-events: none;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
 }
 
-.search-bar:hover svg,
+.search-bar:hover > svg,
 .search-bar input:focus + svg {
   transform: translateY(-50%) scale(1.2) rotate(12deg);
   color: var(--brand-red);
@@ -1586,6 +1635,292 @@ button:active {
   line-height: 1.25;
 }
 
+/* Barra de Métodos de Pago Oficiales en la Ficha de Producto */
+.product-payment-trust-bar {
+  margin: 16px 0 20px;
+  padding: 14px 16px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.p-pay-trust-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #1E293B;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.p-pay-trust-header svg {
+  color: #16A34A;
+  flex-shrink: 0;
+}
+
+.p-pay-badges-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.pay-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 7px;
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  flex-shrink: 0;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.pay-logo-badge:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.pay-logo-badge svg {
+  display: block !important;
+  height: 18px !important;
+  width: auto !important;
+  max-width: 85px !important;
+  position: static !important;
+  transform: none !important;
+}
+
+.pay-logo-badge img {
+  display: block;
+  height: 20px;
+  width: auto;
+  max-width: 85px;
+  object-fit: contain;
+}
+
+/* Reglas por marca */
+.pay-logo-badge.p-badge-bold svg {
+  height: 16px !important;
+}
+
+.pay-logo-badge.p-badge-visa {
+  background: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  padding: 0 8px;
+}
+.pay-logo-badge.p-badge-visa svg {
+  height: 15px !important;
+}
+
+.pay-logo-badge.p-badge-mc {
+  background: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  padding: 0 6px;
+}
+.pay-logo-badge.p-badge-mc svg {
+  height: 22px !important;
+}
+
+.pay-logo-badge.p-badge-amex {
+  background: #006FCF !important;
+  border-color: #006FCF !important;
+  padding: 0 6px;
+}
+.pay-logo-badge.p-badge-amex svg {
+  height: 20px !important;
+}
+
+.pay-logo-badge.p-badge-pse {
+  padding: 0 5px;
+}
+.pay-logo-badge.p-badge-pse img {
+  height: 24px;
+  border-radius: 50%;
+}
+
+.pay-logo-badge.p-badge-banco svg {
+  height: 14px !important;
+}
+
+.pay-logo-badge.p-badge-nequi svg {
+  height: 16px !important;
+}
+
+.pay-logo-badge.p-badge-davi {
+  background: #ED1C24 !important;
+  border-color: #ED1C24 !important;
+  padding: 0 4px;
+}
+.pay-logo-badge.p-badge-davi img {
+  height: 22px;
+  border-radius: 4px;
+}
+
+.pay-logo-badge.p-badge-addi {
+  padding: 0 8px;
+}
+.pay-logo-badge.p-badge-addi img {
+  height: 16px;
+}
+
+.pay-logo-badge.p-badge-siste svg {
+  height: 13px !important;
+}
+
+.pay-logo-badge.p-badge-bre {
+  background: #3B0764 !important;
+  border-color: #3B0764 !important;
+  padding: 0 6px;
+}
+.pay-logo-badge.p-badge-bre img {
+  height: 18px;
+  border-radius: 3px;
+}
+
+.pay-logo-badge.p-badge-contra {
+  background: #FEF3C7 !important;
+  border-color: #FCD34D !important;
+  color: #92400E;
+  font-size: 10px;
+  font-weight: 800;
+  gap: 5px;
+  padding: 0 8px;
+}
+.pay-logo-badge.p-badge-contra svg {
+  height: 15px !important;
+  stroke: #D97706;
+}
+
+.p-pay-trust-subtext {
+  font-size: 11px;
+  color: #64748B;
+  margin: 10px 0 0;
+  line-height: 1.4;
+}
+
+.p-pay-break-desktop {
+  flex-basis: 100%;
+  height: 0;
+  margin: 0;
+}
+
+.p-pay-break-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .product-payment-trust-bar {
+    margin: 14px 0 18px;
+    padding: 12px 6px;
+  }
+  .p-pay-trust-header {
+    font-size: 10.5px;
+    margin-bottom: 10px;
+  }
+  .p-pay-badges-grid {
+    gap: 5px;
+    max-width: 330px;
+  }
+  .pay-logo-badge {
+    height: 25px;
+    padding: 0 5px;
+  }
+  .pay-logo-badge svg {
+    height: 14px !important;
+  }
+  .pay-logo-badge img {
+    height: 16px;
+  }
+  .pay-logo-badge.p-badge-bold svg {
+    height: 13px !important;
+  }
+  .pay-logo-badge.p-badge-visa {
+    padding: 0 6px;
+  }
+  .pay-logo-badge.p-badge-visa svg {
+    height: 12px !important;
+  }
+  .pay-logo-badge.p-badge-mc {
+    padding: 0 4px;
+  }
+  .pay-logo-badge.p-badge-mc svg {
+    height: 18px !important;
+  }
+  .pay-logo-badge.p-badge-amex {
+    padding: 0 4px;
+  }
+  .pay-logo-badge.p-badge-amex svg {
+    height: 15px !important;
+  }
+  .pay-logo-badge.p-badge-pse {
+    padding: 0 4px;
+  }
+  .pay-logo-badge.p-badge-pse img {
+    height: 19px;
+  }
+  .pay-logo-badge.p-badge-banco svg {
+    height: 11px !important;
+  }
+  .pay-logo-badge.p-badge-nequi svg {
+    height: 13px !important;
+  }
+  .pay-logo-badge.p-badge-davi {
+    padding: 0 3px;
+  }
+  .pay-logo-badge.p-badge-davi img {
+    height: 18px;
+  }
+  .pay-logo-badge.p-badge-addi {
+    padding: 0 5px;
+  }
+  .pay-logo-badge.p-badge-addi img {
+    height: 13px;
+  }
+  .pay-logo-badge.p-badge-siste svg {
+    height: 11px !important;
+  }
+  .pay-logo-badge.p-badge-bre {
+    padding: 0 4px;
+  }
+  .pay-logo-badge.p-badge-bre img {
+    height: 15px;
+  }
+  .pay-logo-badge.p-badge-contra {
+    font-size: 8.5px;
+    padding: 0 5px;
+    gap: 3px;
+  }
+  .pay-logo-badge.p-badge-contra svg {
+    height: 12px !important;
+  }
+  .p-pay-trust-subtext {
+    font-size: 9.5px;
+    margin: 8px 0 0;
+  }
+  .p-pay-break-desktop {
+    display: none;
+  }
+  .p-pay-break-mobile {
+    display: block;
+    flex-basis: 100%;
+    height: 0;
+    margin: 0;
+  }
+}
+
 /* Panel de Métodos de Pago en Línea (Tarjeta / PSE / Nequi) */
 .online-payment-box {
   margin-top: 14px;
@@ -1770,11 +2105,22 @@ button:active {
   margin-top: 2px;
 }
 
+.wtv-search-dropdown button,
+.wtv-search-actions button,
+.wtv-s-view,
+.wtv-s-add {
+  position: static !important;
+  transform: none !important;
+  right: auto !important;
+  top: auto !important;
+  margin: 0 !important;
+}
+
 .wtv-search-actions {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-shrink: 0;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-shrink: 0 !important;
 }
 
 .wtv-s-view {
@@ -1794,21 +2140,42 @@ button:active {
 }
 
 .wtv-s-add {
-  background: var(--brand-red, #D90429);
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  padding: 6px 12px;
-  font-size: 11px;
-  font-weight: 800;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: transform 0.18s ease, background 0.18s ease;
+  background: var(--brand-red, #D90429) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.18s ease, background 0.18s ease !important;
+}
+
+.wtv-s-add svg,
+.wtv-search-dropdown svg {
+  position: static !important;
+  transform: none !important;
+  top: auto !important;
+  right: auto !important;
+  display: block !important;
+  width: 17px !important;
+  height: 17px !important;
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+  pointer-events: none !important;
 }
 
 .wtv-s-add:hover {
-  background: #9E2A2B;
-  transform: scale(1.04);
+  background: #B8000E !important;
+  transform: scale(1.08) !important;
+}
+
+.wtv-s-add:active {
+  transform: scale(0.95) !important;
 }
 
 .wtv-search-empty {
@@ -2025,6 +2392,51 @@ img {
     padding: 8px 4px 12px 4px !important;
   }
 
+  .expandable-search-bar .search-bar {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .expandable-search-bar input {
+    width: 100% !important;
+    padding: 10px 44px 10px 16px !important;
+    font-size: 13px !important;
+    border-radius: 24px !important;
+    box-sizing: border-box !important;
+  }
+
+  .expandable-search-bar .search-bar > button.search-submit-btn,
+  .expandable-search-bar .search-bar > button[type="submit"] {
+    position: absolute !important;
+    right: 14px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 24px !important;
+    height: 24px !important;
+    z-index: 5 !important;
+  }
+
+  .expandable-search-bar .search-bar > button.search-submit-btn svg,
+  .expandable-search-bar .search-bar > button[type="submit"] svg {
+    position: static !important;
+    transform: none !important;
+    width: 18px !important;
+    height: 18px !important;
+    display: block !important;
+    color: #444444 !important;
+  }
+
   .wtv-search-dropdown {
     max-height: 250px !important;
     left: 0 !important;
@@ -2178,12 +2590,26 @@ img {
     background-position: center top !important;
   }
 
+  .nutricion-hero-banner {
+    min-height: 260px !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.45)), var(--nutricion-bg-mob, url('banner_nutricion_mobile.jpg')) !important;
+    background-position: center top !important;
+    background-size: cover !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: flex-start !important;
+    padding: 0 !important;
+    text-align: left !important;
+  }
+
   .beauty-hero-banner {
     min-height: 380px !important;
     background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45)), var(--beauty-bg-mob, url('banner_belleza_mobile.png')) !important;
     background-position: center top !important;
   }
 
+  .nutricion-hero-content,
   .beauty-hero-content,
   .vision-hero-content,
   .outlet-hero-content {
@@ -2191,37 +2617,37 @@ img {
     max-width: 100% !important;
     text-align: left !important;
     margin: 0 !important;
-    background: linear-gradient(to top, rgba(18, 18, 18, 0.92) 0%, rgba(18, 18, 18, 0.6) 70%, transparent 100%) !important;
-    padding: 24px 16px 16px !important;
+    background: linear-gradient(to top, rgba(18, 18, 18, 0.90) 0%, rgba(18, 18, 18, 0.45) 60%, transparent 100%) !important;
+    padding: 20px 16px 14px !important;
     box-sizing: border-box !important;
   }
 
+  .nutricion-hero-content p,
   .beauty-hero-content p,
   .vision-hero-content p,
   .outlet-hero-content p {
     display: none !important;
   }
 
-  .beauty-hero-content p,
-  .vision-hero-content p,
-  .outlet-hero-content p {
-    display: none !important;
-  }
-
+  .nutricion-hero-content h1,
   .beauty-hero-content h1,
   .vision-hero-content h1,
   .outlet-hero-content h1 {
-    font-size: 20px !important;
+    font-size: 19px !important;
     line-height: 1.22 !important;
-    margin: 6px 0 0 !important;
+    margin: 4px 0 0 !important;
     color: #FFFFFF !important;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7) !important;
   }
 
+  .nutricion-hero-content h1 span,
   .beauty-hero-content h1 span,
   .vision-hero-content h1 span,
   .outlet-hero-content h1 span {
     color: #FFE387 !important;
+    border-bottom: 2px solid #FFB703 !important;
+    padding-bottom: 2px !important;
+    display: inline-block !important;
   }
 
   .beauty-tag-top,
@@ -2985,8 +3411,47 @@ html {
 }
 
 
-/* Optimización de nitidez y encuadre del banner de Nutrición */
+/* Optimización de nitidez y encuadre del banner de Nutrición y Belleza */
 @media (min-width: 769px) {
+  .nutricion-hero-banner {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)), var(--nutricion-bg-pc, url('banner_nutricion.jpeg')) !important;
+    background-position: center 38% !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    min-height: 400px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 40px 20px !important;
+  }
+
+  .nutricion-hero-content {
+    max-width: 800px !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: none !important;
+  }
+
+  .nutricion-hero-content h1 {
+    font-size: 38px !important;
+    line-height: 1.15 !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7) !important;
+    margin-bottom: 14px !important;
+  }
+
+  .nutricion-hero-content h1 span {
+    color: #FFE387 !important;
+    border-bottom: 3px solid #FFB703 !important;
+    padding-bottom: 2px !important;
+    display: inline-block !important;
+  }
+
   .beauty-hero-banner {
     background-position: center 38% !important;
     background-repeat: no-repeat !important;
@@ -2997,6 +3462,9 @@ html {
 }
 
 @media (min-width: 993px) {
+  .nutricion-hero-banner {
+    min-height: 450px !important;
+  }
   .beauty-hero-banner {
     min-height: 440px !important;
   }
@@ -3011,6 +3479,8 @@ html {
 .vision-section .vision-desc,
 .vision-hero-banner .vision-tag-top,
 .vision-hero-banner p,
+.nutricion-hero-banner .nutricion-tag-top,
+.nutricion-hero-banner p,
 .beauty-hero-banner .beauty-tag-top,
 .beauty-hero-banner p,
 .outlet-hero-banner .outlet-tag-top,

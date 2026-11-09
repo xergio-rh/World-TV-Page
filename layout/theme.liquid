@@ -16,6 +16,9 @@
 
   <link rel="canonical" href="{{ canonical_url }}">
 
+  <!-- DNS Prefetch y Preconnect para máxima velocidad -->
+  <link rel="dns-prefetch" href="https://cdn.shopify.com">
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
   <!-- Tipografías Oficiales World TV (Arsenal para Títulos + Assistant para Textos y UI) -->
   {% # theme-check-disable RemoteAsset %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -194,9 +197,12 @@
         navList.classList.remove('active');
       }
 
+      var isHomeKey = (viewKey === 'home' || viewKey === 'index' || viewKey === 'todos');
+
       // Actualizar estado activo del menú
       navLinks.forEach(function(link) {
-        if (link.getAttribute('data-wtv-nav') === viewKey) {
+        var linkKey = link.getAttribute('data-wtv-nav');
+        if (linkKey === viewKey || (isHomeKey && (linkKey === 'home' || linkKey === 'index' || linkKey === 'todos'))) {
           link.style.color = 'var(--brand-red)';
           link.style.fontWeight = '700';
         } else {
@@ -205,18 +211,21 @@
         }
       });
 
-      if (viewKey === 'home') {
+      if (isHomeKey) {
+        // Si no estamos en la página de inicio, redirigir a la home
+        var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+        var rootPath = ('{{ routes.root_url }}').replace(/\/$/, '') || '/';
+        if (currentPath !== rootPath && currentPath !== '') {
+          window.location.href = '{{ routes.root_url }}';
+          return;
+        }
+
         allViews.forEach(function(v) { v.classList.remove('active'); });
         if (mainContent) {
           mainContent.style.display = 'block';
           mainContent.querySelectorAll('.reveal-item').forEach(function(el) {
             el.classList.add('revealed');
           });
-        }
-        // Si estamos atrapados en una ruta /404 o fuera de inicio, volver a la raíz
-        if (window.location.pathname !== '/' && window.location.pathname !== '{{ routes.root_url }}') {
-          window.location.href = '{{ routes.root_url }}';
-          return;
         }
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;

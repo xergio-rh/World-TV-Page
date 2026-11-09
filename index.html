@@ -1,755 +1,860 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>World TV - Propuesta Rediseño Home</title>
- <!-- Tipografías -->
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="./styles.css">
- <link rel="stylesheet" href="./animations.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World TV - Propuesta Rediseño Home</title>
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&family=Assistant:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./animations.css">
 </head>
+
 <body>
- <!-- CONTENEDOR FIJO SUPERIOR (TOP BAR + HEADER) -->
- <div class="header-sticky-wrapper" id="headerWrapper">
-   <!-- 1. TOP BAR -->
-   <div class="top-bar">
-     ENVÍO GRATIS A TODA COLOMBIA EN COMPRAS MAYORES A $100.000 | PAGA AL RECIBIR
-   </div>
-   <!-- 2. HEADER -->
-   <!-- 2. HEADER -->
-   <header class="site-header">
-    <div class="header-main">
-      <!-- Izquierda: Menú Hamburguesa (Solo visible en móvil) -->
-      <button class="mobile-menu-btn" aria-label="Menú" onclick="toggleMobileMenu()">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
+  <!-- CONTENEDOR FIJO SUPERIOR (TOP BAR + HEADER) -->
+  <div class="header-sticky-wrapper" id="headerWrapper">
+    <!-- 1. TOP BAR -->
+    <div class="top-bar">
+      ENVÍO GRATIS A TODA COLOMBIA EN COMPRAS MAYORES A $100.000 | PAGA AL RECIBIR
+    </div>
+    <!-- 2. HEADER -->
+    <!-- 2. HEADER -->
+    <header class="site-header">
+      <div class="header-main">
+        <!-- Izquierda: Menú Hamburguesa (Solo visible en móvil) -->
+        <button class="mobile-menu-btn" aria-label="Menú" onclick="toggleMobileMenu()">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
 
-      <!-- Logo (Alineado a la izquierda en PC, centrado en móvil gracias al CSS) -->
-      <a href="./index.html" class="logo-link">
-        <img src="./storage/images/logo.png" alt="World TV" class="site-logo">
-      </a>
+        <!-- Logo (Alineado a la izquierda en PC, centrado en móvil gracias al CSS) -->
+        <a href="./index.html" class="logo-link">
+          <img src="./storage/images/logo.png" alt="World TV" class="site-logo" loading="eager" fetchpriority="high" decoding="async">
+        </a>
 
-      <!-- Barra de búsqueda clásica (Visible en PC) -->
-      <div class="search-bar">
-        <input type="text" placeholder="Buscar productos...">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-      </div>
-
-      <!-- Acciones derechas para móvil (Lupa y Carrito) -->
-      <div class="header-right-actions">
-        <button class="search-toggle-btn" aria-label="Buscar" onclick="toggleSearchBox()">
-          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <!-- Barra de búsqueda clásica (Visible en PC) -->
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar productos...">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+
+        <!-- Acciones derechas para móvil (Lupa y Carrito) -->
+        <div class="header-right-actions">
+          <button class="search-toggle-btn" aria-label="Buscar" onclick="toggleSearchBox()">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Botón de carrito general (Visible en PC y móvil) -->
+        <button class="cart-btn" aria-label="Carrito" onclick="toggleCart()">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
           </svg>
         </button>
       </div>
 
-      <!-- Botón de carrito general (Visible en PC y móvil) -->
-      <button class="cart-btn" aria-label="Carrito" onclick="toggleCart()">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>
-      </button>
-    </div>
+      <!-- Barra de búsqueda desplegable oculta inicialmente en móviles -->
+      <div class="expandable-search-bar" id="expandableSearch">
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar Melena de León, Gafas, Magnesio...">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+      </div>
 
-    <!-- Barra de búsqueda desplegable oculta inicialmente en móviles -->
-    <div class="expandable-search-bar" id="expandableSearch">
-      <div class="search-bar">
-        <input type="text" placeholder="Buscar Melena de León, Gafas, Magnesio...">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#" onclick="toggleMobileMenu()">Todos</a></li>
+          <li><a href="./nutricion.html" onclick="toggleMobileMenu()">Nutrición</a></li>
+          <li><a href="./vision.html" onclick="toggleMobileMenu()">Salud Visual</a></li>
+          <li><a href="./belleza.html" onclick="toggleMobileMenu()">Belleza y Bienestar</a></li>
+          <li><a href="./outlet.html" onclick="toggleMobileMenu()">Outlet Prendas Moldeadoras</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <!-- 3. HERO BANNER PRINCIPAL ROTATIVO (3 SLIDES) -->
+  <section class="hero-section" id="heroBannerSlider" data-autoplay="true" data-interval="5000">
+    <div class="hero-slides-track">
+      <!-- SLIDE 1: MELENA DE LEÓN -->
+      <div class="hero-slide active" data-slide-index="0">
+        <div class="hero-slide-bg" data-desktop-bg="./assets/banner_hero_melena_pc.png"
+          data-mobile-bg="./assets/banner_hero_melena_mobile.jpg"
+          style="background-image: url('./assets/banner_hero_melena_pc.png');">
+        </div>
+        <div class="hero-container">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              Mente sin límites con
+              <span>Melena de León SI100</span>
+            </h1>
+            <div class="hero-ctas">
+              <a href="./productos_pages/melena.html" class="hero-btn-simple">Comprar Melena de León</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: COLASTEEL -->
+      <div class="hero-slide" data-slide-index="1">
+        <div class="hero-slide-bg" data-desktop-bg="./assets/banner_hero_colasteel_pc.png"
+          data-mobile-bg="./assets/banner_hero_colasteel_mobile.png"
+          style="background-image: url('./assets/banner_hero_colasteel_pc.png');">
+        </div>
+        <div class="hero-container">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              Vitalidad y movimiento con
+              <span>Colasteel Cloruro de Magnesio</span>
+            </h1>
+            <div class="hero-ctas">
+              <a href="./nutricion.html" class="hero-btn-simple">Comprar Colasteel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: INOSITOL & COLÁGENO MARINO -->
+      <div class="hero-slide hero-slide-combos" data-slide-index="2">
+        <div class="hero-slide-bg" data-desktop-bg="./assets/banner_hero_combos_pc.png"
+          data-mobile-bg="./assets/banner_hero_combos_mobile.png"
+          style="background-image: url('./assets/banner_hero_combos_pc.png');">
+        </div>
+        <div class="hero-container">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              Equilibrio, descanso y belleza con
+              <span>Inositol & Colágeno Marino</span>
+            </h1>
+            <div class="hero-ctas">
+              <a href="./nutricion.html" class="hero-btn-simple">Ver Productos</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <nav>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#" onclick="toggleMobileMenu()">Todos</a></li>
-        <li><a href="./nutricion.html" onclick="toggleMobileMenu()">Nutrición</a></li>
-        <li><a href="./vision.html" onclick="toggleMobileMenu()">Salud Visual</a></li>
-        <li><a href="./belleza.html" onclick="toggleMobileMenu()">Belleza y Bienestar</a></li>
-        <li><a href="./outlet.html" onclick="toggleMobileMenu()">Outlet Prendas Moldeadoras</a></li>
-      </ul>
-    </nav>
-  </header>
- </div>
+    <!-- INDICADORES (DOTS) EN DESKTOP -->
+    <div class="hero-dots" aria-label="Navegación del banner principal">
+      <button type="button" class="hero-dot active" data-slide="0" aria-label="Ir a Melena de León"></button>
+      <button type="button" class="hero-dot" data-slide="1" aria-label="Ir a Colasteel"></button>
+      <button type="button" class="hero-dot" data-slide="2" aria-label="Ir a Inositol y Colágeno"></button>
+    </div>
 
- <!-- 3. HERO BANNER PRINCIPAL ROTATIVO (3 SLIDES) -->
- <section class="hero-section" id="heroBannerSlider" data-autoplay="true" data-interval="5000">
-   <div class="hero-slides-track">
-     <!-- SLIDE 1: MELENA DE LEÓN -->
-     <div class="hero-slide active" data-slide-index="0">
-       <div class="hero-slide-bg"
-            data-desktop-bg="./assets/banner_hero_melena_pc.png"
-            data-mobile-bg="./assets/banner_hero_melena_mobile.jpg"
-            style="background-image: url('./assets/banner_hero_melena_pc.png');">
-       </div>
-       <div class="hero-container">
-         <div class="hero-content">
-           <h1 class="hero-title">
-             Mente sin límites con
-             <span>Melena de León SI100</span>
-           </h1>
-           <div class="hero-ctas">
-             <a href="./productos_pages/melena.html" class="hero-btn-simple">Comprar Melena de León</a>
-           </div>
-         </div>
-       </div>
-     </div>
-
-     <!-- SLIDE 2: COLASTEEL -->
-     <div class="hero-slide" data-slide-index="1">
-       <div class="hero-slide-bg"
-            data-desktop-bg="./assets/banner_hero_colasteel_pc.png"
-            data-mobile-bg="./assets/banner_hero_colasteel_mobile.png"
-            style="background-image: url('./assets/banner_hero_colasteel_pc.png');">
-       </div>
-       <div class="hero-container">
-         <div class="hero-content">
-           <h1 class="hero-title">
-             Vitalidad y movimiento con
-             <span>Colasteel Cloruro de Magnesio</span>
-           </h1>
-           <div class="hero-ctas">
-             <a href="./nutricion.html" class="hero-btn-simple">Comprar Colasteel</a>
-           </div>
-         </div>
-       </div>
-     </div>
-
-     <!-- SLIDE 3: INOSITOL & COLÁGENO MARINO -->
-     <div class="hero-slide hero-slide-combos" data-slide-index="2">
-       <div class="hero-slide-bg"
-            data-desktop-bg="./assets/banner_hero_combos_pc.png"
-            data-mobile-bg="./assets/banner_hero_combos_mobile.png"
-            style="background-image: url('./assets/banner_hero_combos_pc.png');">
-       </div>
-       <div class="hero-container">
-         <div class="hero-content">
-           <h1 class="hero-title">
-             Equilibrio, descanso y belleza con
-             <span>Inositol & Colágeno Marino</span>
-           </h1>
-           <div class="hero-ctas">
-             <a href="./nutricion.html" class="hero-btn-simple">Ver Productos</a>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
-
-   <!-- INDICADORES (DOTS) EN DESKTOP -->
-   <div class="hero-dots" aria-label="Navegación del banner principal">
-     <button type="button" class="hero-dot active" data-slide="0" aria-label="Ir a Melena de León"></button>
-     <button type="button" class="hero-dot" data-slide="1" aria-label="Ir a Colasteel"></button>
-     <button type="button" class="hero-dot" data-slide="2" aria-label="Ir a Inositol y Colágeno"></button>
-   </div>
-
-   <!-- FLECHAS DE NAVEGACIÓN LATERALES (SOLO MÓVIL) -->
-   <button type="button" class="hero-arrow hero-arrow-prev" aria-label="Ver banner anterior">
-     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-       <polyline points="15 18 9 12 15 6"></polyline>
-     </svg>
-   </button>
-   <button type="button" class="hero-arrow hero-arrow-next" aria-label="Ver banner siguiente">
-     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-       <polyline points="9 18 15 12 9 6"></polyline>
-     </svg>
-   </button>
- </section>
+    <!-- FLECHAS DE NAVEGACIÓN LATERALES (SOLO MÓVIL) -->
+    <button type="button" class="hero-arrow hero-arrow-prev" aria-label="Ver banner anterior">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button type="button" class="hero-arrow hero-arrow-next" aria-label="Ver banner siguiente">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </section>
 
 
 
- <!-- 4. TRUST BADGES -->
- <section class="trust-section">
-   <div class="trust-card">
-     <div class="trust-icon">
-       <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z"></path></svg>
-     </div>
-     <div class="trust-text">
-       <h4>Envíos a Colombia</h4>
-       <p>Despachos rápidos y asegurados</p>
-     </div>
-   </div>
-   <div class="trust-card">
-     <div class="trust-icon">
-       <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
-     </div>
-     <div class="trust-text">
-       <h4>Pago Contraentrega</h4>
-       <p>Pagas al recibir en tu puerta</p>
-     </div>
-   </div>
-   <div class="trust-card">
-     <div class="trust-icon">
-       <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-     </div>
-     <div class="trust-text">
-       <h4>Registro INVIMA</h4>
-       <p>Garantía y registro sanitario</p>
-     </div>
-   </div>
-   <div class="trust-card">
-     <div class="trust-icon">
-       <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"></path><path d="M12 6v6l4 2"></path></svg>
-     </div>
-     <div class="trust-text">
-       <h4>100% Naturales</h4>
-       <p>Ingredientes para tu bienestar</p>
-     </div>
-   </div>
- </section>
+  <!-- 4. TRUST BADGES -->
+  <section class="trust-section">
+    <div class="trust-card">
+      <div class="trust-icon">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path
+            d="M5 18H3c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1h2m14 10h2c.6 0 1-.4 1-1v-4c0-.5-.2-1-.5-1.4l-3-4c-.3-.4-.8-.6-1.3-.6H15v6m-10 4h10m-10 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M7 8h8v6H7V8z">
+          </path>
+        </svg>
+      </div>
+      <div class="trust-text">
+        <h4>Envíos a Colombia</h4>
+        <p>Despachos rápidos y asegurados</p>
+      </div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+          <line x1="2" y1="10" x2="22" y2="10"></line>
+        </svg>
+      </div>
+      <div class="trust-text">
+        <h4>Pago Contraentrega</h4>
+        <p>Pagas al recibir en tu puerta</p>
+      </div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+      </div>
+      <div class="trust-text">
+        <h4>Registro INVIMA</h4>
+        <p>Garantía y registro sanitario</p>
+      </div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"></path>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+      </div>
+      <div class="trust-text">
+        <h4>100% Naturales</h4>
+        <p>Ingredientes para tu bienestar</p>
+      </div>
+    </div>
+  </section>
 
- <!-- SECCIÓN PROMOCIONAL: PAGO CONTRAENTREGA EN 3 PASOS -->
- <section class="cod-promo-strip-section">
-   <div class="cod-promo-strip-card">
-     <div class="cod-promo-left">
-       <span class="cod-strip-pill">
-         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-         COMPRA 100% SEGURA SIN TARJETA
-       </span>
-       <h3>Pide hoy con <span>Pago Contraentrega</span> y paga solo cuando recibas en tu casa</h3>
-       <p>En World TV confiamos en ti: no tienes que pagar nada por adelantado. Solo nos dejas tus datos de envío y le pagas al transportador al recibir tu pedido.</p>
-     </div>
-     <div class="cod-promo-steps">
-       <div class="cod-step-box">
-         <span class="cod-step-num">1</span>
-         <strong>Elige tu Producto o Kit</strong>
-         <p>Selecciona la fórmula o paquete que deseas llevar.</p>
-       </div>
-       <div class="cod-step-box">
-         <span class="cod-step-num">2</span>
-         <strong>Déjanos Solo tus Datos</strong>
-         <p>Nombre, teléfono, ciudad y dirección. Cero tarjetas.</p>
-       </div>
-       <div class="cod-step-box">
-         <span class="cod-step-num">3</span>
-         <strong>Paga al Recibir en Casa</strong>
-         <p>Recibes en 24-48h y pagas en efectivo o transferencia.</p>
-       </div>
-     </div>
-   </div>
- </section>
+  <!-- SECCIÓN PROMOCIONAL: PAGO CONTRAENTREGA EN 3 PASOS -->
+  <section class="cod-promo-strip-section">
+    <div class="cod-promo-strip-card">
+      <div class="cod-promo-left">
+        <span class="cod-strip-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          COMPRA 100% SEGURA SIN TARJETA
+        </span>
+        <h3>Pide hoy con <span>Pago Contraentrega</span> y paga solo cuando recibas en tu casa</h3>
+        <p>En World TV confiamos en ti: no tienes que pagar nada por adelantado. Solo nos dejas tus datos de envío y le
+          pagas al transportador al recibir tu pedido.</p>
+      </div>
+      <div class="cod-promo-steps">
+        <div class="cod-step-box">
+          <span class="cod-step-num">1</span>
+          <strong>Elige tu Producto o Kit</strong>
+          <p>Selecciona la fórmula o paquete que deseas llevar.</p>
+        </div>
+        <div class="cod-step-box">
+          <span class="cod-step-num">2</span>
+          <strong>Déjanos Solo tus Datos</strong>
+          <p>Nombre, teléfono, ciudad y dirección. Cero tarjetas.</p>
+        </div>
+        <div class="cod-step-box">
+          <span class="cod-step-num">3</span>
+          <strong>Paga al Recibir en Casa</strong>
+          <p>Recibes en 24-48h y pagas en efectivo o transferencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
- <!-- 5. LO MÁS VENDIDO -->
- <section class="bestsellers-section">
-   <div class="section-header">
-     <h2>LO MÁS VENDIDO</h2>
-     <p>Fórmulas seleccionadas por miles de colombianos para su bienestar diario.</p>
-   </div>
-   <div class="products-grid">
-     <!-- Producto 1 -->
-     <article class="product-card">
-       <div class="product-img-box">
-         <img src="./storage/images/melena_x_1_IA.webp" alt="Melena de León">
-       </div>
-       <div class="product-rating">★★★★★ <span>(142)</span></div>
-       <h3 class="product-title">Melena de León en Polvo SI100</h3>
-       <p class="product-subtitle">Fórmula Única - Sabor Capuchino</p>
-       <div class="product-bottom">
-         <div class="product-price">$94.900</div>
-         <button class="add-btn">Añadir +</button>
-       </div>
-     </article>
-     <!-- Producto 2: Colasteel Cloruro de Magnesio (Con enlace directo) -->
-     <article class="product-card">
-       <a href="./producto.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
-         <div class="product-img-box">
-           <img src="./storage/images/cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp" alt="Cloruro de Magnesio">
-         </div>
-         <div class="product-rating">★★★★★ <span>(98)</span></div>
-         <h3 class="product-title">Colasteel Cloruro de Magnesio</h3>
-         <p class="product-subtitle">Con Colágeno, Biotina y Complejo B</p>
-       </a>
-       <div class="product-bottom">
-         <div class="product-price">$101.031</div>
-         <button class="add-btn" onclick="window.location.href='./producto.html'">Añadir +</button>
-       </div>
-     </article>
-     <!-- Producto 3 -->
-     <article class="product-card">
-       <div class="product-img-box">
-         <img src="./storage/images/suerox2.webp" alt="Vitamina C">
-       </div>
-       <div class="product-rating">★★★★☆ <span>(64)</span></div>
-       <h3 class="product-title">Serum Facial Vitamina C</h3>
-       <p class="product-subtitle">Fórmula Única con Ácido Hialurónico</p>
-       <div class="product-bottom">
-         <div class="product-price">$99.500</div>
-         <button class="add-btn">Añadir +</button>
-       </div>
-     </article>
-     <!-- Producto 4 -->
-     <article class="product-card">
-       <div class="product-img-box">
-         <img src="./storage/images/inositol_x_1_IA.webp" alt="Inositol">
-       </div>
-       <div class="product-rating">★★★★★ <span>(115)</span></div>
-       <h3 class="product-title">Inositol en Polvo Orebitol</h3>
-       <p class="product-subtitle">Con Biotina, Ácido Fólico y Vitamina B12</p>
-       <div class="product-bottom">
-         <div class="product-price">$94.900</div>
-         <button class="add-btn">Añadir +</button>
-       </div>
-     </article>
-   </div>
- </section>
+  <!-- 5. LO MÁS VENDIDO -->
+  <section class="bestsellers-section">
+    <div class="section-header">
+      <h2>LO MÁS VENDIDO</h2>
+      <p>Fórmulas seleccionadas por miles de colombianos para su bienestar diario.</p>
+    </div>
+    <div class="products-grid">
+      <!-- Producto 1 -->
+      <article class="product-card">
+        <div class="product-img-box">
+          <img src="./storage/images/melena_x_1_IA.webp" alt="Melena de León" loading="lazy" decoding="async">
+        </div>
+        <div class="product-rating">★★★★★ <span>(142)</span></div>
+        <h3 class="product-title">Melena de León en Polvo SI100</h3>
+        <p class="product-subtitle">Fórmula Única - Sabor Capuchino</p>
+        <div class="product-bottom">
+          <div class="product-price">$94.900</div>
+          <button class="add-btn">Añadir +</button>
+        </div>
+      </article>
+      <!-- Producto 2: Colasteel Cloruro de Magnesio (Con enlace directo) -->
+      <article class="product-card">
+        <a href="./producto.html"
+          style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
+          <div class="product-img-box">
+            <img src="./storage/images/cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp"
+              alt="Cloruro de Magnesio" loading="lazy" decoding="async">
+          </div>
+          <div class="product-rating">★★★★★ <span>(98)</span></div>
+          <h3 class="product-title">Colasteel Cloruro de Magnesio</h3>
+          <p class="product-subtitle">Con Colágeno, Biotina y Complejo B</p>
+        </a>
+        <div class="product-bottom">
+          <div class="product-price">$101.031</div>
+          <button class="add-btn" onclick="window.location.href='./producto.html'">Añadir +</button>
+        </div>
+      </article>
+      <!-- Producto 3 -->
+      <article class="product-card">
+        <div class="product-img-box">
+          <img src="./storage/images/suerox2.webp" alt="Vitamina C" loading="lazy" decoding="async">
+        </div>
+        <div class="product-rating">★★★★☆ <span>(64)</span></div>
+        <h3 class="product-title">Serum Facial Vitamina C</h3>
+        <p class="product-subtitle">Fórmula Única con Ácido Hialurónico</p>
+        <div class="product-bottom">
+          <div class="product-price">$99.500</div>
+          <button class="add-btn">Añadir +</button>
+        </div>
+      </article>
+      <!-- Producto 4 -->
+      <article class="product-card">
+        <div class="product-img-box">
+          <img src="./storage/images/inositol_x_1_IA.webp" alt="Inositol" loading="lazy" decoding="async">
+        </div>
+        <div class="product-rating">★★★★★ <span>(115)</span></div>
+        <h3 class="product-title">Inositol en Polvo Orebitol</h3>
+        <p class="product-subtitle">Con Biotina, Ácido Fólico y Vitamina B12</p>
+        <div class="product-bottom">
+          <div class="product-price">$94.900</div>
+          <button class="add-btn">Añadir +</button>
+        </div>
+      </article>
+    </div>
+  </section>
 
- <!-- 6. COLECCIÓN RELAX VISION -->
- <section class="vision-section">
-   <div class="vision-container">
-     <div>
-       <h2 class="vision-title">Protección Total para tu Visión y Descanso</h2>
-       <div class="models-label">MODELOS DISPONIBLES EN LA COLECCIÓN:</div>
-      
-       <div class="models-box">
-         <!-- Modelo 1: Premium -->
-         <div class="model-item active"
-              data-img="https://www.worldtv.com.co/cdn/shop/files/realx_vision_premuim_uso.png?v=1781670203"
-              data-title="Relax Vision Premium"
-              data-desc="Filtro Luz Azul + Protección UV400 Avanzada">
-           <div class="model-img-thumb">
-             <img src="./storage/images/gafas_premium.png" alt="Premium">
-           </div>
-           <span>Premium</span>
-         </div>
-         <!-- Modelo 2: Clásicas -->
-         <div class="model-item"
-              data-img="https://www.worldtv.com.co/cdn/shop/files/clasicas_en_uso.png?v=1781669479"
-              data-title="Relax Vision Clásicas"
-              data-desc="Filtro Antirreflejo + Luz Azul">
-           <div class="model-img-thumb">
-             <img src="./storage/images/gafas_clasicas.png" alt="Clásicas">
-           </div>
-           <span>Clásicas</span>
-         </div>
-         <!-- Modelo 3: Chromax -->
-         <div class="model-item"
-              data-img="https://www.worldtv.com.co/cdn/shop/files/cromax_uso_joven.png?v=1781671367"
-              data-title="Relax Vision Chromax"
-              data-desc="Protección UV400 y Contraste Mejorado">
-           <div class="model-img-thumb">
-             <img src="./storage/images/gafas_chromax.png" alt="Chromax">
-           </div>
-           <span>Chromax</span>
-         </div>
-         <!-- Modelo 4: Sky -->
-         <div class="model-item"
-              data-img="https://www.worldtv.com.co/cdn/shop/files/SKY_uso.png?v=1781672999"
-              data-title="Relax Vision Sky"
-              data-desc="Filtro Azul y Diseño Liviano">
-           <div class="model-img-thumb">
-             <img src="./storage/images/gafas_sky.png" alt="Sky">
-           </div>
-           <span>Sky</span>
-         </div>
-       </div>
-       <a href="./vision.html" class="btn-dark">EXPLORAR COLECCIÓN DE GAFAS</a>
-     </div>
-    
-     <div class="vision-image-card">
-       <img id="mainVisionImg" src="./storage/images/realx_vision_premuim_uso_hombre.webp" alt="Modelo Gafas Relax Vision">
-       <div class="vision-img-caption">
-         <strong id="mainVisionTitle">Relax Vision Premium</strong>
-         <span id="mainVisionDesc">Filtro Luz Azul + Protección UV400 Avanzada</span>
-       </div>
-     </div>
-   </div>
- </section>
+  <!-- 6. COLECCIÓN RELAX VISION -->
+  <section class="vision-section">
+    <div class="vision-container">
+      <div>
+        <h2 class="vision-title">Protección Total para tu Visión y Descanso</h2>
+        <div class="models-label">MODELOS DISPONIBLES EN LA COLECCIÓN:</div>
 
- <!-- 7. KITS Y COMBOS AHORRO -->
- <section class="kits-section-wrapper">
-   <div class="section-header">
-     <h2>ARMA TU TRATAMIENTO Y AHORRA</h2>
-     <p>Combina nuestras mejores fórmulas y asegura tu bienestar al mejor precio.</p>
-   </div>
-   <div class="kits-grid">
-     <div class="kit-card">
-       <div class="kit-image-box">
-         <img src="./storage/images/colasteel+melena.jpeg" alt="Kit Vitalidad Diaria">
-       </div>
-       <div class="kit-info">
-         <span class="pill-badge"><svg class="inline-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg> Ahorra $35.000</span>
-         <h3>Kit Vitalidad Diaria</h3>
-         <p>1x Melena de León SI100 + 1x Colasteel Cloruro de Magnesio para un soporte físico y mental completo.</p>
-         <div class="kit-price"><del>$179.800</del> $144.800 COP</div>
-         <div class="kit-actions">
-           <button type="button" class="btn-primary kit-buy-btn">COMPRAR AHORA</button>
-           <button type="button" class="btn-secondary kit-cart-btn" aria-label="Agregar al carrito" title="Agregar al carrito">
-             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-               <line x1="3" y1="6" x2="21" y2="6"></line>
-               <path d="M16 10a4 4 0 0 1-8 0"></path>
-             </svg>
-           </button>
-         </div>
-       </div>
-     </div>
-     <div class="kit-card">
-       <div class="kit-image-box">
-         <img src="./storage/images/inositol+clasicas.jpeg" alt="Kit Descanso y Claridad">
-       </div>
-       <div class="kit-info">
-         <span class="pill-badge"><svg class="inline-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> Pack Enfoque Total</span>
-         <h3>Kit Descanso & Claridad</h3>
-         <p>1x Inositol en Polvo + 1x Gafas Relax Vision Clásicas para cuidar tu mente y tus ojos.</p>
-         <div class="kit-price"><del>$264.800</del> $219.800 COP</div>
-         <div class="kit-actions">
-           <button type="button" class="btn-primary kit-buy-btn">COMPRAR AHORA</button>
-           <button type="button" class="btn-secondary kit-cart-btn" aria-label="Agregar al carrito" title="Agregar al carrito">
-             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-               <line x1="3" y1="6" x2="21" y2="6"></line>
-               <path d="M16 10a4 4 0 0 1-8 0"></path>
-             </svg>
-           </button>
-         </div>
-       </div>
-     </div>
-   </div>
- </section>
+        <div class="models-box">
+          <!-- Modelo 1: Premium -->
+          <div class="model-item active"
+            data-img="https://www.worldtv.com.co/cdn/shop/files/realx_vision_premuim_uso.png?v=1781670203"
+            data-title="Relax Vision Premium" data-desc="Filtro Luz Azul + Protección UV400 Avanzada">
+            <div class="model-img-thumb">
+              <img src="./storage/images/gafas_premium.png" alt="Premium" loading="lazy" decoding="async">
+            </div>
+            <span>Premium</span>
+          </div>
+          <!-- Modelo 2: Clásicas -->
+          <div class="model-item" data-img="https://www.worldtv.com.co/cdn/shop/files/clasicas_en_uso.png?v=1781669479"
+            data-title="Relax Vision Clásicas" data-desc="Filtro Antirreflejo + Luz Azul">
+            <div class="model-img-thumb">
+              <img src="./storage/images/gafas_clasicas.png" alt="Clásicas" loading="lazy" decoding="async">
+            </div>
+            <span>Clásicas</span>
+          </div>
+          <!-- Modelo 3: Chromax -->
+          <div class="model-item" data-img="https://www.worldtv.com.co/cdn/shop/files/cromax_uso_joven.png?v=1781671367"
+            data-title="Relax Vision Chromax" data-desc="Protección UV400 y Contraste Mejorado">
+            <div class="model-img-thumb">
+              <img src="./storage/images/gafas_chromax.png" alt="Chromax" loading="lazy" decoding="async">
+            </div>
+            <span>Chromax</span>
+          </div>
+          <!-- Modelo 4: Sky -->
+          <div class="model-item" data-img="https://www.worldtv.com.co/cdn/shop/files/SKY_uso.png?v=1781672999"
+            data-title="Relax Vision Sky" data-desc="Filtro Azul y Diseño Liviano">
+            <div class="model-img-thumb">
+              <img src="./storage/images/gafas_sky.png" alt="Sky" loading="lazy" decoding="async">
+            </div>
+            <span>Sky</span>
+          </div>
+        </div>
+        <a href="./vision.html" class="btn-dark">EXPLORAR COLECCIÓN DE GAFAS</a>
+      </div>
 
- <!-- 8. BANNER OUTLET MOLDEADORAS ROTATIVO -->
- <section class="outlet-section">
-   <div class="outlet-banner" id="outletBannerSlider" data-autoplay="true" data-interval="5000">
-     <div class="outlet-slides-track">
-       <!-- SLIDE 1 -->
-       <div class="outlet-slide active" data-slide-index="0">
-         <div class="outlet-slide-bg"
-              data-desktop-bg="./assets/banner_outlet_slide_1.png"
-              data-mobile-bg="./assets/banner_outlet_slide_1_mobile.png"
-              style="background-image: url('./assets/banner_outlet_slide_1.png');">
-         </div>
-       </div>
-       <!-- SLIDE 2 -->
-       <div class="outlet-slide" data-slide-index="1">
-         <div class="outlet-slide-bg"
-              data-desktop-bg="./assets/banner_outlet_slide_2.png"
-              data-mobile-bg="./assets/banner_outlet_slide_2_mobile.png"
-              style="background-image: url('./assets/banner_outlet_slide_2.png');">
-         </div>
-       </div>
-     </div>
+      <div class="vision-image-card">
+        <img id="mainVisionImg" src="./storage/images/realx_vision_premuim_uso_hombre.webp"
+          alt="Modelo Gafas Relax Vision" loading="lazy" decoding="async">
+        <div class="vision-img-caption">
+          <strong id="mainVisionTitle">Relax Vision Premium</strong>
+          <span id="mainVisionDesc">Filtro Luz Azul + Protección UV400 Avanzada</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-     <!-- CONTENIDO SUPERPUESTO (TITULO Y BOTÓN) -->
-     <div class="outlet-content-overlay">
-       <div class="outlet-content-inner">
-         <h2 class="outlet-title">OUTLET</h2>
-         <a href="./outlet.html" class="outlet-btn">
-           <span>Ver prendas</span>
-           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-             <line x1="5" y1="12" x2="19" y2="12"></line>
-             <polyline points="12 5 19 12 12 19"></polyline>
-           </svg>
-         </a>
-       </div>
-     </div>
+  <!-- 7. KITS Y COMBOS AHORRO -->
+  <section class="kits-section-wrapper">
+    <div class="section-header">
+      <h2>ARMA TU TRATAMIENTO Y AHORRA</h2>
+      <p>Combina nuestras mejores fórmulas y asegura tu bienestar al mejor precio.</p>
+    </div>
+    <div class="kits-grid">
+      <div class="kit-card">
+        <div class="kit-image-box">
+          <img src="./storage/images/colasteel+melena.jpeg" alt="Kit Vitalidad Diaria" loading="lazy" decoding="async">
+        </div>
+        <div class="kit-info">
+          <span class="pill-badge"><svg class="inline-icon" width="13" height="13" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+              <line x1="7" y1="7" x2="7.01" y2="7"></line>
+            </svg> Ahorra $35.000</span>
+          <h3>Kit Vitalidad Diaria</h3>
+          <p>1x Melena de León SI100 + 1x Colasteel Cloruro de Magnesio para un soporte físico y mental completo.</p>
+          <div class="kit-price"><del>$179.800</del> $144.800 COP</div>
+          <div class="kit-actions">
+            <button type="button" class="btn-primary kit-buy-btn">COMPRAR AHORA</button>
+            <button type="button" class="btn-secondary kit-cart-btn" aria-label="Agregar al carrito"
+              title="Agregar al carrito">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"
+                aria-hidden="true">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="kit-card">
+        <div class="kit-image-box">
+          <img src="./storage/images/inositol+clasicas.jpeg" alt="Kit Descanso y Claridad" loading="lazy" decoding="async">
+        </div>
+        <div class="kit-info">
+          <span class="pill-badge"><svg class="inline-icon" width="13" height="13" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg> Pack Enfoque Total</span>
+          <h3>Kit Descanso & Claridad</h3>
+          <p>1x Inositol en Polvo + 1x Gafas Relax Vision Clásicas para cuidar tu mente y tus ojos.</p>
+          <div class="kit-price"><del>$264.800</del> $219.800 COP</div>
+          <div class="kit-actions">
+            <button type="button" class="btn-primary kit-buy-btn">COMPRAR AHORA</button>
+            <button type="button" class="btn-secondary kit-cart-btn" aria-label="Agregar al carrito"
+              title="Agregar al carrito">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"
+                aria-hidden="true">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-     <!-- INDICADORES (DOTS) EN DESKTOP -->
-     <div class="outlet-dots" aria-label="Navegación de diapositivas">
-       <button type="button" class="outlet-dot active" data-slide="0" aria-label="Ir a diapositiva 1"></button>
-       <button type="button" class="outlet-dot" data-slide="1" aria-label="Ir a diapositiva 2"></button>
-     </div>
+  <!-- 8. BANNER OUTLET MOLDEADORAS ROTATIVO -->
+  <section class="outlet-section">
+    <div class="outlet-banner" id="outletBannerSlider" data-autoplay="true" data-interval="5000">
+      <div class="outlet-slides-track">
+        <!-- SLIDE 1 -->
+        <div class="outlet-slide active" data-slide-index="0">
+          <div class="outlet-slide-bg" data-desktop-bg="./assets/banner_outlet_slide_1.png"
+            data-mobile-bg="./assets/banner_outlet_slide_1_mobile.png"
+            style="background-image: url('./assets/banner_outlet_slide_1.png');">
+          </div>
+        </div>
+        <!-- SLIDE 2 -->
+        <div class="outlet-slide" data-slide-index="1">
+          <div class="outlet-slide-bg" data-desktop-bg="./assets/banner_outlet_slide_2.png"
+            data-mobile-bg="./assets/banner_outlet_slide_2_mobile.png"
+            style="background-image: url('./assets/banner_outlet_slide_2.png');">
+          </div>
+        </div>
+      </div>
 
-     <!-- FLECHAS DE NAVEGACIÓN LATERALES (SOLO MÓVIL) -->
-     <button type="button" class="outlet-arrow outlet-arrow-prev" aria-label="Ver imagen anterior">
-       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-         <polyline points="15 18 9 12 15 6"></polyline>
-       </svg>
-     </button>
-     <button type="button" class="outlet-arrow outlet-arrow-next" aria-label="Ver imagen siguiente">
-       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-         <polyline points="9 18 15 12 9 6"></polyline>
-       </svg>
-     </button>
-   </div>
- </section>
+      <!-- CONTENIDO SUPERPUESTO (TITULO Y BOTÓN) -->
+      <div class="outlet-content-overlay">
+        <div class="outlet-content-inner">
+          <h2 class="outlet-title">OUTLET</h2>
+          <a href="./outlet.html" class="outlet-btn">
+            <span>Ver prendas</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
 
- <!-- 9. TESTIMONIOS -->
- <section class="reviews-section">
-   <div class="section-header">
-     <h2>LO QUE DICEN NUESTROS CLIENTES</h2>
-     <p>Miles de colombianos transformando su día a día con World TV.</p>
-   </div>
-   <div class="reviews-grid">
-     <div class="review-card">
-       <div class="review-stars">★★★★★</div>
-       <p class="review-text">"La Melena de León me cambió las mañanas en la oficina. Cero brain fog y un enfoque brutal."</p>
-       <div class="review-author">Andrés R. <span>Bucaramanga • Compra Verificada <svg class="verified-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span></div>
-     </div>
-     <div class="review-card">
-       <div class="review-stars">★★★★★</div>
-       <p class="review-text">"Las gafas Relax Vision me quitaron el dolor de cabeza frente al computador. El diseño se ve súper elegante."</p>
-       <div class="review-author">Camila M. <span>Bogotá • Compra Verificada <svg class="verified-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span></div>
-     </div>
-     <div class="review-card">
-       <div class="review-stars">★★★★★</div>
-       <p class="review-text">"El cloruro de magnesio sabe delicioso y se nota la calidad. Lo mejor es que pude pagar contraentrega."</p>
-       <div class="review-author">Esteban P. <span>Medellín • Compra Verificada <svg class="verified-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span></div>
-     </div>
-   </div>
- </section>
+      <!-- INDICADORES (DOTS) EN DESKTOP -->
+      <div class="outlet-dots" aria-label="Navegación de diapositivas">
+        <button type="button" class="outlet-dot active" data-slide="0" aria-label="Ir a diapositiva 1"></button>
+        <button type="button" class="outlet-dot" data-slide="1" aria-label="Ir a diapositiva 2"></button>
+      </div>
 
- <!-- 10. FOOTER LIMPIO Y ELEGANTE -->
- <footer class="site-footer">
-   <div class="footer-container">
-     <div class="footer-col">
-       <a href="#" class="footer-logo-link">
-         <img src="./storage/images/logo.png" alt="World TV" class="footer-logo">
-       </a>
-      
-       <!-- Contacto con iconos SVG profesionales (Cero emojis) -->
-       <div class="footer-contact-item">
-         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-         worldtvcolombia@gmail.com
-       </div>
-      
-       <div class="footer-contact-item">
-         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-         (57) 3500010
-       </div>
-      
-       <div class="footer-contact-item">
-         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-         Medellín, Antioquia, Colombia
-       </div>
-     </div>
-     <div class="footer-col">
-       <h4>Información</h4>
-       <ul>
-         <li><a href="#">Términos y condiciones de envío</a></li>
-         <li><a href="#">Devoluciones y retracto</a></li>
-         <li><a href="#">Calidad de nuestros productos</a></li>
-         <li><a href="#">Política de Tratamiento de Datos</a></li>
-         <li><a href="#">Contáctenos</a></li>
-       </ul>
-     </div>
-     <div class="footer-col footer-newsletter">
-       <h4>Suscríbete a nuestro correo</h4>
-       <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Descubre antes que nadie nuestras nuevas colecciones y promociones exclusivas.</p>
-       <input type="email" placeholder="Correo electrónico">
-       <a href="#" class="btn-primary" style="display:block; text-align:center; padding:10px;">SUSCRIBIRME</a>
-     </div>
-   </div>
-   <div class="footer-bottom">
-     <div>© 2026, WorldTv Colombia • Tecnología de Shopify</div>
-     <div class="footer-payments"><svg class="inline-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg> Pagos Seguros | PSE | Tarjetas | Pago Contraentrega</div>
-   </div>
- </footer>
+      <!-- FLECHAS DE NAVEGACIÓN LATERALES (SOLO MÓVIL) -->
+      <button type="button" class="outlet-arrow outlet-arrow-prev" aria-label="Ver imagen anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button type="button" class="outlet-arrow outlet-arrow-next" aria-label="Ver imagen siguiente">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </section>
 
- <!-- SCRIPT GENERAL -->
- <script src="./scripts.js"></script>
- <script src="./animations.js"></script>
+  <!-- 9. TESTIMONIOS -->
+  <section class="reviews-section">
+    <div class="section-header">
+      <h2>LO QUE DICEN NUESTROS CLIENTES</h2>
+      <p>Miles de colombianos transformando su día a día con World TV.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"La Melena de León me cambió las mañanas en la oficina. Cero brain fog y un enfoque
+          brutal."</p>
+        <div class="review-author">Andrés R. <span>Bucaramanga • Compra Verificada <svg class="verified-icon" width="13"
+              height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg></span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Las gafas Relax Vision me quitaron el dolor de cabeza frente al computador. El diseño se
+          ve súper elegante."</p>
+        <div class="review-author">Camila M. <span>Bogotá • Compra Verificada <svg class="verified-icon" width="13"
+              height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg></span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"El cloruro de magnesio sabe delicioso y se nota la calidad. Lo mejor es que pude pagar
+          contraentrega."</p>
+        <div class="review-author">Esteban P. <span>Medellín • Compra Verificada <svg class="verified-icon" width="13"
+              height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg></span></div>
+      </div>
+    </div>
+  </section>
 
- <!-- SIDEBAR DEL CARRITO FLOTANTE -->
- <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
- <div class="cart-drawer" id="cartDrawer">
-   <div class="cart-header">
-     <h3>TU CARRITO</h3>
-     <button class="cart-close-btn" onclick="toggleCart()">✕</button>
-   </div>
-   <div class="cart-body">
-     <div class="cart-item-card">
-       <img src="./storage/images/cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp" alt="Colasteel">
-       <div class="cart-item-details">
-         <div class="cart-item-title-row">
-           <h4>Colasteel Cloruro de Magnesio 500 ml</h4>
-           <button class="item-remove">✕</button>
-         </div>
-         <div class="cart-item-price-row">
-           <span class="cart-item-old">$127.500</span>
-           <span class="cart-item-current">$101.031</span>
-         </div>
-         <div class="cart-item-qty-row">
-           <div class="qty-selector">
-             <button>-</button>
-             <span>1</span>
-             <button>+</button>
-           </div>
-           <span class="cart-item-total">$101.031</span>
-         </div>
-       </div>
-     </div>
-     <div class="cart-upsell-section">
-       <h5>Complementa tu rutina:</h5>
-       <div class="cart-upsell-slider">
-         <div class="upsell-card">
-           <img src="./storage/images/suerox2.webp" alt="Resveratrol">
-           <p class="upsell-name">Resveratrol 500 ml - Fórmula Única</p>
-           <span class="upsell-price">A partir de $101.500,00 COP</span>
-           <button class="upsell-add">Añadir</button>
-         </div>
-         <div class="upsell-card">
-           <img src="./storage/images/melena_x_1_IA.webp" alt="Melena de León">
-           <p class="upsell-name">Melena de León en Polvo - Sabor a capuchino</p>
-           <span class="upsell-price">A partir de $94.900,00 COP</span>
-           <button class="upsell-add">Añadir</button>
-         </div>
-       </div>
-     </div>
-   </div>
-   <div class="cart-footer">
-     <div class="cart-summary-row">
-       <span>Subtotal</span>
-       <strong>$101.031</strong>
-     </div>
-     <div class="cart-summary-row">
-       <span>Envío</span>
-       <strong>Incluido</strong>
-     </div>
-     <div class="cart-summary-row total-row">
-       <span>Total</span>
-       <strong>$101.031</strong>
-     </div>
-     <a href="#" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">Pagar</a>
-   </div>
- </div>
+  <!-- 10. FOOTER LIMPIO Y ELEGANTE -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <a href="#" class="footer-logo-link">
+          <img src="./storage/images/logo.png" alt="World TV" class="footer-logo" loading="lazy" decoding="async">
+        </a>
 
- <!-- MODAL DE CHECKOUT / REALIZA TU PEDIDO -->
- <div class="checkout-modal-overlay" id="checkoutModalOverlay" onclick="toggleCheckoutModal()"></div>
- <div class="checkout-modal-container" id="checkoutModal">
-   <div class="checkout-modal-header">
-     <h2>¡REALIZA TU PEDIDO!</h2>
-     <button class="checkout-close-btn" onclick="toggleCheckoutModal()">✕</button>
-   </div>
-   <div class="checkout-modal-body">
-     <div class="checkout-form-col">
-       <h3>INGRESA TUS DATOS COMPLETOS</h3>
-       <form class="checkout-form" onsubmit="event.preventDefault(); alert('¡Pedido realizado con éxito!');">
-         <div class="form-row">
-           <div class="form-group">
-             <label>Nombre:</label>
-             <div class="input-with-icon">
-               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-               <input type="text" placeholder="Nombre" required>
-             </div>
-           </div>
-           <div class="form-group">
-             <label>Apellido:</label>
-             <div class="input-with-icon">
-               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-               <input type="text" placeholder="Apellido" required>
-             </div>
-           </div>
-         </div>
-         <div class="form-row">
-           <div class="form-group">
-             <label>Teléfono:</label>
-             <div class="input-with-icon">
-               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-               <input type="tel" placeholder="Teléfono" required>
-             </div>
-           </div>
-           <div class="form-group">
-             <label>Departamento:</label>
-             <select required>
-               <option value="" disabled selected>Departamento</option>
-               <option value="Antioquia">Antioquia</option>
-               <option value="Bogota">Bogotá D.C.</option>
-               <option value="Cundinamarca">Cundinamarca</option>
-               <option value="Valle">Valle del Cauca</option>
-               <option value="Santander">Santander</option>
-             </select>
-           </div>
-         </div>
-         <div class="form-row">
-           <div class="form-group">
-             <label>Ciudad:</label>
-             <div class="input-with-icon">
-               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-               <input type="text" placeholder="Ciudad" required>
-             </div>
-           </div>
-           <div class="form-group">
-             <label>Dirección:</label>
-             <div class="input-with-icon">
-               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-               <input type="text" placeholder="Calle, Carrera, Diagonal o Transversal" required>
-             </div>
-           </div>
-         </div>
-         <div class="form-row">
-           <div class="form-group">
-             <label>Correo electrónico:</label>
-             <div class="input-with-icon">
-               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-               <input type="email" placeholder="Correo electrónico" required>
-             </div>
-           </div>
-           <div class="form-group">
-             <label>Especificación:</label>
-             <div class="input-with-icon">
-               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-               <input type="text" placeholder="(Casa/Apartamento/Edificio)">
-             </div>
-           </div>
-         </div>
-       </form>
-       <div class="shipping-banner-bar">
-         <svg class="inline-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg> ENVÍOS DE 24-48 HORAS <svg class="inline-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-       </div>
-     </div>
-     <div class="checkout-summary-col">
-       <div class="checkout-receipt-box">
-         <div class="receipt-row">
-           <span>Subtotal</span>
-           <strong id="chkSubtotal">$179.800</strong>
-         </div>
-         <div class="receipt-row">
-           <span>Envío</span>
-           <strong>Incluido</strong>
-         </div>
-         <div class="receipt-row total">
-           <span>Total</span>
-           <strong id="chkTotal">$179.800</strong>
-         </div>
-       </div>
-       <div class="checkout-packages-selector">
-         <span class="packages-label-mini">Paquetes</span>
-         <div class="checkout-pkgs-grid">
-           <div class="chk-pkg-card" onclick="selectCheckoutPackage(this, '$101.031')">
-             <span class="chk-title">Lleva 1</span>
-             <img src="./storage/images/cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp" alt="1">
-             <del>$127.500</del>
-             <strong>$101.031</strong>
-           </div>
-           <div class="chk-pkg-card active" onclick="selectCheckoutPackage(this, '$179.800')">
-             <span class="badge-best-chk">MAS VENDIDO</span>
-             <span class="chk-title">Lleva 2</span>
-             <img src="./storage/images/suerox2.webp" alt="2">
-             <del>$202.062</del>
-             <strong>$179.800</strong>
-           </div>
-           <div class="chk-pkg-card" onclick="selectCheckoutPackage(this, '$221.250')">
-             <span class="chk-title">Lleva 3</span>
-             <img src="./storage/images/suerox2.webp" alt="3">
-             <del>$303.093</del>
-             <strong>$221.250</strong>
-         </div>
-       </div>
-       </div>
-       <button class="btn-checkout-submit" onclick="alert('¡Pedido confirmado con éxito!')">
-         COMPRA AHORA
-       </button>
-       <div class="payment-methods-icons">
-         <span><svg class="inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg></span> <span>Nequi</span> <span>PSE</span> <span>Addi</span> <span>Daviplata</span>
-       </div>
-     </div>
-   </div>
- </div>
+        <!-- Contacto con iconos SVG profesionales (Cero emojis) -->
+        <div class="footer-contact-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          worldtvcolombia@gmail.com
+        </div>
+
+        <div class="footer-contact-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+            </path>
+          </svg>
+          (57) 3500010
+        </div>
+
+        <div class="footer-contact-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          Medellín, Antioquia, Colombia
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Información</h4>
+        <ul>
+          <li><a href="#">Términos y condiciones de envío</a></li>
+          <li><a href="#">Devoluciones y retracto</a></li>
+          <li><a href="#">Calidad de nuestros productos</a></li>
+          <li><a href="#">Política de Tratamiento de Datos</a></li>
+          <li><a href="#">Contáctenos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Suscríbete a nuestro correo</h4>
+        <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Descubre antes que nadie nuestras nuevas
+          colecciones y promociones exclusivas.</p>
+        <input type="email" placeholder="Correo electrónico">
+        <a href="#" class="btn-primary" style="display:block; text-align:center; padding:10px;">SUSCRIBIRME</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026, WorldTv Colombia • Tecnología de Shopify</div>
+      <div class="footer-payments"><svg class="inline-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+          <line x1="2" y1="10" x2="22" y2="10"></line>
+        </svg> Pagos Seguros | PSE | Tarjetas | Pago Contraentrega</div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT GENERAL -->
+  <script src="./scripts.js"></script>
+  <script src="./animations.js"></script>
+
+  <!-- SIDEBAR DEL CARRITO FLOTANTE -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>TU CARRITO</h3>
+      <button class="cart-close-btn" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-body">
+      <div class="cart-item-card">
+        <img src="./storage/images/cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp" alt="Colasteel" loading="lazy" decoding="async">
+        <div class="cart-item-details">
+          <div class="cart-item-title-row">
+            <h4>Colasteel Cloruro de Magnesio 500 ml</h4>
+            <button class="item-remove">✕</button>
+          </div>
+          <div class="cart-item-price-row">
+            <span class="cart-item-old">$127.500</span>
+            <span class="cart-item-current">$101.031</span>
+          </div>
+          <div class="cart-item-qty-row">
+            <div class="qty-selector">
+              <button>-</button>
+              <span>1</span>
+              <button>+</button>
+            </div>
+            <span class="cart-item-total">$101.031</span>
+          </div>
+        </div>
+      </div>
+      <div class="cart-upsell-section">
+        <h5>Complementa tu rutina:</h5>
+        <div class="cart-upsell-slider">
+          <div class="upsell-card">
+            <img src="./storage/images/suerox2.webp" alt="Resveratrol" loading="lazy" decoding="async">
+            <p class="upsell-name">Resveratrol 500 ml - Fórmula Única</p>
+            <span class="upsell-price">A partir de $101.500,00 COP</span>
+            <button class="upsell-add">Añadir</button>
+          </div>
+          <div class="upsell-card">
+            <img src="./storage/images/melena_x_1_IA.webp" alt="Melena de León" loading="lazy" decoding="async">
+            <p class="upsell-name">Melena de León en Polvo - Sabor a capuchino</p>
+            <span class="upsell-price">A partir de $94.900,00 COP</span>
+            <button class="upsell-add">Añadir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <strong>$101.031</strong>
+      </div>
+      <div class="cart-summary-row">
+        <span>Envío</span>
+        <strong>Incluido</strong>
+      </div>
+      <div class="cart-summary-row total-row">
+        <span>Total</span>
+        <strong>$101.031</strong>
+      </div>
+      <a href="#" class="cart-checkout-btn" onclick="toggleCart(); toggleCheckoutModal(); return false;">Pagar</a>
+    </div>
+  </div>
+
+  <!-- MODAL DE CHECKOUT / REALIZA TU PEDIDO -->
+  <div class="checkout-modal-overlay" id="checkoutModalOverlay" onclick="toggleCheckoutModal()"></div>
+  <div class="checkout-modal-container" id="checkoutModal">
+    <div class="checkout-modal-header">
+      <h2>¡REALIZA TU PEDIDO!</h2>
+      <button class="checkout-close-btn" onclick="toggleCheckoutModal()">✕</button>
+    </div>
+    <div class="checkout-modal-body">
+      <div class="checkout-form-col">
+        <h3>INGRESA TUS DATOS COMPLETOS</h3>
+        <form class="checkout-form" onsubmit="event.preventDefault(); alert('¡Pedido realizado con éxito!');">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre:</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <input type="text" placeholder="Nombre" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Apellido:</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <input type="text" placeholder="Apellido" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Teléfono:</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                  </path>
+                </svg>
+                <input type="tel" placeholder="Teléfono" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Departamento:</label>
+              <select required>
+                <option value="" disabled selected>Departamento</option>
+                <option value="Antioquia">Antioquia</option>
+                <option value="Bogota">Bogotá D.C.</option>
+                <option value="Cundinamarca">Cundinamarca</option>
+                <option value="Valle">Valle del Cauca</option>
+                <option value="Santander">Santander</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Ciudad:</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <input type="text" placeholder="Ciudad" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Dirección:</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <input type="text" placeholder="Calle, Carrera, Diagonal o Transversal" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Correo electrónico:</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <input type="email" placeholder="Correo electrónico" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Especificación:</label>
+              <div class="input-with-icon">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <line x1="8" y1="6" x2="21" y2="6"></line>
+                  <line x1="8" y1="12" x2="21" y2="12"></line>
+                  <line x1="8" y1="18" x2="21" y2="18"></line>
+                  <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                  <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                  <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                </svg>
+                <input type="text" placeholder="(Casa/Apartamento/Edificio)">
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="shipping-banner-bar">
+          <svg class="inline-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg> ENVÍOS DE 24-48 HORAS <svg class="inline-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="checkout-summary-col">
+        <div class="checkout-receipt-box">
+          <div class="receipt-row">
+            <span>Subtotal</span>
+            <strong id="chkSubtotal">$179.800</strong>
+          </div>
+          <div class="receipt-row">
+            <span>Envío</span>
+            <strong>Incluido</strong>
+          </div>
+          <div class="receipt-row total">
+            <span>Total</span>
+            <strong id="chkTotal">$179.800</strong>
+          </div>
+        </div>
+        <div class="checkout-packages-selector">
+          <span class="packages-label-mini">Paquetes</span>
+          <div class="checkout-pkgs-grid">
+            <div class="chk-pkg-card" onclick="selectCheckoutPackage(this, '$101.031')">
+              <span class="chk-title">Lleva 1</span>
+              <img src="./storage/images/cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df.webp" alt="1" loading="lazy" decoding="async">
+              <del>$127.500</del>
+              <strong>$101.031</strong>
+            </div>
+            <div class="chk-pkg-card active" onclick="selectCheckoutPackage(this, '$179.800')">
+              <span class="badge-best-chk">MAS VENDIDO</span>
+              <span class="chk-title">Lleva 2</span>
+              <img src="./storage/images/suerox2.webp" alt="2" loading="lazy" decoding="async">
+              <del>$202.062</del>
+              <strong>$179.800</strong>
+            </div>
+            <div class="chk-pkg-card" onclick="selectCheckoutPackage(this, '$221.250')">
+              <span class="chk-title">Lleva 3</span>
+              <img src="./storage/images/suerox2.webp" alt="3" loading="lazy" decoding="async">
+              <del>$303.093</del>
+              <strong>$221.250</strong>
+            </div>
+          </div>
+        </div>
+        <button class="btn-checkout-submit" onclick="alert('¡Pedido confirmado con éxito!')">
+          COMPRA AHORA
+        </button>
+        <div class="payment-methods-icons">
+          <span><svg class="inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+              <line x1="2" y1="10" x2="22" y2="10"></line>
+            </svg></span> <span>Nequi</span> <span>PSE</span> <span>Addi</span> <span>Daviplata</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

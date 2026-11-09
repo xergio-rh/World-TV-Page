@@ -98,7 +98,7 @@ body {
   outline: none;
 }
 
-.search-bar svg {
+.search-bar > svg {
   position: absolute;
   right: 14px;
   top: 50%;
@@ -147,7 +147,7 @@ body {
 /* VISTA DE DETALLE DE PRODUCTO */
 .product-main-container {
   max-width: 1240px;
-  margin: 40px auto;
+  margin: 18px auto 35px;
   padding: 0 24px;
 }
 
@@ -307,7 +307,7 @@ body {
 }
 
 .packages-section {
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
 .pack-label {
@@ -381,17 +381,17 @@ body {
 }
 
 .short-desc {
-  font-size: 13.5px;
+  font-size: 13px;
   color: #444;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
   line-height: 1.6;
 }
 
 .action-buttons {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .cart-checkout-btn {

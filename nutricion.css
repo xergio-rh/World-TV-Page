@@ -98,7 +98,7 @@ body {
   outline: none;
 }
 
-.search-bar svg {
+.search-bar > svg {
   position: absolute;
   right: 14px;
   top: 50%;
@@ -145,9 +145,10 @@ body {
 }
 
 /* BANNER HERO DE NUTRICIÓN */
+.nutricion-hero-banner,
 .beauty-hero-banner {
   position: relative;
-  background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('banner_nutricion.jpeg');
+  background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), var(--nutricion-bg-pc, url('banner_nutricion.jpeg'));
   background-size: cover;
   background-position: center;
   min-height: 380px;
@@ -159,10 +160,12 @@ body {
   padding: 40px 20px;
 }
 
+.nutricion-hero-content,
 .beauty-hero-content {
   max-width: 800px;
 }
 
+.nutricion-tag-top,
 .beauty-tag-top {
   background: #FFB703;
   color: #111;
@@ -176,6 +179,7 @@ body {
   margin-bottom: 12px;
 }
 
+.nutricion-hero-content h1,
 .beauty-hero-content h1 {
   font-family: var(--font-serif);
   font-size: 38px;
@@ -184,9 +188,12 @@ body {
   text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
+.nutricion-hero-content h1 span,
 .beauty-hero-content h1 span {
+  color: #FFE387;
   border-bottom: 3px solid #FFB703;
   padding-bottom: 2px;
+  display: inline-block;
 }
 
 .beauty-hero-content p {

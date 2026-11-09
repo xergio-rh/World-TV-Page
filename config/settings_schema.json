@@ -58,6 +58,64 @@
         "default": "Medellín, Antioquia, Colombia"
       }
     ]
+  },
+  {
+    "name": "Pantalla de pago",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Logotipo"
+      },
+      {
+        "type": "image_picker",
+        "id": "checkout_logo_image",
+        "label": "Imagen del logotipo"
+      },
+      {
+        "type": "select",
+        "id": "checkout_logo_position",
+        "label": "Posición del logotipo",
+        "options": [
+          { "value": "left", "label": "Izquierda" },
+          { "value": "center", "label": "Centro" },
+          { "value": "right", "label": "Derecha" }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "checkout_logo_size",
+        "label": "Tamaño del logotipo",
+        "options": [
+          { "value": "small", "label": "Pequeño" },
+          { "value": "medium", "label": "Mediano" },
+          { "value": "large", "label": "Grande" }
+        ],
+        "default": "large"
+      },
+      {
+        "type": "header",
+        "content": "Colores"
+      },
+      {
+        "type": "color",
+        "id": "checkout_accent_color",
+        "label": "Color de acento / enlaces",
+        "default": "#D90429"
+      },
+      {
+        "type": "color",
+        "id": "checkout_button_color",
+        "label": "Color de botones principales",
+        "default": "#D90429"
+      },
+      {
+        "type": "color",
+        "id": "checkout_call_to_action_color",
+        "label": "Color de llamadas a la acción",
+        "default": "#D90429"
+      }
+    ]
   }
 ]
 

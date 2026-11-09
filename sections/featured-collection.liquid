@@ -38,9 +38,9 @@
         <article class="product-card" onclick="window.location.href='{{ product.url }}'" style="cursor: pointer;">
           <div class="product-img-box">
             {% if product.featured_image %}
-              <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title | escape }}" width="500" height="500">
+              <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title | escape }}" width="500" height="500" loading="lazy" decoding="async">
             {% else %}
-              <img src="{{ 'melena_x_1_IA-removebg-preview.png' | asset_url }}" alt="{{ product.title | escape }}" width="1080" height="1080">
+              <img src="{{ 'melena_x_1_IA-removebg-preview.png' | asset_url }}" alt="{{ product.title | escape }}" width="1080" height="1080" loading="lazy" decoding="async">
             {% endif %}
           </div>
           <h3 class="product-title">{{ product.title }}</h3>
@@ -66,7 +66,7 @@
       <!-- Fallback con enlaces y adición directa a los productos reales de World TV en Shopify -->
       <article class="product-card" onclick="window.location.href='/products/melena-de-leon-en-polvo-formula-unica-sabor-a-capuchino'" style="cursor: pointer;">
         <div class="product-img-box">
-          <img src="{{ 'melena_x_1_IA-removebg-preview.png' | asset_url }}" alt="Melena de León" width="1080" height="1080">
+          <img src="{{ 'melena_x_1_IA-removebg-preview.png' | asset_url }}" alt="Melena de León" width="1080" height="1080" loading="lazy" decoding="async">
         </div>
         <h3 class="product-title">Melena de León en Polvo SI100</h3>
         <p class="product-subtitle">Fórmula Única - Sabor Capuchino</p>
@@ -78,7 +78,7 @@
 
       <article class="product-card" onclick="window.location.href='/products/cloruro-500-gr-formula-unica'" style="cursor: pointer;">
         <div class="product-img-box">
-          <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df-removebg-preview.png' | asset_url }}" alt="Cloruro de Magnesio" width="1080" height="1080">
+          <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df-removebg-preview.png' | asset_url }}" alt="Cloruro de Magnesio" width="1080" height="1080" loading="lazy" decoding="async">
         </div>
         <h3 class="product-title">Colasteel Cloruro de Magnesio</h3>
         <p class="product-subtitle">Con Colágeno, Biotina y Complejo B</p>
@@ -90,7 +90,7 @@
 
       <article class="product-card" onclick="window.location.href='/products/serum-facil-con-formula-unica-con-vitamina-c'" style="cursor: pointer;">
         <div class="product-img-box">
-          <img src="{{ 'suerox2.webp' | asset_url }}" alt="Vitamina C" width="1080" height="1080">
+          <img src="{{ 'suerox2.webp' | asset_url }}" alt="Vitamina C" width="1080" height="1080" loading="lazy" decoding="async">
         </div>
         <h3 class="product-title">Serum Facial Vitamina C</h3>
         <p class="product-subtitle">Fórmula Única con Ácido Hialurónico</p>
@@ -102,7 +102,7 @@
 
       <article class="product-card" onclick="window.location.href='/products/inositol-en-polvo-con-biotina-acido-folico-y-vitamina-b12'" style="cursor: pointer;">
         <div class="product-img-box">
-          <img src="{{ 'inositol_x_1_IA-removebg-preview.png' | asset_url }}" alt="Inositol" width="1080" height="1080">
+          <img src="{{ 'inositol_x_1_IA-removebg-preview.png' | asset_url }}" alt="Inositol" width="1080" height="1080" loading="lazy" decoding="async">
         </div>
         <h3 class="product-title">Inositol en Polvo Orebitol</h3>
         <p class="product-subtitle">Con Biotina, Ácido Fólico y Vitamina B12</p>

@@ -20,8 +20,8 @@
     </div>
   </section>
 {% else %}
-  <section class="beauty-hero-banner" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('{{ 'banner_nutricion.jpeg' | asset_url }}');">
-    <div class="beauty-hero-content">
+  <section class="nutricion-hero-banner" style="--nutricion-bg-pc: url('{{ 'banner_nutricion.jpeg' | asset_url }}'); --nutricion-bg-mob: url('{{ 'banner_nutricion_mobile.jpg' | asset_url }}');">
+    <div class="nutricion-hero-content">
       <h1>REVOLUCIONA TU SALUD CON NUESTRA <span>LÍNEA DE NUTRICIÓN</span></h1>
     </div>
   </section>
@@ -91,11 +91,11 @@
             {% assign t_img = 'citrato_x_1_IA-removebg-preview.png' | asset_url %}
           {% endif %}
           {% if t_img != blank %}
-            <img src="{{ t_img }}" alt="{{ product.title | escape }}" width="600" height="600">
+            <img src="{{ t_img }}" alt="{{ product.title | escape }}" width="600" height="600" loading="lazy" decoding="async">
           {% elsif product.featured_image %}
-            <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" width="600" height="600">
+            <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" width="600" height="600" loading="lazy" decoding="async">
           {% else %}
-            <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df-removebg-preview.png' | asset_url }}" alt="{{ product.title | escape }}" width="1856" height="2304">
+            <img src="{{ 'cloruro_x_1_IA_4a08858f-a74e-4d46-a666-cbb3b61e67df-removebg-preview.png' | asset_url }}" alt="{{ product.title | escape }}" width="1856" height="2304" loading="lazy" decoding="async">
           {% endif %}
         </div>
         <h3 class="product-title">{{ product.title }}</h3>

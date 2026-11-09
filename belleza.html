@@ -30,7 +30,7 @@
 
         <!-- Logo (Alineado a la izquierda en PC, centrado en móvil gracias al CSS) -->
         <a href="./index.html" class="logo-link">
-          <img src="./storage/images/logo.png" alt="World TV" class="site-logo">
+          <img src="./storage/images/logo.png" alt="World TV" class="site-logo" loading="eager" fetchpriority="high" decoding="async">
         </a>
 
         <!-- Barra de búsqueda clásica (Visible en PC) -->
@@ -75,7 +75,7 @@
 
       <nav>
         <ul class="nav-links" id="navLinks">
-          <li><a href="./index.html" onclick="toggleMobileMenu()">Inicio</a></li>
+          <li><a href="./index.html" onclick="toggleMobileMenu()">Todos</a></li>
           <li><a href="./nutricion.html" onclick="toggleMobileMenu()">Nutrición</a></li>
           <li><a href="./vision.html" onclick="toggleMobileMenu()">Salud Visual</a></li>
           <li><a href="./belleza.html" onclick="toggleMobileMenu()" style="color: var(--brand-red); font-weight:700;">Belleza y Bienestar</a></li>
@@ -116,7 +116,7 @@
       <!-- 1. Sérum Facial Vitamina C -->
       <article class="product-card beauty-card">
         <div class="product-img-box">
-          <img src="./BACKS/serum_back.jpeg" alt="Sérum Facial Vitamina C">
+          <img src="./BACKS/serum_back.jpeg" alt="Sérum Facial Vitamina C" loading="lazy" decoding="async">
         </div>
         <div class="product-rating">★★★★★ <span>(128)</span></div>
         <h3 class="product-title">Sérum facial con fórmula única - con vitamina C</h3>
@@ -132,7 +132,7 @@
       <!-- 2. Cannabix Crema -->
       <article class="product-card beauty-card">
         <div class="product-img-box">
-          <img src="./BACKS/canabis_back.jpeg" alt="Cannabix Crema">
+          <img src="./BACKS/canabis_back.jpeg" alt="Cannabix Crema" loading="lazy" decoding="async">
         </div>
         <div class="product-rating">★★★★★ <span>(94)</span></div>
         <h3 class="product-title">Cannabix – Fórmula Única con árnica, vainilla, colágeno y cloruro de magnesio.</h3>
@@ -153,7 +153,7 @@
     <div class="footer-container">
       <div class="footer-col">
         <a href="#" class="footer-logo-link">
-          <img src="./storage/images/logo.png" alt="World TV" class="footer-logo">
+          <img src="./storage/images/logo.png" alt="World TV" class="footer-logo" loading="lazy" decoding="async">
         </a>
         <div class="footer-contact-item">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -193,7 +193,7 @@
     </div>
     <div class="cart-body">
       <div class="cart-item-card">
-        <img src="./storage/images/suerox2.webp" alt="Sérum Facial">
+        <img src="./storage/images/suerox2.webp" alt="Sérum Facial" loading="lazy" decoding="async">
         <div class="cart-item-details">
           <div class="cart-item-title-row">
             <h4>Sérum facial con vitamina C</h4>
